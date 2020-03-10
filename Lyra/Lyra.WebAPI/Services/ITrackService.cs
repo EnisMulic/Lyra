@@ -8,7 +8,8 @@ namespace Lyra.WebAPI.Services
 {
     public interface ITrackService
     {
-        IList<Track> Get();
-        Track GetById(int id);
+        IList<Model.Track> Get();
+        Model.Track GetById(int id);
+        Model.Track Insert(Model.Requests.TrackInsertRequest request);
     }
 }

@@ -1,4 +1,7 @@
-﻿using Lyra.Model;
+﻿using AutoMapper;
+using Lyra.Model;
+using Lyra.Model.Requests;
+using Lyra.WebAPI.Database;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,37 +11,34 @@ namespace Lyra.WebAPI.Services
 {
     public class TrackService : ITrackService
     {
-        public IList<Track> Get()
-        {
-            var list = new List<Track>()
-            {
-                new Track()
-                {
-                    ID = 1,
-                    Name = "Demon Days",
-                    Lenght = new TimeSpan(0, 4, 21)
-                },
-                new Track()
-                {
-                    ID = 2,
-                    Name = "DARE",
-                    Lenght = new TimeSpan(0, 3, 57)
-                }
-            };
+        private readonly LyraContext _context;
+        private readonly IMapper _mapper;
 
-            return list;
+        public TrackService(LyraContext context, IMapper mapper)
+        {
+            _context = context;
+            _mapper = mapper;
         }
 
-        public Track GetById(int id)
+        public IList<Model.Track> Get()
         {
-            var item = new Track()
-            {
-                ID = 1,
-                Name = "Demon Days",
-                Lenght = new TimeSpan(0, 4, 21)
-            };
+            var list = _context.Track.ToList();
+            return _mapper.Map<List<Model.Track>>(list);
+        }
 
-            return item;
+        public Model.Track GetById(int id)
+        {
+            var item = _context.Track.Find(id);
+            return _mapper.Map<Model.Track>(item);
+        }
+
+        public Model.Track Insert(TrackInsertRequest request)
+        {
+            var entity = _mapper.Map<Database.Track>(request);
+            _context.Track.Add(entity);
+            _context.SaveChanges();
+
+            return _mapper.Map<Model.Track>(entity);
         }
     }
 }
