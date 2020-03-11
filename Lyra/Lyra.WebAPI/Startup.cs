@@ -35,8 +35,8 @@ namespace Lyra.WebAPI
                options.UseSqlServer(Configuration.GetConnectionString("LyraDev")));
             
             services.AddControllers(x => x.Filters.Add<ErrorFilter>());
-
-            //services.AddAutoMapper();
+            
+            services.AddAutoMapper(typeof(Startup));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Lyra API", Version = "v1" });
