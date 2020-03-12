@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Lyra.Model
+namespace Lyra.Model.Requests
 {
-    public class Track
+    public class TrackSearchRequest
     {
-        public int ID { get; set; }
         public string Name { get; set; }
-        public string Lenght { get; set; }
-
     }
 }
