@@ -20,9 +20,17 @@ namespace Lyra.WebAPI.Services
             _mapper = mapper;
         }
 
-        public IList<Model.Track> Get()
+        public IList<Model.Track> Get(TrackSearchRequest request)
         {
-            var list = _context.Track.ToList();
+            var query = _context.Track.AsQueryable();
+
+            if(!string.IsNullOrWhiteSpace(request?.Name))
+            {
+                query = query.Where(x => x.Name.StartsWith(request.Name));
+            }
+
+            var list = query.ToList();
+
             return _mapper.Map<List<Model.Track>>(list);
         }
 

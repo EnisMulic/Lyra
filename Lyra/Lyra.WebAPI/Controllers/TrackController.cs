@@ -21,9 +21,9 @@ namespace Lyra.WebAPI.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Track>> Get()
+        public ActionResult<IEnumerable<Track>> Get([FromQuery]TrackSearchRequest request)
         {
-            return Ok(_service.Get());
+            return Ok(_service.Get(request));
         }
 
         [HttpGet("{id}")]
