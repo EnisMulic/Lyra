@@ -4,14 +4,16 @@ using Lyra.WebAPI.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Lyra.WebAPI.Migrations
 {
     [DbContext(typeof(LyraContext))]
-    partial class LyraContextModelSnapshot : ModelSnapshot
+    [Migration("20200313133743_add-main-tables")]
+    partial class addmaintables
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,21 +37,6 @@ namespace Lyra.WebAPI.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Albums");
-                });
-
-            modelBuilder.Entity("Lyra.WebAPI.Database.AlbumTracks", b =>
-                {
-                    b.Property<int>("AlbumID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TrackID")
-                        .HasColumnType("int");
-
-                    b.HasKey("AlbumID", "TrackID");
-
-                    b.HasIndex("TrackID");
-
-                    b.ToTable("AlbumTracks");
                 });
 
             modelBuilder.Entity("Lyra.WebAPI.Database.Artist", b =>
@@ -103,21 +90,6 @@ namespace Lyra.WebAPI.Migrations
                     b.HasIndex("UserID");
 
                     b.ToTable("Playlists");
-                });
-
-            modelBuilder.Entity("Lyra.WebAPI.Database.PlaylistTrack", b =>
-                {
-                    b.Property<int>("PlaylistID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TrackID")
-                        .HasColumnType("int");
-
-                    b.HasKey("PlaylistID", "TrackID");
-
-                    b.HasIndex("TrackID");
-
-                    b.ToTable("PlaylistTracks");
                 });
 
             modelBuilder.Entity("Lyra.WebAPI.Database.Track", b =>
@@ -193,41 +165,11 @@ namespace Lyra.WebAPI.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("Lyra.WebAPI.Database.AlbumTracks", b =>
-                {
-                    b.HasOne("Lyra.WebAPI.Database.Album", "Album")
-                        .WithMany()
-                        .HasForeignKey("AlbumID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Lyra.WebAPI.Database.Track", "Track")
-                        .WithMany()
-                        .HasForeignKey("TrackID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("Lyra.WebAPI.Database.Playlist", b =>
                 {
                     b.HasOne("Lyra.WebAPI.Database.User", "User")
                         .WithMany("Playlists")
                         .HasForeignKey("UserID");
-                });
-
-            modelBuilder.Entity("Lyra.WebAPI.Database.PlaylistTrack", b =>
-                {
-                    b.HasOne("Lyra.WebAPI.Database.Playlist", "Playlist")
-                        .WithMany()
-                        .HasForeignKey("PlaylistID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Lyra.WebAPI.Database.Track", "Track")
-                        .WithMany()
-                        .HasForeignKey("TrackID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Lyra.WebAPI.Database.Track", b =>

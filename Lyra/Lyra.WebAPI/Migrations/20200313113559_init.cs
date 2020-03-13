@@ -34,7 +34,7 @@ namespace Lyra.WebAPI.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Track",
+                name: "Tracks",
                 columns: table => new
                 {
                     ID = table.Column<int>(nullable: false)
@@ -44,7 +44,7 @@ namespace Lyra.WebAPI.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Track", x => x.ID);
+                    table.PrimaryKey("PK_Tracks", x => x.ID);
                 });
         }
 
@@ -57,7 +57,7 @@ namespace Lyra.WebAPI.Migrations
                 name: "Artists");
 
             migrationBuilder.DropTable(
-                name: "Track");
+                name: "Tracks");
         }
     }
 }

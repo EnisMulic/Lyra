@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Lyra.WebAPI.Migrations
 {
     [DbContext(typeof(LyraContext))]
-    [Migration("20200310195954_init")]
+    [Migration("20200313113559_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -66,7 +66,7 @@ namespace Lyra.WebAPI.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Track");
+                    b.ToTable("Tracks");
                 });
 #pragma warning restore 612, 618
         }
