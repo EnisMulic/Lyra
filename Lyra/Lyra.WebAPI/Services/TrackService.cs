@@ -22,7 +22,7 @@ namespace Lyra.WebAPI.Services
 
         public IList<Model.Track> Get(TrackSearchRequest request)
         {
-            var query = _context.Track.AsQueryable();
+            var query = _context.Tracks.AsQueryable();
 
             if(!string.IsNullOrWhiteSpace(request?.Name))
             {
@@ -36,14 +36,14 @@ namespace Lyra.WebAPI.Services
 
         public Model.Track GetById(int id)
         {
-            var item = _context.Track.Find(id);
+            var item = _context.Tracks.Find(id);
             return _mapper.Map<Model.Track>(item);
         }
 
         public Model.Track Insert(TrackInsertRequest request)
         {
             var entity = _mapper.Map<Database.Track>(request);
-            _context.Track.Add(entity);
+            _context.Tracks.Add(entity);
             _context.SaveChanges();
 
             return _mapper.Map<Model.Track>(entity);
