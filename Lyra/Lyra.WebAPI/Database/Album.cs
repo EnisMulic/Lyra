@@ -10,6 +10,7 @@ namespace Lyra.WebAPI.Database
         public int ID { get; set; }
         public string Name { get; set; }
         public int ReleaseYear { get; set; }
+        public string CoverArtPath { get; set; }
         public ICollection<Track> Tracks { get; set; }
     }
 }
