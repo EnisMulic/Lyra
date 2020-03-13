@@ -10,5 +10,6 @@ namespace Lyra.WebAPI.Database
         public int ID { get; set; }
         public string Name { get; set; }
         public TimeSpan Length { get; set; }
+        public ICollection<TrackGenre> Genres { get; set; }
     }
 }

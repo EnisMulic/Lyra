@@ -16,6 +16,22 @@ namespace Lyra.WebAPI.Database
 
         public DbSet<Artist> Artists { get; set; }
         public DbSet<Album> Albums { get; set; }
-        public DbSet<Track> Track { get; set; }
+        public DbSet<Track> Tracks { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Genre> Genres { get; set; }
+        public DbSet<Playlist> Playlists { get; set; }
+        public DbSet<TrackGenre> TrackGenres { get; set; }
+        public DbSet<PlaylistTrack> PlaylistTracks { get; set; }
+        public DbSet<AlbumTracks> AlbumTracks { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<TrackGenre>()
+                .HasKey(k => new { k.GenreID, k.TrackID });
+            modelBuilder.Entity<PlaylistTrack>()
+                .HasKey(k => new { k.PlaylistID, k.TrackID });
+            modelBuilder.Entity<AlbumTracks>()
+                .HasKey(k => new { k.AlbumID, k.TrackID });
+        }
     }
 }

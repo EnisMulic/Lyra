@@ -5,11 +5,12 @@ using System.Threading.Tasks;
 
 namespace Lyra.WebAPI.Database
 {
-    public class Album
+    public class Playlist
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public int ReleaseYear { get; set; }
+        public DateTime Created { get; set; }
         public ICollection<Track> Tracks { get; set; }
+        public User User { get; set; }
     }
 }
