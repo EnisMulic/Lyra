@@ -12,5 +12,10 @@ namespace Lyra.WebAPI.Database
         public int ReleaseYear { get; set; }
         public string CoverArtPath { get; set; }
         public ICollection<Track> Tracks { get; set; }
+
+        public Album()
+        {
+            Tracks = new HashSet<Track>();
+        }
     }
 }

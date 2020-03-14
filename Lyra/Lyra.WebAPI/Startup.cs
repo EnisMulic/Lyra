@@ -43,6 +43,7 @@ namespace Lyra.WebAPI
             });
 
             services.AddScoped<ITrackService, TrackService>();
+            services.AddScoped<IAlbumService, AlbumService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

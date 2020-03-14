@@ -12,6 +12,8 @@ namespace Lyra.WebAPI.Mapper
         {
             CreateMap<Database.Track, Model.Track>();
             CreateMap<Database.Track, Model.Requests.TrackInsertRequest>().ReverseMap();
+            CreateMap<Database.Album, Model.Album>();
+            CreateMap<Database.Album, Model.Requests.AlbumInsertRequest>().ReverseMap();
         }
     }
 }
