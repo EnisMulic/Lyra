@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Lyra.WebAPI.Services
 {
-    public interface IService<T, TSearch>
+    public interface IBaseService<T, TSearch>
     {
         List<T> Get(TSearch search);
         T GetById(int id);

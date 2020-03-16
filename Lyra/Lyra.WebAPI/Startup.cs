@@ -16,6 +16,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using AutoMapper;
+using Lyra.Model.Requests;
 
 namespace Lyra.WebAPI
 {
@@ -42,8 +43,10 @@ namespace Lyra.WebAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Lyra API", Version = "v1" });
             });
 
+            services.AddScoped<IBaseService<Model.Album, AlbumSearchRequest>, BaseSevice<Model.Album, AlbumSearchRequest, Database.Album>>();
+            //services.AddScoped<IBaseService<Model.Track, TrackSearchRequest>, BaseSevice<Model.Track, TrackSearchRequest, Database.Track>>();
             services.AddScoped<ITrackService, TrackService>();
-            services.AddScoped<IAlbumService, AlbumService>();
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
