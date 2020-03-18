@@ -10,44 +10,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Lyra.WebAPI.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class TrackController : ControllerBase
+    public class TrackController : CRUDController<Track, TrackSearchRequest, TrackInsertRequest, object>
     {
-        private readonly ITrackService _service;
-        public TrackController(ITrackService service)
+        public TrackController(ICRUDService<Track, TrackSearchRequest, TrackInsertRequest, object> service) : base(service)
         {
-            _service = service;
-        }
-
-        [HttpGet]
-        public ActionResult<IEnumerable<Track>> Get([FromQuery]TrackSearchRequest request)
-        {
-            return Ok(_service.Get(request));
-        }
-
-        [HttpGet("{id}")]
-        public ActionResult<Track> GetById(int id)
-        {
-            return _service.GetById(id);
-        }
-
-        [HttpPost]
-        public Track Insert(TrackInsertRequest request)
-        {
-            return _service.Insert(request);
-        }
-
-        [HttpPut("{id}")]
-        public Track Update(int id, Track track)
-        {
-            return null;
-        }
-
-        [HttpDelete("{id}")]
-        public Track Delete(int id)
-        {
-            return null;
         }
     }
 }

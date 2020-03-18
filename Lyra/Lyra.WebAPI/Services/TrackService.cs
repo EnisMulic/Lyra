@@ -9,22 +9,22 @@ using System.Threading.Tasks;
 
 namespace Lyra.WebAPI.Services
 {
-    public class TrackService : ITrackService
+    public class TrackService : CRUDService<Model.Track, TrackSearchRequest, Database.Track, TrackInsertRequest, object>
     {
         private readonly LyraContext _context;
         private readonly IMapper _mapper;
 
-        public TrackService(LyraContext context, IMapper mapper)
+        public TrackService(LyraContext context, IMapper mapper) : base(context, mapper)
         {
             _context = context;
             _mapper = mapper;
         }
 
-        public IList<Model.Track> Get(TrackSearchRequest request)
+        public override List<Model.Track> Get(TrackSearchRequest request)
         {
             var query = _context.Tracks.AsQueryable();
 
-            if(!string.IsNullOrWhiteSpace(request?.Name))
+            if (!string.IsNullOrWhiteSpace(request?.Name))
             {
                 query = query.Where(x => x.Name.StartsWith(request.Name));
             }
@@ -34,19 +34,6 @@ namespace Lyra.WebAPI.Services
             return _mapper.Map<List<Model.Track>>(list);
         }
 
-        public Model.Track GetById(int id)
-        {
-            var item = _context.Tracks.Find(id);
-            return _mapper.Map<Model.Track>(item);
-        }
-
-        public Model.Track Insert(TrackInsertRequest request)
-        {
-            var entity = _mapper.Map<Database.Track>(request);
-            _context.Tracks.Add(entity);
-            _context.SaveChanges();
-
-            return _mapper.Map<Model.Track>(entity);
-        }
     }
+
 }
