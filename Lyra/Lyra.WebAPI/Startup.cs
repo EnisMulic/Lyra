@@ -43,9 +43,10 @@ namespace Lyra.WebAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Lyra API", Version = "v1" });
             });
 
-            services.AddScoped<IBaseService<Model.Album, AlbumSearchRequest>, BaseSevice<Model.Album, AlbumSearchRequest, Database.Album>>();
-            //services.AddScoped<IBaseService<Model.Track, TrackSearchRequest>, BaseSevice<Model.Track, TrackSearchRequest, Database.Track>>();
-            services.AddScoped<ITrackService, TrackService>();
+            services.AddScoped<IBaseService<Model.Album, AlbumSearchRequest>, AlbumService>();
+            services.AddScoped<ICRUDService<Model.Artist, object, object, object>, ArtistService>();
+            services.AddScoped<ICRUDService<Model.Track, TrackSearchRequest, TrackInsertRequest, object>, TrackService>();
+            services.AddScoped<ICRUDService<Model.Playlist, object, object, object>, PlaylistService>();
             
         }
 
@@ -75,7 +76,7 @@ namespace Lyra.WebAPI
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Lyra API V1");
                 
             });
         }
