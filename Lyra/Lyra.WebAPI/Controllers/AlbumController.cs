@@ -10,9 +10,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Lyra.WebAPI.Controllers
 {
-    public class AlbumController : BaseController<Album, AlbumSearchRequest>
+    public class AlbumController : CRUDController<Album, AlbumSearchRequest, AlbumUpsertRequest, AlbumUpsertRequest>
     {
-        public AlbumController(IBaseService<Album, AlbumSearchRequest> service) : base(service)
+        public AlbumController(ICRUDService<Album, AlbumSearchRequest, AlbumUpsertRequest, AlbumUpsertRequest> service) : base(service)
         {
         }
     }

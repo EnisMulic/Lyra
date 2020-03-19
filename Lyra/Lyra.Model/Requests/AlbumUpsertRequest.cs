@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Lyra.Model.Requests
 {
-    public class AlbumInsertRequest
+    public class AlbumUpsertRequest
     {
         [Required]
         public string Name { get; set; }

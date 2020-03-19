@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Lyra.WebAPI.Services
 {
-    public class AlbumService : BaseService<Model.Album, AlbumSearchRequest, Database.Album>
+    public class AlbumService : CRUDService<Model.Album, AlbumSearchRequest, Database.Album, AlbumUpsertRequest, AlbumUpsertRequest>
     {
         private readonly LyraContext _context;
         private readonly IMapper _mapper;
