@@ -10,9 +10,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Lyra.WebAPI.Controllers
 {
-    public class TrackController : CRUDController<Track, TrackSearchRequest, TrackInsertRequest, object>
+    public class TrackController : CRUDController<Track, TrackSearchRequest, TrackUpsertRequest, object>
     {
-        public TrackController(ICRUDService<Track, TrackSearchRequest, TrackInsertRequest, object> service) : base(service)
+        public TrackController(ICRUDService<Track, TrackSearchRequest, TrackUpsertRequest, object> service) : base(service)
         {
         }
     }

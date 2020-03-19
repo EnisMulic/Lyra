@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Lyra.Model.Requests
 {
-    public class TrackInsertRequest
+    public class TrackUpsertRequest
     {
         [Required]
         public string Name { get; set; }

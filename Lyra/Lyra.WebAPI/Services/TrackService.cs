@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Lyra.WebAPI.Services
 {
-    public class TrackService : CRUDService<Model.Track, TrackSearchRequest, Database.Track, TrackInsertRequest, object>
+    public class TrackService : CRUDService<Model.Track, TrackSearchRequest, Database.Track, TrackUpsertRequest, TrackUpsertRequest>
     {
         private readonly LyraContext _context;
         private readonly IMapper _mapper;
@@ -33,7 +33,6 @@ namespace Lyra.WebAPI.Services
 
             return _mapper.Map<List<Model.Track>>(list);
         }
-
     }
 
 }
