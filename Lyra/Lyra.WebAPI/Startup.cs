@@ -43,11 +43,12 @@ namespace Lyra.WebAPI
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Lyra API", Version = "v1" });
             });
 
-            services.AddScoped<IBaseService<Model.Album, AlbumSearchRequest>, AlbumService>();
+            services.AddScoped<ICRUDService<Model.Album, AlbumSearchRequest, AlbumUpsertRequest, AlbumUpsertRequest>, AlbumService>();
             services.AddScoped<IBaseService<Model.Genre, object>, GenreService>();
-            services.AddScoped<ICRUDService<Model.Artist, object, object, object>, ArtistService>();
-            services.AddScoped<ICRUDService<Model.Track, TrackSearchRequest, TrackInsertRequest, object>, TrackService>();
-            services.AddScoped<ICRUDService<Model.Playlist, object, object, object>, PlaylistService>();
+            services.AddScoped<ICRUDService<Model.Artist, ArtistSearchRequest, ArtistUpsertRequest, ArtistUpsertRequest>, ArtistService>();
+            services.AddScoped<ICRUDService<Model.Track, TrackSearchRequest, TrackUpsertRequest, TrackUpsertRequest>, TrackService>();
+            services.AddScoped<ICRUDService<Model.Playlist, PlaylistSearchRequest, PlaylistUpsertRequest, PlaylistUpsertRequest>, PlaylistService>();
+            services.AddScoped<ICRUDService<Model.User, UserSearchRequest, UserUpsertRequest, UserUpsertRequest>, UserService>();
             
         }
 
