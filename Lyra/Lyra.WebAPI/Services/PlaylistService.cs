@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Lyra.Model.Requests;
 using Lyra.WebAPI.Database;
 using System;
 using System.Collections.Generic;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Lyra.WebAPI.Services
 {
-    public class PlaylistService : CRUDService<Model.Playlist, object, Database.Playlist, object, object>
+    public class PlaylistService : CRUDService<Model.Playlist, PlaylistSearchRequest, Playlist, PlaylistUpsertRequest, PlaylistUpsertRequest>
     {
         public PlaylistService(LyraContext context, IMapper mapper) : base(context, mapper)
         {
