@@ -23,6 +23,8 @@ namespace Lyra.WebAPI.Database
         public DbSet<TrackGenre> TrackGenres { get; set; }
         public DbSet<PlaylistTrack> PlaylistTracks { get; set; }
         public DbSet<AlbumTracks> AlbumTracks { get; set; }
+        public DbSet<Role> Roles  { get; set; }
+        public DbSet<UserRoles> UserRoles  { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
