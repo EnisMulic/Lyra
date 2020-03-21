@@ -2,6 +2,8 @@
 using Lyra.Model.Requests;
 using Lyra.WebAPI.Database;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -15,6 +17,25 @@ namespace Lyra.WebAPI.Services
         {
             _context = context;
             _mapper = mapper;
+        }
+
+        public override List<Model.User> Get(UserSearchRequest search)
+        {
+            var query = _context.Users.AsQueryable();
+
+            if(!string.IsNullOrWhiteSpace(search?.FirstName))
+            {
+                query = query.Where(i => i.FirstName.StartsWith(search.FirstName));
+            }
+
+
+            if (!string.IsNullOrWhiteSpace(search?.LastName))
+            {
+                query = query.Where(i => i.FirstName.StartsWith(search.LastName));
+            }
+
+            var list = query.ToList();
+            return _mapper.Map<List<Model.User>>(list);
         }
 
         public static string GenerateSalt()
