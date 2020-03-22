@@ -1,6 +1,6 @@
 ﻿namespace Lyra.WinUI.User
 {
-    partial class frmLogin
+    partial class frmSingIn
     {
         /// <summary>
         /// Required designer variable.
@@ -34,8 +34,12 @@
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnSingIn = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.errorUsername = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorPassword = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorUsername)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorPassword)).BeginInit();
             this.SuspendLayout();
             // 
             // notifyIcon1
@@ -47,7 +51,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(115, 115);
+            this.label1.Location = new System.Drawing.Point(40, 48);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(83, 20);
             this.label1.TabIndex = 0;
@@ -55,17 +59,20 @@
             // 
             // txtUsername
             // 
+            this.errorUsername.SetError(this.txtUsername, "Username does not exist");
             this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(119, 138);
+            this.txtUsername.Location = new System.Drawing.Point(44, 71);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(286, 26);
             this.txtUsername.TabIndex = 1;
             // 
             // txtPassword
             // 
+            this.errorPassword.SetError(this.txtPassword, "Wrong password");
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(119, 204);
+            this.txtPassword.Location = new System.Drawing.Point(44, 137);
             this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(286, 26);
             this.txtPassword.TabIndex = 3;
             // 
@@ -73,47 +80,58 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(115, 181);
+            this.label2.Location = new System.Drawing.Point(40, 114);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(78, 20);
             this.label2.TabIndex = 2;
             this.label2.Text = "Password";
             // 
-            // button1
+            // btnSingIn
             // 
-            this.button1.BackColor = System.Drawing.Color.White;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.button1.Location = new System.Drawing.Point(119, 261);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(286, 44);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Login";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btnSingIn.BackColor = System.Drawing.Color.White;
+            this.btnSingIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSingIn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnSingIn.Location = new System.Drawing.Point(44, 193);
+            this.btnSingIn.Name = "btnSingIn";
+            this.btnSingIn.Size = new System.Drawing.Size(286, 44);
+            this.btnSingIn.TabIndex = 4;
+            this.btnSingIn.Text = "Sing In";
+            this.btnSingIn.UseVisualStyleBackColor = false;
             // 
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(116, 323);
+            this.linkLabel1.Location = new System.Drawing.Point(41, 256);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(92, 13);
             this.linkLabel1.TabIndex = 5;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Forgot Password?";
             // 
-            // frmLogin
+            // errorUsername
+            // 
+            this.errorUsername.ContainerControl = this;
+            // 
+            // errorPassword
+            // 
+            this.errorPassword.ContainerControl = this;
+            // 
+            // frmSingIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(545, 468);
+            this.ClientSize = new System.Drawing.Size(385, 318);
             this.Controls.Add(this.linkLabel1);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnSingIn);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.label1);
-            this.Name = "frmLogin";
-            this.Text = "frmLogin";
+            this.Name = "frmSingIn";
+            this.Text = "Log in";
+            this.Load += new System.EventHandler(this.frmSingIn_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.errorUsername)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorPassword)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -126,7 +144,9 @@
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSingIn;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.ErrorProvider errorUsername;
+        private System.Windows.Forms.ErrorProvider errorPassword;
     }
 }

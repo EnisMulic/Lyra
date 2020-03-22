@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lyra.Model", "Lyra.Model\Ly
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyra.WinUI", "Lyra.WinUI\Lyra.WinUI.csproj", "{61C4175E-4EEA-441C-AE22-96C1249D3700}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyra.WebAPI.Test", "Lyra.WebAPI.Test\Lyra.WebAPI.Test.csproj", "{C1F98ECF-CF58-4EC6-A626-B668C511E428}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{61C4175E-4EEA-441C-AE22-96C1249D3700}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61C4175E-4EEA-441C-AE22-96C1249D3700}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61C4175E-4EEA-441C-AE22-96C1249D3700}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1F98ECF-CF58-4EC6-A626-B668C511E428}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1F98ECF-CF58-4EC6-A626-B668C511E428}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1F98ECF-CF58-4EC6-A626-B668C511E428}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1F98ECF-CF58-4EC6-A626-B668C511E428}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,5 @@
 ﻿using Lyra.WinUI.Track;
+using Lyra.WinUI.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +18,7 @@ namespace Lyra.WinUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmTrack());
+            Application.Run(new frmSingIn());
         }
     }
 }

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Lyra.WinUI.User
 {
-    public partial class frmLogin : Form
+    public partial class frmSingUp : Form
     {
-        public frmLogin()
+        public frmSingUp()
         {
             InitializeComponent();
         }

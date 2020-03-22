@@ -30,5 +30,6 @@ namespace Lyra.WinUI
 
             return await url.GetJsonAsync<T>();
         }
+
     }
 }

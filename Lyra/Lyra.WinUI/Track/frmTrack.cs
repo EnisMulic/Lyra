@@ -23,7 +23,7 @@ namespace Lyra.WinUI.Track
         {
             var search = new TrackSearchRequest()
             {
-                Name = txtSearch.Text
+                //Name = txtSearch.Text
             };
 
             var list = await _apiService.Get<List<Model.Track>>(search);
