@@ -17,5 +17,6 @@ namespace Lyra.WebAPI.Database
         public string PasswordHash { get; set; }
         public string PasswordSalt { get; set; }
         public ICollection<Playlist> Playlists { get; set; }
+        public ICollection<Role> Roles { get; set; }
     }
 }

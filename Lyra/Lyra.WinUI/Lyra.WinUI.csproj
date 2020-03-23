@@ -91,6 +91,9 @@
     <EmbeddedResource Include="User\frmSingIn.resx">
       <DependentUpon>frmSingIn.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="User\frmSingUp.resx">
+      <DependentUpon>frmSingUp.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

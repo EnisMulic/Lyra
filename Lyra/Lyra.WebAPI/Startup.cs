@@ -17,9 +17,16 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using AutoMapper;
 using Lyra.Model.Requests;
+using Microsoft.AspNetCore.Authentication;
+using Lyra.WebAPI.Security;
+using Swashbuckle.AspNetCore.Swagger;
+using Swashbuckle.AspNetCore.SwaggerGen;
+
 
 namespace Lyra.WebAPI
 {
+    
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -41,6 +48,28 @@ namespace Lyra.WebAPI
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Lyra API", Version = "v1" });
+                c.AddSecurityDefinition("basic", new OpenApiSecurityScheme
+                {
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.Http,
+                    Scheme = "basic",
+                    In = ParameterLocation.Header
+                });
+
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                          new OpenApiSecurityScheme
+                            {
+                                Reference = new OpenApiReference
+                                {
+                                    Type = ReferenceType.SecurityScheme,
+                                    Id = "basic"
+                                }
+                            },
+                            new string[] {}
+                    }
+                });
             });
 
             services.AddScoped<ICRUDService<Model.Album, AlbumSearchRequest, AlbumUpsertRequest, AlbumUpsertRequest>, AlbumService>();
@@ -48,8 +77,10 @@ namespace Lyra.WebAPI
             services.AddScoped<ICRUDService<Model.Artist, ArtistSearchRequest, ArtistUpsertRequest, ArtistUpsertRequest>, ArtistService>();
             services.AddScoped<ICRUDService<Model.Track, TrackSearchRequest, TrackUpsertRequest, TrackUpsertRequest>, TrackService>();
             services.AddScoped<ICRUDService<Model.Playlist, PlaylistSearchRequest, PlaylistUpsertRequest, PlaylistUpsertRequest>, PlaylistService>();
-            services.AddScoped<ICRUDService<Model.User, UserSearchRequest, UserUpsertRequest, UserUpsertRequest>, UserService>();
-            
+            services.AddScoped<IUserService, UserService>();
+
+            services.AddAuthentication("BasicAuthentication")
+               .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,6 +95,7 @@ namespace Lyra.WebAPI
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

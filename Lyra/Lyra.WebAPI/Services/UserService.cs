@@ -9,17 +9,17 @@ using System.Text;
 
 namespace Lyra.WebAPI.Services
 {
-    public class UserService : CRUDService<Model.User, UserSearchRequest, Database.User, UserUpsertRequest, UserUpsertRequest>
+    public class UserService : IUserService
     {
         private readonly LyraContext _context;
         private readonly IMapper _mapper;
-        public UserService(LyraContext context, IMapper mapper) : base(context, mapper)
+        public UserService(LyraContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
 
-        public override List<Model.User> Get(UserSearchRequest search)
+        public List<Model.User> Get(UserSearchRequest search)
         {
             var query = _context.Users.AsQueryable();
 
@@ -36,6 +36,22 @@ namespace Lyra.WebAPI.Services
 
             var list = query.ToList();
             return _mapper.Map<List<Model.User>>(list);
+        }
+
+        public Model.User Authenticate(string username, string password)
+        {
+            var user = _context.Users.FirstOrDefault(i => i.Username == username);
+
+            if(user != null)
+            {
+                var hash = GenerateHash(user.PasswordSalt, password);
+                if(hash == user.PasswordHash)
+                {
+                    return _mapper.Map<Model.User>(user);
+                }
+            }
+
+            return null;
         }
 
         public static string GenerateSalt()
@@ -56,13 +72,13 @@ namespace Lyra.WebAPI.Services
             Buffer.BlockCopy(src, 0, dst, 0, src.Length);
             Buffer.BlockCopy(bytes, 0, dst, src.Length, bytes.Length);
 
-            HashAlgorithm algorithm = HashAlgorithm.Create("SHA1");
+            HashAlgorithm algorithm = HashAlgorithm.Create("SHA512");
             byte[] inArray = algorithm.ComputeHash(dst);
 
             return Convert.ToBase64String(inArray);
         }
 
-        public override Model.User Insert(UserUpsertRequest request)
+        public Model.User Insert(UserUpsertRequest request)
         {
             if(request.Password != request.PasswordConfirmation)
             {
@@ -79,7 +95,7 @@ namespace Lyra.WebAPI.Services
             return _mapper.Map<Model.User>(entity);
         }
 
-        public override Model.User Update(int id, UserUpsertRequest request)
+        public Model.User Update(int id, UserUpsertRequest request)
         {
             var entity = _context.Users.Find(id);
             _context.Users.Attach(entity);
@@ -100,6 +116,11 @@ namespace Lyra.WebAPI.Services
             _context.SaveChanges();
 
             return _mapper.Map<Model.User>(entity);
+        }
+
+        public Model.User GetById(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }
