@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Lyra.Model.Requests;
 using Lyra.WebAPI.Database;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -40,14 +41,21 @@ namespace Lyra.WebAPI.Services
 
         public Model.User Authenticate(string username, string password)
         {
-            var user = _context.Users.FirstOrDefault(i => i.Username == username);
+            var user = _context.Users
+                .Include(i => i.UserRoles)
+                .ThenInclude(j => j.Role)
+                .FirstOrDefault(i => i.Username == username);
 
-            if(user != null)
+            
+
+            if (user != null)
             {
                 var hash = GenerateHash(user.PasswordSalt, password);
                 if(hash == user.PasswordHash)
                 {
+
                     return _mapper.Map<Model.User>(user);
+
                 }
             }
 

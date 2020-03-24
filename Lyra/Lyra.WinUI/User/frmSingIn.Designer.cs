@@ -97,6 +97,7 @@
             this.btnSingIn.TabIndex = 4;
             this.btnSingIn.Text = "Sing In";
             this.btnSingIn.UseVisualStyleBackColor = false;
+            this.btnSingIn.Click += new System.EventHandler(this.btnSingIn_ClickAsync);
             // 
             // linkLabel1
             // 

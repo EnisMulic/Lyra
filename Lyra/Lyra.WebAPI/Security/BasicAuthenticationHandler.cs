@@ -57,9 +57,9 @@ namespace Lyra.WebAPI.Security
                 new Claim(ClaimTypes.Name, user.FirstName),
             };
 
-            foreach (var role in user.Roles)
+            foreach (var role in user.UserRoles)
             {
-                claims.Add(new Claim(ClaimTypes.Role, role.Name));
+                claims.Add(new Claim(ClaimTypes.Role, role.Role.Name));
             }
 
             var identity = new ClaimsIdentity(claims, Scheme.Name);

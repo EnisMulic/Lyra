@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Lyra.WebAPI.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -17,12 +18,14 @@ namespace Lyra.WebAPI.Controllers
             _service = service;
         }
 
+        //[Authorize(Roles = "Administrator")]
         [HttpPost]
         public T Insert(TInsert request)
         {
             return _service.Insert(request);
         }
 
+        //[Authorize(Roles = "Administrator")]
         [HttpPut("{id}")]
         public T Update(int id, [FromBody]TUpdate request)
         {

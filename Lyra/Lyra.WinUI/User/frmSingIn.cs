@@ -14,7 +14,7 @@ namespace Lyra.WinUI.User
     public partial class frmSingIn : Form
     {
 
-        private readonly APIService _service = new APIService("Users");
+        private readonly APIService _service = new APIService("User");
         public frmSingIn()
         {
             InitializeComponent();
@@ -52,6 +52,25 @@ namespace Lyra.WinUI.User
 
         private void frmSingIn_Load(object sender, EventArgs e)
         {
+
+        }
+
+        private async void btnSingIn_ClickAsync(object sender, EventArgs e)
+        {
+            try
+            {
+                APIService.Username = txtUsername.Text;
+                APIService.Password = txtPassword.Text;
+
+                await _service.Get<dynamic>(null);
+
+                MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Authenticatio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
 
         }
     }

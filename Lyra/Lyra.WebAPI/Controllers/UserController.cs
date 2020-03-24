@@ -29,22 +29,26 @@ namespace Lyra.WebAPI.Controllers
             return _service.Get(request);
         }
 
+        [HttpGet("{id}")]
+        public Model.User GetById(int id)
+        {
+            return _service.GetById(id);
+        }
+
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         public Model.User Insert(UserUpsertRequest request)
         {
             return _service.Insert(request);
         }
 
+        [Authorize(Roles = "Administrator")]
         [HttpPut("{id}")]
         public Model.User Update(int id, [FromBody]UserUpsertRequest request)
         {
             return _service.Update(id, request);
         }
 
-        [HttpGet("{id}")]
-        public Model.User GetById(int id)
-        {
-            return _service.GetById(id);
-        }
+        
     }
 }

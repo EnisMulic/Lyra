@@ -55,19 +55,18 @@ namespace Lyra.WebAPI
                     Scheme = "basic",
                     In = ParameterLocation.Header
                 });
-
                 c.AddSecurityRequirement(new OpenApiSecurityRequirement
                 {
                     {
                           new OpenApiSecurityScheme
-                            {
-                                Reference = new OpenApiReference
-                                {
-                                    Type = ReferenceType.SecurityScheme,
-                                    Id = "basic"
-                                }
-                            },
-                            new string[] {}
+                          {
+                              Reference = new OpenApiReference
+                              {
+                                  Type = ReferenceType.SecurityScheme,
+                                  Id = "basic"
+                              }
+                          },
+                          new string[] {}
                     }
                 });
             });
