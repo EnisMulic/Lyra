@@ -43,7 +43,7 @@ namespace Lyra.WebAPI.Security
                 var password = credentials[1];
                 user = _userService.Authenticate(username, password);
             }
-            catch
+            catch(Exception ex)
             {
                 return AuthenticateResult.Fail("Invalid Authorization Header");
             }
@@ -57,10 +57,10 @@ namespace Lyra.WebAPI.Security
                 new Claim(ClaimTypes.Name, user.FirstName),
             };
 
-            foreach (var role in user.UserRoles)
-            {
-                claims.Add(new Claim(ClaimTypes.Role, role.Role.Name));
-            }
+            //foreach (var role in user.UserRoles)
+            //{
+            //    claims.Add(new Claim(ClaimTypes.Role, role.Role.Name));
+            //}
 
             var identity = new ClaimsIdentity(claims, Scheme.Name);
             var principal = new ClaimsPrincipal(identity);

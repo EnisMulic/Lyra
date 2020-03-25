@@ -25,8 +25,6 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Lyra.WebAPI
 {
-    
-
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -41,7 +39,7 @@ namespace Lyra.WebAPI
         {
             services.AddDbContext<LyraContext>(options =>
                options.UseSqlServer(Configuration.GetConnectionString("LyraDev")));
-            
+
             services.AddControllers(x => x.Filters.Add<ErrorFilter>());
             
             services.AddAutoMapper(typeof(Startup));

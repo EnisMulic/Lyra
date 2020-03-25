@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Lyra.Model
 {
-    public class UserRoles
+    public partial class UserRoles
     {
         public int ID { get; set; }
         public int UserID { get; set; }

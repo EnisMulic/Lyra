@@ -25,7 +25,10 @@ namespace Lyra.WebAPI.Mapper
             CreateMap<Database.User, Model.User>();
             CreateMap<Database.User, Model.Requests.UserUpsertRequest>().ReverseMap();
 
-            CreateMap<Database.UserRoles, Model.UserRoles>();
+            //CreateMap<Database.UserRoles, Model.UserRoles>();
+            //CreateMap<Database.Role, Model.Role>();
         }
+
+        
     }
 }

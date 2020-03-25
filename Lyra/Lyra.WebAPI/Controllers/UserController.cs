@@ -35,14 +35,14 @@ namespace Lyra.WebAPI.Controllers
             return _service.GetById(id);
         }
 
-        [Authorize(Roles = "Administrator")]
+        //[Authorize(Roles = "Administrator")]
         [HttpPost]
         public Model.User Insert(UserUpsertRequest request)
         {
             return _service.Insert(request);
         }
 
-        [Authorize(Roles = "Administrator")]
+        //[Authorize(Roles = "Administrator")]
         [HttpPut("{id}")]
         public Model.User Update(int id, [FromBody]UserUpsertRequest request)
         {
