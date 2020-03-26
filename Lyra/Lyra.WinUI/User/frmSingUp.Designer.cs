@@ -43,12 +43,16 @@
             this.lblPasswordConfirm = new System.Windows.Forms.Label();
             this.txtPasswordConfirm = new System.Windows.Forms.TextBox();
             this.btnSingUp = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblClose = new System.Windows.Forms.Label();
+            this.lblSingUp = new System.Windows.Forms.Label();
+            this.lblSingIn = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // txtFirstName
             // 
             this.txtFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFirstName.Location = new System.Drawing.Point(229, 70);
+            this.txtFirstName.Location = new System.Drawing.Point(439, 111);
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(322, 26);
             this.txtFirstName.TabIndex = 0;
@@ -56,7 +60,7 @@
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
-            this.lblFirstName.Location = new System.Drawing.Point(226, 54);
+            this.lblFirstName.Location = new System.Drawing.Point(436, 95);
             this.lblFirstName.Name = "lblFirstName";
             this.lblFirstName.Size = new System.Drawing.Size(57, 13);
             this.lblFirstName.TabIndex = 1;
@@ -65,7 +69,7 @@
             // lblLastName
             // 
             this.lblLastName.AutoSize = true;
-            this.lblLastName.Location = new System.Drawing.Point(226, 113);
+            this.lblLastName.Location = new System.Drawing.Point(436, 154);
             this.lblLastName.Name = "lblLastName";
             this.lblLastName.Size = new System.Drawing.Size(58, 13);
             this.lblLastName.TabIndex = 3;
@@ -74,7 +78,7 @@
             // txtLastName
             // 
             this.txtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLastName.Location = new System.Drawing.Point(229, 129);
+            this.txtLastName.Location = new System.Drawing.Point(439, 170);
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(322, 26);
             this.txtLastName.TabIndex = 2;
@@ -82,7 +86,7 @@
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(226, 170);
+            this.lblUsername.Location = new System.Drawing.Point(436, 211);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(55, 13);
             this.lblUsername.TabIndex = 5;
@@ -91,7 +95,7 @@
             // txtUsername
             // 
             this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUsername.Location = new System.Drawing.Point(229, 186);
+            this.txtUsername.Location = new System.Drawing.Point(439, 227);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(322, 26);
             this.txtUsername.TabIndex = 4;
@@ -99,7 +103,7 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(226, 232);
+            this.lblEmail.Location = new System.Drawing.Point(436, 273);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(35, 13);
             this.lblEmail.TabIndex = 7;
@@ -108,7 +112,7 @@
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEmail.Location = new System.Drawing.Point(229, 248);
+            this.txtEmail.Location = new System.Drawing.Point(439, 289);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(322, 26);
             this.txtEmail.TabIndex = 6;
@@ -116,7 +120,7 @@
             // lblPhone
             // 
             this.lblPhone.AutoSize = true;
-            this.lblPhone.Location = new System.Drawing.Point(226, 290);
+            this.lblPhone.Location = new System.Drawing.Point(436, 331);
             this.lblPhone.Name = "lblPhone";
             this.lblPhone.Size = new System.Drawing.Size(38, 13);
             this.lblPhone.TabIndex = 9;
@@ -125,7 +129,7 @@
             // txtPhone
             // 
             this.txtPhone.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPhone.Location = new System.Drawing.Point(229, 306);
+            this.txtPhone.Location = new System.Drawing.Point(439, 347);
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(322, 26);
             this.txtPhone.TabIndex = 8;
@@ -133,7 +137,7 @@
             // lblPassword
             // 
             this.lblPassword.AutoSize = true;
-            this.lblPassword.Location = new System.Drawing.Point(226, 348);
+            this.lblPassword.Location = new System.Drawing.Point(436, 389);
             this.lblPassword.Name = "lblPassword";
             this.lblPassword.Size = new System.Drawing.Size(53, 13);
             this.lblPassword.TabIndex = 11;
@@ -142,7 +146,7 @@
             // txtPassword
             // 
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPassword.Location = new System.Drawing.Point(229, 364);
+            this.txtPassword.Location = new System.Drawing.Point(439, 405);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(322, 26);
             this.txtPassword.TabIndex = 10;
@@ -150,7 +154,7 @@
             // lblPasswordConfirm
             // 
             this.lblPasswordConfirm.AutoSize = true;
-            this.lblPasswordConfirm.Location = new System.Drawing.Point(226, 408);
+            this.lblPasswordConfirm.Location = new System.Drawing.Point(436, 449);
             this.lblPasswordConfirm.Name = "lblPasswordConfirm";
             this.lblPasswordConfirm.Size = new System.Drawing.Size(91, 13);
             this.lblPasswordConfirm.TabIndex = 13;
@@ -159,25 +163,74 @@
             // txtPasswordConfirm
             // 
             this.txtPasswordConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPasswordConfirm.Location = new System.Drawing.Point(229, 424);
+            this.txtPasswordConfirm.Location = new System.Drawing.Point(439, 465);
             this.txtPasswordConfirm.Name = "txtPasswordConfirm";
             this.txtPasswordConfirm.Size = new System.Drawing.Size(322, 26);
             this.txtPasswordConfirm.TabIndex = 12;
             // 
             // btnSingUp
             // 
-            this.btnSingUp.Location = new System.Drawing.Point(229, 477);
+            this.btnSingUp.Location = new System.Drawing.Point(439, 535);
             this.btnSingUp.Name = "btnSingUp";
             this.btnSingUp.Size = new System.Drawing.Size(322, 39);
             this.btnSingUp.TabIndex = 14;
             this.btnSingUp.Text = "Sing Up";
             this.btnSingUp.UseVisualStyleBackColor = true;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(90)))), ((int)(((byte)(182)))));
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(405, 595);
+            this.panel1.TabIndex = 15;
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmSingUp_MouseDown);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmSingUp_MouseMove);
+            // 
+            // lblClose
+            // 
+            this.lblClose.AutoSize = true;
+            this.lblClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblClose.Location = new System.Drawing.Point(762, 9);
+            this.lblClose.Name = "lblClose";
+            this.lblClose.Size = new System.Drawing.Size(26, 25);
+            this.lblClose.TabIndex = 16;
+            this.lblClose.Text = "X";
+            this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
+            // 
+            // lblSingUp
+            // 
+            this.lblSingUp.AutoSize = true;
+            this.lblSingUp.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblSingUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSingUp.Location = new System.Drawing.Point(530, 43);
+            this.lblSingUp.Name = "lblSingUp";
+            this.lblSingUp.Size = new System.Drawing.Size(84, 24);
+            this.lblSingUp.TabIndex = 18;
+            this.lblSingUp.Text = "Sing Up";
+            // 
+            // lblSingIn
+            // 
+            this.lblSingIn.AutoSize = true;
+            this.lblSingIn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblSingIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSingIn.Location = new System.Drawing.Point(439, 43);
+            this.lblSingIn.Name = "lblSingIn";
+            this.lblSingIn.Size = new System.Drawing.Size(68, 24);
+            this.lblSingIn.TabIndex = 17;
+            this.lblSingIn.Text = "Sing In";
+            this.lblSingIn.Click += new System.EventHandler(this.lblSingIn_Click);
+            // 
             // frmSingUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 595);
+            this.Controls.Add(this.lblSingUp);
+            this.Controls.Add(this.lblSingIn);
+            this.Controls.Add(this.lblClose);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnSingUp);
             this.Controls.Add(this.lblPasswordConfirm);
             this.Controls.Add(this.txtPasswordConfirm);
@@ -193,8 +246,12 @@
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.lblFirstName);
             this.Controls.Add(this.txtFirstName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmSingUp";
             this.Text = "frmSingUp";
+            this.Load += new System.EventHandler(this.frmSingUp_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmSingUp_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmSingUp_MouseMove);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -217,5 +274,9 @@
         private System.Windows.Forms.Label lblPasswordConfirm;
         private System.Windows.Forms.TextBox txtPasswordConfirm;
         private System.Windows.Forms.Button btnSingUp;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblClose;
+        private System.Windows.Forms.Label lblSingUp;
+        private System.Windows.Forms.Label lblSingIn;
     }
 }
