@@ -12,6 +12,7 @@ namespace Lyra.WinUI.User
 {
     public partial class frmSignUp : Form
     {
+        private readonly APIService _service = new APIService("User");
         private Point lastPoint;
         public frmSignUp()
         {
@@ -50,6 +51,53 @@ namespace Lyra.WinUI.User
             this.Width = SignIn.Width;
             SignIn.Dock = DockStyle.Fill;
             SignIn.Show();
+        }
+
+        private async void btnSignUp_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                APIService.Username = "Admin";
+                APIService.Password = "Password1";
+
+                var request = new Model.Requests.UserUpsertRequest()
+                {
+                    FirstName = txtFirstName.Text,
+                    LastName = txtLastName.Text,
+                    Email = txtEmail.Text,
+                    Username = txtUsername.Text,
+                    PhoneNumber = txtPhone.Text,
+                    Password = txtPassword.Text,
+                    PasswordConfirmation = txtPasswordConfirm.Text
+
+                };
+                await _service.Insert<Model.User>(request);
+
+                ClearTextBoxes();
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            
+        }
+
+
+        private void ClearTextBoxes()
+        {
+            Action<Control.ControlCollection> func = null;
+
+            func = (controls) =>
+            {
+                foreach (Control control in controls)
+                    if (control is TextBox)
+                        (control as TextBox).Clear();
+                    else
+                        func(control.Controls);
+            };
+
+            func(Controls);
         }
     }
 }
