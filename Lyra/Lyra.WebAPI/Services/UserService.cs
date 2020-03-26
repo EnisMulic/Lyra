@@ -46,16 +46,13 @@ namespace Lyra.WebAPI.Services
                 .ThenInclude(j => j.Role)
                 .FirstOrDefault(i => i.Username == username);
 
-            
 
             if (user != null)
             {
                 var hash = GenerateHash(user.PasswordSalt, password);
                 if(hash == user.PasswordHash)
                 {
-
                     return _mapper.Map<Model.User>(user);
-
                 }
             }
 
