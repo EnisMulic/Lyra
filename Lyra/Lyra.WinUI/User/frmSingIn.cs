@@ -15,6 +15,7 @@ namespace Lyra.WinUI.User
     {
 
         private readonly APIService _service = new APIService("User");
+        private Point lastPoint;
         public frmSingIn()
         {
             InitializeComponent();
@@ -72,6 +73,35 @@ namespace Lyra.WinUI.User
             }
 
 
+        }
+
+        private void lblSingUp_Click(object sender, EventArgs e)
+        {
+            Form SingUp = new frmSingUp();
+            SingUp.MdiParent = this.ParentForm;
+            this.Height = SingUp.Height;
+            this.Width = SingUp.Width;
+            SingUp.Dock = DockStyle.Fill;
+            SingUp.Show();
+        }
+
+        private void lblClose_Click(object sender, EventArgs e)
+        {
+            this.ParentForm.Close();
+        }
+
+        private void frmSingIn_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
+        }
+
+        private void frmSingIn_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.ParentForm.Left += e.X - lastPoint.X;
+                this.ParentForm.Top += e.Y - lastPoint.Y;
+            }
         }
     }
 }
