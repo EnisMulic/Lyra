@@ -1,6 +1,6 @@
 ﻿namespace Lyra.WinUI.User
 {
-    partial class frmSingIn
+    partial class frmSignIn
     {
         /// <summary>
         /// Required designer variable.
@@ -34,13 +34,13 @@
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnSingIn = new System.Windows.Forms.Button();
+            this.btnSignIn = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.errorUsername = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorPassword = new System.Windows.Forms.ErrorProvider(this.components);
-            this.lblSingIn = new System.Windows.Forms.Label();
+            this.lblSignIn = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lblSingUp = new System.Windows.Forms.Label();
+            this.lblSignUp = new System.Windows.Forms.Label();
             this.lblClose = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorUsername)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorPassword)).BeginInit();
@@ -90,18 +90,18 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Password";
             // 
-            // btnSingIn
+            // btnSignIn
             // 
-            this.btnSingIn.BackColor = System.Drawing.Color.White;
-            this.btnSingIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSingIn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnSingIn.Location = new System.Drawing.Point(446, 342);
-            this.btnSingIn.Name = "btnSingIn";
-            this.btnSingIn.Size = new System.Drawing.Size(286, 44);
-            this.btnSingIn.TabIndex = 4;
-            this.btnSingIn.Text = "Sing In";
-            this.btnSingIn.UseVisualStyleBackColor = false;
-            this.btnSingIn.Click += new System.EventHandler(this.btnSingIn_ClickAsync);
+            this.btnSignIn.BackColor = System.Drawing.Color.White;
+            this.btnSignIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSignIn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnSignIn.Location = new System.Drawing.Point(446, 342);
+            this.btnSignIn.Name = "btnSignIn";
+            this.btnSignIn.Size = new System.Drawing.Size(286, 44);
+            this.btnSignIn.TabIndex = 4;
+            this.btnSignIn.Text = "Sign In";
+            this.btnSignIn.UseVisualStyleBackColor = false;
+            this.btnSignIn.Click += new System.EventHandler(this.btnSignIn_ClickAsync);
             // 
             // linkLabel1
             // 
@@ -121,16 +121,16 @@
             // 
             this.errorPassword.ContainerControl = this;
             // 
-            // lblSingIn
+            // lblSignIn
             // 
-            this.lblSingIn.AutoSize = true;
-            this.lblSingIn.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lblSingIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSingIn.Location = new System.Drawing.Point(439, 43);
-            this.lblSingIn.Name = "lblSingIn";
-            this.lblSingIn.Size = new System.Drawing.Size(75, 24);
-            this.lblSingIn.TabIndex = 6;
-            this.lblSingIn.Text = "Sing In";
+            this.lblSignIn.AutoSize = true;
+            this.lblSignIn.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lblSignIn.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSignIn.Location = new System.Drawing.Point(439, 43);
+            this.lblSignIn.Name = "lblSignIn";
+            this.lblSignIn.Size = new System.Drawing.Size(75, 24);
+            this.lblSignIn.TabIndex = 6;
+            this.lblSignIn.Text = "Sign In";
             // 
             // panel1
             // 
@@ -140,20 +140,20 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(405, 595);
             this.panel1.TabIndex = 7;
-            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmSingIn_MouseDown);
-            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmSingIn_MouseMove);
+            this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmSignIn_MouseDown);
+            this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmSignIn_MouseMove);
             // 
-            // lblSingUp
+            // lblSignUp
             // 
-            this.lblSingUp.AutoSize = true;
-            this.lblSingUp.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblSingUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSingUp.Location = new System.Drawing.Point(530, 43);
-            this.lblSingUp.Name = "lblSingUp";
-            this.lblSingUp.Size = new System.Drawing.Size(77, 24);
-            this.lblSingUp.TabIndex = 8;
-            this.lblSingUp.Text = "Sing Up";
-            this.lblSingUp.Click += new System.EventHandler(this.lblSingUp_Click);
+            this.lblSignUp.AutoSize = true;
+            this.lblSignUp.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblSignUp.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSignUp.Location = new System.Drawing.Point(530, 43);
+            this.lblSignUp.Name = "lblSignUp";
+            this.lblSignUp.Size = new System.Drawing.Size(77, 24);
+            this.lblSignUp.TabIndex = 8;
+            this.lblSignUp.Text = "Sign Up";
+            this.lblSignUp.Click += new System.EventHandler(this.lblSignUp_Click);
             // 
             // lblClose
             // 
@@ -166,27 +166,27 @@
             this.lblClose.Text = "X";
             this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
             // 
-            // frmSingIn
+            // frmSignIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 595);
             this.Controls.Add(this.lblClose);
-            this.Controls.Add(this.lblSingUp);
+            this.Controls.Add(this.lblSignUp);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.lblSingIn);
+            this.Controls.Add(this.lblSignIn);
             this.Controls.Add(this.linkLabel1);
-            this.Controls.Add(this.btnSingIn);
+            this.Controls.Add(this.btnSignIn);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmSingIn";
+            this.Name = "frmSignIn";
             this.Text = "Log in";
-            this.Load += new System.EventHandler(this.frmSingIn_Load);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmSingIn_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmSingIn_MouseMove);
+            this.Load += new System.EventHandler(this.frmSignIn_Load);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmSignIn_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmSignIn_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.errorUsername)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorPassword)).EndInit();
             this.ResumeLayout(false);
@@ -201,13 +201,13 @@
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnSingIn;
+        private System.Windows.Forms.Button btnSignIn;
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.ErrorProvider errorUsername;
         private System.Windows.Forms.ErrorProvider errorPassword;
-        private System.Windows.Forms.Label lblSingIn;
+        private System.Windows.Forms.Label lblSignIn;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lblSingUp;
+        private System.Windows.Forms.Label lblSignUp;
         private System.Windows.Forms.Label lblClose;
     }
 }

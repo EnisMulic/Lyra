@@ -10,25 +10,25 @@ using System.Windows.Forms;
 
 namespace Lyra.WinUI.User
 {
-    public partial class frmSingUp : Form
+    public partial class frmSignUp : Form
     {
         private Point lastPoint;
-        public frmSingUp()
+        public frmSignUp()
         {
             InitializeComponent();
         }
 
-        private void frmSingUp_Load(object sender, EventArgs e)
+        private void frmSignUp_Load(object sender, EventArgs e)
         {
 
         }
 
-        private void frmSingUp_MouseDown(object sender, MouseEventArgs e)
+        private void frmSignUp_MouseDown(object sender, MouseEventArgs e)
         {
             lastPoint = new Point(e.X, e.Y);
         }
 
-        private void frmSingUp_MouseMove(object sender, MouseEventArgs e)
+        private void frmSignUp_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {
@@ -42,14 +42,14 @@ namespace Lyra.WinUI.User
             this.ParentForm.Close();
         }
 
-        private void lblSingIn_Click(object sender, EventArgs e)
+        private void lblSignIn_Click(object sender, EventArgs e)
         {
-            Form SingIn = new frmSingIn();
-            SingIn.MdiParent = this.ParentForm;
-            this.Height = SingIn.Height;
-            this.Width = SingIn.Width;
-            SingIn.Dock = DockStyle.Fill;
-            SingIn.Show();
+            Form SignIn = new frmSignIn();
+            SignIn.MdiParent = this.ParentForm;
+            this.Height = SignIn.Height;
+            this.Width = SignIn.Width;
+            SignIn.Dock = DockStyle.Fill;
+            SignIn.Show();
         }
     }
 }

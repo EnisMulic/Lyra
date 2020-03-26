@@ -11,12 +11,12 @@ using System.Windows.Forms;
 
 namespace Lyra.WinUI.User
 {
-    public partial class frmSingIn : Form
+    public partial class frmSignIn : Form
     {
 
         private readonly APIService _service = new APIService("User");
         private Point lastPoint;
-        public frmSingIn()
+        public frmSignIn()
         {
             InitializeComponent();
         }
@@ -51,12 +51,12 @@ namespace Lyra.WinUI.User
             }
         }
 
-        private void frmSingIn_Load(object sender, EventArgs e)
+        private void frmSignIn_Load(object sender, EventArgs e)
         {
 
         }
 
-        private async void btnSingIn_ClickAsync(object sender, EventArgs e)
+        private async void btnSignIn_ClickAsync(object sender, EventArgs e)
         {
             try
             {
@@ -75,14 +75,14 @@ namespace Lyra.WinUI.User
 
         }
 
-        private void lblSingUp_Click(object sender, EventArgs e)
+        private void lblSignUp_Click(object sender, EventArgs e)
         {
-            Form SingUp = new frmSingUp();
-            SingUp.MdiParent = this.ParentForm;
-            this.Height = SingUp.Height;
-            this.Width = SingUp.Width;
-            SingUp.Dock = DockStyle.Fill;
-            SingUp.Show();
+            Form SignUp = new frmSignUp();
+            SignUp.MdiParent = this.ParentForm;
+            this.Height = SignUp.Height;
+            this.Width = SignUp.Width;
+            SignUp.Dock = DockStyle.Fill;
+            SignUp.Show();
         }
 
         private void lblClose_Click(object sender, EventArgs e)
@@ -90,12 +90,12 @@ namespace Lyra.WinUI.User
             this.ParentForm.Close();
         }
 
-        private void frmSingIn_MouseDown(object sender, MouseEventArgs e)
+        private void frmSignIn_MouseDown(object sender, MouseEventArgs e)
         {
             lastPoint = new Point(e.X, e.Y);
         }
 
-        private void frmSingIn_MouseMove(object sender, MouseEventArgs e)
+        private void frmSignIn_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.Button == MouseButtons.Left)
             {

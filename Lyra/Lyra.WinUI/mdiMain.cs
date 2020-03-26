@@ -18,7 +18,7 @@ namespace Lyra.WinUI
         public mdiMain()
         {
             InitializeComponent();
-            Form SingIn = new frmSingIn();
+            Form SingIn = new frmSignIn();
             SingIn.MdiParent = this;
             this.Height = SingIn.Height;
             this.Width = SingIn.Width;

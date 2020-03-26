@@ -70,17 +70,17 @@
     <Compile Include="Track\frmTrack.Designer.cs">
       <DependentUpon>frmTrack.cs</DependentUpon>
     </Compile>
-    <Compile Include="User\frmSingIn.cs">
+    <Compile Include="User\frmSignIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="User\frmSingIn.Designer.cs">
-      <DependentUpon>frmSingIn.cs</DependentUpon>
+    <Compile Include="User\frmSignIn.Designer.cs">
+      <DependentUpon>frmSignIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="User\frmSingUp.cs">
+    <Compile Include="User\frmSignUp.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="User\frmSingUp.Designer.cs">
-      <DependentUpon>frmSingUp.cs</DependentUpon>
+    <Compile Include="User\frmSignUp.Designer.cs">
+      <DependentUpon>frmSignUp.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="mdiMain.resx">
       <DependentUpon>mdiMain.cs</DependentUpon>
@@ -97,11 +97,11 @@
     <EmbeddedResource Include="Track\frmTrack.resx">
       <DependentUpon>frmTrack.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User\frmSingIn.resx">
-      <DependentUpon>frmSingIn.cs</DependentUpon>
+    <EmbeddedResource Include="User\frmSignIn.resx">
+      <DependentUpon>frmSignIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="User\frmSingUp.resx">
-      <DependentUpon>frmSingUp.cs</DependentUpon>
+    <EmbeddedResource Include="User\frmSignUp.resx">
+      <DependentUpon>frmSignUp.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
