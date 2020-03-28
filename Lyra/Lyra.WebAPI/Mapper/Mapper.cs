@@ -23,10 +23,11 @@ namespace Lyra.WebAPI.Mapper
             CreateMap<Database.Playlist, Model.Requests.PlaylistUpsertRequest>().ReverseMap();
 
             CreateMap<Database.User, Model.User>();
+                //.Include<Database.UserRoles, Model.UserRoles>();
             CreateMap<Database.User, Model.Requests.UserUpsertRequest>().ReverseMap();
 
-            //CreateMap<Database.UserRoles, Model.UserRoles>();
-            //CreateMap<Database.Role, Model.Role>();
+            CreateMap<Database.UserRoles, Model.UserRoles>();
+            CreateMap<Database.Role, Model.Role>();
         }
 
         
