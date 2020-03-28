@@ -11,44 +11,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Lyra.WebAPI.Controllers
 {
-    //[Authorize]
+    
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ControllerBase
+    public class UserController : CRUDController<User, UserSearchRequest, UserUpsertRequest, UserUpsertRequest>
     {
         private readonly IUserService _service;
 
-        public UserController(IUserService service)
+        public UserController(IUserService service) : base(service)
         {
             _service = service;
         }
-
-        [HttpGet]
-        public List<Model.User> Get([FromQuery]UserSearchRequest request)
-        {
-            return _service.Get(request);
-        }
-
-        [HttpGet("{id}")]
-        public Model.User GetById(int id)
-        {
-            return _service.GetById(id);
-        }
-
-        //[Authorize(Roles = "Administrator")]
-        [HttpPost]
-        public Model.User Insert(UserUpsertRequest request)
-        {
-            return _service.Insert(request);
-        }
-
-        //[Authorize(Roles = "Administrator")]
-        [HttpPut("{id}")]
-        public Model.User Update(int id, [FromBody]UserUpsertRequest request)
-        {
-            return _service.Update(id, request);
-        }
-
-        
     }
 }

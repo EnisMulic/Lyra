@@ -6,12 +6,9 @@ using System.Threading.Tasks;
 
 namespace Lyra.WebAPI.Services
 {
-    public interface IUserService
+    public interface IUserService : ICRUDService<Model.User, UserSearchRequest, UserUpsertRequest, UserUpsertRequest>
     {
-        List<Model.User> Get(UserSearchRequest request);
-        Model.User GetById(int id);
-        Model.User Insert(UserUpsertRequest request);
-        Model.User Update(int id, UserUpsertRequest request);
+
         Model.User Authenticate(string username, string password);
     }
 }
