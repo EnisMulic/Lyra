@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Lyra.WebAPI.Database;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,15 +19,15 @@ namespace Lyra.WebAPI.Services
             _mapper = mapper;
         }
 
-        public virtual List<TModel> Get(TSearch search)
+        public virtual async Task<List<TModel>> Get(TSearch search)
         {
-            var list = _context.Set<TDatabase>().ToList();
+            var list = await _context.Set<TDatabase>().ToListAsync();
             return _mapper.Map<List<TModel>>(list);
         }
 
-        public virtual TModel GetById(int id)
+        public virtual async Task<TModel> GetById(int id)
         {
-            var entity = _context.Set<TDatabase>().Find(id);
+            var entity = await _context.Set<TDatabase>().FindAsync(id);
             return _mapper.Map<TModel>(entity);
         }
         

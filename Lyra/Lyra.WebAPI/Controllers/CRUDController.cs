@@ -20,16 +20,16 @@ namespace Lyra.WebAPI.Controllers
 
         [Authorize(Roles = "Administrator")]
         [HttpPost]
-        public T Insert(TInsert request)
+        public async Task<T> Insert(TInsert request)
         {
-            return _service.Insert(request);
+            return await _service.Insert(request);
         }
 
         [Authorize(Roles = "Administrator")]
         [HttpPut("{id}")]
-        public T Update(int id, [FromBody]TUpdate request)
+        public async Task<T> Update(int id, [FromBody]TUpdate request)
         {
-            return _service.Update(id, request);
+            return await _service.Update(id, request);
         }
     }
 }

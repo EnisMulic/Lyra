@@ -22,15 +22,15 @@ namespace Lyra.WebAPI.Controllers
 
 
         [HttpGet]
-        public List<T> Get([FromQuery]TSearch search)
+        public async Task<List<T>> Get([FromQuery]TSearch search)
         {
-            return _service.Get(search);
+            return await _service.Get(search);
         }
 
         [HttpGet("{id}")]
-        public T GetById(int id)
+        public async Task<T> GetById(int id)
         {
-            return _service.GetById(id);
+            return await _service.GetById(id);
         }
     }
 }

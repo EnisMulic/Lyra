@@ -7,7 +7,7 @@ namespace Lyra.WebAPI.Services
 {
     public interface IBaseService<T, TSearch>
     {
-        List<T> Get(TSearch search);
-        T GetById(int id);
+        Task<List<T>> Get(TSearch search);
+        Task<T> GetById(int id);
     }
 }

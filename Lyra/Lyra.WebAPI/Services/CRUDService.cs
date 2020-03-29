@@ -18,17 +18,17 @@ namespace Lyra.WebAPI.Services
             _context = context;
             _mapper = mapper;
         }
-        public virtual TModel Insert(TInsert request)
+        public virtual async Task<TModel> Insert(TInsert request)
         {
             var entity = _mapper.Map<TDatabase>(request);
 
             _context.Set<TDatabase>().Add(entity);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return _mapper.Map<TModel>(entity);
         }
 
-        public virtual TModel Update(int id, TUpdate request)
+        public virtual async Task<TModel> Update(int id, TUpdate request)
         {
             var entity = _context.Set<TDatabase>().Find(id);
             _context.Set<TDatabase>().Attach(entity);
@@ -36,7 +36,7 @@ namespace Lyra.WebAPI.Services
 
             _mapper.Map(request, entity);
 
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return _mapper.Map<TModel>(entity);
         }

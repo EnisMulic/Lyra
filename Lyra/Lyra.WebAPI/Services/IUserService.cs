@@ -8,7 +8,6 @@ namespace Lyra.WebAPI.Services
 {
     public interface IUserService : ICRUDService<Model.User, UserSearchRequest, UserUpsertRequest, UserUpsertRequest>
     {
-
-        Model.User Authenticate(string username, string password);
+        Task<Model.User> Authenticate(string username, string password);
     }
 }

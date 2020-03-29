@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Lyra.Model.Requests;
 using Lyra.WebAPI.Database;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace Lyra.WebAPI.Services
             _mapper = mapper;
         }
 
-        public override List<Model.Artist> Get(ArtistSearchRequest request)
+        public override async Task<List<Model.Artist>> Get(ArtistSearchRequest request)
         {
             var query = _context.Tracks.AsQueryable();
 
@@ -27,7 +28,7 @@ namespace Lyra.WebAPI.Services
                 query = query.Where(x => x.Name.StartsWith(request.Name));
             }
 
-            var list = query.ToList();
+            var list = await query.ToListAsync();
 
             return _mapper.Map<List<Model.Artist>>(list);
         }

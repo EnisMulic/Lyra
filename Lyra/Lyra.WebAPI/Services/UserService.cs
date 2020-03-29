@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Lyra.WebAPI.Services
 {
@@ -20,7 +21,7 @@ namespace Lyra.WebAPI.Services
             _mapper = mapper;
         }
 
-        public List<Model.User> Get(UserSearchRequest search)
+        public async Task<List<Model.User>> Get(UserSearchRequest search)
         {
             var query = _context.Users.AsQueryable();
 
@@ -35,18 +36,18 @@ namespace Lyra.WebAPI.Services
                 query = query.Where(i => i.FirstName.StartsWith(search.LastName));
             }
 
-            var list = query.ToList();
+            var list = await query.ToListAsync();
             return _mapper.Map<List<Model.User>>(list);
         }
 
-        public Model.User Authenticate(string username, string password)
+        public async Task<Model.User> Authenticate(string username, string password)
         {
             var user = _context.Users
                 .Include(i => i.UserRoles)
                 .ThenInclude(j => j.Role)
                 .FirstOrDefault(i => i.Username == username);
 
-
+            
             if (user != null)
             {
                 var hash = GenerateHash(user.PasswordSalt, password);
@@ -83,7 +84,7 @@ namespace Lyra.WebAPI.Services
             return Convert.ToBase64String(inArray);
         }
 
-        public Model.User Insert(UserUpsertRequest request)
+        public async Task<Model.User> Insert(UserUpsertRequest request)
         {
             if(request.Password != request.PasswordConfirmation)
             {
@@ -94,13 +95,13 @@ namespace Lyra.WebAPI.Services
             entity.PasswordSalt = GenerateSalt();
             entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
 
-            _context.Users.Add(entity);
-            _context.SaveChanges();
+            await _context.Users.AddAsync(entity);
+            await _context.SaveChangesAsync();
 
             return _mapper.Map<Model.User>(entity);
         }
 
-        public Model.User Update(int id, UserUpsertRequest request)
+        public async Task<Model.User> Update(int id, UserUpsertRequest request)
         {
             var entity = _context.Users.Find(id);
             _context.Users.Attach(entity);
@@ -118,12 +119,12 @@ namespace Lyra.WebAPI.Services
             }
 
             _mapper.Map(request, entity);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
 
             return _mapper.Map<Model.User>(entity);
         }
 
-        public Model.User GetById(int id)
+        public Task<Model.User> GetById(int id)
         {
             throw new NotImplementedException();
         }

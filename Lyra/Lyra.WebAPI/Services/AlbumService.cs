@@ -2,6 +2,7 @@
 using Lyra.Model;
 using Lyra.Model.Requests;
 using Lyra.WebAPI.Database;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -20,7 +21,7 @@ namespace Lyra.WebAPI.Services
             _mapper = mapper;
         }
 
-        public override List<Model.Album> Get(AlbumSearchRequest request)
+        public override async Task<List<Model.Album>> Get(AlbumSearchRequest request)
         {
             var query = _context.Albums.AsQueryable();
 
@@ -31,7 +32,7 @@ namespace Lyra.WebAPI.Services
 
 
 
-            var list = query.ToList();
+            var list = await query.ToListAsync();
 
             return _mapper.Map<List<Model.Album>>(list);
         }
