@@ -29,27 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.txtUsername = new System.Windows.Forms.TextBox();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.btnSignIn = new System.Windows.Forms.Button();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.errorUsername = new System.Windows.Forms.ErrorProvider(this.components);
-            this.errorPassword = new System.Windows.Forms.ErrorProvider(this.components);
             this.lblSignIn = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblSignUp = new System.Windows.Forms.Label();
             this.lblClose = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.errorUsername)).BeginInit();
+            this.errorPassword = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorUsername = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorPassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorUsername)).BeginInit();
             this.SuspendLayout();
-            // 
-            // notifyIcon1
-            // 
-            this.notifyIcon1.Text = "notifyIcon1";
-            this.notifyIcon1.Visible = true;
             // 
             // label1
             // 
@@ -63,16 +57,15 @@
             // 
             // txtUsername
             // 
-            this.errorUsername.SetError(this.txtUsername, "Username does not exist");
             this.txtUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsername.Location = new System.Drawing.Point(446, 220);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(286, 26);
             this.txtUsername.TabIndex = 1;
+            this.txtUsername.Validating += new System.ComponentModel.CancelEventHandler(this.txtUsername_Validating);
             // 
             // txtPassword
             // 
-            this.errorPassword.SetError(this.txtPassword, "Wrong password");
             this.txtPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.Location = new System.Drawing.Point(446, 286);
             this.txtPassword.Name = "txtPassword";
@@ -112,14 +105,6 @@
             this.linkLabel1.TabIndex = 5;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Forgot Password?";
-            // 
-            // errorUsername
-            // 
-            this.errorUsername.ContainerControl = this;
-            // 
-            // errorPassword
-            // 
-            this.errorPassword.ContainerControl = this;
             // 
             // lblSignIn
             // 
@@ -166,6 +151,14 @@
             this.lblClose.Text = "X";
             this.lblClose.Click += new System.EventHandler(this.lblClose_Click);
             // 
+            // errorPassword
+            // 
+            this.errorPassword.ContainerControl = this;
+            // 
+            // errorUsername
+            // 
+            this.errorUsername.ContainerControl = this;
+            // 
             // frmSignIn
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -187,27 +180,25 @@
             this.Load += new System.EventHandler(this.frmSignIn_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmSignIn_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmSignIn_MouseMove);
-            ((System.ComponentModel.ISupportInitialize)(this.errorUsername)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorPassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorUsername)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.NotifyIcon notifyIcon1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtUsername;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnSignIn;
         private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.ErrorProvider errorUsername;
-        private System.Windows.Forms.ErrorProvider errorPassword;
         private System.Windows.Forms.Label lblSignIn;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblSignUp;
         private System.Windows.Forms.Label lblClose;
+        private System.Windows.Forms.ErrorProvider errorPassword;
+        private System.Windows.Forms.ErrorProvider errorUsername;
     }
 }

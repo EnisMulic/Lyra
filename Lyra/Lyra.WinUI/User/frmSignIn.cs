@@ -25,7 +25,7 @@ namespace Lyra.WinUI.User
         {
             var search = new UserSearchRequest()
             {
-                FirstName = username
+                Username = username
             };
 
             var user = _service.Get<Model.User>(search);
@@ -49,6 +49,8 @@ namespace Lyra.WinUI.User
             {
                 errorUsername.SetError(txtUsername, "");
             }
+
+
         }
 
         private void frmSignIn_Load(object sender, EventArgs e)

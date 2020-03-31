@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.txtFirstName = new System.Windows.Forms.TextBox();
             this.lblFirstName = new System.Windows.Forms.Label();
             this.lblLastName = new System.Windows.Forms.Label();
@@ -41,12 +42,26 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblPasswordConfirm = new System.Windows.Forms.Label();
-            this.txtPasswordConfirm = new System.Windows.Forms.TextBox();
+            this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.btnSignUp = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblClose = new System.Windows.Forms.Label();
             this.lblSignUp = new System.Windows.Forms.Label();
             this.lblSignIn = new System.Windows.Forms.Label();
+            this.errorFirstName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorLastName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorUsername = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorEmail = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorPassword = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorConfirmPassword = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorPhone = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errorFirstName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorLastName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorUsername)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorEmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorPassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorConfirmPassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorPhone)).BeginInit();
             this.SuspendLayout();
             // 
             // txtFirstName
@@ -56,6 +71,7 @@
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(322, 26);
             this.txtFirstName.TabIndex = 0;
+            this.txtFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.txtFirstName_Validating);
             // 
             // lblFirstName
             // 
@@ -82,6 +98,7 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(322, 26);
             this.txtLastName.TabIndex = 2;
+            this.txtLastName.Validating += new System.ComponentModel.CancelEventHandler(this.txtLastName_Validating);
             // 
             // lblUsername
             // 
@@ -99,6 +116,7 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(322, 26);
             this.txtUsername.TabIndex = 4;
+            this.txtUsername.Validating += new System.ComponentModel.CancelEventHandler(this.txtUsername_Validating);
             // 
             // lblEmail
             // 
@@ -116,6 +134,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(322, 26);
             this.txtEmail.TabIndex = 6;
+            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.txtEmail_Validating);
             // 
             // lblPhone
             // 
@@ -133,6 +152,7 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(322, 26);
             this.txtPhone.TabIndex = 8;
+            this.txtPhone.Validating += new System.ComponentModel.CancelEventHandler(this.txtPhone_Validating);
             // 
             // lblPassword
             // 
@@ -151,6 +171,7 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(322, 26);
             this.txtPassword.TabIndex = 10;
+            this.txtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtPassword_Validating);
             // 
             // lblPasswordConfirm
             // 
@@ -161,14 +182,15 @@
             this.lblPasswordConfirm.TabIndex = 13;
             this.lblPasswordConfirm.Text = "Confirm Password";
             // 
-            // txtPasswordConfirm
+            // txtConfirmPassword
             // 
-            this.txtPasswordConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPasswordConfirm.Location = new System.Drawing.Point(439, 465);
-            this.txtPasswordConfirm.Name = "txtPasswordConfirm";
-            this.txtPasswordConfirm.PasswordChar = '*';
-            this.txtPasswordConfirm.Size = new System.Drawing.Size(322, 26);
-            this.txtPasswordConfirm.TabIndex = 12;
+            this.txtConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtConfirmPassword.Location = new System.Drawing.Point(439, 465);
+            this.txtConfirmPassword.Name = "txtConfirmPassword";
+            this.txtConfirmPassword.PasswordChar = '*';
+            this.txtConfirmPassword.Size = new System.Drawing.Size(322, 26);
+            this.txtConfirmPassword.TabIndex = 12;
+            this.txtConfirmPassword.Validating += new System.ComponentModel.CancelEventHandler(this.txtConfirmPassword_Validating);
             // 
             // btnSignUp
             // 
@@ -225,18 +247,47 @@
             this.lblSignIn.Text = "Sign In";
             this.lblSignIn.Click += new System.EventHandler(this.lblSignIn_Click);
             // 
+            // errorFirstName
+            // 
+            this.errorFirstName.ContainerControl = this;
+            // 
+            // errorLastName
+            // 
+            this.errorLastName.ContainerControl = this;
+            // 
+            // errorUsername
+            // 
+            this.errorUsername.ContainerControl = this;
+            // 
+            // errorEmail
+            // 
+            this.errorEmail.ContainerControl = this;
+            // 
+            // errorPassword
+            // 
+            this.errorPassword.ContainerControl = this;
+            // 
+            // errorConfirmPassword
+            // 
+            this.errorConfirmPassword.ContainerControl = this;
+            // 
+            // errorPhone
+            // 
+            this.errorPhone.ContainerControl = this;
+            // 
             // frmSignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 595);
+            this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.lblSignUp);
             this.Controls.Add(this.lblSignIn);
             this.Controls.Add(this.lblClose);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnSignUp);
             this.Controls.Add(this.lblPasswordConfirm);
-            this.Controls.Add(this.txtPasswordConfirm);
+            this.Controls.Add(this.txtConfirmPassword);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.lblPhone);
@@ -244,7 +295,6 @@
             this.Controls.Add(this.lblEmail);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.lblUsername);
-            this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.lblLastName);
             this.Controls.Add(this.txtLastName);
             this.Controls.Add(this.lblFirstName);
@@ -255,6 +305,13 @@
             this.Load += new System.EventHandler(this.frmSignUp_Load);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmSignUp_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmSignUp_MouseMove);
+            ((System.ComponentModel.ISupportInitialize)(this.errorFirstName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorLastName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorUsername)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorEmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorPassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorConfirmPassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorPhone)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -275,11 +332,18 @@
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label lblPasswordConfirm;
-        private System.Windows.Forms.TextBox txtPasswordConfirm;
+        private System.Windows.Forms.TextBox txtConfirmPassword;
         private System.Windows.Forms.Button btnSignUp;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lblClose;
         private System.Windows.Forms.Label lblSignUp;
         private System.Windows.Forms.Label lblSignIn;
+        private System.Windows.Forms.ErrorProvider errorFirstName;
+        private System.Windows.Forms.ErrorProvider errorLastName;
+        private System.Windows.Forms.ErrorProvider errorUsername;
+        private System.Windows.Forms.ErrorProvider errorEmail;
+        private System.Windows.Forms.ErrorProvider errorPassword;
+        private System.Windows.Forms.ErrorProvider errorConfirmPassword;
+        private System.Windows.Forms.ErrorProvider errorPhone;
     }
 }

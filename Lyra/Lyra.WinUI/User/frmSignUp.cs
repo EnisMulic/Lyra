@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lyra.Model.Requests;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -68,7 +69,7 @@ namespace Lyra.WinUI.User
                     Username = txtUsername.Text,
                     PhoneNumber = txtPhone.Text,
                     Password = txtPassword.Text,
-                    PasswordConfirmation = txtPasswordConfirm.Text
+                    PasswordConfirmation = txtConfirmPassword.Text
 
                 };
                 await _service.Insert<Model.User>(request);
@@ -98,6 +99,123 @@ namespace Lyra.WinUI.User
             };
 
             func(Controls);
+        }
+
+        bool UsernameInDatabase(string username)
+        {
+            var search = new UserSearchRequest()
+            {
+                Username = username
+            };
+
+            var user = _service.Get<Model.User>(search);
+
+            return user != null ? true : false;
+        }
+
+        bool EmailInDatabase(string email)
+        {
+            var search = new UserSearchRequest()
+            {
+                Email = email
+            };
+
+            var user = _service.Get<Model.User>(search);
+
+            return user != null ? true : false;
+        }
+
+        private void txtUsername_Validating(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void txtFirstName_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtFirstName.Text))
+            {
+                errorFirstName.SetError(txtFirstName, "Required field");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorFirstName.SetError(txtUsername, "");
+            }
+        }
+
+        private void txtLastName_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtLastName.Text))
+            {
+                errorLastName.SetError(txtLastName, "Required field");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorLastName.SetError(txtLastName, "");
+            }
+        }
+
+        private void txtEmail_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtEmail.Text))
+            {
+                errorEmail.SetError(txtEmail, "Required field");
+                e.Cancel = true;
+            }
+            else if (EmailInDatabase(txtEmail.Text))
+            {
+                errorEmail.SetError(txtEmail, "Email is taken");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorEmail.SetError(txtEmail, "");
+            }
+        }
+
+        private void txtPhone_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtPhone.Text))
+            {
+                errorPhone.SetError(txtPhone, "Required field");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorPhone.SetError(txtPhone, "");
+            }
+        }
+
+        private void txtPassword_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtPassword.Text))
+            {
+                errorPassword.SetError(txtPassword, "Required field");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorPassword.SetError(txtPassword, "");
+            }
+        }
+
+        private void txtConfirmPassword_Validating(object sender, CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtConfirmPassword.Text))
+            {
+                errorConfirmPassword.SetError(txtConfirmPassword, "Required field");
+                e.Cancel = true;
+            }
+            else if(txtConfirmPassword != txtPassword)
+            {
+                errorConfirmPassword.SetError(txtConfirmPassword, "Passwords do not match");
+                e.Cancel = true;
+            }
+            else
+            {
+                errorConfirmPassword.SetError(txtConfirmPassword, "");
+            }
         }
     }
 }
