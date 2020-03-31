@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace Lyra.WebAPI.Services
 {
-    public class UserService : IUserService
+    public class UserService : CRUDService<Model.User, UserSearchRequest, User, UserUpsertRequest, UserUpsertRequest>, IUserService
     {
         private readonly LyraContext _context;
         private readonly IMapper _mapper;
-        public UserService(LyraContext context, IMapper mapper)
+        public UserService(LyraContext context, IMapper mapper) : base(context, mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -124,9 +124,6 @@ namespace Lyra.WebAPI.Services
             return _mapper.Map<Model.User>(entity);
         }
 
-        public Task<Model.User> GetById(int id)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
