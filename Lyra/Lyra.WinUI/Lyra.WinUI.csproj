@@ -72,12 +72,6 @@
     <Compile Include="frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
-    <Compile Include="mdiMain.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="mdiMain.Designer.cs">
-      <DependentUpon>mdiMain.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignIn\ucSignIn.cs">
@@ -98,18 +92,6 @@
     <Compile Include="Track\frmTrack.Designer.cs">
       <DependentUpon>frmTrack.cs</DependentUpon>
     </Compile>
-    <Compile Include="User\frmSignIn.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="User\frmSignIn.Designer.cs">
-      <DependentUpon>frmSignIn.cs</DependentUpon>
-    </Compile>
-    <Compile Include="User\frmSignUp.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="User\frmSignUp.Designer.cs">
-      <DependentUpon>frmSignUp.cs</DependentUpon>
-    </Compile>
     <Compile Include="User\frmUserPanel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,9 +103,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="mdiMain.resx">
-      <DependentUpon>mdiMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -142,13 +121,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Track\frmTrack.resx">
       <DependentUpon>frmTrack.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User\frmSignIn.resx">
-      <DependentUpon>frmSignIn.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="User\frmSignUp.resx">
-      <DependentUpon>frmSignUp.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
