@@ -4,14 +4,16 @@ using Lyra.WebAPI.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Lyra.WebAPI.Migrations
 {
     [DbContext(typeof(LyraContext))]
-    partial class LyraContextModelSnapshot : ModelSnapshot
+    [Migration("20200406102823_seedTracks")]
+    partial class seedTracks
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -67,158 +69,6 @@ namespace Lyra.WebAPI.Migrations
                     b.HasIndex("TrackID");
 
                     b.ToTable("AlbumTracks");
-
-                    b.HasData(
-                        new
-                        {
-                            AlbumID = 1,
-                            TrackID = 1
-                        },
-                        new
-                        {
-                            AlbumID = 1,
-                            TrackID = 2
-                        },
-                        new
-                        {
-                            AlbumID = 1,
-                            TrackID = 3
-                        },
-                        new
-                        {
-                            AlbumID = 1,
-                            TrackID = 4
-                        },
-                        new
-                        {
-                            AlbumID = 1,
-                            TrackID = 5
-                        },
-                        new
-                        {
-                            AlbumID = 1,
-                            TrackID = 6
-                        },
-                        new
-                        {
-                            AlbumID = 1,
-                            TrackID = 7
-                        },
-                        new
-                        {
-                            AlbumID = 1,
-                            TrackID = 8
-                        },
-                        new
-                        {
-                            AlbumID = 1,
-                            TrackID = 9
-                        },
-                        new
-                        {
-                            AlbumID = 1,
-                            TrackID = 10
-                        },
-                        new
-                        {
-                            AlbumID = 1,
-                            TrackID = 11
-                        },
-                        new
-                        {
-                            AlbumID = 1,
-                            TrackID = 12
-                        },
-                        new
-                        {
-                            AlbumID = 1,
-                            TrackID = 13
-                        },
-                        new
-                        {
-                            AlbumID = 1,
-                            TrackID = 14
-                        },
-                        new
-                        {
-                            AlbumID = 1,
-                            TrackID = 15
-                        },
-                        new
-                        {
-                            AlbumID = 2,
-                            TrackID = 1
-                        },
-                        new
-                        {
-                            AlbumID = 2,
-                            TrackID = 2
-                        },
-                        new
-                        {
-                            AlbumID = 2,
-                            TrackID = 3
-                        },
-                        new
-                        {
-                            AlbumID = 2,
-                            TrackID = 4
-                        },
-                        new
-                        {
-                            AlbumID = 2,
-                            TrackID = 5
-                        },
-                        new
-                        {
-                            AlbumID = 2,
-                            TrackID = 6
-                        },
-                        new
-                        {
-                            AlbumID = 2,
-                            TrackID = 7
-                        },
-                        new
-                        {
-                            AlbumID = 2,
-                            TrackID = 8
-                        },
-                        new
-                        {
-                            AlbumID = 2,
-                            TrackID = 9
-                        },
-                        new
-                        {
-                            AlbumID = 2,
-                            TrackID = 10
-                        },
-                        new
-                        {
-                            AlbumID = 2,
-                            TrackID = 11
-                        },
-                        new
-                        {
-                            AlbumID = 2,
-                            TrackID = 12
-                        },
-                        new
-                        {
-                            AlbumID = 2,
-                            TrackID = 13
-                        },
-                        new
-                        {
-                            AlbumID = 2,
-                            TrackID = 14
-                        },
-                        new
-                        {
-                            AlbumID = 2,
-                            TrackID = 15
-                        });
                 });
 
             modelBuilder.Entity("Lyra.WebAPI.Database.Artist", b =>

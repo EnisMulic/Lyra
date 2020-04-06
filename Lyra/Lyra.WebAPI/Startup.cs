@@ -39,7 +39,7 @@ namespace Lyra.WebAPI
         {
             services.AddDbContext<LyraContext>(options =>
                options.UseSqlServer(Configuration.GetConnectionString("LyraDev")));
-
+            
             services.AddControllers(x => x.Filters.Add<ErrorFilter>());
             
             services.AddAutoMapper(typeof(Startup));
