@@ -18,7 +18,7 @@ namespace Lyra.WinUI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new mdiMain());
+            Application.Run(new frmMain());
         }
     }
 }

@@ -60,6 +60,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="APIService.cs" />
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
     <Compile Include="mdiMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +74,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SignIn\ucSignIn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SignIn\ucSignIn.Designer.cs">
+      <DependentUpon>ucSignIn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SingUp\ucSignUp.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="SingUp\ucSignUp.Designer.cs">
+      <DependentUpon>ucSignUp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Track\frmTrack.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +104,9 @@
     <Compile Include="User\frmSignUp.Designer.cs">
       <DependentUpon>frmSignUp.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="mdiMain.resx">
       <DependentUpon>mdiMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -98,6 +119,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SignIn\ucSignIn.resx">
+      <DependentUpon>ucSignIn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SingUp\ucSignUp.resx">
+      <DependentUpon>ucSignUp.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Track\frmTrack.resx">
       <DependentUpon>frmTrack.cs</DependentUpon>
     </EmbeddedResource>
