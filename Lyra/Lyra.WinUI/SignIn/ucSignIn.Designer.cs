@@ -51,6 +51,7 @@
             this.btnSignIn.TabIndex = 9;
             this.btnSignIn.Text = "Sign In";
             this.btnSignIn.UseVisualStyleBackColor = false;
+            this.btnSignIn.Click += new System.EventHandler(this.btnSignIn_ClickAsync);
             // 
             // txtPassword
             // 
@@ -108,6 +109,8 @@
             this.Controls.Add(this.lblUsername);
             this.Name = "ucSignIn";
             this.Size = new System.Drawing.Size(337, 536);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ucSignIn_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ucSignIn_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.errorUsername)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorPassword)).EndInit();
             this.ResumeLayout(false);

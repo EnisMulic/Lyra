@@ -59,6 +59,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Administrator\frmAdminPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Administrator\frmAdminPanel.Designer.cs">
+      <DependentUpon>frmAdminPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="APIService.cs" />
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
@@ -80,10 +86,10 @@
     <Compile Include="SignIn\ucSignIn.Designer.cs">
       <DependentUpon>ucSignIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="SingUp\ucSignUp.cs">
+    <Compile Include="SignUp\ucSignUp.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SingUp\ucSignUp.Designer.cs">
+    <Compile Include="SignUp\ucSignUp.Designer.cs">
       <DependentUpon>ucSignUp.cs</DependentUpon>
     </Compile>
     <Compile Include="Track\frmTrack.cs">
@@ -104,6 +110,12 @@
     <Compile Include="User\frmSignUp.Designer.cs">
       <DependentUpon>frmSignUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="User\frmUserPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="User\frmUserPanel.Designer.cs">
+      <DependentUpon>frmUserPanel.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -122,7 +134,7 @@
     <EmbeddedResource Include="SignIn\ucSignIn.resx">
       <DependentUpon>ucSignIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SingUp\ucSignUp.resx">
+    <EmbeddedResource Include="SignUp\ucSignUp.resx">
       <DependentUpon>ucSignUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Track\frmTrack.resx">
