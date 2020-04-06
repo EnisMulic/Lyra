@@ -15,6 +15,7 @@ namespace Lyra.WinUI.SignUp
     {
         private readonly APIService _service = new APIService("User");
         private static ucSignUp _instance;
+        private Point lastPoint;
 
         public static ucSignUp Instance
         {
@@ -204,6 +205,20 @@ namespace Lyra.WinUI.SignUp
             else
             {
                 errorConfirmPassword.SetError(txtConfirmPassword, "");
+            }
+        }
+
+        private void ucSignUp_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
+        }
+
+        private void ucSignUp_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
             }
         }
     }

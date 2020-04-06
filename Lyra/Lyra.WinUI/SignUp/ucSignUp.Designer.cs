@@ -239,6 +239,8 @@
             this.Controls.Add(this.txtFirstName);
             this.Name = "ucSignUp";
             this.Size = new System.Drawing.Size(375, 542);
+            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ucSignUp_MouseDown);
+            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ucSignUp_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.errorFirstName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorLastName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorEmail)).EndInit();
