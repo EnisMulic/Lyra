@@ -116,6 +116,9 @@
     <Compile Include="User\frmUserPanel.Designer.cs">
       <DependentUpon>frmUserPanel.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Administrator\frmAdminPanel.resx">
+      <DependentUpon>frmAdminPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -145,6 +148,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="User\frmSignUp.resx">
       <DependentUpon>frmSignUp.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
