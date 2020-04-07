@@ -59,31 +59,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Administrator\frmAdminPanel.cs">
+    <Compile Include="Forms\Administrator\frmAdminPanel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Administrator\frmAdminPanel.Designer.cs">
+    <Compile Include="Forms\Administrator\frmAdminPanel.Designer.cs">
       <DependentUpon>frmAdminPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="APIService.cs" />
-    <Compile Include="frmMain.cs">
+    <Compile Include="Forms\frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmMain.Designer.cs">
+    <Compile Include="Forms\frmMain.Designer.cs">
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SignIn\ucSignIn.cs">
+    <Compile Include="UserControlls\SignIn\ucSignIn.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SignIn\ucSignIn.Designer.cs">
+    <Compile Include="UserControlls\SignIn\ucSignIn.Designer.cs">
       <DependentUpon>ucSignIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="SignUp\ucSignUp.cs">
+    <Compile Include="UserControlls\SignUp\ucSignUp.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SignUp\ucSignUp.Designer.cs">
+    <Compile Include="UserControlls\SignUp\ucSignUp.Designer.cs">
       <DependentUpon>ucSignUp.cs</DependentUpon>
     </Compile>
     <Compile Include="Track\frmTrack.cs">
@@ -92,16 +92,16 @@
     <Compile Include="Track\frmTrack.Designer.cs">
       <DependentUpon>frmTrack.cs</DependentUpon>
     </Compile>
-    <Compile Include="User\frmUserPanel.cs">
+    <Compile Include="Forms\User\frmUserPanel.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="User\frmUserPanel.Designer.cs">
+    <Compile Include="Forms\User\frmUserPanel.Designer.cs">
       <DependentUpon>frmUserPanel.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Administrator\frmAdminPanel.resx">
+    <EmbeddedResource Include="Forms\Administrator\frmAdminPanel.resx">
       <DependentUpon>frmAdminPanel.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmMain.resx">
+    <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -113,10 +113,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="SignIn\ucSignIn.resx">
+    <EmbeddedResource Include="UserControlls\SignIn\ucSignIn.resx">
       <DependentUpon>ucSignIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SignUp\ucSignUp.resx">
+    <EmbeddedResource Include="UserControlls\SignUp\ucSignUp.resx">
       <DependentUpon>ucSignUp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Track\frmTrack.resx">
@@ -142,8 +142,6 @@
       <Name>Lyra.Model</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Artist\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
