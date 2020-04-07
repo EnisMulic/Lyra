@@ -32,6 +32,10 @@
             this.pnlMain = new System.Windows.Forms.Panel();
             this.btnSignInUC = new System.Windows.Forms.Button();
             this.btnSingUpUC = new System.Windows.Forms.Button();
+            this.pnlHeader = new System.Windows.Forms.Panel();
+            this.ucAppControl = new Lyra.WinUI.UserControlls.Shared.ucAppControl();
+            this.pnlEmpty.SuspendLayout();
+            this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlEmpty
@@ -40,7 +44,7 @@
             this.pnlEmpty.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlEmpty.Location = new System.Drawing.Point(0, 0);
             this.pnlEmpty.Name = "pnlEmpty";
-            this.pnlEmpty.Size = new System.Drawing.Size(390, 652);
+            this.pnlEmpty.Size = new System.Drawing.Size(384, 652);
             this.pnlEmpty.TabIndex = 0;
             this.pnlEmpty.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmMain_MouseDown);
             this.pnlEmpty.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmMain_MouseMove);
@@ -48,9 +52,9 @@
             // pnlMain
             // 
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlMain.Location = new System.Drawing.Point(390, 98);
+            this.pnlMain.Location = new System.Drawing.Point(384, 98);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(396, 554);
+            this.pnlMain.Size = new System.Drawing.Size(402, 554);
             this.pnlMain.TabIndex = 1;
             this.pnlMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmMain_MouseDown);
             this.pnlMain.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmMain_MouseMove);
@@ -59,7 +63,7 @@
             // 
             this.btnSignInUC.FlatAppearance.BorderSize = 0;
             this.btnSignInUC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSignInUC.Location = new System.Drawing.Point(396, 48);
+            this.btnSignInUC.Location = new System.Drawing.Point(402, 51);
             this.btnSignInUC.Name = "btnSignInUC";
             this.btnSignInUC.Size = new System.Drawing.Size(96, 34);
             this.btnSignInUC.TabIndex = 2;
@@ -72,7 +76,7 @@
             // 
             this.btnSingUpUC.FlatAppearance.BorderSize = 0;
             this.btnSingUpUC.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSingUpUC.Location = new System.Drawing.Point(498, 48);
+            this.btnSingUpUC.Location = new System.Drawing.Point(504, 51);
             this.btnSingUpUC.Name = "btnSingUpUC";
             this.btnSingUpUC.Size = new System.Drawing.Size(96, 34);
             this.btnSingUpUC.TabIndex = 3;
@@ -81,11 +85,28 @@
             this.btnSingUpUC.UseVisualStyleBackColor = true;
             this.btnSingUpUC.Click += new System.EventHandler(this.btnSingUpUC_Click);
             // 
+            // pnlHeader
+            // 
+            this.pnlHeader.Controls.Add(this.ucAppControl);
+            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHeader.Location = new System.Drawing.Point(384, 0);
+            this.pnlHeader.Name = "pnlHeader";
+            this.pnlHeader.Size = new System.Drawing.Size(402, 37);
+            this.pnlHeader.TabIndex = 4;
+            // 
+            // ucAppControl
+            // 
+            this.ucAppControl.Location = new System.Drawing.Point(289, 1);
+            this.ucAppControl.Name = "ucAppControl";
+            this.ucAppControl.Size = new System.Drawing.Size(110, 35);
+            this.ucAppControl.TabIndex = 0;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(786, 652);
+            this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.btnSingUpUC);
             this.Controls.Add(this.btnSignInUC);
             this.Controls.Add(this.pnlMain);
@@ -96,6 +117,8 @@
             this.Load += new System.EventHandler(this.btnSignInUC_Click);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmMain_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmMain_MouseMove);
+            this.pnlEmpty.ResumeLayout(false);
+            this.pnlHeader.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -106,5 +129,7 @@
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.Button btnSignInUC;
         private System.Windows.Forms.Button btnSingUpUC;
+        private System.Windows.Forms.Panel pnlHeader;
+        private UserControlls.Shared.ucAppControl ucAppControl;
     }
 }

@@ -74,6 +74,42 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControlls\Administrator\Album\ucAlbumList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlls\Administrator\Album\ucAlbumList.Designer.cs">
+      <DependentUpon>ucAlbumList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlls\Administrator\Artist\ucArtistList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlls\Administrator\Artist\ucArtistList.Designer.cs">
+      <DependentUpon>ucArtistList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlls\Administrator\Playlist\ucPlaylistList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlls\Administrator\Playlist\ucPlaylistList.Designer.cs">
+      <DependentUpon>ucPlaylistList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlls\Administrator\Track\ucTrackList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlls\Administrator\Track\ucTrackList.Designer.cs">
+      <DependentUpon>ucTrackList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlls\Administrator\User\ucUserList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlls\Administrator\User\ucUserList.Designer.cs">
+      <DependentUpon>ucUserList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlls\Shared\ucAppControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlls\Shared\ucAppControl.Designer.cs">
+      <DependentUpon>ucAppControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControlls\SignIn\ucSignIn.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -85,12 +121,6 @@
     </Compile>
     <Compile Include="UserControlls\SignUp\ucSignUp.Designer.cs">
       <DependentUpon>ucSignUp.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Track\frmTrack.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Track\frmTrack.Designer.cs">
-      <DependentUpon>frmTrack.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\User\frmUserPanel.cs">
       <SubType>Form</SubType>
@@ -113,14 +143,29 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UserControlls\Administrator\Album\ucAlbumList.resx">
+      <DependentUpon>ucAlbumList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlls\Administrator\Artist\ucArtistList.resx">
+      <DependentUpon>ucArtistList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlls\Administrator\Playlist\ucPlaylistList.resx">
+      <DependentUpon>ucPlaylistList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlls\Administrator\Track\ucTrackList.resx">
+      <DependentUpon>ucTrackList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlls\Administrator\User\ucUserList.resx">
+      <DependentUpon>ucUserList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlls\Shared\ucAppControl.resx">
+      <DependentUpon>ucAppControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControlls\SignIn\ucSignIn.resx">
       <DependentUpon>ucSignIn.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlls\SignUp\ucSignUp.resx">
       <DependentUpon>ucSignUp.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Track\frmTrack.resx">
-      <DependentUpon>frmTrack.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
