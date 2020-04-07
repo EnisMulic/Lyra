@@ -35,7 +35,10 @@
             this.btnArtist = new System.Windows.Forms.Button();
             this.btnUserCRUD = new System.Windows.Forms.Button();
             this.pnlMain = new System.Windows.Forms.Panel();
+            this.pnlHeader = new System.Windows.Forms.Panel();
+            this.ucAppControl = new Lyra.WinUI.UserControlls.Shared.ucAppControl();
             this.pnlNavbar.SuspendLayout();
+            this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlNavbar
@@ -66,6 +69,7 @@
             this.btnPlaylist.Text = "Playlist";
             this.btnPlaylist.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnPlaylist.UseVisualStyleBackColor = true;
+            this.btnPlaylist.Click += new System.EventHandler(this.btnPlaylist_Click);
             // 
             // btnTrack
             // 
@@ -80,6 +84,7 @@
             this.btnTrack.Text = "Track";
             this.btnTrack.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnTrack.UseVisualStyleBackColor = true;
+            this.btnTrack.Click += new System.EventHandler(this.btnTrack_Click);
             // 
             // btnAlbum
             // 
@@ -94,6 +99,7 @@
             this.btnAlbum.Text = "Album";
             this.btnAlbum.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAlbum.UseVisualStyleBackColor = true;
+            this.btnAlbum.Click += new System.EventHandler(this.btnAlbum_Click);
             // 
             // btnArtist
             // 
@@ -108,6 +114,7 @@
             this.btnArtist.Text = "Artist";
             this.btnArtist.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnArtist.UseVisualStyleBackColor = true;
+            this.btnArtist.Click += new System.EventHandler(this.btnArtist_Click);
             // 
             // btnUserCRUD
             // 
@@ -122,26 +129,46 @@
             this.btnUserCRUD.Text = "User";
             this.btnUserCRUD.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnUserCRUD.UseVisualStyleBackColor = true;
+            this.btnUserCRUD.Click += new System.EventHandler(this.btnUserCRUD_Click);
             // 
             // pnlMain
             // 
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlMain.Location = new System.Drawing.Point(294, 45);
+            this.pnlMain.Location = new System.Drawing.Point(294, 90);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(617, 578);
+            this.pnlMain.Size = new System.Drawing.Size(617, 533);
             this.pnlMain.TabIndex = 1;
+            // 
+            // pnlHeader
+            // 
+            this.pnlHeader.Controls.Add(this.ucAppControl);
+            this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlHeader.Location = new System.Drawing.Point(294, 0);
+            this.pnlHeader.Name = "pnlHeader";
+            this.pnlHeader.Size = new System.Drawing.Size(617, 37);
+            this.pnlHeader.TabIndex = 2;
+            // 
+            // ucAppControl
+            // 
+            this.ucAppControl.Location = new System.Drawing.Point(505, 0);
+            this.ucAppControl.Name = "ucAppControl";
+            this.ucAppControl.Size = new System.Drawing.Size(110, 35);
+            this.ucAppControl.TabIndex = 0;
             // 
             // frmAdminPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(911, 623);
+            this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlNavbar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmAdminPanel";
             this.Text = "frmAdminPanel";
+            this.Load += new System.EventHandler(this.btnUserCRUD_Click);
             this.pnlNavbar.ResumeLayout(false);
+            this.pnlHeader.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -155,5 +182,7 @@
         private System.Windows.Forms.Button btnAlbum;
         private System.Windows.Forms.Button btnArtist;
         private System.Windows.Forms.Panel pnlMain;
+        private System.Windows.Forms.Panel pnlHeader;
+        private UserControlls.Shared.ucAppControl ucAppControl;
     }
 }
