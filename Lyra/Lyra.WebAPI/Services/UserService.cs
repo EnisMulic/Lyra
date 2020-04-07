@@ -21,7 +21,7 @@ namespace Lyra.WebAPI.Services
             _mapper = mapper;
         }
 
-        public async Task<List<Model.User>> Get(UserSearchRequest search)
+        public override async Task<List<Model.User>> Get(UserSearchRequest search)
         {
             var query = _context.Users.AsQueryable();
 
@@ -84,7 +84,7 @@ namespace Lyra.WebAPI.Services
             return Convert.ToBase64String(inArray);
         }
 
-        public async Task<Model.User> Insert(UserUpsertRequest request)
+        public override async Task<Model.User> Insert(UserUpsertRequest request)
         {
             if(request.Password != request.PasswordConfirmation)
             {
@@ -101,7 +101,7 @@ namespace Lyra.WebAPI.Services
             return _mapper.Map<Model.User>(entity);
         }
 
-        public async Task<Model.User> Update(int id, UserUpsertRequest request)
+        public override async Task<Model.User> Update(int id, UserUpsertRequest request)
         {
             var entity = _context.Users.Find(id);
             _context.Users.Attach(entity);
