@@ -6,13 +6,14 @@ using Lyra.WebAPI.Services;
 using Lyra.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Lyra.Model.Requests;
 
 namespace Lyra.WebAPI.Controllers
 {
     
-    public class ArtistController : CRUDController<Artist, object, object, object>
+    public class ArtistController : CRUDController<Artist, ArtistSearchRequest, ArtistUpsertRequest, ArtistUpsertRequest>
     {
-        public ArtistController(ICRUDService<Artist, object, object, object> service) : base(service)
+        public ArtistController(ICRUDService<Artist, ArtistSearchRequest, ArtistUpsertRequest, ArtistUpsertRequest> service) : base(service)
         {
         }
     }

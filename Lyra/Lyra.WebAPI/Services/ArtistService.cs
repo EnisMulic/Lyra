@@ -21,7 +21,7 @@ namespace Lyra.WebAPI.Services
 
         public override async Task<List<Model.Artist>> Get(ArtistSearchRequest request)
         {
-            var query = _context.Tracks.AsQueryable();
+            var query = _context.Artists.AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(request?.Name))
             {
