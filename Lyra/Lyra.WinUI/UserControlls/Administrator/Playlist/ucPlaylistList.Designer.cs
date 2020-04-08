@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.dgvPlaylists = new System.Windows.Forms.DataGridView();
+            this.btnDeletePlaylist = new System.Windows.Forms.Button();
+            this.btnEditPlaylist = new System.Windows.Forms.Button();
+            this.btnAddPlaylist = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaylists)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,10 +46,41 @@
             this.dgvPlaylists.Size = new System.Drawing.Size(584, 414);
             this.dgvPlaylists.TabIndex = 1;
             // 
+            // btnDeletePlaylist
+            // 
+            this.btnDeletePlaylist.Location = new System.Drawing.Point(84, 53);
+            this.btnDeletePlaylist.Name = "btnDeletePlaylist";
+            this.btnDeletePlaylist.Size = new System.Drawing.Size(28, 23);
+            this.btnDeletePlaylist.TabIndex = 7;
+            this.btnDeletePlaylist.Text = "D";
+            this.btnDeletePlaylist.UseVisualStyleBackColor = true;
+            // 
+            // btnEditPlaylist
+            // 
+            this.btnEditPlaylist.Location = new System.Drawing.Point(50, 53);
+            this.btnEditPlaylist.Name = "btnEditPlaylist";
+            this.btnEditPlaylist.Size = new System.Drawing.Size(28, 23);
+            this.btnEditPlaylist.TabIndex = 6;
+            this.btnEditPlaylist.Text = "E";
+            this.btnEditPlaylist.UseVisualStyleBackColor = true;
+            this.btnEditPlaylist.Click += new System.EventHandler(this.btnEditPlaylist_Click);
+            // 
+            // btnAddPlaylist
+            // 
+            this.btnAddPlaylist.Location = new System.Drawing.Point(16, 53);
+            this.btnAddPlaylist.Name = "btnAddPlaylist";
+            this.btnAddPlaylist.Size = new System.Drawing.Size(28, 23);
+            this.btnAddPlaylist.TabIndex = 5;
+            this.btnAddPlaylist.Text = "A";
+            this.btnAddPlaylist.UseVisualStyleBackColor = true;
+            // 
             // ucPlaylistList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnDeletePlaylist);
+            this.Controls.Add(this.btnEditPlaylist);
+            this.Controls.Add(this.btnAddPlaylist);
             this.Controls.Add(this.dgvPlaylists);
             this.Name = "ucPlaylistList";
             this.Size = new System.Drawing.Size(617, 578);
@@ -58,5 +92,8 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvPlaylists;
+        private System.Windows.Forms.Button btnDeletePlaylist;
+        private System.Windows.Forms.Button btnEditPlaylist;
+        private System.Windows.Forms.Button btnAddPlaylist;
     }
 }

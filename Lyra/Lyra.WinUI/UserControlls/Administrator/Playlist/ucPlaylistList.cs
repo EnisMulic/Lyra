@@ -34,5 +34,21 @@ namespace Lyra.WinUI.UserControlls.Administrator.Playlist
             var list = await _apiService.Get<List<Model.Playlist>>(null);
             dgvPlaylists.DataSource = list;
         }
+
+        private void btnEditPlaylist_Click(object sender, EventArgs e)
+        {
+            var ID = Convert.ToString(dgvPlaylists.CurrentRow.Cells["ID"].Value);
+            var Name = Convert.ToString(dgvPlaylists.CurrentRow.Cells["Name"].Value);
+
+            var uc = new ucPlaylistEdit(ID, Name);
+
+            if (!Parent.Controls.Contains(uc))
+            {
+                Parent.Controls.Add(uc);
+                uc.Dock = DockStyle.Fill;
+            }
+
+            uc.BringToFront();
+        }
     }
 }
