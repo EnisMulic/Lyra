@@ -88,8 +88,6 @@ namespace Lyra.WinUI.SingIn
 
                 var user = await _service.Get<dynamic>(null);
 
-                MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                 LoadPanel(user[0]["userRoles"]);
             }
             catch (Exception ex)
@@ -104,9 +102,6 @@ namespace Lyra.WinUI.SingIn
             {
                 if (userRole["role"]["name"] == "Administrator")
                 {
-                    MessageBox.Show("Administrator", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    
-
                     var form = new frmAdminPanel();
                     form.Show();
 
