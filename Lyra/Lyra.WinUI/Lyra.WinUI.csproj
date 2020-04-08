@@ -74,11 +74,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserControlls\Administrator\Album\ucAlbumEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlls\Administrator\Album\ucAlbumEdit.Designer.cs">
+      <DependentUpon>ucAlbumEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControlls\Administrator\Album\ucAlbumList.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControlls\Administrator\Album\ucAlbumList.Designer.cs">
       <DependentUpon>ucAlbumList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlls\Administrator\Artist\ucArtistEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlls\Administrator\Artist\ucArtistEdit.Designer.cs">
+      <DependentUpon>ucArtistEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControlls\Administrator\Artist\ucArtistList.cs">
       <SubType>UserControl</SubType>
@@ -86,17 +98,35 @@
     <Compile Include="UserControlls\Administrator\Artist\ucArtistList.Designer.cs">
       <DependentUpon>ucArtistList.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControlls\Administrator\Playlist\ucPlaylistEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlls\Administrator\Playlist\ucPlaylistEdit.Designer.cs">
+      <DependentUpon>ucPlaylistEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControlls\Administrator\Playlist\ucPlaylistList.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControlls\Administrator\Playlist\ucPlaylistList.Designer.cs">
       <DependentUpon>ucPlaylistList.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControlls\Administrator\Track\ucTrackEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlls\Administrator\Track\ucTrackEdit.Designer.cs">
+      <DependentUpon>ucTrackEdit.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControlls\Administrator\Track\ucTrackList.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControlls\Administrator\Track\ucTrackList.Designer.cs">
       <DependentUpon>ucTrackList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControlls\Administrator\User\ucUserEdit.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlls\Administrator\User\ucUserEdit.Designer.cs">
+      <DependentUpon>ucUserEdit.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControlls\Administrator\User\ucUserList.cs">
       <SubType>UserControl</SubType>
@@ -130,30 +160,37 @@
     </Compile>
     <EmbeddedResource Include="Forms\Administrator\frmAdminPanel.resx">
       <DependentUpon>frmAdminPanel.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="UserControlls\Administrator\Album\ucAlbumEdit.resx">
+      <DependentUpon>ucAlbumEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="UserControlls\Administrator\Album\ucAlbumList.resx">
       <DependentUpon>ucAlbumList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlls\Administrator\Artist\ucArtistEdit.resx">
+      <DependentUpon>ucArtistEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlls\Administrator\Artist\ucArtistList.resx">
       <DependentUpon>ucArtistList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControlls\Administrator\Playlist\ucPlaylistEdit.resx">
+      <DependentUpon>ucPlaylistEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControlls\Administrator\Playlist\ucPlaylistList.resx">
       <DependentUpon>ucPlaylistList.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UserControlls\Administrator\Track\ucTrackEdit.resx">
+      <DependentUpon>ucTrackEdit.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControlls\Administrator\Track\ucTrackList.resx">
       <DependentUpon>ucTrackList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlls\Administrator\User\ucUserEdit.resx">
+      <DependentUpon>ucUserEdit.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlls\Administrator\User\ucUserList.resx">
       <DependentUpon>ucUserList.cs</DependentUpon>
@@ -187,6 +224,5 @@
       <Name>Lyra.Model</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.dgvTracks = new System.Windows.Forms.DataGridView();
+            this.btnDeleteTrack = new System.Windows.Forms.Button();
+            this.btnEditTrack = new System.Windows.Forms.Button();
+            this.btnAddTrack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTracks)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,10 +46,40 @@
             this.dgvTracks.Size = new System.Drawing.Size(584, 414);
             this.dgvTracks.TabIndex = 1;
             // 
+            // btnDeleteTrack
+            // 
+            this.btnDeleteTrack.Location = new System.Drawing.Point(84, 53);
+            this.btnDeleteTrack.Name = "btnDeleteTrack";
+            this.btnDeleteTrack.Size = new System.Drawing.Size(28, 23);
+            this.btnDeleteTrack.TabIndex = 10;
+            this.btnDeleteTrack.Text = "D";
+            this.btnDeleteTrack.UseVisualStyleBackColor = true;
+            // 
+            // btnEditTrack
+            // 
+            this.btnEditTrack.Location = new System.Drawing.Point(50, 53);
+            this.btnEditTrack.Name = "btnEditTrack";
+            this.btnEditTrack.Size = new System.Drawing.Size(28, 23);
+            this.btnEditTrack.TabIndex = 9;
+            this.btnEditTrack.Text = "E";
+            this.btnEditTrack.UseVisualStyleBackColor = true;
+            // 
+            // btnAddTrack
+            // 
+            this.btnAddTrack.Location = new System.Drawing.Point(16, 53);
+            this.btnAddTrack.Name = "btnAddTrack";
+            this.btnAddTrack.Size = new System.Drawing.Size(28, 23);
+            this.btnAddTrack.TabIndex = 8;
+            this.btnAddTrack.Text = "A";
+            this.btnAddTrack.UseVisualStyleBackColor = true;
+            // 
             // ucTrackList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnDeleteTrack);
+            this.Controls.Add(this.btnEditTrack);
+            this.Controls.Add(this.btnAddTrack);
             this.Controls.Add(this.dgvTracks);
             this.Name = "ucTrackList";
             this.Size = new System.Drawing.Size(617, 578);
@@ -58,5 +91,8 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvTracks;
+        private System.Windows.Forms.Button btnDeleteTrack;
+        private System.Windows.Forms.Button btnEditTrack;
+        private System.Windows.Forms.Button btnAddTrack;
     }
 }
