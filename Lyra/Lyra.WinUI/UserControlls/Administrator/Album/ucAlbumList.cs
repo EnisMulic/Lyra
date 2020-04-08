@@ -34,5 +34,27 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
             var list = await _apiService.Get<List<Model.Album>>(null);
             dgvAlbums.DataSource = list;
         }
+
+        private void btnDeleteAlbum_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEditAlbum_Click(object sender, EventArgs e)
+        {
+            var ID = Convert.ToString(dgvAlbums.CurrentRow.Cells["ID"].Value);
+            var Name = Convert.ToString(dgvAlbums.CurrentRow.Cells["Name"].Value);
+            var ReleaseYear = Convert.ToString(dgvAlbums.CurrentRow.Cells["ReleaseYear"].Value);
+
+            var uc = new ucAlbumEdit(ID, Name, ReleaseYear);
+
+            if (!Parent.Controls.Contains(uc))
+            {
+                Parent.Controls.Add(uc);
+                uc.Dock = DockStyle.Fill;
+            }
+
+            uc.BringToFront();
+        }
     }
 }
