@@ -34,5 +34,21 @@ namespace Lyra.WinUI.UserControlls.Administrator.Artist
             var list = await _apiService.Get<List<Model.Artist>>(null);
             dgvArtists.DataSource = list;
         }
+
+        private void btnEditArtist_Click(object sender, EventArgs e)
+        {
+            var ID = Convert.ToString(dgvArtists.CurrentRow.Cells["ID"].Value);
+            var Name = Convert.ToString(dgvArtists.CurrentRow.Cells["Name"].Value);
+
+            var uc = new ucArtistEdit(ID, Name);
+
+            if (!Parent.Controls.Contains(uc))
+            {
+                Parent.Controls.Add(uc);
+                uc.Dock = DockStyle.Fill;
+            }
+
+            uc.BringToFront();
+        }
     }
 }
