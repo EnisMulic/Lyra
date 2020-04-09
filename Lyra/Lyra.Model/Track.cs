@@ -8,7 +8,7 @@ namespace Lyra.Model
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public string Lenght { get; set; }
+        public string Length { get; set; }
 
     }
 }

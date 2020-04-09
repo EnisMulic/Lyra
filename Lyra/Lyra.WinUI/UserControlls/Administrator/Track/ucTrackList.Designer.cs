@@ -63,6 +63,7 @@
             this.btnEditTrack.TabIndex = 9;
             this.btnEditTrack.Text = "E";
             this.btnEditTrack.UseVisualStyleBackColor = true;
+            this.btnEditTrack.Click += new System.EventHandler(this.btnEditTrack_Click);
             // 
             // btnAddTrack
             // 
