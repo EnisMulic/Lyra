@@ -40,5 +40,22 @@ namespace Lyra.WebAPI.Services
 
             return _mapper.Map<TModel>(entity);
         }
+
+        public virtual async Task<bool> Delete(int id)
+        {
+            var entity = await _context.Set<TDatabase>().FindAsync(id);
+
+            try
+            {
+                _context.Set<TDatabase>().Remove(entity);
+                await _context.SaveChangesAsync();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

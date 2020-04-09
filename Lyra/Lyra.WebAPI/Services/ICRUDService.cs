@@ -9,5 +9,6 @@ namespace Lyra.WebAPI.Services
     {
         Task<T> Insert(TInsert request);
         Task<T> Update(int id, TUpdate request);
+        Task<bool> Delete(int id);
     }
 }

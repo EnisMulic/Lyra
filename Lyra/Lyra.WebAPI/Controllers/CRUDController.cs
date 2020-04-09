@@ -31,5 +31,12 @@ namespace Lyra.WebAPI.Controllers
         {
             return await _service.Update(id, request);
         }
+
+        [Authorize(Roles = "Administrator")]
+        [HttpDelete("{id}")]
+        public async Task<bool> Delete(int id)
+        {
+            return await _service.Delete(id);
+        }
     }
 }
