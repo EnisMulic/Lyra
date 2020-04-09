@@ -54,6 +54,7 @@
             this.btnDeleteArtist.TabIndex = 7;
             this.btnDeleteArtist.Text = "D";
             this.btnDeleteArtist.UseVisualStyleBackColor = true;
+            this.btnDeleteArtist.Click += new System.EventHandler(this.btnDeleteArtist_Click);
             // 
             // btnEditArtist
             // 

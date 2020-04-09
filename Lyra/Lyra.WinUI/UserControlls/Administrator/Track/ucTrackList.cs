@@ -54,5 +54,11 @@ namespace Lyra.WinUI.UserControlls.Administrator.Track
 
             uc.BringToFront();
         }
+
+        private async void btnDeleteTrack_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(dgvTracks.CurrentRow.Cells["ID"].Value);
+            await _apiService.Delete<dynamic>(id);
+        }
     }
 }

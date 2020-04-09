@@ -54,6 +54,7 @@
             this.btnDeletePlaylist.TabIndex = 7;
             this.btnDeletePlaylist.Text = "D";
             this.btnDeletePlaylist.UseVisualStyleBackColor = true;
+            this.btnDeletePlaylist.Click += new System.EventHandler(this.btnDeletePlaylist_Click);
             // 
             // btnEditPlaylist
             // 

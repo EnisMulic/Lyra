@@ -54,6 +54,7 @@
             this.btnDeleteTrack.TabIndex = 10;
             this.btnDeleteTrack.Text = "D";
             this.btnDeleteTrack.UseVisualStyleBackColor = true;
+            this.btnDeleteTrack.Click += new System.EventHandler(this.btnDeleteTrack_Click);
             // 
             // btnEditTrack
             // 

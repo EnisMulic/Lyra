@@ -29,15 +29,17 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
             LoadList();
         }
 
-        private async void LoadList()
+        private async Task LoadList()
         {
             var list = await _apiService.Get<List<Model.Album>>(null);
             dgvAlbums.DataSource = list;
         }
 
-        private void btnDeleteAlbum_Click(object sender, EventArgs e)
+        private async void btnDeleteAlbum_Click(object sender, EventArgs e)
         {
-
+            int id = Convert.ToInt32(dgvAlbums.CurrentRow.Cells["ID"].Value);
+            await _apiService.Delete<dynamic>(id);
+            await LoadList();
         }
 
         private void btnEditAlbum_Click(object sender, EventArgs e)
