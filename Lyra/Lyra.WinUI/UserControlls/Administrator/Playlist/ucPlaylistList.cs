@@ -37,10 +37,13 @@ namespace Lyra.WinUI.UserControlls.Administrator.Playlist
 
         private void btnEditPlaylist_Click(object sender, EventArgs e)
         {
-            var ID = Convert.ToString(dgvPlaylists.CurrentRow.Cells["ID"].Value);
-            var Name = Convert.ToString(dgvPlaylists.CurrentRow.Cells["Name"].Value);
+            var playlist = new Model.Playlist()
+            {
+                ID = Convert.ToInt32(dgvPlaylists.CurrentRow.Cells["ID"].Value),
+                Name = Convert.ToString(dgvPlaylists.CurrentRow.Cells["Name"].Value)
+            };
 
-            var uc = new ucPlaylistEdit(ID, Name);
+            var uc = new ucPlaylistEdit(playlist);
 
             if (!Parent.Controls.Contains(uc))
             {

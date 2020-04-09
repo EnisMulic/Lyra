@@ -17,12 +17,12 @@ namespace Lyra.WinUI.UserControlls.Administrator.Playlist
             InitializeComponent();
         }
 
-        public ucPlaylistEdit(String ID, string Name)
+        public ucPlaylistEdit(Model.Playlist playlist)
         {
             InitializeComponent();
 
-            txtID.Text = ID;
-            txtName.Text = Name;
+            txtID.Text = Convert.ToString(playlist.ID);
+            txtName.Text = playlist.Name;
         }
     }
 }
