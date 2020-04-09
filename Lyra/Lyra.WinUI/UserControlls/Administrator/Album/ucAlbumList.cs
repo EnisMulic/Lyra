@@ -61,5 +61,18 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
 
             uc.BringToFront();
         }
+
+        private void btnAddAlbum_Click(object sender, EventArgs e)
+        {
+            var uc = new ucAlbumAdd();
+
+            if (!Parent.Controls.Contains(uc))
+            {
+                Parent.Controls.Add(uc);
+                uc.Dock = DockStyle.Fill;
+            }
+
+            uc.BringToFront();
+        }
     }
 }

@@ -54,6 +54,7 @@
             this.btnAddAlbum.TabIndex = 2;
             this.btnAddAlbum.Text = "A";
             this.btnAddAlbum.UseVisualStyleBackColor = true;
+            this.btnAddAlbum.Click += new System.EventHandler(this.btnAddAlbum_Click);
             // 
             // btnEditAlbum
             // 
