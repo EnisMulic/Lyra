@@ -74,6 +74,7 @@
             this.btnAddUser.TabIndex = 8;
             this.btnAddUser.Text = "A";
             this.btnAddUser.UseVisualStyleBackColor = true;
+            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
             // ucUserList
             // 

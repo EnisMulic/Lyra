@@ -63,5 +63,18 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
             int id = Convert.ToInt32(dgvUsers.CurrentRow.Cells["ID"].Value);
             await _apiService.Delete<dynamic>(id);
         }
+
+        private void btnAddUser_Click(object sender, EventArgs e)
+        {
+            var uc = new ucUserAdd();
+
+            if (!Parent.Controls.Contains(uc))
+            {
+                Parent.Controls.Add(uc);
+                uc.Dock = DockStyle.Fill;
+            }
+
+            uc.BringToFront();
+        }
     }
 }
