@@ -34,5 +34,28 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
             var list = await _apiService.Get<List<Model.User>>(null);
             dgvUsers.DataSource = list;
         }
+
+        private void btnEditUser_Click(object sender, EventArgs e)
+        {
+            var user = new Model.User()
+            {
+                ID = Convert.ToInt32(dgvUsers.CurrentRow.Cells["ID"].Value),
+                FirstName = Convert.ToString(dgvUsers.CurrentRow.Cells["FirstName"].Value),
+                LastName = Convert.ToString(dgvUsers.CurrentRow.Cells["LastName"].Value),
+                Username = Convert.ToString(dgvUsers.CurrentRow.Cells["Username"].Value),
+                Email = Convert.ToString(dgvUsers.CurrentRow.Cells["Email"].Value),
+                PhoneNumber = Convert.ToString(dgvUsers.CurrentRow.Cells["PhoneNumber"].Value),
+            };
+
+            var uc = new ucUserEdit(user);
+
+            if (!Parent.Controls.Contains(uc))
+            {
+                Parent.Controls.Add(uc);
+                uc.Dock = DockStyle.Fill;
+            }
+
+            uc.BringToFront();
+        }
     }
 }

@@ -63,6 +63,7 @@
             this.btnEditUser.TabIndex = 9;
             this.btnEditUser.Text = "E";
             this.btnEditUser.UseVisualStyleBackColor = true;
+            this.btnEditUser.Click += new System.EventHandler(this.btnEditUser_Click);
             // 
             // btnAddUser
             // 
