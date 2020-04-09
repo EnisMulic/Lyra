@@ -74,6 +74,7 @@
             this.btnAddTrack.TabIndex = 8;
             this.btnAddTrack.Text = "A";
             this.btnAddTrack.UseVisualStyleBackColor = true;
+            this.btnAddTrack.Click += new System.EventHandler(this.btnAddTrack_Click);
             // 
             // ucTrackList
             // 
