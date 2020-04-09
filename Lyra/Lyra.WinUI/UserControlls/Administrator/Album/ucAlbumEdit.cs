@@ -19,14 +19,14 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
             InitializeComponent();
         }
 
-        public ucAlbumEdit(String ID, String Name, String ReleaseYear)
+        public ucAlbumEdit(Model.Album album)
         {
             InitializeComponent();
 
-            txtID.Text = ID;
-            txtName.Text = Name;
-            txtReleaseYear.Text = ReleaseYear;
+            txtID.Text = Convert.ToString(album.ID);
+            txtName.Text = album.Name;
+            txtReleaseYear.Text = Convert.ToString(album.ReleaseYear);
         }
-        
+
     }
 }

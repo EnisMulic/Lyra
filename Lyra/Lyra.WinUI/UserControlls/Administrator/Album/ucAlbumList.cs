@@ -42,11 +42,14 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
 
         private void btnEditAlbum_Click(object sender, EventArgs e)
         {
-            var ID = Convert.ToString(dgvAlbums.CurrentRow.Cells["ID"].Value);
-            var Name = Convert.ToString(dgvAlbums.CurrentRow.Cells["Name"].Value);
-            var ReleaseYear = Convert.ToString(dgvAlbums.CurrentRow.Cells["ReleaseYear"].Value);
+            var album = new Model.Album()
+            {
+                ID = Convert.ToInt32(dgvAlbums.CurrentRow.Cells["ID"].Value),
+                Name = Convert.ToString(dgvAlbums.CurrentRow.Cells["Name"].Value),
+                ReleaseYear = Convert.ToInt32(dgvAlbums.CurrentRow.Cells["ReleaseYear"].Value)
+            };
 
-            var uc = new ucAlbumEdit(ID, Name, ReleaseYear);
+            var uc = new ucAlbumEdit(album);
 
             if (!Parent.Controls.Contains(uc))
             {

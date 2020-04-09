@@ -94,6 +94,7 @@
             this.lblID.Size = new System.Drawing.Size(18, 13);
             this.lblID.TabIndex = 6;
             this.lblID.Text = "ID";
+            this.lblID.Visible = false;
             // 
             // ucAlbumEdit
             // 
