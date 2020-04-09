@@ -74,6 +74,7 @@
             this.btnAddArtist.TabIndex = 5;
             this.btnAddArtist.Text = "A";
             this.btnAddArtist.UseVisualStyleBackColor = true;
+            this.btnAddArtist.Click += new System.EventHandler(this.btnAddArtist_Click);
             // 
             // ucArtistList
             // 

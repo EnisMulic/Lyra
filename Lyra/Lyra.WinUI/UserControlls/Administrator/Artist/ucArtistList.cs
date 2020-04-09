@@ -59,5 +59,18 @@ namespace Lyra.WinUI.UserControlls.Administrator.Artist
             int id = Convert.ToInt32(dgvArtists.CurrentRow.Cells["ID"].Value);
             await _apiService.Delete<dynamic>(id);
         }
+
+        private void btnAddArtist_Click(object sender, EventArgs e)
+        {
+            var uc = new ucArtistAdd();
+
+            if (!Parent.Controls.Contains(uc))
+            {
+                Parent.Controls.Add(uc);
+                uc.Dock = DockStyle.Fill;
+            }
+
+            uc.BringToFront();
+        }
     }
 }
