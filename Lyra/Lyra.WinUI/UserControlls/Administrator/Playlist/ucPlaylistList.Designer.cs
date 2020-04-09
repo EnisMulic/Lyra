@@ -74,6 +74,7 @@
             this.btnAddPlaylist.TabIndex = 5;
             this.btnAddPlaylist.Text = "A";
             this.btnAddPlaylist.UseVisualStyleBackColor = true;
+            this.btnAddPlaylist.Click += new System.EventHandler(this.btnAddPlaylist_Click);
             // 
             // ucPlaylistList
             // 

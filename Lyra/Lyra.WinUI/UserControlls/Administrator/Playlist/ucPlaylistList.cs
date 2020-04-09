@@ -59,5 +59,18 @@ namespace Lyra.WinUI.UserControlls.Administrator.Playlist
             int id = Convert.ToInt32(dgvPlaylists.CurrentRow.Cells["ID"].Value);
             await _apiService.Delete<dynamic>(id);
         }
+
+        private void btnAddPlaylist_Click(object sender, EventArgs e)
+        {
+            var uc = new ucPlaylistAdd();
+
+            if (!Parent.Controls.Contains(uc))
+            {
+                Parent.Controls.Add(uc);
+                uc.Dock = DockStyle.Fill;
+            }
+
+            uc.BringToFront();
+        }
     }
 }
