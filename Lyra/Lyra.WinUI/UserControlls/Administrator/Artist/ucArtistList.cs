@@ -37,10 +37,13 @@ namespace Lyra.WinUI.UserControlls.Administrator.Artist
 
         private void btnEditArtist_Click(object sender, EventArgs e)
         {
-            var ID = Convert.ToString(dgvArtists.CurrentRow.Cells["ID"].Value);
-            var Name = Convert.ToString(dgvArtists.CurrentRow.Cells["Name"].Value);
+            var artist = new Model.Artist()
+            {
+                ID = Convert.ToInt32(dgvArtists.CurrentRow.Cells["ID"].Value),
+                Name = Convert.ToString(dgvArtists.CurrentRow.Cells["Name"].Value)
+            };
 
-            var uc = new ucArtistEdit(ID, Name);
+            var uc = new ucArtistEdit(artist);
 
             if (!Parent.Controls.Contains(uc))
             {

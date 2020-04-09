@@ -24,5 +24,13 @@ namespace Lyra.WinUI.UserControlls.Administrator.Artist
             txtID.Text = ID;
             txtName.Text = Name;
         }
+
+        public ucArtistEdit(Model.Artist artist)
+        {
+            InitializeComponent();
+
+            txtID.Text = Convert.ToString(artist.ID);
+            txtName.Text = artist.Name;
+        }
     }
 }
