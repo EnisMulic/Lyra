@@ -74,6 +74,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="UserControlls\Administrator\Album\ucAlbumAdd.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -146,6 +151,12 @@
     <Compile Include="UserControlls\Administrator\Track\ucTrackList.Designer.cs">
       <DependentUpon>ucTrackList.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControlls\Administrator\User\ucUserAdd.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControlls\Administrator\User\ucUserAdd.Designer.cs">
+      <DependentUpon>ucUserAdd.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControlls\Administrator\User\ucUserEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -189,6 +200,10 @@
     <EmbeddedResource Include="Forms\frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControlls\Administrator\Album\ucAlbumAdd.resx">
       <DependentUpon>ucAlbumAdd.cs</DependentUpon>
     </EmbeddedResource>
@@ -224,6 +239,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlls\Administrator\Track\ucTrackList.resx">
       <DependentUpon>ucTrackList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControlls\Administrator\User\ucUserAdd.resx">
+      <DependentUpon>ucUserAdd.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlls\Administrator\User\ucUserEdit.resx">
       <DependentUpon>ucUserEdit.cs</DependentUpon>

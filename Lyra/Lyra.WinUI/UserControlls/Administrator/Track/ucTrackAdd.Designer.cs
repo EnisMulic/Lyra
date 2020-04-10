@@ -38,7 +38,7 @@
             // lblLength
             // 
             this.lblLength.AutoSize = true;
-            this.lblLength.Location = new System.Drawing.Point(88, 204);
+            this.lblLength.Location = new System.Drawing.Point(39, 94);
             this.lblLength.Name = "lblLength";
             this.lblLength.Size = new System.Drawing.Size(40, 13);
             this.lblLength.TabIndex = 28;
@@ -46,16 +46,16 @@
             // 
             // txtLength
             // 
-            this.txtLength.Location = new System.Drawing.Point(88, 220);
+            this.txtLength.Location = new System.Drawing.Point(42, 110);
             this.txtLength.Name = "txtLength";
             this.txtLength.Size = new System.Drawing.Size(188, 20);
             this.txtLength.TabIndex = 27;
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(88, 289);
+            this.btnSave.Location = new System.Drawing.Point(42, 165);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.Size = new System.Drawing.Size(188, 23);
             this.btnSave.TabIndex = 26;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
@@ -64,7 +64,7 @@
             // lblName
             // 
             this.lblName.AutoSize = true;
-            this.lblName.Location = new System.Drawing.Point(85, 147);
+            this.lblName.Location = new System.Drawing.Point(39, 37);
             this.lblName.Name = "lblName";
             this.lblName.Size = new System.Drawing.Size(35, 13);
             this.lblName.TabIndex = 25;
@@ -72,7 +72,7 @@
             // 
             // txtName
             // 
-            this.txtName.Location = new System.Drawing.Point(88, 163);
+            this.txtName.Location = new System.Drawing.Point(42, 53);
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(188, 20);
             this.txtName.TabIndex = 24;
