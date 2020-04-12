@@ -34,7 +34,6 @@
             this.btnSingUpUC = new System.Windows.Forms.Button();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.ucAppControl = new Lyra.WinUI.UserControlls.Shared.ucAppControl();
-            this.pnlEmpty.SuspendLayout();
             this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -96,9 +95,9 @@
             // 
             // ucAppControl
             // 
-            this.ucAppControl.Location = new System.Drawing.Point(289, 1);
+            this.ucAppControl.Location = new System.Drawing.Point(331, 0);
             this.ucAppControl.Name = "ucAppControl";
-            this.ucAppControl.Size = new System.Drawing.Size(110, 35);
+            this.ucAppControl.Size = new System.Drawing.Size(71, 35);
             this.ucAppControl.TabIndex = 0;
             // 
             // frmMain
@@ -117,7 +116,6 @@
             this.Load += new System.EventHandler(this.btnSignInUC_Click);
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmMain_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmMain_MouseMove);
-            this.pnlEmpty.ResumeLayout(false);
             this.pnlHeader.ResumeLayout(false);
             this.ResumeLayout(false);
 

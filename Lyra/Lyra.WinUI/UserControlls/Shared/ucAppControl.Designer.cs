@@ -30,38 +30,37 @@
         {
             this.btnMinimize = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
-            this.btnMaximized = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnMinimize
             // 
-            this.btnMinimize.Location = new System.Drawing.Point(4, 4);
+            this.btnMinimize.FlatAppearance.BorderSize = 0;
+            this.btnMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMinimize.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMinimize.Location = new System.Drawing.Point(3, 3);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.Size = new System.Drawing.Size(30, 26);
             this.btnMinimize.TabIndex = 7;
-            this.btnMinimize.Text = "X";
+            this.btnMinimize.Text = "-";
             this.btnMinimize.UseVisualStyleBackColor = true;
             this.btnMinimize.Click += new System.EventHandler(this.btnMinimize_Click);
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(76, 4);
+            this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.FlatAppearance.BorderSize = 0;
+            this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnClose.Location = new System.Drawing.Point(39, 3);
+            this.btnClose.Margin = new System.Windows.Forms.Padding(0);
             this.btnClose.Name = "btnClose";
+            this.btnClose.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btnClose.Size = new System.Drawing.Size(30, 26);
             this.btnClose.TabIndex = 5;
             this.btnClose.Text = "X";
-            this.btnClose.UseVisualStyleBackColor = true;
+            this.btnClose.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnClose.UseVisualStyleBackColor = false;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnMaximized
-            // 
-            this.btnMaximized.Location = new System.Drawing.Point(40, 4);
-            this.btnMaximized.Name = "btnMaximized";
-            this.btnMaximized.Size = new System.Drawing.Size(30, 26);
-            this.btnMaximized.TabIndex = 6;
-            this.btnMaximized.Text = "X";
-            this.btnMaximized.UseVisualStyleBackColor = true;
-            this.btnMaximized.Click += new System.EventHandler(this.btnMaximized_Click);
             // 
             // ucAppControl
             // 
@@ -69,9 +68,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnMinimize);
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnMaximized);
             this.Name = "ucAppControl";
-            this.Size = new System.Drawing.Size(110, 35);
+            this.Size = new System.Drawing.Size(74, 35);
             this.ResumeLayout(false);
 
         }
@@ -80,6 +78,5 @@
 
         private System.Windows.Forms.Button btnMinimize;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnMaximized;
     }
 }

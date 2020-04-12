@@ -53,7 +53,7 @@
             this.pnlNavbar.ForeColor = System.Drawing.SystemColors.Control;
             this.pnlNavbar.Location = new System.Drawing.Point(0, 0);
             this.pnlNavbar.Name = "pnlNavbar";
-            this.pnlNavbar.Size = new System.Drawing.Size(294, 623);
+            this.pnlNavbar.Size = new System.Drawing.Size(294, 731);
             this.pnlNavbar.TabIndex = 0;
             // 
             // btnPlaylist
@@ -134,9 +134,9 @@
             // pnlMain
             // 
             this.pnlMain.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlMain.Location = new System.Drawing.Point(294, 90);
+            this.pnlMain.Location = new System.Drawing.Point(294, 41);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Size = new System.Drawing.Size(617, 533);
+            this.pnlMain.Size = new System.Drawing.Size(796, 690);
             this.pnlMain.TabIndex = 1;
             // 
             // pnlHeader
@@ -145,21 +145,21 @@
             this.pnlHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlHeader.Location = new System.Drawing.Point(294, 0);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(617, 37);
+            this.pnlHeader.Size = new System.Drawing.Size(796, 37);
             this.pnlHeader.TabIndex = 2;
             // 
             // ucAppControl
             // 
-            this.ucAppControl.Location = new System.Drawing.Point(505, 0);
+            this.ucAppControl.Location = new System.Drawing.Point(726, 0);
             this.ucAppControl.Name = "ucAppControl";
-            this.ucAppControl.Size = new System.Drawing.Size(110, 35);
+            this.ucAppControl.Size = new System.Drawing.Size(70, 35);
             this.ucAppControl.TabIndex = 0;
             // 
             // frmAdminPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(911, 623);
+            this.ClientSize = new System.Drawing.Size(1090, 731);
             this.Controls.Add(this.pnlHeader);
             this.Controls.Add(this.pnlMain);
             this.Controls.Add(this.pnlNavbar);

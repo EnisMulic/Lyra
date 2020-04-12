@@ -32,18 +32,6 @@ namespace Lyra.WinUI.UserControlls.Shared
             ParentForm.Close();
         }
 
-        private void btnMaximized_Click(object sender, EventArgs e)
-        {
-            if (ParentForm.WindowState == FormWindowState.Maximized)
-            {
-                ParentForm.WindowState = FormWindowState.Normal;
-            }
-            else if (ParentForm.WindowState == FormWindowState.Normal)
-            {
-                ParentForm.WindowState = FormWindowState.Maximized;
-            }
-        }
-
         private void btnMinimize_Click(object sender, EventArgs e)
         {
             ParentForm.WindowState = FormWindowState.Minimized;
