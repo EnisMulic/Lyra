@@ -86,9 +86,11 @@ namespace Lyra.WinUI.SingIn
                 APIService.Username = txtUsername.Text;
                 APIService.Password = txtPassword.Text;
 
-                var user = await _service.Get<dynamic>(null);
+                var users = await _service.Get<List<Model.User>>(null);
+                var user = users.Find(i => i.Username == APIService.Username);
 
-                LoadPanel(user[0]["userRoles"]);
+
+                LoadPanel(user.UserRoles);
             }
             catch (Exception ex)
             {
@@ -96,34 +98,55 @@ namespace Lyra.WinUI.SingIn
             }
         }
 
-        private void LoadPanel(dynamic userRoles)
+        private void LoadPanel(ICollection<Model.UserRoles> userRoles)
         {
-            foreach(var userRole in userRoles)
+            var adminRole = userRoles.FirstOrDefault(i => i.Role.Name == "Administrator");
+            if(adminRole != null)
             {
-                if (userRole["role"]["name"] == "Administrator")
-                {
-                    var form = new frmAdminPanel();
-                    form.Show();
+                var form = new frmAdminPanel();
+                form.Show();
 
-                    ParentForm.Hide();
+                ParentForm.Hide();
 
-                    return;
-                } 
+                return;
             }
 
-            foreach (var userRole in userRoles)
+            var userRole = userRoles.FirstOrDefault(i => i.Role.Name == "User");
+            if(userRole != null)
             {
-                if (userRole["role"]["name"] == "User")
-                {
-                    MessageBox.Show("User", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                var form = new frmUserPanel();
+                form.Show();
 
-                    var form = new frmUserPanel();
-                    form.Show();
-
-                    ParentForm.Hide();
-                    return;
-                }
+                ParentForm.Hide();
+                return;
             }
+
+            //foreach(var userRole in userRoles)
+            //{
+            //    if (userRole.Role.Name == "Administrator")
+            //    {
+            //        var form = new frmAdminPanel();
+            //        form.Show();
+
+            //        ParentForm.Hide();
+
+            //        return;
+            //    } 
+            //}
+
+            //foreach (var userRole in userRoles)
+            //{
+            //    if (userRole.Role.Name == "User")
+            //    {
+            //        MessageBox.Show("User", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            //        var form = new frmUserPanel();
+            //        form.Show();
+
+            //        ParentForm.Hide();
+            //        return;
+            //    }
+            //}
         }
     }
 }
