@@ -23,5 +23,7 @@ namespace Lyra.Model.Requests
         public string Password { get; set; }
         [Required(AllowEmptyStrings = false)]
         public string PasswordConfirmation { get; set; }
+
+        public List<int> Roles { get; set; } = new List<int>();
     }
 }

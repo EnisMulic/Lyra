@@ -98,6 +98,18 @@ namespace Lyra.WebAPI.Services
             await _context.Users.AddAsync(entity);
             await _context.SaveChangesAsync();
 
+            foreach(var roleID in request.Roles)
+            {
+                var role = new Database.UserRoles()
+                {
+                    UserID = entity.ID,
+                    RoleID = roleID
+                };
+
+                await _context.UserRoles.AddAsync(role);
+            }
+            await _context.SaveChangesAsync();
+
             return _mapper.Map<Model.User>(entity);
         }
 
