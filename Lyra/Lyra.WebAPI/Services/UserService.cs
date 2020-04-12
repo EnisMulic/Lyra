@@ -23,7 +23,7 @@ namespace Lyra.WebAPI.Services
 
         public override async Task<List<Model.User>> Get(UserSearchRequest search)
         {
-            var query = _context.Users.AsQueryable();
+            var query = _context.Users.Include(i => i.UserRoles).AsQueryable();
 
             if(!string.IsNullOrWhiteSpace(search?.FirstName))
             {
@@ -38,6 +38,16 @@ namespace Lyra.WebAPI.Services
 
             var list = await query.ToListAsync();
             return _mapper.Map<List<Model.User>>(list);
+        }
+
+        public override async Task<Model.User> GetById(int id)
+        {
+            var entity =  await _context.Set<Database.User>()
+                .Include(i => i.UserRoles)
+                .Where(i => i.ID == id)
+                .SingleOrDefaultAsync();
+
+            return _mapper.Map<Model.User>(entity);
         }
 
         public async Task<Model.User> Authenticate(string username, string password)
