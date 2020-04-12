@@ -120,33 +120,6 @@ namespace Lyra.WinUI.SingIn
                 ParentForm.Hide();
                 return;
             }
-
-            //foreach(var userRole in userRoles)
-            //{
-            //    if (userRole.Role.Name == "Administrator")
-            //    {
-            //        var form = new frmAdminPanel();
-            //        form.Show();
-
-            //        ParentForm.Hide();
-
-            //        return;
-            //    } 
-            //}
-
-            //foreach (var userRole in userRoles)
-            //{
-            //    if (userRole.Role.Name == "User")
-            //    {
-            //        MessageBox.Show("User", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-            //        var form = new frmUserPanel();
-            //        form.Show();
-
-            //        ParentForm.Hide();
-            //        return;
-            //    }
-            //}
         }
     }
 }
