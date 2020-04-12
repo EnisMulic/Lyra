@@ -37,17 +37,9 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
 
         private void btnEditUser_Click(object sender, EventArgs e)
         {
-            var user = new Model.User()
-            {
-                ID = Convert.ToInt32(dgvUsers.CurrentRow.Cells["ID"].Value),
-                FirstName = Convert.ToString(dgvUsers.CurrentRow.Cells["FirstName"].Value),
-                LastName = Convert.ToString(dgvUsers.CurrentRow.Cells["LastName"].Value),
-                Username = Convert.ToString(dgvUsers.CurrentRow.Cells["Username"].Value),
-                Email = Convert.ToString(dgvUsers.CurrentRow.Cells["Email"].Value),
-                PhoneNumber = Convert.ToString(dgvUsers.CurrentRow.Cells["PhoneNumber"].Value),
-            };
+            int ID = Convert.ToInt32(dgvUsers.CurrentRow.Cells["ID"].Value);
 
-            var uc = new ucUserEdit(user);
+            var uc = new ucUserEdit(ID);
 
             if (!Parent.Controls.Contains(uc))
             {
