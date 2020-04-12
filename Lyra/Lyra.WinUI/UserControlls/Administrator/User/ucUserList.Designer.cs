@@ -43,7 +43,7 @@
             this.dgvUsers.Location = new System.Drawing.Point(16, 82);
             this.dgvUsers.Name = "dgvUsers";
             this.dgvUsers.ReadOnly = true;
-            this.dgvUsers.Size = new System.Drawing.Size(584, 414);
+            this.dgvUsers.Size = new System.Drawing.Size(763, 526);
             this.dgvUsers.TabIndex = 0;
             // 
             // btnDeleteUser
@@ -85,7 +85,7 @@
             this.Controls.Add(this.btnAddUser);
             this.Controls.Add(this.dgvUsers);
             this.Name = "ucUserList";
-            this.Size = new System.Drawing.Size(617, 578);
+            this.Size = new System.Drawing.Size(796, 690);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             this.ResumeLayout(false);
 

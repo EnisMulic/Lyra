@@ -43,7 +43,7 @@
             this.dgvPlaylists.Location = new System.Drawing.Point(16, 82);
             this.dgvPlaylists.Name = "dgvPlaylists";
             this.dgvPlaylists.ReadOnly = true;
-            this.dgvPlaylists.Size = new System.Drawing.Size(584, 414);
+            this.dgvPlaylists.Size = new System.Drawing.Size(763, 526);
             this.dgvPlaylists.TabIndex = 1;
             // 
             // btnDeletePlaylist
@@ -85,7 +85,7 @@
             this.Controls.Add(this.btnAddPlaylist);
             this.Controls.Add(this.dgvPlaylists);
             this.Name = "ucPlaylistList";
-            this.Size = new System.Drawing.Size(617, 578);
+            this.Size = new System.Drawing.Size(796, 690);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaylists)).EndInit();
             this.ResumeLayout(false);
 

@@ -43,7 +43,7 @@
             this.dgvArtists.Location = new System.Drawing.Point(16, 82);
             this.dgvArtists.Name = "dgvArtists";
             this.dgvArtists.ReadOnly = true;
-            this.dgvArtists.Size = new System.Drawing.Size(584, 414);
+            this.dgvArtists.Size = new System.Drawing.Size(763, 526);
             this.dgvArtists.TabIndex = 1;
             // 
             // btnDeleteArtist
@@ -85,7 +85,7 @@
             this.Controls.Add(this.btnAddArtist);
             this.Controls.Add(this.dgvArtists);
             this.Name = "ucArtistList";
-            this.Size = new System.Drawing.Size(617, 578);
+            this.Size = new System.Drawing.Size(796, 690);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArtists)).EndInit();
             this.ResumeLayout(false);
 

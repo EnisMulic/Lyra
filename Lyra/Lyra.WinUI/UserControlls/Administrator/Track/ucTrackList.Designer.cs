@@ -43,7 +43,7 @@
             this.dgvTracks.Location = new System.Drawing.Point(16, 82);
             this.dgvTracks.Name = "dgvTracks";
             this.dgvTracks.ReadOnly = true;
-            this.dgvTracks.Size = new System.Drawing.Size(584, 414);
+            this.dgvTracks.Size = new System.Drawing.Size(763, 526);
             this.dgvTracks.TabIndex = 1;
             // 
             // btnDeleteTrack
@@ -85,7 +85,7 @@
             this.Controls.Add(this.btnAddTrack);
             this.Controls.Add(this.dgvTracks);
             this.Name = "ucTrackList";
-            this.Size = new System.Drawing.Size(617, 578);
+            this.Size = new System.Drawing.Size(796, 690);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTracks)).EndInit();
             this.ResumeLayout(false);
 

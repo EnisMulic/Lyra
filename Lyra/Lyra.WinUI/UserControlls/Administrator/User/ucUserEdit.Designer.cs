@@ -168,7 +168,7 @@
             this.Controls.Add(this.txtID);
             this.Controls.Add(this.btnSave);
             this.Name = "ucUserEdit";
-            this.Size = new System.Drawing.Size(617, 578);
+            this.Size = new System.Drawing.Size(796, 690);
             this.ResumeLayout(false);
             this.PerformLayout();
 

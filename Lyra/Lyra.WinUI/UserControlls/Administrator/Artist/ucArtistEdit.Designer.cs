@@ -88,7 +88,7 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.txtName);
             this.Name = "ucArtistEdit";
-            this.Size = new System.Drawing.Size(617, 578);
+            this.Size = new System.Drawing.Size(796, 690);
             this.ResumeLayout(false);
             this.PerformLayout();
 

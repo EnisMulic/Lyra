@@ -91,7 +91,7 @@
             this.Controls.Add(this.lblName);
             this.Controls.Add(this.txtName);
             this.Name = "ucArtistAdd";
-            this.Size = new System.Drawing.Size(617, 578);
+            this.Size = new System.Drawing.Size(796, 690);
             ((System.ComponentModel.ISupportInitialize)(this.pbArtistImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

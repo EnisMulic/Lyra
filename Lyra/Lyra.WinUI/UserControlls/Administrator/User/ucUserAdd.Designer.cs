@@ -213,7 +213,7 @@
             this.Controls.Add(this.txtFirstName);
             this.Controls.Add(this.btnSave);
             this.Name = "ucUserAdd";
-            this.Size = new System.Drawing.Size(617, 578);
+            this.Size = new System.Drawing.Size(796, 690);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUserImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

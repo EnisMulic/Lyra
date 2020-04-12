@@ -57,7 +57,7 @@
             this.dgvAlbums.Name = "dgvAlbums";
             this.dgvAlbums.ReadOnly = true;
             this.dgvAlbums.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dgvAlbums.Size = new System.Drawing.Size(584, 414);
+            this.dgvAlbums.Size = new System.Drawing.Size(763, 526);
             this.dgvAlbums.TabIndex = 1;
             // 
             // btnAddAlbum
@@ -99,7 +99,7 @@
             this.Controls.Add(this.btnAddAlbum);
             this.Controls.Add(this.dgvAlbums);
             this.Name = "ucAlbumList";
-            this.Size = new System.Drawing.Size(617, 578);
+            this.Size = new System.Drawing.Size(796, 690);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlbums)).EndInit();
             this.ResumeLayout(false);
 
