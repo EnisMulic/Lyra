@@ -28,13 +28,24 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
             clbRoles.DisplayMember = "Name";
         }
 
+        private void btnUploadImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opnfd = new OpenFileDialog();
+            opnfd.Filter = "Image Files (*.jpg;*.jpeg;.*.gif;)|*.jpg;*.jpeg;.*.gif";
+            if (opnfd.ShowDialog() == DialogResult.OK)
+            {
+                pictureBoxUserImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBoxUserImage.Image = new Bitmap(opnfd.FileName);
+            }
+        }
+
         private async void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
                 var roleList = clbRoles.CheckedItems.Cast<Model.Role>().Select(i => i.ID).ToList();
 
-                var request = new Model.Requests.UserUpsertRequest
+                var request = new Model.Requests.UserInsertRequest
                 {
                     FirstName = Convert.ToString(txtFirstName.Text),
                     LastName = Convert.ToString(txtLastName.Text),
@@ -53,17 +64,6 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
             catch
             {
 
-            }
-        }
-
-        private void btnUploadImage_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog opnfd = new OpenFileDialog();
-            opnfd.Filter = "Image Files (*.jpg;*.jpeg;.*.gif;)|*.jpg;*.jpeg;.*.gif";
-            if (opnfd.ShowDialog() == DialogResult.OK)
-            {
-                pictureBoxUserImage.SizeMode = PictureBoxSizeMode.StretchImage;
-                pictureBoxUserImage.Image = new Bitmap(opnfd.FileName);
             }
         }
     }

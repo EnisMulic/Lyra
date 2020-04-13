@@ -14,7 +14,7 @@ namespace Lyra.WebAPI.Controllers
     
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : CRUDController<User, UserSearchRequest, UserUpsertRequest, UserUpsertRequest>
+    public class UserController : CRUDController<User, UserSearchRequest, UserInsertRequest, UserUpdateRequest>
     {
         private readonly IUserService _service;
 

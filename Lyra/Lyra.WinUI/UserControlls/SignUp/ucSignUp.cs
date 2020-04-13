@@ -38,7 +38,7 @@ namespace Lyra.WinUI.SignUp
                 APIService.Username = "Admin";
                 APIService.Password = "Password1";
 
-                var request = new Model.Requests.UserUpsertRequest()
+                var request = new Model.Requests.UserInsertRequest()
                 {
                     FirstName = txtFirstName.Text,
                     LastName = txtLastName.Text,

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Lyra.WebAPI.Services
 {
-    public class UserService : CRUDService<Model.User, UserSearchRequest, User, UserUpsertRequest, UserUpsertRequest>, IUserService
+    public class UserService : CRUDService<Model.User, UserSearchRequest, User, UserInsertRequest, UserUpdateRequest>, IUserService
     {
         private readonly LyraContext _context;
         private readonly IMapper _mapper;
@@ -94,7 +94,7 @@ namespace Lyra.WebAPI.Services
             return Convert.ToBase64String(inArray);
         }
 
-        public override async Task<Model.User> Insert(UserUpsertRequest request)
+        public override async Task<Model.User> Insert(UserInsertRequest request)
         {
             if(request.Password != request.PasswordConfirmation)
             {
@@ -123,7 +123,7 @@ namespace Lyra.WebAPI.Services
             return _mapper.Map<Model.User>(entity);
         }
 
-        public override async Task<Model.User> Update(int id, UserUpsertRequest request)
+        public override async Task<Model.User> Update(int id, UserUpdateRequest request)
         {
             var entity = _context.Users.Find(id);
             _context.Users.Attach(entity);
