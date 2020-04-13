@@ -174,6 +174,7 @@
             this.btnUploadImage.TabIndex = 58;
             this.btnUploadImage.Text = "Change image";
             this.btnUploadImage.UseVisualStyleBackColor = true;
+            this.btnUploadImage.Click += new System.EventHandler(this.btnUploadImage_Click);
             // 
             // pictureBoxUserImage
             // 

@@ -140,6 +140,36 @@ namespace Lyra.WebAPI.Services
                 entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
             }
 
+            foreach(var RoleID in request.Roles)
+            {
+                var userRole = await _context.UserRoles
+                    .Where(i => i.RoleID == RoleID && i.UserID == id)
+                    .SingleOrDefaultAsync();
+
+                if(userRole == null)
+                {
+                    var newRole = new UserRoles()
+                    {
+                        UserID = id,
+                        RoleID = RoleID
+                    };
+                    await _context.Set<UserRoles>().AddAsync(newRole);
+                }
+            }
+
+
+            foreach (var RoleID in request.RolesToDelete)
+            {
+                var userRole = await _context.UserRoles
+                    .Where(i => i.RoleID == RoleID && i.UserID == id)
+                    .SingleOrDefaultAsync();
+
+                if (userRole != null)
+                {
+                    _context.Set<UserRoles>().Remove(userRole);
+                }
+            }
+
             _mapper.Map(request, entity);
             await _context.SaveChangesAsync();
 

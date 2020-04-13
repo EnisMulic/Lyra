@@ -56,9 +56,54 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
                 }
             }
         }
-        private void btnSave_Click(object sender, EventArgs e)
+        private void btnUploadImage_Click(object sender, EventArgs e)
         {
-
+            OpenFileDialog opnfd = new OpenFileDialog();
+            opnfd.Filter = "Image Files (*.jpg;*.jpeg;.*.gif;)|*.jpg;*.jpeg;.*.gif";
+            if (opnfd.ShowDialog() == DialogResult.OK)
+            {
+                pictureBoxUserImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                pictureBoxUserImage.Image = new Bitmap(opnfd.FileName);
+            }
         }
+
+        private async void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var checkedRoles = clbRoles.CheckedItems.Cast<Model.Role>().Select(i => i.ID).ToList();
+
+                List<int> uncheckedRoles = new List<int>();
+                for (int i = 0; i < clbRoles.Items.Count; i++)
+                {
+                    if (!clbRoles.GetItemChecked(i))
+                    {
+                        int RoleID = clbRoles.Items.Cast<Model.Role>().ToList()[i].ID;
+                        uncheckedRoles.Add(RoleID);
+                    }
+                }
+
+                var request = new Model.Requests.UserUpdateRequest
+                {
+                    FirstName = Convert.ToString(txtFirstName.Text),
+                    LastName = Convert.ToString(txtLastName.Text),
+                    Username = Convert.ToString(txtUsername.Text),
+                    Email = Convert.ToString(txtEmail.Text),
+                    PhoneNumber = Convert.ToString(txtPhoneNumber.Text),
+                    Roles = checkedRoles,
+                    RolesToDelete = uncheckedRoles
+                };
+
+                await _apiService.Update<Model.User>(_ID, request);
+
+                MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch
+            {
+
+            }
+        }
+
+        
     }
 }
