@@ -12,18 +12,11 @@ namespace Lyra.WinUI.UserControlls.Administrator.Track
 {
     public partial class ucTrackEdit : UserControl
     {
-        public ucTrackEdit()
+        private readonly int _ID;
+        public ucTrackEdit(int ID)
         {
+            _ID = ID;
             InitializeComponent();
-        }
-
-        public ucTrackEdit(Model.Track track)
-        {
-            InitializeComponent();
-
-            txtID.Text = Convert.ToString(track.ID);
-            txtName.Text = track.Name;
-            txtLength.Text = track.Length;
         }
     }
 }

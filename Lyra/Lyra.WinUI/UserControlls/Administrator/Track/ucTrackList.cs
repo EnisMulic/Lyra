@@ -37,14 +37,9 @@ namespace Lyra.WinUI.UserControlls.Administrator.Track
 
         private void btnEditTrack_Click(object sender, EventArgs e)
         {
-            var track = new Model.Track()
-            {
-                ID = Convert.ToInt32(dgvTracks.CurrentRow.Cells["ID"].Value),
-                Name = Convert.ToString(dgvTracks.CurrentRow.Cells["Name"].Value),
-                Length = Convert.ToString(dgvTracks.CurrentRow.Cells["Length"].Value)
-            };
+            int ID = Convert.ToInt32(dgvTracks.CurrentRow.Cells["ID"].Value);
 
-            var uc = new ucTrackEdit(track);
+            var uc = new ucTrackEdit(ID);
 
             if (!Parent.Controls.Contains(uc))
             {
