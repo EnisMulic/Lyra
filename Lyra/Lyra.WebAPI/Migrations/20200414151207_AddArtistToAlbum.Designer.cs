@@ -4,14 +4,16 @@ using Lyra.WebAPI.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Lyra.WebAPI.Migrations
 {
     [DbContext(typeof(LyraContext))]
-    partial class LyraContextModelSnapshot : ModelSnapshot
+    [Migration("20200414151207_AddArtistToAlbum")]
+    partial class AddArtistToAlbum
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -548,24 +550,6 @@ namespace Lyra.WebAPI.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Lyra.WebAPI.Database.TrackArtist", b =>
-                {
-                    b.Property<int>("TrackID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ArtistID")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TrackArtistRole")
-                        .HasColumnType("int");
-
-                    b.HasKey("TrackID", "ArtistID");
-
-                    b.HasIndex("ArtistID");
-
-                    b.ToTable("TrackArtist");
-                });
-
             modelBuilder.Entity("Lyra.WebAPI.Database.TrackGenre", b =>
                 {
                     b.Property<int>("GenreID")
@@ -694,21 +678,6 @@ namespace Lyra.WebAPI.Migrations
                     b.HasOne("Lyra.WebAPI.Database.Playlist", null)
                         .WithMany("Tracks")
                         .HasForeignKey("PlaylistID");
-                });
-
-            modelBuilder.Entity("Lyra.WebAPI.Database.TrackArtist", b =>
-                {
-                    b.HasOne("Lyra.WebAPI.Database.Artist", "Artist")
-                        .WithMany()
-                        .HasForeignKey("ArtistID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Lyra.WebAPI.Database.Track", "Track")
-                        .WithMany("Artists")
-                        .HasForeignKey("TrackID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Lyra.WebAPI.Database.TrackGenre", b =>

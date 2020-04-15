@@ -34,9 +34,11 @@ namespace Lyra.WebAPI.Database
                 .HasKey(k => new { k.PlaylistID, k.TrackID });
             modelBuilder.Entity<AlbumTracks>()
                 .HasKey(k => new { k.AlbumID, k.TrackID });
+            modelBuilder.Entity<TrackArtist>()
+                .HasKey(k => new { k.TrackID, k.ArtistID });
 
 
-            
+
 
             modelBuilder.Entity<Artist>()
                 .HasData
