@@ -283,6 +283,33 @@ namespace Lyra.WebAPI.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Genres");
+
+                    b.HasData(
+                        new
+                        {
+                            ID = 1,
+                            Name = "Rock"
+                        },
+                        new
+                        {
+                            ID = 2,
+                            Name = "Rap"
+                        },
+                        new
+                        {
+                            ID = 3,
+                            Name = "Hip-Hop"
+                        },
+                        new
+                        {
+                            ID = 4,
+                            Name = "Pop"
+                        },
+                        new
+                        {
+                            ID = 5,
+                            Name = "Metal"
+                        });
                 });
 
             modelBuilder.Entity("Lyra.WebAPI.Database.Playlist", b =>
