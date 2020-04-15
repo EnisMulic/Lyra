@@ -133,6 +133,15 @@ namespace Lyra.WebAPI.Database
                     new AlbumTracks { AlbumID = 2, TrackID = 14 },
                     new AlbumTracks { AlbumID = 2, TrackID = 15 }
                 );
+            modelBuilder.Entity<Genre>()
+                .HasData
+                (
+                    new Genre { ID = 1, Name = "Rock" },
+                    new Genre { ID = 2, Name = "Rap" },
+                    new Genre { ID = 3, Name = "Hip-Hop" },
+                    new Genre { ID = 4, Name = "Pop" },
+                    new Genre { ID = 5, Name = "Metal" }
+                );
 
         }
     }

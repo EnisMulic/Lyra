@@ -28,6 +28,10 @@ namespace Lyra.WebAPI.Mapper
 
             CreateMap<Database.UserRoles, Model.UserRoles>();
             CreateMap<Database.Role, Model.Role>();
+
+            CreateMap<Database.Genre, Model.Genre>();
+            CreateMap<Database.TrackGenre, Model.TrackGenre>();
+            CreateMap<Database.TrackArtist, Model.TrackArtist>();
         }
 
         

@@ -8,8 +8,8 @@ namespace Lyra.WebAPI.Database
 {
     public enum TrackArtistRole
     {
-        Main,
-        Feature
+        Main = 0,
+        Feature = 1
     }
     public class TrackArtist
     {
