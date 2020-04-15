@@ -52,10 +52,10 @@ namespace Lyra.WebAPI.Services
 
         public async Task<Model.User> Authenticate(string username, string password)
         {
-            var user = _context.Users
+            var user = await _context.Users
                 .Include(i => i.UserRoles)
                 .ThenInclude(j => j.Role)
-                .FirstOrDefault(i => i.Username == username);
+                .FirstOrDefaultAsync(i => i.Username == username);
 
             
             if (user != null)
