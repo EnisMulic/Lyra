@@ -39,7 +39,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Track
         {
             int ID = Convert.ToInt32(dgvTracks.CurrentRow.Cells["ID"].Value);
 
-            var uc = new ucTrackEdit(ID);
+            var uc = new ucTrackUpsert(ID);
 
             if (!Parent.Controls.Contains(uc))
             {
@@ -58,7 +58,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Track
 
         private void btnAddTrack_Click(object sender, EventArgs e)
         {
-            var uc = new ucTrackAdd();
+            var uc = new ucTrackUpsert();
 
             if (!Parent.Controls.Contains(uc))
             {

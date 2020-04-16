@@ -23,7 +23,10 @@ namespace Lyra.WebAPI.Services
 
         public override async Task<List<Model.Track>> Get(TrackSearchRequest request)
         {
-            var query = _context.Tracks.AsQueryable();
+            var query = _context.Tracks
+                .Include(i => i.Artists)
+                .Include(i => i.Genres)
+                .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(request?.Name))
             {
@@ -33,6 +36,16 @@ namespace Lyra.WebAPI.Services
             var list = await query.ToListAsync();
 
             return _mapper.Map<List<Model.Track>>(list);
+        }
+
+        public override async Task<Model.Track> GetById(int ID)
+        {
+            var entity = await _context.Tracks
+                .Include(i => i.Artists)
+                .Include(i => i.Genres)
+                .SingleOrDefaultAsync(i => i.ID == ID);
+
+            return _mapper.Map<Model.Track>(entity);
         }
     }
 
