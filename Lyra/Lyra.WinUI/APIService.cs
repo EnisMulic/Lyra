@@ -114,5 +114,19 @@ namespace Lyra.WinUI
             }
         }
 
+        public async Task<T> GetAlbums<T>(int id)
+        {
+            var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}/Albums";
+
+            return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
+        }
+
+        public async Task<T> GetTracks<T>(int id)
+        {
+            var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}/Tracks";
+
+            return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
+        }
+
     }
 }

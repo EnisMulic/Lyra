@@ -97,17 +97,11 @@
     <Compile Include="UserControlls\Administrator\Album\ucAlbumList.Designer.cs">
       <DependentUpon>ucAlbumList.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlls\Administrator\Artist\ucArtistAdd.cs">
+    <Compile Include="UserControlls\Administrator\Artist\ucArtistUpsert.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlls\Administrator\Artist\ucArtistAdd.Designer.cs">
-      <DependentUpon>ucArtistAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControlls\Administrator\Artist\ucArtistEdit.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControlls\Administrator\Artist\ucArtistEdit.Designer.cs">
-      <DependentUpon>ucArtistEdit.cs</DependentUpon>
+    <Compile Include="UserControlls\Administrator\Artist\ucArtistUpsert.Designer.cs">
+      <DependentUpon>ucArtistUpsert.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControlls\Administrator\Artist\ucArtistList.cs">
       <SubType>UserControl</SubType>
@@ -133,17 +127,11 @@
     <Compile Include="UserControlls\Administrator\Playlist\ucPlaylistList.Designer.cs">
       <DependentUpon>ucPlaylistList.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlls\Administrator\Track\ucTrackAdd.cs">
+    <Compile Include="UserControlls\Administrator\Track\ucTrackUpsert.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlls\Administrator\Track\ucTrackAdd.Designer.cs">
-      <DependentUpon>ucTrackAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControlls\Administrator\Track\ucTrackEdit.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControlls\Administrator\Track\ucTrackEdit.Designer.cs">
-      <DependentUpon>ucTrackEdit.cs</DependentUpon>
+    <Compile Include="UserControlls\Administrator\Track\ucTrackUpsert.Designer.cs">
+      <DependentUpon>ucTrackUpsert.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControlls\Administrator\Track\ucTrackList.cs">
       <SubType>UserControl</SubType>
@@ -213,11 +201,8 @@
     <EmbeddedResource Include="UserControlls\Administrator\Album\ucAlbumList.resx">
       <DependentUpon>ucAlbumList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlls\Administrator\Artist\ucArtistAdd.resx">
-      <DependentUpon>ucArtistAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControlls\Administrator\Artist\ucArtistEdit.resx">
-      <DependentUpon>ucArtistEdit.cs</DependentUpon>
+    <EmbeddedResource Include="UserControlls\Administrator\Artist\ucArtistUpsert.resx">
+      <DependentUpon>ucArtistUpsert.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlls\Administrator\Artist\ucArtistList.resx">
       <DependentUpon>ucArtistList.cs</DependentUpon>
@@ -231,11 +216,8 @@
     <EmbeddedResource Include="UserControlls\Administrator\Playlist\ucPlaylistList.resx">
       <DependentUpon>ucPlaylistList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlls\Administrator\Track\ucTrackAdd.resx">
-      <DependentUpon>ucTrackAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControlls\Administrator\Track\ucTrackEdit.resx">
-      <DependentUpon>ucTrackEdit.cs</DependentUpon>
+    <EmbeddedResource Include="UserControlls\Administrator\Track\ucTrackUpsert.resx">
+      <DependentUpon>ucTrackUpsert.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlls\Administrator\Track\ucTrackList.resx">
       <DependentUpon>ucTrackList.cs</DependentUpon>
