@@ -33,7 +33,7 @@
             this.btnTrack = new System.Windows.Forms.Button();
             this.btnAlbum = new System.Windows.Forms.Button();
             this.btnArtist = new System.Windows.Forms.Button();
-            this.btnUserCRUD = new System.Windows.Forms.Button();
+            this.btnUser = new System.Windows.Forms.Button();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.ucAppControl = new Lyra.WinUI.UserControlls.Shared.ucAppControl();
@@ -48,7 +48,7 @@
             this.pnlNavbar.Controls.Add(this.btnTrack);
             this.pnlNavbar.Controls.Add(this.btnAlbum);
             this.pnlNavbar.Controls.Add(this.btnArtist);
-            this.pnlNavbar.Controls.Add(this.btnUserCRUD);
+            this.pnlNavbar.Controls.Add(this.btnUser);
             this.pnlNavbar.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlNavbar.ForeColor = System.Drawing.SystemColors.Control;
             this.pnlNavbar.Location = new System.Drawing.Point(0, 0);
@@ -116,20 +116,20 @@
             this.btnArtist.UseVisualStyleBackColor = true;
             this.btnArtist.Click += new System.EventHandler(this.btnArtist_Click);
             // 
-            // btnUserCRUD
+            // btnUser
             // 
-            this.btnUserCRUD.FlatAppearance.BorderSize = 0;
-            this.btnUserCRUD.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUserCRUD.Font = new System.Drawing.Font("Franklin Gothic Demi", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUserCRUD.Location = new System.Drawing.Point(12, 121);
-            this.btnUserCRUD.Name = "btnUserCRUD";
-            this.btnUserCRUD.Size = new System.Drawing.Size(267, 47);
-            this.btnUserCRUD.TabIndex = 3;
-            this.btnUserCRUD.TabStop = false;
-            this.btnUserCRUD.Text = "User";
-            this.btnUserCRUD.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnUserCRUD.UseVisualStyleBackColor = true;
-            this.btnUserCRUD.Click += new System.EventHandler(this.btnUserCRUD_Click);
+            this.btnUser.FlatAppearance.BorderSize = 0;
+            this.btnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUser.Font = new System.Drawing.Font("Franklin Gothic Demi", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUser.Location = new System.Drawing.Point(12, 121);
+            this.btnUser.Name = "btnUser";
+            this.btnUser.Size = new System.Drawing.Size(267, 47);
+            this.btnUser.TabIndex = 3;
+            this.btnUser.TabStop = false;
+            this.btnUser.Text = "User";
+            this.btnUser.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUser.UseVisualStyleBackColor = true;
+            this.btnUser.Click += new System.EventHandler(this.btnUser_Click);
             // 
             // pnlMain
             // 
@@ -166,7 +166,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmAdminPanel";
             this.Text = "frmAdminPanel";
-            this.Load += new System.EventHandler(this.btnUserCRUD_Click);
+            this.Load += new System.EventHandler(this.btnUser_Click);
             this.pnlNavbar.ResumeLayout(false);
             this.pnlHeader.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -176,7 +176,7 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlNavbar;
-        private System.Windows.Forms.Button btnUserCRUD;
+        private System.Windows.Forms.Button btnUser;
         private System.Windows.Forms.Button btnPlaylist;
         private System.Windows.Forms.Button btnTrack;
         private System.Windows.Forms.Button btnAlbum;

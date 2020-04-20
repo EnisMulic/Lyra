@@ -13,23 +13,13 @@ namespace Lyra.WinUI.UserControlls.Administrator.Track
     public partial class ucTrackList : UserControl
     {
         private readonly APIService _apiService = new APIService("Track");
-        private static ucTrackList _instance;
-        public static ucTrackList Instance
-        {
-            get
-            {
-                if (_instance == null)
-                    _instance = new ucTrackList();
-                return _instance;
-            }
-        }
+        
         public ucTrackList()
         {
             InitializeComponent();
-            LoadList();
         }
 
-        private async void LoadList()
+        private async void ucTrackList_Load(object sender, EventArgs e)
         {
             var list = await _apiService.Get<List<Model.Track>>(null);
             dgvTracks.DataSource = list;
@@ -68,5 +58,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Track
 
             uc.BringToFront();
         }
+
+        
     }
 }

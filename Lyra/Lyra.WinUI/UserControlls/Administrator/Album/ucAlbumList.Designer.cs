@@ -100,6 +100,7 @@
             this.Controls.Add(this.dgvAlbums);
             this.Name = "ucAlbumList";
             this.Size = new System.Drawing.Size(796, 690);
+            this.Load += new System.EventHandler(this.ucAlbumList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlbums)).EndInit();
             this.ResumeLayout(false);
 

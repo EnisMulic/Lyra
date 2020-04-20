@@ -13,23 +13,13 @@ namespace Lyra.WinUI.UserControlls.Administrator.Playlist
     public partial class ucPlaylistList : UserControl
     {
         private readonly APIService _apiService = new APIService("Playlist");
-        private static ucPlaylistList _instance;
-        public static ucPlaylistList Instance
-        {
-            get
-            {
-                if (_instance == null)
-                    _instance = new ucPlaylistList();
-                return _instance;
-            }
-        }
+        
         public ucPlaylistList()
         {
             InitializeComponent();
-            LoadList();
         }
 
-        private async void LoadList()
+        private async void ucPlaylistList_Load(object sender, EventArgs e)
         {
             var list = await _apiService.Get<List<Model.Playlist>>(null);
             dgvPlaylists.DataSource = list;
@@ -72,5 +62,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Playlist
 
             uc.BringToFront();
         }
+
+        
     }
 }

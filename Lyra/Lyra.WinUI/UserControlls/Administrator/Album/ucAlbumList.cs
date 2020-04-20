@@ -13,23 +13,13 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
     public partial class ucAlbumList : UserControl
     {
         private readonly APIService _apiService = new APIService("Album");
-        private static ucAlbumList _instance;
-        public static ucAlbumList Instance
-        {
-            get
-            {
-                if (_instance == null)
-                    _instance = new ucAlbumList();
-                return _instance;
-            }
-        }
+        
         public ucAlbumList()
         {
             InitializeComponent();
-            LoadList();
         }
 
-        private async Task LoadList()
+        private async void ucAlbumList_Load(object sender, EventArgs e)
         {
             var list = await _apiService.Get<List<Model.Album>>(null);
             dgvAlbums.DataSource = list;
@@ -39,7 +29,6 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
         {
             int id = Convert.ToInt32(dgvAlbums.CurrentRow.Cells["ID"].Value);
             await _apiService.Delete<dynamic>(id);
-            await LoadList();
         }
 
         private void btnEditAlbum_Click(object sender, EventArgs e)
@@ -74,5 +63,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
 
             uc.BringToFront();
         }
+
+        
     }
 }

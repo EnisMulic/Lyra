@@ -86,6 +86,7 @@
             this.Controls.Add(this.dgvArtists);
             this.Name = "ucArtistList";
             this.Size = new System.Drawing.Size(796, 690);
+            this.Load += new System.EventHandler(this.ucArtistList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArtists)).EndInit();
             this.ResumeLayout(false);
 

@@ -47,6 +47,41 @@ namespace Lyra.WinUI.UserControlls.Administrator.Artist
             }
         }
 
+        private void SetDataGridViewSize(DataGridView dgv)
+        {
+            var height = 40;
+            foreach (DataGridViewRow dr in dgv.Rows)
+            {
+                height += dr.Height;
+            }
+
+            dgv.Height = height;
+        }
+
+
+        private void dgvAlbums_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            SetDataGridViewSize(dgvAlbums);
+            gbAlbums.Height += dgvAlbums.Height - 25;
+        }
+
+        private void dgvTracks_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            SetDataGridViewSize(dgvTracks);
+            gbTracks.Height += dgvTracks.Height - 25;
+        }
+
+        private void btnUploadImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opnfd = new OpenFileDialog();
+            opnfd.Filter = "Image Files (*.jpg;*.jpeg;.*.gif;)|*.jpg;*.jpeg;.*.gif";
+            if (opnfd.ShowDialog() == DialogResult.OK)
+            {
+                pbArtistImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                pbArtistImage.Image = new Bitmap(opnfd.FileName);
+            }
+        }
+
         private async void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -73,41 +108,6 @@ namespace Lyra.WinUI.UserControlls.Administrator.Artist
             }
         }
 
-        private void btnUploadImage_Click(object sender, EventArgs e)
-        {
-            OpenFileDialog opnfd = new OpenFileDialog();
-            opnfd.Filter = "Image Files (*.jpg;*.jpeg;.*.gif;)|*.jpg;*.jpeg;.*.gif";
-            if (opnfd.ShowDialog() == DialogResult.OK)
-            {
-                pbArtistImage.SizeMode = PictureBoxSizeMode.StretchImage;
-                pbArtistImage.Image = new Bitmap(opnfd.FileName);
-            }
-        }
-
         
-
-        private void SetDataGridViewSize(DataGridView dgv)
-        {
-            var height = 40;
-            foreach (DataGridViewRow dr in dgv.Rows)
-            {
-                height += dr.Height;
-            }
-
-            dgv.Height = height;
-        }
-
-
-        private void dgvAlbums_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            SetDataGridViewSize(dgvAlbums);
-            gbAlbums.Height += dgvAlbums.Height - 25;
-        }
-
-        private void dgvTracks_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            SetDataGridViewSize(dgvTracks);
-            gbTracks.Height += dgvTracks.Height - 25;
-        }
     }
 }

@@ -86,6 +86,7 @@
             this.Controls.Add(this.dgvPlaylists);
             this.Name = "ucPlaylistList";
             this.Size = new System.Drawing.Size(796, 690);
+            this.Load += new System.EventHandler(this.ucPlaylistList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaylists)).EndInit();
             this.ResumeLayout(false);
 

@@ -86,6 +86,7 @@
             this.Controls.Add(this.dgvTracks);
             this.Name = "ucTrackList";
             this.Size = new System.Drawing.Size(796, 690);
+            this.Load += new System.EventHandler(this.ucTrackList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTracks)).EndInit();
             this.ResumeLayout(false);
 

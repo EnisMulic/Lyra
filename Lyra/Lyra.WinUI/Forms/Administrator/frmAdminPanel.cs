@@ -23,59 +23,70 @@ namespace Lyra.WinUI.Administrator
             InitializeComponent();   
         }
 
-        private void btnUserCRUD_Click(object sender, EventArgs e)
+        private void btnUser_Click(object sender, EventArgs e)
         {
-            if (!pnlMain.Controls.Contains(ucUserList.Instance))
+
+            Refresh();
+            var uc = new ucUserList();
+            if (!pnlMain.Controls.Contains(uc))
             {
-                pnlMain.Controls.Add(ucUserList.Instance);
-                ucUserList.Instance.Dock = DockStyle.Fill;
+                pnlMain.Controls.Add(uc);
+                uc.Dock = DockStyle.Fill;
             }
 
-            ucUserList.Instance.BringToFront();
+            uc.BringToFront();
         }
 
         private void btnArtist_Click(object sender, EventArgs e)
         {
-            if (!pnlMain.Controls.Contains(ucArtistList.Instance))
+            Refresh();
+            var uc = new ucArtistList();
+            if (!pnlMain.Controls.Contains(uc))
             {
-                pnlMain.Controls.Add(ucArtistList.Instance);
-                ucArtistList.Instance.Dock = DockStyle.Fill;
+                pnlMain.Controls.Add(uc);
+                uc.Dock = DockStyle.Fill;
             }
 
-            ucArtistList.Instance.BringToFront();
+            uc.BringToFront();
         }
 
         private void btnAlbum_Click(object sender, EventArgs e)
         {
-            if (!pnlMain.Controls.Contains(ucAlbumList.Instance))
+            Refresh();
+            var uc = new ucAlbumList();
+            if (!pnlMain.Controls.Contains(uc))
             {
-                pnlMain.Controls.Add(ucAlbumList.Instance);
-                ucAlbumList.Instance.Dock = DockStyle.Fill;
+                pnlMain.Controls.Add(uc);
+                uc.Dock = DockStyle.Fill;
             }
 
-            ucAlbumList.Instance.BringToFront();
+            uc.BringToFront();
         }
 
         private void btnTrack_Click(object sender, EventArgs e)
         {
-            if (!pnlMain.Controls.Contains(ucTrackList.Instance))
+            Refresh();
+            var uc = new ucTrackList();
+            if (!pnlMain.Controls.Contains(uc))
             {
-                pnlMain.Controls.Add(ucTrackList.Instance);
-                ucTrackList.Instance.Dock = DockStyle.Fill;
+                pnlMain.Controls.Add(uc);
+                uc.Dock = DockStyle.Fill;
             }
 
-            ucTrackList.Instance.BringToFront();
+            uc.BringToFront();
         }
 
         private void btnPlaylist_Click(object sender, EventArgs e)
         {
-            if (!pnlMain.Controls.Contains(ucPlaylistList.Instance))
+            Refresh();
+            var uc = new ucPlaylistList();
+            if (!pnlMain.Controls.Contains(uc))
             {
-                pnlMain.Controls.Add(ucPlaylistList.Instance);
-                ucPlaylistList.Instance.Dock = DockStyle.Fill;
+                pnlMain.Controls.Add(uc);
+                uc.Dock = DockStyle.Fill;
             }
 
-            ucPlaylistList.Instance.BringToFront();
+            uc.BringToFront();
         }
     }
 }

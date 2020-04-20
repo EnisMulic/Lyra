@@ -86,6 +86,7 @@
             this.Controls.Add(this.dgvUsers);
             this.Name = "ucUserList";
             this.Size = new System.Drawing.Size(796, 690);
+            this.Load += new System.EventHandler(this.ucUserList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             this.ResumeLayout(false);
 

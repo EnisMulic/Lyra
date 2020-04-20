@@ -13,23 +13,13 @@ namespace Lyra.WinUI.UserControlls.Administrator.Artist
     public partial class ucArtistList : UserControl
     {
         private readonly APIService _apiService = new APIService("Artist");
-        private static ucArtistList _instance;
-        public static ucArtistList Instance
-        {
-            get
-            {
-                if (_instance == null)
-                    _instance = new ucArtistList();
-                return _instance;
-            }
-        }
+        
         public ucArtistList()
         {
             InitializeComponent();
-            LoadList();
         }
 
-        private async void LoadList()
+        private async void ucArtistList_Load(object sender, EventArgs e)
         {
             var list = await _apiService.Get<List<Model.Artist>>(null);
             dgvArtists.DataSource = list;
