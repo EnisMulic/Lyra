@@ -33,14 +33,9 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
 
         private void btnEditAlbum_Click(object sender, EventArgs e)
         {
-            var album = new Model.Album()
-            {
-                ID = Convert.ToInt32(dgvAlbums.CurrentRow.Cells["ID"].Value),
-                Name = Convert.ToString(dgvAlbums.CurrentRow.Cells["Name"].Value),
-                ReleaseYear = Convert.ToInt32(dgvAlbums.CurrentRow.Cells["ReleaseYear"].Value)
-            };
+            int ID = Convert.ToInt32(dgvAlbums.CurrentRow.Cells["ID"].Value);
 
-            var uc = new ucAlbumEdit(album);
+            var uc = new ucAlbumUpsert(ID);
 
             if (!Parent.Controls.Contains(uc))
             {
@@ -53,7 +48,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
 
         private void btnAddAlbum_Click(object sender, EventArgs e)
         {
-            var uc = new ucAlbumAdd();
+            var uc = new ucAlbumUpsert();
 
             if (!Parent.Controls.Contains(uc))
             {

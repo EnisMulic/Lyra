@@ -11,5 +11,6 @@ namespace Lyra.Model.Requests
         public string Name { get; set; }
         [Required]
         public int ReleaseYear { get; set; }
+        public int ArtistID { get; set; }
     }
 }
