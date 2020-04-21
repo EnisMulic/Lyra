@@ -74,7 +74,7 @@ namespace Lyra.WebAPI
             services.AddScoped<IBaseService<Model.Role, object>, RoleService>();
             services.AddScoped<IArtistService, ArtistService>();
             services.AddScoped<ICRUDService<Model.Track, TrackSearchRequest, TrackUpsertRequest, TrackUpsertRequest>, TrackService>();
-            services.AddScoped<ICRUDService<Model.Playlist, PlaylistSearchRequest, PlaylistUpsertRequest, PlaylistUpsertRequest>, PlaylistService>();
+            services.AddScoped<IPlaylistService, PlaylistService>();
             services.AddScoped<IUserService, UserService>();
 
             services.AddAuthentication("BasicAuthentication")

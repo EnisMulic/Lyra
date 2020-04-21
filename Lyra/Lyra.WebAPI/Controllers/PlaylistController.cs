@@ -12,8 +12,16 @@ namespace Lyra.WebAPI.Controllers
 {
     public class PlaylistController : CRUDController<Model.Playlist, PlaylistSearchRequest, PlaylistUpsertRequest, PlaylistUpsertRequest>
     {
-        public PlaylistController(ICRUDService<Playlist, PlaylistSearchRequest, PlaylistUpsertRequest, PlaylistUpsertRequest> service) : base(service)
+        private readonly IPlaylistService _service;
+        public PlaylistController(IPlaylistService service) : base(service)
         {
+            _service = service;
+        }
+
+        [HttpGet("{id}/Tracks")]
+        public async Task<List<Track>> GetTracks(int id)
+        {
+            return await _service.GetTracks(id);
         }
     }
 }
