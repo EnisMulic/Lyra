@@ -131,15 +131,24 @@ namespace Lyra.WinUI.UserControlls.Administrator.Track
             lbGenres.Items.Remove(genre);
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private async void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
                 var request = new TrackUpsertRequest()
                 {
-                    Name = Convert.ToString(txtName.Text)
-                    
+                    Name = Convert.ToString(txtName.Text),
+                    Length = TimeSpan.Parse(Convert.ToString(txtLength.Text))
                 };
+
+                if(_ID.HasValue)
+                {
+                    await _trackApiService.Update<Model.Track>(_ID.Value, request);
+                }
+                else
+                {
+                    await _trackApiService.Insert<Model.Track>(request);   
+                }
             }
             catch
             {

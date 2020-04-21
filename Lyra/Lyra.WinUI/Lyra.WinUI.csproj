@@ -79,17 +79,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="UserControlls\Administrator\Album\ucAlbumAdd.cs">
+    <Compile Include="UserControlls\Administrator\Album\ucAlbumUpsert.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlls\Administrator\Album\ucAlbumAdd.Designer.cs">
-      <DependentUpon>ucAlbumAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControlls\Administrator\Album\ucAlbumEdit.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControlls\Administrator\Album\ucAlbumEdit.Designer.cs">
-      <DependentUpon>ucAlbumEdit.cs</DependentUpon>
+    <Compile Include="UserControlls\Administrator\Album\ucAlbumUpsert.Designer.cs">
+      <DependentUpon>ucAlbumUpsert.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControlls\Administrator\Album\ucAlbumList.cs">
       <SubType>UserControl</SubType>
@@ -109,17 +103,11 @@
     <Compile Include="UserControlls\Administrator\Artist\ucArtistList.Designer.cs">
       <DependentUpon>ucArtistList.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlls\Administrator\Playlist\ucPlaylistAdd.cs">
+    <Compile Include="UserControlls\Administrator\Playlist\ucPlaylistUpsert.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlls\Administrator\Playlist\ucPlaylistAdd.Designer.cs">
-      <DependentUpon>ucPlaylistAdd.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UserControlls\Administrator\Playlist\ucPlaylistEdit.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UserControlls\Administrator\Playlist\ucPlaylistEdit.Designer.cs">
-      <DependentUpon>ucPlaylistEdit.cs</DependentUpon>
+    <Compile Include="UserControlls\Administrator\Playlist\ucPlaylistUpsert.Designer.cs">
+      <DependentUpon>ucPlaylistUpsert.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControlls\Administrator\Playlist\ucPlaylistList.cs">
       <SubType>UserControl</SubType>
@@ -192,11 +180,8 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlls\Administrator\Album\ucAlbumAdd.resx">
-      <DependentUpon>ucAlbumAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControlls\Administrator\Album\ucAlbumEdit.resx">
-      <DependentUpon>ucAlbumEdit.cs</DependentUpon>
+    <EmbeddedResource Include="UserControlls\Administrator\Album\ucAlbumUpsert.resx">
+      <DependentUpon>ucAlbumUpsert.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlls\Administrator\Album\ucAlbumList.resx">
       <DependentUpon>ucAlbumList.cs</DependentUpon>
@@ -207,11 +192,8 @@
     <EmbeddedResource Include="UserControlls\Administrator\Artist\ucArtistList.resx">
       <DependentUpon>ucArtistList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlls\Administrator\Playlist\ucPlaylistAdd.resx">
-      <DependentUpon>ucPlaylistAdd.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UserControlls\Administrator\Playlist\ucPlaylistEdit.resx">
-      <DependentUpon>ucPlaylistEdit.cs</DependentUpon>
+    <EmbeddedResource Include="UserControlls\Administrator\Playlist\ucPlaylistUpsert.resx">
+      <DependentUpon>ucPlaylistUpsert.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControlls\Administrator\Playlist\ucPlaylistList.resx">
       <DependentUpon>ucPlaylistList.cs</DependentUpon>
