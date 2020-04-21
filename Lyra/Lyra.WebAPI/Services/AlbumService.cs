@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Lyra.WebAPI.Services
 {
-    public class AlbumService : CRUDService<Model.Album, AlbumSearchRequest, Database.Album, AlbumUpsertRequest, AlbumUpsertRequest>
+    public class AlbumService : CRUDService<Model.Album, AlbumSearchRequest, Database.Album, AlbumUpsertRequest, AlbumUpsertRequest>, IAlbumService
     {
         private readonly LyraContext _context;
         private readonly IMapper _mapper;
@@ -37,6 +37,15 @@ namespace Lyra.WebAPI.Services
             return _mapper.Map<List<Model.Album>>(list);
         }
 
-        
+        public async Task<List<Model.Track>> GetTracks(int ID)
+        {
+            var list = await _context.AlbumTracks
+                .Include(i => i.Track)
+                .Where(i => i.AlbumID == ID)
+                .Select(i => i.Track)
+                .ToListAsync();
+
+            return _mapper.Map<List<Model.Track>>(list);
+        }
     }
 }

@@ -69,7 +69,7 @@ namespace Lyra.WebAPI
                 });
             });
 
-            services.AddScoped<ICRUDService<Model.Album, AlbumSearchRequest, AlbumUpsertRequest, AlbumUpsertRequest>, AlbumService>();
+            services.AddScoped<IAlbumService, AlbumService>();
             services.AddScoped<IBaseService<Model.Genre, object>, GenreService>();
             services.AddScoped<IBaseService<Model.Role, object>, RoleService>();
             services.AddScoped<IArtistService, ArtistService>();

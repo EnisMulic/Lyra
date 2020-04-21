@@ -12,8 +12,16 @@ namespace Lyra.WebAPI.Controllers
 {
     public class AlbumController : CRUDController<Album, AlbumSearchRequest, AlbumUpsertRequest, AlbumUpsertRequest>
     {
-        public AlbumController(ICRUDService<Album, AlbumSearchRequest, AlbumUpsertRequest, AlbumUpsertRequest> service) : base(service)
+        private readonly IAlbumService _service;
+        public AlbumController(IAlbumService service) : base(service)
         {
+            _service = service;
+        }
+
+        [HttpGet("{id}/Tracks")]
+        public async Task<List<Track>> GetTracks(int id)
+        {
+            return await _service.GetTracks(id);
         }
     }
 }
