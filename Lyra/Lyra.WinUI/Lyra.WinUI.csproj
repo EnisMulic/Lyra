@@ -79,88 +79,88 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="UserControlls\Administrator\Album\ucAlbumUpsert.cs">
+    <Compile Include="UserControls\Administrator\Album\ucAlbumUpsert.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlls\Administrator\Album\ucAlbumUpsert.Designer.cs">
+    <Compile Include="UserControls\Administrator\Album\ucAlbumUpsert.Designer.cs">
       <DependentUpon>ucAlbumUpsert.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlls\Administrator\Album\ucAlbumList.cs">
+    <Compile Include="UserControls\Administrator\Album\ucAlbumList.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlls\Administrator\Album\ucAlbumList.Designer.cs">
+    <Compile Include="UserControls\Administrator\Album\ucAlbumList.Designer.cs">
       <DependentUpon>ucAlbumList.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlls\Administrator\Artist\ucArtistUpsert.cs">
+    <Compile Include="UserControls\Administrator\Artist\ucArtistUpsert.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlls\Administrator\Artist\ucArtistUpsert.Designer.cs">
+    <Compile Include="UserControls\Administrator\Artist\ucArtistUpsert.Designer.cs">
       <DependentUpon>ucArtistUpsert.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlls\Administrator\Artist\ucArtistList.cs">
+    <Compile Include="UserControls\Administrator\Artist\ucArtistList.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlls\Administrator\Artist\ucArtistList.Designer.cs">
+    <Compile Include="UserControls\Administrator\Artist\ucArtistList.Designer.cs">
       <DependentUpon>ucArtistList.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlls\Administrator\Playlist\ucPlaylistUpsert.cs">
+    <Compile Include="UserControls\Administrator\Playlist\ucPlaylistUpsert.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlls\Administrator\Playlist\ucPlaylistUpsert.Designer.cs">
+    <Compile Include="UserControls\Administrator\Playlist\ucPlaylistUpsert.Designer.cs">
       <DependentUpon>ucPlaylistUpsert.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlls\Administrator\Playlist\ucPlaylistList.cs">
+    <Compile Include="UserControls\Administrator\Playlist\ucPlaylistList.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlls\Administrator\Playlist\ucPlaylistList.Designer.cs">
+    <Compile Include="UserControls\Administrator\Playlist\ucPlaylistList.Designer.cs">
       <DependentUpon>ucPlaylistList.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlls\Administrator\Track\ucTrackUpsert.cs">
+    <Compile Include="UserControls\Administrator\Track\ucTrackUpsert.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlls\Administrator\Track\ucTrackUpsert.Designer.cs">
+    <Compile Include="UserControls\Administrator\Track\ucTrackUpsert.Designer.cs">
       <DependentUpon>ucTrackUpsert.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlls\Administrator\Track\ucTrackList.cs">
+    <Compile Include="UserControls\Administrator\Track\ucTrackList.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlls\Administrator\Track\ucTrackList.Designer.cs">
+    <Compile Include="UserControls\Administrator\Track\ucTrackList.Designer.cs">
       <DependentUpon>ucTrackList.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlls\Administrator\User\ucUserAdd.cs">
+    <Compile Include="UserControls\Administrator\User\ucUserAdd.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlls\Administrator\User\ucUserAdd.Designer.cs">
+    <Compile Include="UserControls\Administrator\User\ucUserAdd.Designer.cs">
       <DependentUpon>ucUserAdd.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlls\Administrator\User\ucUserEdit.cs">
+    <Compile Include="UserControls\Administrator\User\ucUserEdit.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlls\Administrator\User\ucUserEdit.Designer.cs">
+    <Compile Include="UserControls\Administrator\User\ucUserEdit.Designer.cs">
       <DependentUpon>ucUserEdit.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlls\Administrator\User\ucUserList.cs">
+    <Compile Include="UserControls\Administrator\User\ucUserList.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlls\Administrator\User\ucUserList.Designer.cs">
+    <Compile Include="UserControls\Administrator\User\ucUserList.Designer.cs">
       <DependentUpon>ucUserList.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlls\Shared\ucAppControl.cs">
+    <Compile Include="UserControls\Shared\ucAppControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlls\Shared\ucAppControl.Designer.cs">
+    <Compile Include="UserControls\Shared\ucAppControl.Designer.cs">
       <DependentUpon>ucAppControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlls\SignIn\ucSignIn.cs">
+    <Compile Include="UserControls\SignIn\ucSignIn.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlls\SignIn\ucSignIn.Designer.cs">
+    <Compile Include="UserControls\SignIn\ucSignIn.Designer.cs">
       <DependentUpon>ucSignIn.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserControlls\SignUp\ucSignUp.cs">
+    <Compile Include="UserControls\SignUp\ucSignUp.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UserControlls\SignUp\ucSignUp.Designer.cs">
+    <Compile Include="UserControls\SignUp\ucSignUp.Designer.cs">
       <DependentUpon>ucSignUp.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\User\frmUserPanel.cs">
@@ -180,46 +180,46 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlls\Administrator\Album\ucAlbumUpsert.resx">
+    <EmbeddedResource Include="UserControls\Administrator\Album\ucAlbumUpsert.resx">
       <DependentUpon>ucAlbumUpsert.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlls\Administrator\Album\ucAlbumList.resx">
+    <EmbeddedResource Include="UserControls\Administrator\Album\ucAlbumList.resx">
       <DependentUpon>ucAlbumList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlls\Administrator\Artist\ucArtistUpsert.resx">
+    <EmbeddedResource Include="UserControls\Administrator\Artist\ucArtistUpsert.resx">
       <DependentUpon>ucArtistUpsert.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlls\Administrator\Artist\ucArtistList.resx">
+    <EmbeddedResource Include="UserControls\Administrator\Artist\ucArtistList.resx">
       <DependentUpon>ucArtistList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlls\Administrator\Playlist\ucPlaylistUpsert.resx">
+    <EmbeddedResource Include="UserControls\Administrator\Playlist\ucPlaylistUpsert.resx">
       <DependentUpon>ucPlaylistUpsert.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlls\Administrator\Playlist\ucPlaylistList.resx">
+    <EmbeddedResource Include="UserControls\Administrator\Playlist\ucPlaylistList.resx">
       <DependentUpon>ucPlaylistList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlls\Administrator\Track\ucTrackUpsert.resx">
+    <EmbeddedResource Include="UserControls\Administrator\Track\ucTrackUpsert.resx">
       <DependentUpon>ucTrackUpsert.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlls\Administrator\Track\ucTrackList.resx">
+    <EmbeddedResource Include="UserControls\Administrator\Track\ucTrackList.resx">
       <DependentUpon>ucTrackList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlls\Administrator\User\ucUserAdd.resx">
+    <EmbeddedResource Include="UserControls\Administrator\User\ucUserAdd.resx">
       <DependentUpon>ucUserAdd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlls\Administrator\User\ucUserEdit.resx">
+    <EmbeddedResource Include="UserControls\Administrator\User\ucUserEdit.resx">
       <DependentUpon>ucUserEdit.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlls\Administrator\User\ucUserList.resx">
+    <EmbeddedResource Include="UserControls\Administrator\User\ucUserList.resx">
       <DependentUpon>ucUserList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlls\Shared\ucAppControl.resx">
+    <EmbeddedResource Include="UserControls\Shared\ucAppControl.resx">
       <DependentUpon>ucAppControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlls\SignIn\ucSignIn.resx">
+    <EmbeddedResource Include="UserControls\SignIn\ucSignIn.resx">
       <DependentUpon>ucSignIn.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UserControlls\SignUp\ucSignUp.resx">
+    <EmbeddedResource Include="UserControls\SignUp\ucSignUp.resx">
       <DependentUpon>ucSignUp.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />

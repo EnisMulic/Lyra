@@ -11,5 +11,6 @@ namespace Lyra.Model
         public int ReleaseYear { get; set; }
         public int ArtistID { get; set; }
         public Artist Artist { get; set; }
+        public List<AlbumTrack> Tracks { get; set; }
     }
 }

@@ -16,6 +16,8 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
         private readonly APIService _trackApiService = new APIService("Track");
         private readonly APIService _artistApiService = new APIService("Artist");
         private readonly int? _ID;
+        private static Model.Album _album = null;
+        
         public ucAlbumUpsert(int? ID = null)
         {
             _ID = ID;
@@ -33,18 +35,19 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
             cbArtist.DisplayMember = "Name";
 
             var tracks = await _trackApiService.Get<List<Model.Track>>(null);
-            dgvAllTracks.DataSource = tracks;
+            dgvAllTracks.DataSource = new BindingSource(tracks, null);
 
             if (_ID.HasValue)
             {
-                var album = await _albumApiService.GetById<Model.Album>(_ID.Value);
+                _album = await _albumApiService.GetById<Model.Album>(_ID.Value);
 
-                txtName.Text = album.Name;
-                txtReleaseYear.Text = album.ReleaseYear.ToString();
-                cbArtist.SelectedItem = artists.Where(i => i.ID == album.ArtistID).SingleOrDefault();
+                txtName.Text = _album.Name;
+                txtReleaseYear.Text = _album.ReleaseYear.ToString();
+                cbArtist.SelectedItem = artists.Where(i => i.ID == _album.ArtistID).SingleOrDefault();
 
                 var albumTracks = await _albumApiService.GetTracks<List<Model.Track>>(_ID.Value);
-                dgvAlbumTracks.DataSource = albumTracks;
+                dgvAlbumTracks.DataSource = new BindingSource(albumTracks, null);
+                
             }
 
             btnSave.Location = new Point(gbTracks.Location.X, gbTracks.Location.Y + gbTracks.Height + 20);
@@ -96,15 +99,30 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
         {
             try
             {
+                var albumTracks = new List<int>();
+                foreach(DataGridViewRow Row in dgvAlbumTracks.Rows)
+                {
+                    albumTracks.Add(Convert.ToInt32(Row.Cells["ID"].Value));
+                }
+
                 var request = new Model.Requests.AlbumUpsertRequest
                 {
                     Name = Convert.ToString(txtName.Text),
                     ReleaseYear = Convert.ToInt32(txtReleaseYear.Text),
-                    ArtistID = Convert.ToInt32(cbArtist.SelectedItem)
+                    ArtistID = Convert.ToInt32(cbArtist.SelectedItem),
+                    Tracks = albumTracks
+                    
                 };
 
                 if(_ID.HasValue)
                 {
+                    var tracksToDelete = _album.Tracks
+                        .Where(i => !albumTracks.Any(id => id.Equals(i.TrackID)))
+                        .Select(i => i.TrackID)
+                        .ToList();
+
+                    request.TracksToDelete = tracksToDelete;
+
                     await _albumApiService.Update<Model.Album>(_ID.Value, request);
                 }
                 else
@@ -118,6 +136,35 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
             {
 
             }
+        }
+
+        private void btnRemoveTrack_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var selectedRow = dgvAlbumTracks.CurrentRow;
+                dgvAlbumTracks.Rows.Remove(selectedRow);
+                //dgvAllTracks.Rows.Add(selectedRow);
+            }
+            catch(Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void btnAddTrack_Click(object sender, EventArgs e)
+        {
+            //try
+            //{
+            //    var selectedRow = dgvAllTracks.CurrentRow;
+            //    dgvAllTracks.Rows.Remove(selectedRow);
+            //    dgvAlbumTracks.Rows.Add(selectedRow);
+                
+            //}
+            //catch(Exception exception)
+            //{
+            //    MessageBox.Show(exception.Message);
+            //}
         }
     }
 }
