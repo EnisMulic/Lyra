@@ -12,8 +12,8 @@ namespace Lyra.Model.Requests
         [Required]
         public int ReleaseYear { get; set; }
         public int ArtistID { get; set; }
-        public List<int> Tracks { get; set; }
-        public List<int> TracksToDelete { get; set; }
+        public List<int> Tracks { get; set; } = new List<int>();
+        //public List<int> TracksToDelete { get; set; }
 
     }
 }

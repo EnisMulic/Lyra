@@ -47,5 +47,26 @@ namespace Lyra.WebAPI.Services
 
             return _mapper.Map<List<Model.Track>>(list);
         }
+
+        public override async Task<Model.Album> Insert(AlbumUpsertRequest request)
+        {
+            var entity = _mapper.Map<Database.Album>(request);
+
+            await _context.Albums.AddAsync(entity);
+            await _context.SaveChangesAsync();
+
+            foreach (var trackID in request.Tracks)
+            {
+                var albumTrack = new Database.AlbumTracks()
+                {
+                    AlbumID = entity.ID,
+                    TrackID = trackID
+                };
+                _context.AlbumTracks.Add(albumTrack);
+            }
+            await _context.SaveChangesAsync();
+
+            return _mapper.Map<Model.Album>(entity);
+        }
     }
 }

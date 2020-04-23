@@ -45,12 +45,12 @@
             this.lblArtist = new System.Windows.Forms.Label();
             this.cbArtist = new System.Windows.Forms.ComboBox();
             this.gbTracks = new System.Windows.Forms.GroupBox();
+            this.btnAddTrack = new System.Windows.Forms.Button();
+            this.btnRemoveTrack = new System.Windows.Forms.Button();
             this.lblAllTracks = new System.Windows.Forms.Label();
             this.lblAlbumTracks = new System.Windows.Forms.Label();
             this.dgvAllTracks = new System.Windows.Forms.DataGridView();
             this.dgvAlbumTracks = new System.Windows.Forms.DataGridView();
-            this.btnRemoveTrack = new System.Windows.Forms.Button();
-            this.btnAddTrack = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbAlbumImage)).BeginInit();
             this.gbInfo.SuspendLayout();
             this.gbTracks.SuspendLayout();
@@ -177,6 +177,28 @@
             this.gbTracks.TabStop = false;
             this.gbTracks.Text = "Tracks";
             // 
+            // btnAddTrack
+            // 
+            this.btnAddTrack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddTrack.Location = new System.Drawing.Point(364, 64);
+            this.btnAddTrack.Name = "btnAddTrack";
+            this.btnAddTrack.Size = new System.Drawing.Size(89, 23);
+            this.btnAddTrack.TabIndex = 5;
+            this.btnAddTrack.Text = "Add";
+            this.btnAddTrack.UseVisualStyleBackColor = true;
+            this.btnAddTrack.Click += new System.EventHandler(this.btnAddTrack_Click);
+            // 
+            // btnRemoveTrack
+            // 
+            this.btnRemoveTrack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRemoveTrack.Location = new System.Drawing.Point(16, 64);
+            this.btnRemoveTrack.Name = "btnRemoveTrack";
+            this.btnRemoveTrack.Size = new System.Drawing.Size(89, 23);
+            this.btnRemoveTrack.TabIndex = 4;
+            this.btnRemoveTrack.Text = "Remove";
+            this.btnRemoveTrack.UseVisualStyleBackColor = true;
+            this.btnRemoveTrack.Click += new System.EventHandler(this.btnRemoveTrack_Click);
+            // 
             // lblAllTracks
             // 
             this.lblAllTracks.AutoSize = true;
@@ -231,7 +253,7 @@
             this.dgvAllTracks.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvAllTracks.Size = new System.Drawing.Size(338, 150);
             this.dgvAllTracks.TabIndex = 1;
-            this.dgvAllTracks.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvAllTracks_DataBindingComplete);
+            this.dgvAllTracks.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvAllTracks_RowsAdded);
             // 
             // dgvAlbumTracks
             // 
@@ -267,29 +289,7 @@
             this.dgvAlbumTracks.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvAlbumTracks.Size = new System.Drawing.Size(332, 150);
             this.dgvAlbumTracks.TabIndex = 0;
-            this.dgvAlbumTracks.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvAlbumTracks_DataBindingComplete);
-            // 
-            // btnRemoveTrack
-            // 
-            this.btnRemoveTrack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemoveTrack.Location = new System.Drawing.Point(16, 64);
-            this.btnRemoveTrack.Name = "btnRemoveTrack";
-            this.btnRemoveTrack.Size = new System.Drawing.Size(89, 23);
-            this.btnRemoveTrack.TabIndex = 4;
-            this.btnRemoveTrack.Text = "Remove";
-            this.btnRemoveTrack.UseVisualStyleBackColor = true;
-            this.btnRemoveTrack.Click += new System.EventHandler(this.btnRemoveTrack_Click);
-            // 
-            // btnAddTrack
-            // 
-            this.btnAddTrack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddTrack.Location = new System.Drawing.Point(364, 64);
-            this.btnAddTrack.Name = "btnAddTrack";
-            this.btnAddTrack.Size = new System.Drawing.Size(89, 23);
-            this.btnAddTrack.TabIndex = 5;
-            this.btnAddTrack.Text = "Add";
-            this.btnAddTrack.UseVisualStyleBackColor = true;
-            this.btnAddTrack.Click += new System.EventHandler(this.btnAddTrack_Click);
+            this.dgvAlbumTracks.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvAlbumTracks_RowsAdded);
             // 
             // ucAlbumUpsert
             // 

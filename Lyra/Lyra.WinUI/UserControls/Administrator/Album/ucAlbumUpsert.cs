@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Lyra.WinUI.Helpers;
 
 namespace Lyra.WinUI.UserControlls.Administrator.Album
 {
@@ -27,6 +28,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
         private async void ucAlbumUpsert_Load(object sender, EventArgs e)
         {
             AutoScroll = true;
+            var props = new List<string> { "ID", "Name", "Length" };
 
             var artists = await _artistApiService.Get<List<Model.Artist>>(null);
 
@@ -35,8 +37,8 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
             cbArtist.DisplayMember = "Name";
 
             var tracks = await _trackApiService.Get<List<Model.Track>>(null);
-            dgvAllTracks.DataSource = new BindingSource(tracks, null);
 
+            List<Model.Track> albumTracks = null;
             if (_ID.HasValue)
             {
                 _album = await _albumApiService.GetById<Model.Album>(_ID.Value);
@@ -45,13 +47,18 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
                 txtReleaseYear.Text = _album.ReleaseYear.ToString();
                 cbArtist.SelectedItem = artists.Where(i => i.ID == _album.ArtistID).SingleOrDefault();
 
-                var albumTracks = await _albumApiService.GetTracks<List<Model.Track>>(_ID.Value);
-                dgvAlbumTracks.DataSource = new BindingSource(albumTracks, null);
-                
+                albumTracks = await _albumApiService.GetTracks<List<Model.Track>>(_ID.Value);
+                DataGridViewHelper.PopulateWithList(dgvAlbumTracks, albumTracks, props);
+
+                tracks.RemoveAll(i => albumTracks.Select(j => j.ID).Contains(i.ID));
             }
+            else
+            {
+                DataGridViewHelper.PopulateWithList(dgvAlbumTracks, new List<Model.Track>(), props);
+            }
+            DataGridViewHelper.PopulateWithList(dgvAllTracks, tracks, props);
 
             btnSave.Location = new Point(gbTracks.Location.X, gbTracks.Location.Y + gbTracks.Height + 20);
-
         }
 
         private void SetDataGridViewSize(DataGridView dgv)
@@ -70,13 +77,13 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
             gbTracks.Height = (dgvAllTracks.Height > dgvAlbumTracks.Height ? dgvAllTracks.Height : dgvAlbumTracks.Height) + 100;
         }
 
-        private void dgvAlbumTracks_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        private void dgvAlbumTracks_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             SetDataGridViewSize(dgvAlbumTracks);
             SetGroupBoxTracksHeight();
         }
 
-        private void dgvAllTracks_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        private void dgvAllTracks_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             SetDataGridViewSize(dgvAllTracks);
             SetGroupBoxTracksHeight();
@@ -95,23 +102,52 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
             }
         }
 
+        private void btnRemoveTrack_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var selectedRow = dgvAlbumTracks.CurrentRow;
+                dgvAlbumTracks.Rows.Remove(selectedRow);
+                dgvAllTracks.Rows.Add(selectedRow);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void btnAddTrack_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var selectedRow = dgvAllTracks.CurrentRow;
+                dgvAllTracks.Rows.Remove(selectedRow);
+                dgvAlbumTracks.Rows.Add(selectedRow);
+
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
+
         private async void btnSave_Click(object sender, EventArgs e)
         {
             try
             {
                 var albumTracks = new List<int>();
-                foreach(DataGridViewRow Row in dgvAlbumTracks.Rows)
+                foreach (DataGridViewRow Row in dgvAlbumTracks.Rows)
                 {
                     albumTracks.Add(Convert.ToInt32(Row.Cells["ID"].Value));
                 }
 
-                var request = new Model.Requests.AlbumUpsertRequest
+
+                var request = new Model.Requests.AlbumUpsertRequest()
                 {
                     Name = Convert.ToString(txtName.Text),
                     ReleaseYear = Convert.ToInt32(txtReleaseYear.Text),
-                    ArtistID = Convert.ToInt32(cbArtist.SelectedItem),
+                    ArtistID = Convert.ToInt32(cbArtist.SelectedValue),
                     Tracks = albumTracks
-                    
                 };
 
                 if(_ID.HasValue)
@@ -121,7 +157,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
                         .Select(i => i.TrackID)
                         .ToList();
 
-                    request.TracksToDelete = tracksToDelete;
+                    //request.TracksToDelete = tracksToDelete;
 
                     await _albumApiService.Update<Model.Album>(_ID.Value, request);
                 }
@@ -132,39 +168,10 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
 
                 MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch
+            catch(Exception error)
             {
-
+                MessageBox.Show(error.Message);
             }
-        }
-
-        private void btnRemoveTrack_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var selectedRow = dgvAlbumTracks.CurrentRow;
-                dgvAlbumTracks.Rows.Remove(selectedRow);
-                //dgvAllTracks.Rows.Add(selectedRow);
-            }
-            catch(Exception exception)
-            {
-                MessageBox.Show(exception.Message);
-            }
-        }
-
-        private void btnAddTrack_Click(object sender, EventArgs e)
-        {
-            //try
-            //{
-            //    var selectedRow = dgvAllTracks.CurrentRow;
-            //    dgvAllTracks.Rows.Remove(selectedRow);
-            //    dgvAlbumTracks.Rows.Add(selectedRow);
-                
-            //}
-            //catch(Exception exception)
-            //{
-            //    MessageBox.Show(exception.Message);
-            //}
         }
     }
 }
