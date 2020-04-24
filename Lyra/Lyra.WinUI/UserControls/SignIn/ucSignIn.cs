@@ -98,7 +98,7 @@ namespace Lyra.WinUI.SingIn
             }
         }
 
-        private void LoadPanel(ICollection<Model.UserRoles> userRoles)
+        private void LoadPanel(ICollection<Model.UserRole> userRoles)
         {
             var adminRole = userRoles.FirstOrDefault(i => i.Role.Name == "Administrator");
             if(adminRole != null)

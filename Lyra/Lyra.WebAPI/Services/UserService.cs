@@ -110,7 +110,7 @@ namespace Lyra.WebAPI.Services
 
             foreach(var roleID in request.Roles)
             {
-                var role = new Database.UserRoles()
+                var role = new Database.UserRole()
                 {
                     UserID = entity.ID,
                     RoleID = roleID
@@ -148,12 +148,12 @@ namespace Lyra.WebAPI.Services
 
                 if(userRole == null)
                 {
-                    var newRole = new UserRoles()
+                    var newRole = new UserRole()
                     {
                         UserID = id,
                         RoleID = RoleID
                     };
-                    await _context.Set<UserRoles>().AddAsync(newRole);
+                    await _context.Set<UserRole>().AddAsync(newRole);
                 }
             }
 
@@ -166,7 +166,7 @@ namespace Lyra.WebAPI.Services
 
                 if (userRole != null)
                 {
-                    _context.Set<UserRoles>().Remove(userRole);
+                    _context.Set<UserRole>().Remove(userRole);
                 }
             }
 

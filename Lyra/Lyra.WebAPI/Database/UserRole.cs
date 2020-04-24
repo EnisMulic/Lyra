@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Lyra.WebAPI.Database
 {
-    public partial class UserRoles
+    public partial class UserRole
     {
         public int UserID { get; set; }
         public User User { get; set; }

@@ -25,7 +25,7 @@ namespace Lyra.WebAPI.Database
         public DbSet<PlaylistTrack> PlaylistTracks { get; set; }
         public DbSet<AlbumTrack> AlbumTracks { get; set; }
         public DbSet<Role> Roles  { get; set; }
-        public DbSet<UserRoles> UserRoles  { get; set; }
+        public DbSet<UserRole> UserRoles  { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -37,7 +37,7 @@ namespace Lyra.WebAPI.Database
                 .HasKey(k => new { k.AlbumID, k.TrackID });
             modelBuilder.Entity<TrackArtist>()
                 .HasKey(k => new { k.TrackID, k.ArtistID });
-            modelBuilder.Entity<UserRoles>()
+            modelBuilder.Entity<UserRole>()
                 .HasKey(k => new { k.UserID, k.RoleID });
 
             modelBuilder.Entity<Artist>()

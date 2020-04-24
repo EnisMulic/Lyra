@@ -10,7 +10,7 @@ namespace Lyra.WebAPI.Database
         public User()
         {
             Playlists = new HashSet<Playlist>();
-            UserRoles = new HashSet<UserRoles>();
+            UserRoles = new HashSet<UserRole>();
         }
         public int ID { get; set; }
         public string FirstName { get; set; }
@@ -22,6 +22,6 @@ namespace Lyra.WebAPI.Database
         public string PasswordHash { get; set; }
         public string PasswordSalt { get; set; }
         public ICollection<Playlist> Playlists { get; set; }
-        public ICollection<UserRoles> UserRoles { get; set; }
+        public ICollection<UserRole> UserRoles { get; set; }
     }
 }
