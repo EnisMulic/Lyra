@@ -58,6 +58,11 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
             }
             DataGridViewHelper.PopulateWithList(dgvAllTracks, tracks, props);
 
+            SetButtonSavePosition();
+        }
+
+        private void SetButtonSavePosition()
+        {
             btnSave.Location = new Point(gbTracks.Location.X, gbTracks.Location.Y + gbTracks.Height + 20);
         }
 
@@ -81,12 +86,14 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
         {
             SetDataGridViewSize(dgvAlbumTracks);
             SetGroupBoxTracksHeight();
+            SetButtonSavePosition();
         }
 
         private void dgvAllTracks_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             SetDataGridViewSize(dgvAllTracks);
             SetGroupBoxTracksHeight();
+            SetButtonSavePosition();
         }
 
         private void btnUploadImage_Click(object sender, EventArgs e)
@@ -152,12 +159,12 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
 
                 if(_ID.HasValue)
                 {
-                    var tracksToDelete = _album.Tracks
+                    var tracksToDelete = _album.AlbumTracks
                         .Where(i => !albumTracks.Any(id => id.Equals(i.TrackID)))
                         .Select(i => i.TrackID)
                         .ToList();
 
-                    //request.TracksToDelete = tracksToDelete;
+                    request.TracksToDelete = tracksToDelete;
 
                     await _albumApiService.Update<Model.Album>(_ID.Value, request);
                 }

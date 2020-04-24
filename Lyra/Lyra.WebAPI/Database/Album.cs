@@ -13,11 +13,6 @@ namespace Lyra.WebAPI.Database
         public string CoverArtPath { get; set; }
         public int ArtistID { get; set; }
         public Artist Artist { get; set; }
-        public ICollection<Track> Tracks { get; set; }
-
-        public Album()
-        {
-            Tracks = new HashSet<Track>();
-        }
+        public ICollection<AlbumTrack> AlbumTracks { get; set; }
     }
 }

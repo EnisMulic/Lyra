@@ -31,10 +31,19 @@ namespace Lyra.WebAPI.Services
             }
 
 
-
             var list = await query.ToListAsync();
 
             return _mapper.Map<List<Model.Album>>(list);
+        }
+
+        public override async Task<Model.Album> GetById(int id)
+        {
+            var entity = await _context.Albums
+                .Include(i => i.AlbumTracks)
+                .Where(i => i.ID == id)
+                .SingleOrDefaultAsync();
+
+            return _mapper.Map<Model.Album>(entity);
         }
 
         public async Task<List<Model.Track>> GetTracks(int ID)
@@ -57,13 +66,56 @@ namespace Lyra.WebAPI.Services
 
             foreach (var trackID in request.Tracks)
             {
-                var albumTrack = new Database.AlbumTracks()
+                var albumTrack = new Database.AlbumTrack()
                 {
                     AlbumID = entity.ID,
                     TrackID = trackID
                 };
                 _context.AlbumTracks.Add(albumTrack);
             }
+            await _context.SaveChangesAsync();
+
+            return _mapper.Map<Model.Album>(entity);
+        }
+
+        public override async Task<Model.Album> Update(int id, AlbumUpsertRequest request)
+        {
+            var entity = _context.Albums.Find(id);
+            _context.Albums.Attach(entity);
+            _context.Albums.Update(entity);
+
+
+            foreach (var TrackID in request.Tracks)
+            {
+                var albumTrack = await _context.AlbumTracks
+                    .Where(i => i.TrackID == TrackID && i.AlbumID == id)
+                    .SingleOrDefaultAsync();
+
+                if (albumTrack == null)
+                {
+                    var newAlbumTrack = new Database.AlbumTrack()
+                    {
+                        AlbumID = id,
+                        TrackID = TrackID
+                    };
+                    await _context.Set<Database.AlbumTrack>().AddAsync(newAlbumTrack);
+                }
+            }
+
+
+            foreach (var TrackID in request.TracksToDelete)
+            {
+                var albumTrack = await _context.AlbumTracks
+                    .Where(i => i.TrackID == TrackID && i.AlbumID == id)
+                    .SingleOrDefaultAsync();
+
+                if (albumTrack != null)
+                {
+                    _context.Set<Database.AlbumTrack>().Remove(albumTrack);
+                }
+            }
+
+            _mapper.Map(request, entity);
             await _context.SaveChangesAsync();
 
             return _mapper.Map<Model.Album>(entity);
