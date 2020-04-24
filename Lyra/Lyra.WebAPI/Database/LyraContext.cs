@@ -23,7 +23,7 @@ namespace Lyra.WebAPI.Database
         public DbSet<TrackGenre> TrackGenres { get; set; }
         public DbSet<TrackArtist> TrackArtist { get; set; }
         public DbSet<PlaylistTrack> PlaylistTracks { get; set; }
-        public DbSet<AlbumTracks> AlbumTracks { get; set; }
+        public DbSet<AlbumTrack> AlbumTracks { get; set; }
         public DbSet<Role> Roles  { get; set; }
         public DbSet<UserRoles> UserRoles  { get; set; }
 
@@ -33,13 +33,12 @@ namespace Lyra.WebAPI.Database
                 .HasKey(k => new { k.GenreID, k.TrackID });
             modelBuilder.Entity<PlaylistTrack>()
                 .HasKey(k => new { k.PlaylistID, k.TrackID });
-            modelBuilder.Entity<AlbumTracks>()
+            modelBuilder.Entity<AlbumTrack>()
                 .HasKey(k => new { k.AlbumID, k.TrackID });
             modelBuilder.Entity<TrackArtist>()
                 .HasKey(k => new { k.TrackID, k.ArtistID });
-
-
-
+            modelBuilder.Entity<UserRoles>()
+                .HasKey(k => new { k.UserID, k.RoleID });
 
             modelBuilder.Entity<Artist>()
                 .HasData
@@ -100,39 +99,39 @@ namespace Lyra.WebAPI.Database
                     new Track { ID  = 29, Length = new TimeSpan(0, 1, 56), Name = "Don't Get Lost In Heaven" },
                     new Track { ID  = 30, Length = new TimeSpan(0, 4, 21), Name = "Demon Days" }
                 );
-            modelBuilder.Entity<AlbumTracks>()
+            modelBuilder.Entity<AlbumTrack>()
                 .HasData
                 (
-                    new AlbumTracks { AlbumID = 1, TrackID = 1},
-                    new AlbumTracks { AlbumID = 1, TrackID = 2},
-                    new AlbumTracks { AlbumID = 1, TrackID = 3},
-                    new AlbumTracks { AlbumID = 1, TrackID = 4},
-                    new AlbumTracks { AlbumID = 1, TrackID = 5},
-                    new AlbumTracks { AlbumID = 1, TrackID = 6},
-                    new AlbumTracks { AlbumID = 1, TrackID = 7},
-                    new AlbumTracks { AlbumID = 1, TrackID = 8},
-                    new AlbumTracks { AlbumID = 1, TrackID = 9},
-                    new AlbumTracks { AlbumID = 1, TrackID = 10},
-                    new AlbumTracks { AlbumID = 1, TrackID = 11},
-                    new AlbumTracks { AlbumID = 1, TrackID = 12},
-                    new AlbumTracks { AlbumID = 1, TrackID = 13},
-                    new AlbumTracks { AlbumID = 1, TrackID = 14},
-                    new AlbumTracks { AlbumID = 1, TrackID = 15},
-                    new AlbumTracks { AlbumID = 2, TrackID = 1 },
-                    new AlbumTracks { AlbumID = 2, TrackID = 2 },
-                    new AlbumTracks { AlbumID = 2, TrackID = 3 },
-                    new AlbumTracks { AlbumID = 2, TrackID = 4 },
-                    new AlbumTracks { AlbumID = 2, TrackID = 5 },
-                    new AlbumTracks { AlbumID = 2, TrackID = 6 },
-                    new AlbumTracks { AlbumID = 2, TrackID = 7 },
-                    new AlbumTracks { AlbumID = 2, TrackID = 8 },
-                    new AlbumTracks { AlbumID = 2, TrackID = 9 },
-                    new AlbumTracks { AlbumID = 2, TrackID = 10 },
-                    new AlbumTracks { AlbumID = 2, TrackID = 11 },
-                    new AlbumTracks { AlbumID = 2, TrackID = 12 },
-                    new AlbumTracks { AlbumID = 2, TrackID = 13 },
-                    new AlbumTracks { AlbumID = 2, TrackID = 14 },
-                    new AlbumTracks { AlbumID = 2, TrackID = 15 }
+                    new AlbumTrack { AlbumID = 1, TrackID = 1},
+                    new AlbumTrack { AlbumID = 1, TrackID = 2},
+                    new AlbumTrack { AlbumID = 1, TrackID = 3},
+                    new AlbumTrack { AlbumID = 1, TrackID = 4},
+                    new AlbumTrack { AlbumID = 1, TrackID = 5},
+                    new AlbumTrack { AlbumID = 1, TrackID = 6},
+                    new AlbumTrack { AlbumID = 1, TrackID = 7},
+                    new AlbumTrack { AlbumID = 1, TrackID = 8},
+                    new AlbumTrack { AlbumID = 1, TrackID = 9},
+                    new AlbumTrack { AlbumID = 1, TrackID = 10},
+                    new AlbumTrack { AlbumID = 1, TrackID = 11},
+                    new AlbumTrack { AlbumID = 1, TrackID = 12},
+                    new AlbumTrack { AlbumID = 1, TrackID = 13},
+                    new AlbumTrack { AlbumID = 1, TrackID = 14},
+                    new AlbumTrack { AlbumID = 1, TrackID = 15},
+                    new AlbumTrack { AlbumID = 2, TrackID = 1 },
+                    new AlbumTrack { AlbumID = 2, TrackID = 2 },
+                    new AlbumTrack { AlbumID = 2, TrackID = 3 },
+                    new AlbumTrack { AlbumID = 2, TrackID = 4 },
+                    new AlbumTrack { AlbumID = 2, TrackID = 5 },
+                    new AlbumTrack { AlbumID = 2, TrackID = 6 },
+                    new AlbumTrack { AlbumID = 2, TrackID = 7 },
+                    new AlbumTrack { AlbumID = 2, TrackID = 8 },
+                    new AlbumTrack { AlbumID = 2, TrackID = 9 },
+                    new AlbumTrack { AlbumID = 2, TrackID = 10 },
+                    new AlbumTrack { AlbumID = 2, TrackID = 11 },
+                    new AlbumTrack { AlbumID = 2, TrackID = 12 },
+                    new AlbumTrack { AlbumID = 2, TrackID = 13 },
+                    new AlbumTrack { AlbumID = 2, TrackID = 14 },
+                    new AlbumTrack { AlbumID = 2, TrackID = 15 }
                 );
             modelBuilder.Entity<Genre>()
                 .HasData
