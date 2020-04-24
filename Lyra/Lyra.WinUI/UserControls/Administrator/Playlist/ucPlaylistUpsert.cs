@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Lyra.WinUI.Helpers;
 
 namespace Lyra.WinUI.UserControlls.Administrator.Playlist
 {
@@ -14,6 +15,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Playlist
     {
         private readonly APIService _playlistApiService = new APIService("Playlist");
         private readonly APIService _trackApiService = new APIService("Track");
+        private static Model.Playlist _playlist = null;
         private readonly int? _ID;
         public ucPlaylistUpsert(int? ID = null)
         {
@@ -24,78 +26,36 @@ namespace Lyra.WinUI.UserControlls.Administrator.Playlist
         private async void ucPlaylistUpsert_Load(object sender, EventArgs e)
         {
             AutoScroll = true;
-
+            var props = new List<string> { "ID", "Name", "Length" };
 
             var tracks = await _trackApiService.Get<List<Model.Track>>(null);
-            dgvAllTracks.DataSource = tracks;
 
+            List<Model.Track> playlistTracks = null;
             if (_ID.HasValue)
             {
-                var playlist = await _playlistApiService.GetById<Model.Playlist>(_ID.Value);
+                _playlist = await _playlistApiService.GetById<Model.Playlist>(_ID.Value);
 
-                txtName.Text = playlist.Name;
-                txtCreatedAt.Text = playlist.CreatedAt;
-                txtOwner.Text = playlist.User.Username;
+                txtName.Text = _playlist.Name;
+                txtCreatedAt.Text = _playlist.CreatedAt;
+                txtOwner.Text = _playlist.User.Username;
 
-                var playlistTracks = await _playlistApiService.GetTracks<List<Model.Track>>(_ID.Value);
-                dgvPlaylistTracks.DataSource = playlistTracks;
+                playlistTracks = await _playlistApiService.GetTracks<List<Model.Track>>(_ID.Value);
+                DataGridViewHelper.PopulateWithList(dgvPlaylistTracks, playlistTracks, props);
+
+                tracks.RemoveAll(i => playlistTracks.Select(j => j.ID).Contains(i.ID));
             }
+            else
+            {
+                DataGridViewHelper.PopulateWithList(dgvPlaylistTracks, new List<Model.Track>(), props);
+            }
+            DataGridViewHelper.PopulateWithList(dgvAllTracks, tracks, props);
 
+            SetButtonSavePosition();
+        }
+
+        private void SetButtonSavePosition()
+        {
             btnSave.Location = new Point(gbTracks.Location.X, gbTracks.Location.Y + gbTracks.Height + 20);
-        }
-
-        private void SetDataGridViewSize(DataGridView dgv)
-        {
-            var height = 40;
-            foreach (DataGridViewRow dr in dgv.Rows)
-            {
-                height += dr.Height;
-            }
-
-            dgv.Height = height;
-        }
-
-        private void SetGroupBoxTracksHeight()
-        {
-            gbTracks.Height = (dgvAllTracks.Height > dgvPlaylistTracks.Height ? dgvAllTracks.Height : dgvPlaylistTracks.Height) + 100;
-        }
-
-        private void dgvPlaylistTracks_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            SetDataGridViewSize(dgvPlaylistTracks);
-            SetGroupBoxTracksHeight();
-        }
-
-        private void dgvAllTracks_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
-        {
-            SetDataGridViewSize(dgvAllTracks);
-            SetGroupBoxTracksHeight();
-        }
-
-        private async void btnSave_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                var request = new Model.Requests.PlaylistUpsertRequest
-                {
-                    Name = Convert.ToString(txtName.Text)
-                };
-
-                if (_ID.HasValue)
-                {
-                    await _playlistApiService.Update<Model.Playlist>(_ID.Value, request);
-                }
-                else
-                {
-                    await _playlistApiService.Insert<Model.Playlist>(request);
-                }
-
-                MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            }
-            catch
-            {
-
-            }
         }
 
         private void btnUploadImage_Click(object sender, EventArgs e)
@@ -111,6 +71,111 @@ namespace Lyra.WinUI.UserControlls.Administrator.Playlist
             }
         }
 
+        private void btnAddTrack_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var selectedRow = dgvAllTracks.CurrentRow;
+                dgvAllTracks.Rows.Remove(selectedRow);
+                dgvPlaylistTracks.Rows.Add(selectedRow);
+
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void btnRemoveTrack_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var selectedRow = dgvPlaylistTracks.CurrentRow;
+                dgvPlaylistTracks.Rows.Remove(selectedRow);
+                dgvAllTracks.Rows.Add(selectedRow);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show(exception.Message);
+            }
+        }
+
+        private void SetDataGridViewSize(DataGridView dgv)
+        {
+            var height = 40;
+            foreach (DataGridViewRow dr in dgv.Rows)
+            {
+                height += dr.Height;
+            }
+
+            dgv.Height = height;
+        }
+
         
+
+        private void SetGroupBoxTracksHeight()
+        {
+            gbTracks.Height = (dgvAllTracks.Height > dgvPlaylistTracks.Height ? dgvAllTracks.Height : dgvPlaylistTracks.Height) + 100;
+        }
+
+        private void dgvPlaylistTracks_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            SetDataGridViewSize(dgvPlaylistTracks);
+            SetGroupBoxTracksHeight();
+            SetButtonSavePosition();
+        }
+
+        private void dgvAllTracks_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        {
+            SetDataGridViewSize(dgvAllTracks);
+            SetGroupBoxTracksHeight();
+            SetButtonSavePosition();
+        }
+
+
+        private async void btnSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var playlistTracks = new List<int>();
+                foreach (DataGridViewRow Row in dgvPlaylistTracks.Rows)
+                {
+                    playlistTracks.Add(Convert.ToInt32(Row.Cells["ID"].Value));
+                }
+
+
+                var request = new Model.Requests.PlaylistUpsertRequest
+                {
+                    Name = Convert.ToString(txtName.Text),
+                    Tracks = playlistTracks
+                };
+
+                if (_ID.HasValue)
+                {
+                    var tracksToDelete = _playlist.PlaylistTracks
+                        .Where(i => !playlistTracks.Any(j => j.Equals(i.TrackID)))
+                        .Select(i => i.TrackID)
+                        .ToList();
+
+                    request.TracksToDelete = tracksToDelete;
+                    request.UserID = _playlist.UserID;
+                    request.CreatedAt = _playlist.CreatedAt;
+
+                    await _playlistApiService.Update<Model.Playlist>(_ID.Value, request);
+                }
+                else
+                {
+                    request.CreatedAt = DateTime.Now.ToString();
+                    request.UserID = 9; //TODO : Get LoggedIn User
+                    await _playlistApiService.Insert<Model.Playlist>(request);
+                }
+
+                MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception error)
+            {
+                MessageBox.Show(error.Message);
+            }
+        }
     }
 }

@@ -34,6 +34,7 @@ namespace Lyra.WinUI.Helpers
                         if (properties[i] == typeProperty.Name)
                         {
                             values[i] = typeProperty.GetValue(item).ToString();
+                            break;
                         }
                     }
                 }

@@ -10,7 +10,8 @@ namespace Lyra.Model.Requests
         [Required]
         public string Name { get; set; }
         public string CreatedAt { get; set; }
-        public List<int> Tracks { get; set; }
+        public List<int> Tracks { get; set; } = new List<int>();
+        public List<int> TracksToDelete { get; set; } = new List<int>();
         public int UserID { get; set; }
     }
 }

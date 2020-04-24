@@ -11,5 +11,6 @@ namespace Lyra.Model
         public string CreatedAt { get; set; }
         public int UserID { get; set; }
         public User User { get; set; }
+        public List<PlaylistTrack> PlaylistTracks { get; set; }
     }
 }

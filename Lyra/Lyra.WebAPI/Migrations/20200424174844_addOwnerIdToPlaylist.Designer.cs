@@ -4,14 +4,16 @@ using Lyra.WebAPI.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Lyra.WebAPI.Migrations
 {
     [DbContext(typeof(LyraContext))]
-    partial class LyraContextModelSnapshot : ModelSnapshot
+    [Migration("20200424174844_addOwnerIdToPlaylist")]
+    partial class addOwnerIdToPlaylist
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -381,9 +383,14 @@ namespace Lyra.WebAPI.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("PlaylistID")
+                        .HasColumnType("int");
+
                     b.HasKey("ID");
 
                     b.HasIndex("AlbumID");
+
+                    b.HasIndex("PlaylistID");
 
                     b.ToTable("Tracks");
 
@@ -690,7 +697,7 @@ namespace Lyra.WebAPI.Migrations
             modelBuilder.Entity("Lyra.WebAPI.Database.PlaylistTrack", b =>
                 {
                     b.HasOne("Lyra.WebAPI.Database.Playlist", "Playlist")
-                        .WithMany("Tracks")
+                        .WithMany()
                         .HasForeignKey("PlaylistID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -707,6 +714,10 @@ namespace Lyra.WebAPI.Migrations
                     b.HasOne("Lyra.WebAPI.Database.Album", null)
                         .WithMany("Tracks")
                         .HasForeignKey("AlbumID");
+
+                    b.HasOne("Lyra.WebAPI.Database.Playlist", null)
+                        .WithMany("Tracks")
+                        .HasForeignKey("PlaylistID");
                 });
 
             modelBuilder.Entity("Lyra.WebAPI.Database.TrackArtist", b =>
