@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Lyra.Model.Requests;
+using Lyra.Model;
 
 namespace Lyra.WinUI.UserControlls.Administrator.Track
 {
@@ -16,6 +17,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Track
         private readonly APIService _trackApiService = new APIService("Track");
         private readonly APIService _artistApiService = new APIService("Artist");
         private readonly APIService _genreApiService = new APIService("Genre");
+        private static Model.Track _track = null;
         private readonly int? _ID;
         public ucTrackUpsert(int? ID = null)
         {
@@ -62,18 +64,18 @@ namespace Lyra.WinUI.UserControlls.Administrator.Track
 
             if (_ID.HasValue)
             {
-                var track = await _trackApiService.GetById<Model.Track>(_ID);
+                _track = await _trackApiService.GetById<Model.Track>(_ID);
 
-                txtName.Text = track.Name;
-                txtLength.Text = track.Length;
+                txtName.Text = _track.Name;
+                txtLength.Text = _track.Length;
 
                 //Set Main Artist
-                cbMainArtist.SelectedItem = track.Artists
+                cbMainArtist.SelectedItem = _track.Artists
                     .Where(i => i.TrackArtistRole == "Main")
                     .SingleOrDefault().ArtistID;
 
                 //Get Track Featured Artists IDs
-                var trackFeaturedArtistsIDs = track.Artists
+                var trackFeaturedArtistsIDs = _track.Artists
                     .Where(i => i.TrackArtistRole == "Feature")
                     .Select(i => i.ArtistID)
                     .ToList();
@@ -86,7 +88,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Track
                 BindListBox(lbFeaturedArtists, trackFeaturedArtists);
 
                 //Get Track Genres IDs
-                var trackGenresIDs = track.Genres
+                var trackGenresIDs = _track.Genres
                     .Select(i => i.GenreID)
                     .ToList();
 
@@ -135,24 +137,47 @@ namespace Lyra.WinUI.UserControlls.Administrator.Track
         {
             try
             {
+                var trackGenres = lbGenres.Items.Cast<Model.Genre>().Select(i => i.ID).ToList();
+                var trackArtists = lbFeaturedArtists.Items.Cast<Model.Artist>().Select(i => i.ID).ToList();
+                int mainArtist = Convert.ToInt32(cbMainArtist.SelectedValue);
+
                 var request = new TrackUpsertRequest()
                 {
-                    Name = Convert.ToString(txtName.Text),
-                    Length = TimeSpan.Parse(Convert.ToString(txtLength.Text))
+                    Name = Convert.ToString(txtName.Text)
+                    //Length = TimeSpan.Parse(Convert.ToString(txtLength.Text))
+                    //Genres = trackGenres,
+                    //MainArtist = mainArtist,
+                    //FeaturedArtists = trackArtists
                 };
 
+                
                 if(_ID.HasValue)
                 {
+                    var genresToDelete = _track.Genres
+                        .Where(i => !trackGenres.Any(j => j.Equals(i.GenreID)))
+                        .Select(i => i.TrackID)
+                        .ToList();
+
+                    var artistToDelete = _track.Artists
+                        .Where(i => !trackArtists.Any(j => j.Equals(i.ArtistID)))
+                        .Select(i => i.TrackID)
+                        .ToList();
+
+                    //request.GenresToDelete = genresToDelete;
+                    //request.ArtistToDelete = artistToDelete;
+
                     await _trackApiService.Update<Model.Track>(_ID.Value, request);
                 }
                 else
                 {
                     await _trackApiService.Insert<Model.Track>(request);   
                 }
-            }
-            catch
-            {
 
+                MessageBox.Show("Success", "Success", MessageBoxButtons.OK);
+            }
+            catch(Exception error)
+            {
+                MessageBox.Show(error.Message);
             }
         }
     }
