@@ -13,6 +13,6 @@ namespace Lyra.Model
         public string PhoneNumber { get; set; }
         public string Username { get; set; }
 
-        public ICollection<UserRoles> UserRoles { get; set; }
+        public ICollection<UserRole> UserRoles { get; set; }
     }
 }
