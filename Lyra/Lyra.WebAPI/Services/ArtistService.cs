@@ -44,7 +44,7 @@ namespace Lyra.WebAPI.Services
 
         public async Task<List<Model.Track>> GetTracks(int ID)
         {
-            var list = await _context.TrackArtist
+            var list = await _context.TrackArtists
                 .Include(i => i.Track)
                 .Where(i => i.ArtistID == ID)
                 .Select(i => i.Track)

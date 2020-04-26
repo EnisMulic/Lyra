@@ -10,8 +10,9 @@ namespace Lyra.Model.Requests
         [Required]
         public string Name { get; set; }
         [Required]
-        public TimeSpan Length { get; set; }
-        public List<TrackArtist> Artists { get; set; }
+        public string Length { get; set; }
+        public int MainArtist { get; set; }
+        public List<int> FeaturedArtists { get; set; }
         public List<int> ArtistToDelete { get; set; }
         public List<int> Genres { get; set; }
         public List<int> GenresToDelete { get; set; }

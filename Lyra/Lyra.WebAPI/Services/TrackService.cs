@@ -24,8 +24,8 @@ namespace Lyra.WebAPI.Services
         public override async Task<List<Model.Track>> Get(TrackSearchRequest request)
         {
             var query = _context.Tracks
-                .Include(i => i.Artists)
-                .Include(i => i.Genres)
+                .Include(i => i.TrackArtists)
+                .Include(i => i.TrackGenres)
                 .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(request?.Name))
@@ -41,9 +41,138 @@ namespace Lyra.WebAPI.Services
         public override async Task<Model.Track> GetById(int ID)
         {
             var entity = await _context.Tracks
-                .Include(i => i.Artists)
-                .Include(i => i.Genres)
+                .Include(i => i.TrackArtists)
+                .Include(i => i.TrackGenres)
                 .SingleOrDefaultAsync(i => i.ID == ID);
+
+            return _mapper.Map<Model.Track>(entity);
+        }
+
+        public override async Task<Model.Track> Insert(TrackUpsertRequest request)
+        {
+            var entity = _mapper.Map<Database.Track>(request);
+
+            await _context.Tracks.AddAsync(entity);
+            await _context.SaveChangesAsync();
+
+            var mainTrackArtist = new Database.TrackArtist()
+            {
+                TrackID = entity.ID,
+                ArtistID = request.MainArtist,
+                TrackArtistRole = TrackArtistRole.Main
+            };
+            await _context.TrackArtists.AddAsync(mainTrackArtist);
+            await _context.SaveChangesAsync();
+
+            foreach (var ArtistID in request.FeaturedArtists)
+            {
+                var trackArtist = new Database.TrackArtist()
+                {
+                    TrackID = entity.ID,
+                    ArtistID = ArtistID,
+                    TrackArtistRole = TrackArtistRole.Feature
+                };
+                await _context.TrackArtists.AddAsync(trackArtist);
+            }
+
+            foreach (var GenreID in request.Genres)
+            {
+                var trackGenre = new Database.TrackGenre()
+                {
+                    TrackID = entity.ID,
+                    GenreID = GenreID
+                };
+                await _context.TrackGenres.AddAsync(trackGenre);
+            }
+            await _context.SaveChangesAsync();
+
+            return _mapper.Map<Model.Track>(entity);
+        }
+
+        public override async Task<Model.Track> Update(int id, TrackUpsertRequest request)
+        {
+            var entity = _context.Tracks.Find(id);
+            _context.Tracks.Attach(entity);
+            _context.Tracks.Update(entity);
+
+            
+
+            foreach (var ArtistID in request.FeaturedArtists)
+            {
+                var trackArtist = await _context.TrackArtists
+                    .Where(i => i.TrackID == id && i.ArtistID == ArtistID)
+                    .SingleOrDefaultAsync();
+
+                if(trackArtist == null)
+                {
+                    var newTrackArtist = new Database.TrackArtist()
+                    {
+                        TrackID = id,
+                        ArtistID = ArtistID,
+                        TrackArtistRole = TrackArtistRole.Feature
+                    };
+                    await _context.Set<Database.TrackArtist>().AddAsync(newTrackArtist);
+                }
+            }
+
+            foreach (var GenreID in request.Genres)
+            {
+                var trackGenre = await _context.TrackGenres
+                    .Where(i => i.TrackID == id && i.GenreID == GenreID)
+                    .SingleOrDefaultAsync();
+
+                if (trackGenre == null)
+                {
+                    var newTrackArtist = new Database.TrackGenre()
+                    {
+                        TrackID = id,
+                        GenreID = GenreID,
+                    };
+                    await _context.Set<Database.TrackGenre>().AddAsync(newTrackArtist);
+                }
+            }
+
+
+            foreach (var ArtistID in request.ArtistToDelete)
+            {
+                var trackArtist = await _context.TrackArtists
+                    .Where(i => i.TrackID == id && i.ArtistID == ArtistID && i.TrackArtistRole == TrackArtistRole.Feature)
+                    .SingleOrDefaultAsync();
+
+                if (trackArtist != null)
+                {
+                    _context.Set<Database.TrackArtist>().Remove(trackArtist);
+                }
+            }
+
+            foreach (var GenreID in request.GenresToDelete)
+            {
+                var trackGenre = await _context.TrackGenres
+                    .Where(i => i.TrackID == id && i.GenreID == GenreID)
+                    .SingleOrDefaultAsync();
+
+                if (trackGenre != null)
+                {
+                    _context.Set<Database.TrackGenre>().Remove(trackGenre);
+                }
+            }
+            await _context.SaveChangesAsync();
+
+            try
+            {
+                var tracMainkArtist = await _context.TrackArtists
+                    .Where(i => i.TrackID == id && i.TrackArtistRole == TrackArtistRole.Main)
+                    .SingleOrDefaultAsync();
+                tracMainkArtist.ArtistID = request.MainArtist;
+                await _context.SaveChangesAsync();
+            }
+            catch
+            {
+
+            }
+
+            _mapper.Map(request, entity);
+            await _context.SaveChangesAsync();
 
             return _mapper.Map<Model.Track>(entity);
         }

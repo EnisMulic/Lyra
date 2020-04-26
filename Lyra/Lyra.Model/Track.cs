@@ -9,7 +9,7 @@ namespace Lyra.Model
         public int ID { get; set; }
         public string Name { get; set; }
         public string Length { get; set; }
-        public List<TrackArtist> Artists { get; set; }
-        public List<TrackGenre> Genres { get; set; }
+        public List<TrackArtist> TrackArtists { get; set; }
+        public List<TrackGenre> TrackGenres { get; set; }
     }
 }

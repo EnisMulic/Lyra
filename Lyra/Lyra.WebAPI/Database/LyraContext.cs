@@ -21,7 +21,7 @@ namespace Lyra.WebAPI.Database
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Playlist> Playlists { get; set; }
         public DbSet<TrackGenre> TrackGenres { get; set; }
-        public DbSet<TrackArtist> TrackArtist { get; set; }
+        public DbSet<TrackArtist> TrackArtists { get; set; }
         public DbSet<PlaylistTrack> PlaylistTracks { get; set; }
         public DbSet<AlbumTrack> AlbumTracks { get; set; }
         public DbSet<Role> Roles  { get; set; }

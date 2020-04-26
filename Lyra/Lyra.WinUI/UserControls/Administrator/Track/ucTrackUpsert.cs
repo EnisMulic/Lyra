@@ -70,12 +70,12 @@ namespace Lyra.WinUI.UserControlls.Administrator.Track
                 txtLength.Text = _track.Length;
 
                 //Set Main Artist
-                cbMainArtist.SelectedItem = _track.Artists
+                cbMainArtist.SelectedValue = _track.TrackArtists
                     .Where(i => i.TrackArtistRole == "Main")
                     .SingleOrDefault().ArtistID;
 
                 //Get Track Featured Artists IDs
-                var trackFeaturedArtistsIDs = _track.Artists
+                var trackFeaturedArtistsIDs = _track.TrackArtists
                     .Where(i => i.TrackArtistRole == "Feature")
                     .Select(i => i.ArtistID)
                     .ToList();
@@ -88,7 +88,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Track
                 BindListBox(lbFeaturedArtists, trackFeaturedArtists);
 
                 //Get Track Genres IDs
-                var trackGenresIDs = _track.Genres
+                var trackGenresIDs = _track.TrackGenres
                     .Select(i => i.GenreID)
                     .ToList();
 
@@ -143,28 +143,34 @@ namespace Lyra.WinUI.UserControlls.Administrator.Track
 
                 var request = new TrackUpsertRequest()
                 {
-                    Name = Convert.ToString(txtName.Text)
-                    //Length = TimeSpan.Parse(Convert.ToString(txtLength.Text))
-                    //Genres = trackGenres,
-                    //MainArtist = mainArtist,
-                    //FeaturedArtists = trackArtists
+                    Name = Convert.ToString(txtName.Text),
+                    Length = Convert.ToString(txtLength.Text),
+                    Genres = trackGenres,
+                    MainArtist = mainArtist,
+                    FeaturedArtists = trackArtists
                 };
 
                 
                 if(_ID.HasValue)
                 {
-                    var genresToDelete = _track.Genres
+                    var genresToDelete = _track.TrackGenres
                         .Where(i => !trackGenres.Any(j => j.Equals(i.GenreID)))
-                        .Select(i => i.TrackID)
+                        .Select(i => i.GenreID)
                         .ToList();
 
-                    var artistToDelete = _track.Artists
-                        .Where(i => !trackArtists.Any(j => j.Equals(i.ArtistID)))
-                        .Select(i => i.TrackID)
+
+                    var oldMainArtist = _track.TrackArtists
+                        .Where(i => i.TrackArtistRole == "Main")
+                        .Select(i => i.ArtistID)
+                        .SingleOrDefault();
+
+                    var artistToDelete = _track.TrackArtists
+                        .Where(i => !trackArtists.Any(j => j.Equals(i.ArtistID)) && i.ArtistID != oldMainArtist)
+                        .Select(i => i.ArtistID)
                         .ToList();
 
-                    //request.GenresToDelete = genresToDelete;
-                    //request.ArtistToDelete = artistToDelete;
+                    request.GenresToDelete = genresToDelete;
+                    request.ArtistToDelete = artistToDelete;
 
                     await _trackApiService.Update<Model.Track>(_ID.Value, request);
                 }

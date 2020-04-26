@@ -7,6 +7,10 @@
   <ItemGroup>
     <Compile Remove="Migrations\20200324194133_roles.cs" />
     <Compile Remove="Migrations\20200324194133_roles.Designer.cs" />
+    <Compile Remove="Migrations\20200425191636_test.cs" />
+    <Compile Remove="Migrations\20200425191636_test.Designer.cs" />
+    <Compile Remove="Migrations\20200426201055_renameAtributes.cs" />
+    <Compile Remove="Migrations\20200426201055_renameAtributes.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
