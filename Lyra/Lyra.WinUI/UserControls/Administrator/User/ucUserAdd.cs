@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Lyra.WinUI.Helpers;
 
 namespace Lyra.WinUI.UserControlls.Administrator.User
 {
@@ -30,12 +31,14 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
 
         private void btnUploadImage_Click(object sender, EventArgs e)
         {
-            OpenFileDialog opnfd = new OpenFileDialog();
-            opnfd.Filter = "Image Files (*.jpg;*.jpeg;.*.gif;)|*.jpg;*.jpeg;.*.gif";
+            OpenFileDialog opnfd = new OpenFileDialog
+            {
+                Filter = "Image Files (*.jpg;*.jpeg;.*.gif;)|*.jpg;*.jpeg;.*.gif"
+            };
             if (opnfd.ShowDialog() == DialogResult.OK)
             {
-                pictureBoxUserImage.SizeMode = PictureBoxSizeMode.StretchImage;
-                pictureBoxUserImage.Image = new Bitmap(opnfd.FileName);
+                pbUserImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                pbUserImage.Image = new Bitmap(opnfd.FileName);
             }
         }
 
@@ -54,6 +57,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
                     PhoneNumber = Convert.ToString(txtPhoneNumber.Text),
                     Password = Convert.ToString(txtPassword.Text),
                     PasswordConfirmation = Convert.ToString(txtConfirmPassword.Text),
+                    Image = ImageHelper.SystemDrawingToByteArray(pbUserImage.Image),
                     Roles = roleList
                 };
 

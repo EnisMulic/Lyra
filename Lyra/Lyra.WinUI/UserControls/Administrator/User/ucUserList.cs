@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Lyra.WinUI.Helpers;
 
 namespace Lyra.WinUI.UserControlls.Administrator.User
 {
@@ -22,7 +23,8 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
         private async void ucUserList_Load(object sender, EventArgs e)
         {
             var list = await _apiService.Get<List<Model.User>>(null);
-            dgvUsers.DataSource = list;
+            var proprs = new List<string> { "ID", "FirstName", "LastName", "Username", "Email", "PhoneNumber" };
+            DataGridViewHelper.PopulateWithList(dgvUsers, list, proprs);
         }
 
         private void btnEditUser_Click(object sender, EventArgs e)

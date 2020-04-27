@@ -31,9 +31,9 @@ namespace Lyra.WinUI.Helpers
                 {
                     foreach (var typeProperty in typeProperties)
                     {
-                        if (properties[i] == typeProperty.Name)
+                        if (properties[i] == typeProperty.Name && item != null)
                         {
-                            values[i] = typeProperty.GetValue(item).ToString();
+                            values[i] = typeProperty.GetValue(item)?.ToString();
                             break;
                         }
                     }

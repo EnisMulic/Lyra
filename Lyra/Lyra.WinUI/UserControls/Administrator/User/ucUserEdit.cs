@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Lyra.WinUI.Helpers;
 
 namespace Lyra.WinUI.UserControlls.Administrator.User
 {
@@ -37,6 +38,12 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
             txtEmail.Text = user.Email;
             txtPhoneNumber.Text = user.PhoneNumber;
 
+            if (user.Image.Length != 0)
+            {
+                pbUserImage.Image = ImageHelper.ByteArrayToSystemDrawing(user.Image);
+                pbUserImage.SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+
             //List all roles
             var roles = await _roleApiService.Get<List<Model.Role>>(null);
             clbRoles.DataSource = roles;
@@ -62,8 +69,8 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
             opnfd.Filter = "Image Files (*.jpg;*.jpeg;.*.gif;)|*.jpg;*.jpeg;.*.gif";
             if (opnfd.ShowDialog() == DialogResult.OK)
             {
-                pictureBoxUserImage.SizeMode = PictureBoxSizeMode.StretchImage;
-                pictureBoxUserImage.Image = new Bitmap(opnfd.FileName);
+                pbUserImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                pbUserImage.Image = new Bitmap(opnfd.FileName);
             }
         }
 
@@ -90,6 +97,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
                     Username = Convert.ToString(txtUsername.Text),
                     Email = Convert.ToString(txtEmail.Text),
                     PhoneNumber = Convert.ToString(txtPhoneNumber.Text),
+                    Image = ImageHelper.SystemDrawingToByteArray(pbUserImage.Image),
                     Roles = checkedRoles,
                     RolesToDelete = uncheckedRoles
                 };

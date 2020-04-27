@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Lyra.WinUI.Helpers;
 
 namespace Lyra.WinUI.UserControlls.Administrator.Playlist
 {
@@ -22,7 +23,8 @@ namespace Lyra.WinUI.UserControlls.Administrator.Playlist
         private async void ucPlaylistList_Load(object sender, EventArgs e)
         {
             var list = await _apiService.Get<List<Model.Playlist>>(null);
-            dgvPlaylists.DataSource = list;
+            var props = new List<string> { "ID", "Name", "CreatedAt" };
+            DataGridViewHelper.PopulateWithList(dgvPlaylists, list, props);
         }
 
         private void btnEditPlaylist_Click(object sender, EventArgs e)

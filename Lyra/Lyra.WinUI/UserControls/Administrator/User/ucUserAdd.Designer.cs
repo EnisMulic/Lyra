@@ -43,12 +43,12 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblConfirmPassword = new System.Windows.Forms.Label();
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
-            this.pictureBoxUserImage = new System.Windows.Forms.PictureBox();
+            this.pbUserImage = new System.Windows.Forms.PictureBox();
             this.btnUploadImage = new System.Windows.Forms.Button();
             this.clbRoles = new System.Windows.Forms.CheckedListBox();
             this.gbInfo = new System.Windows.Forms.GroupBox();
             this.gbRoles = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUserImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).BeginInit();
             this.gbRoles.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -183,14 +183,14 @@
             this.txtConfirmPassword.Size = new System.Drawing.Size(188, 22);
             this.txtConfirmPassword.TabIndex = 48;
             // 
-            // pictureBoxUserImage
+            // pbUserImage
             // 
-            this.pictureBoxUserImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxUserImage.Location = new System.Drawing.Point(50, 94);
-            this.pictureBoxUserImage.Name = "pictureBoxUserImage";
-            this.pictureBoxUserImage.Size = new System.Drawing.Size(188, 184);
-            this.pictureBoxUserImage.TabIndex = 50;
-            this.pictureBoxUserImage.TabStop = false;
+            this.pbUserImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbUserImage.Location = new System.Drawing.Point(50, 94);
+            this.pbUserImage.Name = "pbUserImage";
+            this.pbUserImage.Size = new System.Drawing.Size(188, 184);
+            this.pbUserImage.TabIndex = 50;
+            this.pbUserImage.TabStop = false;
             // 
             // btnUploadImage
             // 
@@ -237,7 +237,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnUploadImage);
-            this.Controls.Add(this.pictureBoxUserImage);
+            this.Controls.Add(this.pbUserImage);
             this.Controls.Add(this.lblConfirmPassword);
             this.Controls.Add(this.txtConfirmPassword);
             this.Controls.Add(this.lblPassword);
@@ -258,7 +258,7 @@
             this.Name = "ucUserAdd";
             this.Size = new System.Drawing.Size(796, 690);
             this.Load += new System.EventHandler(this.ucUserAdd_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUserImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).EndInit();
             this.gbRoles.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -282,7 +282,7 @@
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label lblConfirmPassword;
         private System.Windows.Forms.TextBox txtConfirmPassword;
-        private System.Windows.Forms.PictureBox pictureBoxUserImage;
+        private System.Windows.Forms.PictureBox pbUserImage;
         private System.Windows.Forms.Button btnUploadImage;
         private System.Windows.Forms.CheckedListBox clbRoles;
         private System.Windows.Forms.GroupBox gbInfo;

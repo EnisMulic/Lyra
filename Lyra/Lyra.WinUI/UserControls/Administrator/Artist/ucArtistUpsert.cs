@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Lyra.WinUI.UserControlls.Administrator.Album;
 using Lyra.WinUI.UserControlls.Administrator.Track;
+using Lyra.WinUI.Helpers;
 
 namespace Lyra.WinUI.UserControlls.Administrator.Artist
 {
@@ -31,20 +32,34 @@ namespace Lyra.WinUI.UserControlls.Administrator.Artist
                 var artist = await _apiService.GetById<Model.Artist>(_ID.Value);
                 txtName.Text = artist.Name;
 
+                if (artist.Image.Length != 0)
+                {
+                    pbArtistImage.Image = ImageHelper.ByteArrayToSystemDrawing(artist.Image);
+                    pbArtistImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+
                 gbAlbums.Visible = true;
                 gbTracks.Visible = true;
 
                 var albums = await _apiService.GetAlbums<List<Model.Album>>(_ID.Value);
-                dgvAlbums.DataSource = albums;
+                var albumProps = new List<string> { "ID", "Name", "ReleaseYear" };
+                DataGridViewHelper.PopulateWithList(dgvAlbums, albums, albumProps);
 
 
                 var tracks = await _apiService.GetTracks<List<Model.Track>>(_ID.Value);
-                dgvTracks.DataSource = tracks;
+                var trackProps = new List<string> { "ID", "Name", "Length" };
+                DataGridViewHelper.PopulateWithList(dgvTracks, tracks, trackProps);
+
                 gbTracks.Location = new Point(gbAlbums.Location.X, gbAlbums.Location.Y + gbAlbums.Height);
 
 
-                btnSave.Location = new Point(gbTracks.Location.X, gbTracks.Location.Y + gbTracks.Height);
+                SetButtonSavePosition();
             }
+        }
+
+        private void SetButtonSavePosition()
+        {
+            btnSave.Location = new Point(gbTracks.Location.X, gbTracks.Location.Y + gbTracks.Height + 20);
         }
 
         private void SetDataGridViewSize(DataGridView dgv)
@@ -59,16 +74,18 @@ namespace Lyra.WinUI.UserControlls.Administrator.Artist
         }
 
 
-        private void dgvAlbums_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        private void dgvAlbums_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             SetDataGridViewSize(dgvAlbums);
-            gbAlbums.Height += dgvAlbums.Height - 25;
+            gbAlbums.Height = dgvAlbums.Height + 50;
+            SetButtonSavePosition();
         }
 
-        private void dgvTracks_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        private void dgvTracks_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             SetDataGridViewSize(dgvTracks);
-            gbTracks.Height += dgvTracks.Height - 25;
+            gbTracks.Height = dgvTracks.Height + 50;
+            SetButtonSavePosition();
         }
 
         private void btnUploadImage_Click(object sender, EventArgs e)
@@ -88,7 +105,8 @@ namespace Lyra.WinUI.UserControlls.Administrator.Artist
             {
                 var request = new Model.Requests.ArtistUpsertRequest
                 {
-                    Name = Convert.ToString(txtName.Text)
+                    Name = Convert.ToString(txtName.Text),
+                    Image = ImageHelper.SystemDrawingToByteArray(pbArtistImage.Image)
                 };
 
                 if(_ID.HasValue)

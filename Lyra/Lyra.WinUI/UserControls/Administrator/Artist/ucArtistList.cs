@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Lyra.WinUI.Helpers;
 
 namespace Lyra.WinUI.UserControlls.Administrator.Artist
 {
@@ -22,7 +23,8 @@ namespace Lyra.WinUI.UserControlls.Administrator.Artist
         private async void ucArtistList_Load(object sender, EventArgs e)
         {
             var list = await _apiService.Get<List<Model.Artist>>(null);
-            dgvArtists.DataSource = list;
+            var props = new List<string> { "ID", "Name" };
+            DataGridViewHelper.PopulateWithList(dgvArtists, list, props);
         }
 
         private void btnEditArtist_Click(object sender, EventArgs e)

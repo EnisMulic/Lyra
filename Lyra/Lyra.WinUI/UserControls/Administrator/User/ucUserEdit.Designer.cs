@@ -40,11 +40,11 @@
             this.lblPhoneNumber = new System.Windows.Forms.Label();
             this.txtPhoneNumber = new System.Windows.Forms.TextBox();
             this.btnUploadImage = new System.Windows.Forms.Button();
-            this.pictureBoxUserImage = new System.Windows.Forms.PictureBox();
+            this.pbUserImage = new System.Windows.Forms.PictureBox();
             this.clbRoles = new System.Windows.Forms.CheckedListBox();
             this.gbInfo = new System.Windows.Forms.GroupBox();
             this.gbRoles = new System.Windows.Forms.GroupBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUserImage)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).BeginInit();
             this.gbRoles.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -153,14 +153,14 @@
             this.btnUploadImage.UseVisualStyleBackColor = true;
             this.btnUploadImage.Click += new System.EventHandler(this.btnUploadImage_Click);
             // 
-            // pictureBoxUserImage
+            // pbUserImage
             // 
-            this.pictureBoxUserImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxUserImage.Location = new System.Drawing.Point(51, 85);
-            this.pictureBoxUserImage.Name = "pictureBoxUserImage";
-            this.pictureBoxUserImage.Size = new System.Drawing.Size(188, 184);
-            this.pictureBoxUserImage.TabIndex = 57;
-            this.pictureBoxUserImage.TabStop = false;
+            this.pbUserImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbUserImage.Location = new System.Drawing.Point(51, 85);
+            this.pbUserImage.Name = "pbUserImage";
+            this.pbUserImage.Size = new System.Drawing.Size(188, 184);
+            this.pbUserImage.TabIndex = 57;
+            this.pbUserImage.TabStop = false;
             // 
             // clbRoles
             // 
@@ -168,7 +168,7 @@
             this.clbRoles.FormattingEnabled = true;
             this.clbRoles.Location = new System.Drawing.Point(23, 36);
             this.clbRoles.Name = "clbRoles";
-            this.clbRoles.Size = new System.Drawing.Size(673, 154);
+            this.clbRoles.Size = new System.Drawing.Size(673, 148);
             this.clbRoles.TabIndex = 61;
             // 
             // gbInfo
@@ -197,7 +197,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.btnUploadImage);
-            this.Controls.Add(this.pictureBoxUserImage);
+            this.Controls.Add(this.pbUserImage);
             this.Controls.Add(this.lblPhoneNumber);
             this.Controls.Add(this.txtPhoneNumber);
             this.Controls.Add(this.lblEmail);
@@ -214,7 +214,7 @@
             this.Name = "ucUserEdit";
             this.Size = new System.Drawing.Size(796, 690);
             this.Load += new System.EventHandler(this.ucUserEdit_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxUserImage)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).EndInit();
             this.gbRoles.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -234,7 +234,7 @@
         private System.Windows.Forms.Label lblPhoneNumber;
         private System.Windows.Forms.TextBox txtPhoneNumber;
         private System.Windows.Forms.Button btnUploadImage;
-        private System.Windows.Forms.PictureBox pictureBoxUserImage;
+        private System.Windows.Forms.PictureBox pbUserImage;
         private System.Windows.Forms.CheckedListBox clbRoles;
         private System.Windows.Forms.GroupBox gbInfo;
         private System.Windows.Forms.GroupBox gbRoles;

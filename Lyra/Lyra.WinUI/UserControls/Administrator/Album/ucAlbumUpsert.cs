@@ -45,6 +45,13 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
 
                 txtName.Text = _album.Name;
                 txtReleaseYear.Text = _album.ReleaseYear.ToString();
+
+                if (_album.Image.Length != 0)
+                {
+                    pbAlbumImage.Image = ImageHelper.ByteArrayToSystemDrawing(_album.Image);
+                    pbAlbumImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+
                 cbArtist.SelectedItem = artists.Where(i => i.ID == _album.ArtistID).SingleOrDefault();
 
                 albumTracks = await _albumApiService.GetTracks<List<Model.Track>>(_ID.Value);
@@ -154,6 +161,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
                     Name = Convert.ToString(txtName.Text),
                     ReleaseYear = Convert.ToInt32(txtReleaseYear.Text),
                     ArtistID = Convert.ToInt32(cbArtist.SelectedValue),
+                    Image = ImageHelper.SystemDrawingToByteArray(pbAlbumImage.Image),
                     Tracks = albumTracks
                 };
 

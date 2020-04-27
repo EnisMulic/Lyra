@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Lyra.WinUI.Helpers;
 
 namespace Lyra.WinUI.UserControlls.Administrator.Album
 {
@@ -22,7 +23,8 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
         private async void ucAlbumList_Load(object sender, EventArgs e)
         {
             var list = await _apiService.Get<List<Model.Album>>(null);
-            dgvAlbums.DataSource = list;
+            var props = new List<string> { "ID", "Name", "ReleaseYear"};
+            DataGridViewHelper.PopulateWithList(dgvAlbums, list, props);
         }
 
         private async void btnDeleteAlbum_Click(object sender, EventArgs e)

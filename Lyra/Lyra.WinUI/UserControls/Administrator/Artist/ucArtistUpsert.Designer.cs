@@ -28,28 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSave = new System.Windows.Forms.Button();
             this.lblName = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.btnUploadImage = new System.Windows.Forms.Button();
             this.pbArtistImage = new System.Windows.Forms.PictureBox();
             this.gbAlbums = new System.Windows.Forms.GroupBox();
-            this.gbTracks = new System.Windows.Forms.GroupBox();
-            this.gbInfo = new System.Windows.Forms.GroupBox();
             this.dgvAlbums = new System.Windows.Forms.DataGridView();
+            this.gbTracks = new System.Windows.Forms.GroupBox();
             this.dgvTracks = new System.Windows.Forms.DataGridView();
+            this.gbInfo = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbArtistImage)).BeginInit();
             this.gbAlbums.SuspendLayout();
-            this.gbTracks.SuspendLayout();
-            this.gbInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlbums)).BeginInit();
+            this.gbTracks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTracks)).BeginInit();
+            this.gbInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSave
@@ -113,6 +111,35 @@
             this.gbAlbums.Text = "Albums";
             this.gbAlbums.Visible = false;
             // 
+            // dgvAlbums
+            // 
+            this.dgvAlbums.AllowUserToAddRows = false;
+            this.dgvAlbums.AllowUserToDeleteRows = false;
+            this.dgvAlbums.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAlbums.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvAlbums.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAlbums.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgvAlbums.Location = new System.Drawing.Point(13, 31);
+            this.dgvAlbums.Name = "dgvAlbums";
+            this.dgvAlbums.ReadOnly = true;
+            this.dgvAlbums.Size = new System.Drawing.Size(683, 96);
+            this.dgvAlbums.TabIndex = 0;
+            this.dgvAlbums.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvAlbums_RowsAdded);
+            // 
             // gbTracks
             // 
             this.gbTracks.Controls.Add(this.dgvTracks);
@@ -124,6 +151,34 @@
             this.gbTracks.TabStop = false;
             this.gbTracks.Text = "Tracks";
             this.gbTracks.Visible = false;
+            // 
+            // dgvTracks
+            // 
+            this.dgvTracks.AllowUserToAddRows = false;
+            this.dgvTracks.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTracks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgvTracks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTracks.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dgvTracks.Location = new System.Drawing.Point(13, 30);
+            this.dgvTracks.Name = "dgvTracks";
+            this.dgvTracks.ReadOnly = true;
+            this.dgvTracks.Size = new System.Drawing.Size(683, 96);
+            this.dgvTracks.TabIndex = 0;
+            this.dgvTracks.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvTracks_RowsAdded);
             // 
             // gbInfo
             // 
@@ -139,79 +194,6 @@
             this.gbInfo.TabStop = false;
             this.gbInfo.Text = "Info";
             // 
-            // dgvAlbums
-            // 
-            this.dgvAlbums.AllowUserToAddRows = false;
-            this.dgvAlbums.AllowUserToDeleteRows = false;
-            this.dgvAlbums.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAlbums.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            this.dgvAlbums.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAlbums.DefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvAlbums.Location = new System.Drawing.Point(13, 31);
-            this.dgvAlbums.Name = "dgvAlbums";
-            this.dgvAlbums.ReadOnly = true;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAlbums.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
-            this.dgvAlbums.Size = new System.Drawing.Size(683, 96);
-            this.dgvAlbums.TabIndex = 0;
-            this.dgvAlbums.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvAlbums_DataBindingComplete);
-            // 
-            // dgvTracks
-            // 
-            this.dgvTracks.AllowUserToAddRows = false;
-            this.dgvTracks.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTracks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
-            this.dgvTracks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvTracks.DefaultCellStyle = dataGridViewCellStyle11;
-            this.dgvTracks.Location = new System.Drawing.Point(13, 30);
-            this.dgvTracks.Name = "dgvTracks";
-            this.dgvTracks.ReadOnly = true;
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTracks.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
-            this.dgvTracks.Size = new System.Drawing.Size(683, 96);
-            this.dgvTracks.TabIndex = 0;
-            this.dgvTracks.DataBindingComplete += new System.Windows.Forms.DataGridViewBindingCompleteEventHandler(this.dgvTracks_DataBindingComplete);
-            // 
             // ucArtistUpsert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -225,11 +207,11 @@
             this.Load += new System.EventHandler(this.ucArtistUpsert_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbArtistImage)).EndInit();
             this.gbAlbums.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlbums)).EndInit();
             this.gbTracks.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvTracks)).EndInit();
             this.gbInfo.ResumeLayout(false);
             this.gbInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvAlbums)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvTracks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

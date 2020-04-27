@@ -21,6 +21,7 @@ namespace Lyra.WebAPI.Database
         public string ImagePath { get; set; }
         public string PasswordHash { get; set; }
         public string PasswordSalt { get; set; }
+        public byte[] Image { get; set; }
         public ICollection<Playlist> Playlists { get; set; }
         public ICollection<UserRole> UserRoles { get; set; }
     }

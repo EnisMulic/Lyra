@@ -39,6 +39,12 @@ namespace Lyra.WinUI.UserControlls.Administrator.Playlist
                 txtCreatedAt.Text = _playlist.CreatedAt;
                 txtOwner.Text = _playlist.User.Username;
 
+                if (_playlist.Image.Length != 0)
+                {
+                    pbPlaylistImage.Image = ImageHelper.ByteArrayToSystemDrawing(_playlist.Image);
+                    pbPlaylistImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                }
+
                 playlistTracks = await _playlistApiService.GetTracks<List<Model.Track>>(_ID.Value);
                 DataGridViewHelper.PopulateWithList(dgvPlaylistTracks, playlistTracks, props);
 
@@ -147,6 +153,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Playlist
                 var request = new Model.Requests.PlaylistUpsertRequest
                 {
                     Name = Convert.ToString(txtName.Text),
+                    Image = ImageHelper.SystemDrawingToByteArray(pbPlaylistImage.Image),
                     Tracks = playlistTracks
                 };
 
