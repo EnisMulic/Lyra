@@ -42,7 +42,7 @@ namespace Lyra.WinUI.SingIn
 
             var user = _service.Get<Model.User>(search);
 
-            return user != null ? true : false;
+            return user != null;
         }
 
         private void txtUsername_Validating(object sender, CancelEventArgs e)
@@ -90,7 +90,7 @@ namespace Lyra.WinUI.SingIn
                 var user = users.Find(i => i.Username == APIService.Username);
 
 
-                LoadPanel(user.UserRoles);
+                LoadPanel(user);
             }
             catch (Exception ex)
             {
@@ -98,12 +98,12 @@ namespace Lyra.WinUI.SingIn
             }
         }
 
-        private void LoadPanel(ICollection<Model.UserRole> userRoles)
+        private void LoadPanel(Model.User user)
         {
-            var adminRole = userRoles.FirstOrDefault(i => i.Role.Name == "Administrator");
+            var adminRole = user.UserRoles.FirstOrDefault(i => i.Role.Name == "Administrator");
             if(adminRole != null)
             {
-                var form = new frmAdminPanel();
+                var form = new frmAdminPanel(user);
                 form.Show();
 
                 ParentForm.Hide();
@@ -111,10 +111,10 @@ namespace Lyra.WinUI.SingIn
                 return;
             }
 
-            var userRole = userRoles.FirstOrDefault(i => i.Role.Name == "User");
+            var userRole = user.UserRoles.FirstOrDefault(i => i.Role.Name == "User");
             if(userRole != null)
             {
-                var form = new frmUserPanel();
+                var form = new frmUserPanel(user);
                 form.Show();
 
                 ParentForm.Hide();

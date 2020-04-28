@@ -129,6 +129,18 @@
     <Compile Include="UserControls\Administrator\Track\ucTrackList.Designer.cs">
       <DependentUpon>ucTrackList.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Administrator\ucAdminInfoUpdate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Administrator\ucAdminInfoUpdate.Designer.cs">
+      <DependentUpon>ucAdminInfoUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Administrator\ucAdminPasswordUpdate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Administrator\ucAdminPasswordUpdate.Designer.cs">
+      <DependentUpon>ucAdminPasswordUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Administrator\User\ucUserAdd.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -152,6 +164,9 @@
     </Compile>
     <Compile Include="UserControls\Shared\ucAppControl.Designer.cs">
       <DependentUpon>ucAppControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Shared\ucOvalPictureBox.cs">
+      <SubType>Component</SubType>
     </Compile>
     <Compile Include="UserControls\SignIn\ucSignIn.cs">
       <SubType>UserControl</SubType>
@@ -205,6 +220,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Administrator\Track\ucTrackList.resx">
       <DependentUpon>ucTrackList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Administrator\ucAdminInfoUpdate.resx">
+      <DependentUpon>ucAdminInfoUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Administrator\ucAdminPasswordUpdate.resx">
+      <DependentUpon>ucAdminPasswordUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Administrator\User\ucUserAdd.resx">
       <DependentUpon>ucUserAdd.cs</DependentUpon>

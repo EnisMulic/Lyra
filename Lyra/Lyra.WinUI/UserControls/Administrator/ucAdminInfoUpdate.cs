@@ -9,28 +9,22 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Lyra.WinUI.Helpers;
 
-namespace Lyra.WinUI.UserControlls.Administrator.User
+namespace Lyra.WinUI.UserControls.Administrator
 {
-    public partial class ucUserEdit : UserControl
+    public partial class ucAdminInfoUpdate : UserControl
     {
-        private readonly APIService _apiService = new APIService("User");
+        private readonly APIService _userApiService = new APIService("User");
         private readonly APIService _roleApiService = new APIService("Role");
         private readonly int _ID;
-        public ucUserEdit()
-        {
-            InitializeComponent();
-        }
-
-        public ucUserEdit(int ID)
+        public ucAdminInfoUpdate(int ID)
         {
             _ID = ID;
             InitializeComponent();
         }
 
-        private async void ucUserEdit_Load(object sender, EventArgs e)
+        private async void ucAdminInfoUpdate_Load(object sender, EventArgs e)
         {
-            //Load user info
-            var user = await _apiService.GetById<Model.User>(_ID);
+            var user = await _userApiService.GetById<Model.User>(_ID);
 
             txtFirstName.Text = user.FirstName;
             txtLastName.Text = user.LastName;
@@ -52,7 +46,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
 
             //Check users roles
             var rolesList = clbRoles.Items.Cast<Model.Role>().Select(i => i.ID).ToList();
-            foreach(var userRole in user.UserRoles)
+            foreach (var userRole in user.UserRoles)
             {
                 for (int i = 0; i < clbRoles.Items.Count; i++)
                 {
@@ -63,15 +57,17 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
                 }
             }
         }
-        private void btnUploadImage_Click(object sender, EventArgs e)
+
+        private void btnPassword_Click(object sender, EventArgs e)
         {
-            OpenFileDialog opnfd = new OpenFileDialog();
-            opnfd.Filter = "Image Files (*.jpg;*.jpeg;.*.gif;)|*.jpg;*.jpeg;.*.gif";
-            if (opnfd.ShowDialog() == DialogResult.OK)
+            var uc = new ucAdminPasswordUpdate(_ID);
+            if (!this.Controls.Contains(uc))
             {
-                pbUserImage.SizeMode = PictureBoxSizeMode.StretchImage;
-                pbUserImage.Image = new Bitmap(opnfd.FileName);
+                this.Controls.Add(uc);
+                uc.Dock = DockStyle.Fill;
             }
+
+            uc.BringToFront();
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
@@ -102,7 +98,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
                     RolesToDelete = uncheckedRoles
                 };
 
-                await _apiService.Update<Model.User>(_ID, request);
+                await _userApiService.Update<Model.User>(_ID, request);
 
                 MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
@@ -110,71 +106,6 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
             {
 
             }
-        }
-
-        private void lblLastName_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtUsername_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblEmail_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtFirstName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblPhoneNumber_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblFirstName_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gbInfo_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtPhoneNumber_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblUsername_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtLastName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pbUserImage_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtEmail_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gbRoles_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }

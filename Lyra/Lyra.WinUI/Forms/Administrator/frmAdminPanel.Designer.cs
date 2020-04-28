@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.pnlNavbar = new System.Windows.Forms.Panel();
+            this.pnlUserInfoMenu = new System.Windows.Forms.Panel();
+            this.lblUsername = new System.Windows.Forms.Label();
             this.btnPlaylist = new System.Windows.Forms.Button();
             this.btnTrack = new System.Windows.Forms.Button();
             this.btnAlbum = new System.Windows.Forms.Button();
@@ -37,13 +39,18 @@
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.ucAppControl = new Lyra.WinUI.UserControlls.Shared.ucAppControl();
+            this.pbUserImage = new Lyra.WinUI.UserControls.Shared.ucOvalPictureBox();
+            this.btnUserInfo = new System.Windows.Forms.Button();
             this.pnlNavbar.SuspendLayout();
+            this.pnlUserInfoMenu.SuspendLayout();
             this.pnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlNavbar
             // 
             this.pnlNavbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(90)))), ((int)(((byte)(182)))));
+            this.pnlNavbar.Controls.Add(this.pnlUserInfoMenu);
             this.pnlNavbar.Controls.Add(this.btnPlaylist);
             this.pnlNavbar.Controls.Add(this.btnTrack);
             this.pnlNavbar.Controls.Add(this.btnAlbum);
@@ -55,6 +62,27 @@
             this.pnlNavbar.Name = "pnlNavbar";
             this.pnlNavbar.Size = new System.Drawing.Size(294, 731);
             this.pnlNavbar.TabIndex = 0;
+            // 
+            // pnlUserInfoMenu
+            // 
+            this.pnlUserInfoMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlUserInfoMenu.Controls.Add(this.btnUserInfo);
+            this.pnlUserInfoMenu.Controls.Add(this.lblUsername);
+            this.pnlUserInfoMenu.Controls.Add(this.pbUserImage);
+            this.pnlUserInfoMenu.Location = new System.Drawing.Point(0, 672);
+            this.pnlUserInfoMenu.Name = "pnlUserInfoMenu";
+            this.pnlUserInfoMenu.Size = new System.Drawing.Size(294, 59);
+            this.pnlUserInfoMenu.TabIndex = 8;
+            // 
+            // lblUsername
+            // 
+            this.lblUsername.AutoSize = true;
+            this.lblUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUsername.Location = new System.Drawing.Point(64, 18);
+            this.lblUsername.Name = "lblUsername";
+            this.lblUsername.Size = new System.Drawing.Size(151, 25);
+            this.lblUsername.TabIndex = 1;
+            this.lblUsername.Text = "[Placeholder]";
             // 
             // btnPlaylist
             // 
@@ -155,6 +183,26 @@
             this.ucAppControl.Size = new System.Drawing.Size(70, 35);
             this.ucAppControl.TabIndex = 0;
             // 
+            // pbUserImage
+            // 
+            this.pbUserImage.BackColor = System.Drawing.Color.DarkGray;
+            this.pbUserImage.Location = new System.Drawing.Point(4, 6);
+            this.pbUserImage.Name = "pbUserImage";
+            this.pbUserImage.Size = new System.Drawing.Size(49, 49);
+            this.pbUserImage.TabIndex = 0;
+            this.pbUserImage.TabStop = false;
+            // 
+            // btnUserInfo
+            // 
+            this.btnUserInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUserInfo.Location = new System.Drawing.Point(261, 18);
+            this.btnUserInfo.Name = "btnUserInfo";
+            this.btnUserInfo.Size = new System.Drawing.Size(27, 27);
+            this.btnUserInfo.TabIndex = 0;
+            this.btnUserInfo.Text = "S";
+            this.btnUserInfo.UseVisualStyleBackColor = true;
+            this.btnUserInfo.Click += new System.EventHandler(this.btnUserInfo_Click);
+            // 
             // frmAdminPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -166,9 +214,12 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmAdminPanel";
             this.Text = "frmAdminPanel";
-            this.Load += new System.EventHandler(this.btnUser_Click);
+            this.Load += new System.EventHandler(this.frmAdminPanel_Load);
             this.pnlNavbar.ResumeLayout(false);
+            this.pnlUserInfoMenu.ResumeLayout(false);
+            this.pnlUserInfoMenu.PerformLayout();
             this.pnlHeader.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -184,5 +235,9 @@
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.Panel pnlHeader;
         private UserControlls.Shared.ucAppControl ucAppControl;
+        private System.Windows.Forms.Panel pnlUserInfoMenu;
+        private System.Windows.Forms.Label lblUsername;
+        private UserControls.Shared.ucOvalPictureBox pbUserImage;
+        private System.Windows.Forms.Button btnUserInfo;
     }
 }

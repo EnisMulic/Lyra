@@ -12,8 +12,10 @@ namespace Lyra.WinUI.User
 {
     public partial class frmUserPanel : Form
     {
-        public frmUserPanel()
+        private static Model.User _user;
+        public frmUserPanel(Model.User user)
         {
+            _user = user;
             InitializeComponent();
         }
     }
