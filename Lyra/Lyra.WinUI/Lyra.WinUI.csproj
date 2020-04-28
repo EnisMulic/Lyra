@@ -180,12 +180,6 @@
     <Compile Include="UserControls\SignUp\ucSignUp.Designer.cs">
       <DependentUpon>ucSignUp.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\User\frmUserPanel.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\User\frmUserPanel.Designer.cs">
-      <DependentUpon>frmUserPanel.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Forms\Administrator\frmAdminPanel.resx">
       <DependentUpon>frmAdminPanel.cs</DependentUpon>
       <SubType>Designer</SubType>
