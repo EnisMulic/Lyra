@@ -110,16 +110,6 @@ namespace Lyra.WinUI.SingIn
 
                 return;
             }
-
-            var userRole = user.UserRoles.FirstOrDefault(i => i.Role.Name == "User");
-            if(userRole != null)
-            {
-                var form = new frmUserPanel(user);
-                form.Show();
-
-                ParentForm.Hide();
-                return;
-            }
         }
     }
 }
