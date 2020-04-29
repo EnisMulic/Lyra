@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -51,11 +52,15 @@
             this.lblAlbumTracks = new System.Windows.Forms.Label();
             this.dgvAllTracks = new System.Windows.Forms.DataGridView();
             this.dgvAlbumTracks = new System.Windows.Forms.DataGridView();
+            this.errorProviderName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderReleaseYear = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbAlbumImage)).BeginInit();
             this.gbInfo.SuspendLayout();
             this.gbTracks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllTracks)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlbumTracks)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderReleaseYear)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSave
@@ -95,6 +100,7 @@
             this.txtReleaseYear.Name = "txtReleaseYear";
             this.txtReleaseYear.Size = new System.Drawing.Size(188, 21);
             this.txtReleaseYear.TabIndex = 6;
+            this.txtReleaseYear.Validating += new System.ComponentModel.CancelEventHandler(this.ReleaseYear_Validating);
             // 
             // txtName
             // 
@@ -103,6 +109,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(188, 21);
             this.txtName.TabIndex = 5;
+            this.txtName.Validating += new System.ComponentModel.CancelEventHandler(this.Name_Validating);
             // 
             // btnUploadImage
             // 
@@ -291,6 +298,14 @@
             this.dgvAlbumTracks.TabIndex = 0;
             this.dgvAlbumTracks.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvAlbumTracks_RowsAdded);
             // 
+            // errorProviderName
+            // 
+            this.errorProviderName.ContainerControl = this;
+            // 
+            // errorProviderReleaseYear
+            // 
+            this.errorProviderReleaseYear.ContainerControl = this;
+            // 
             // ucAlbumUpsert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -308,6 +323,8 @@
             this.gbTracks.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAllTracks)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlbumTracks)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderReleaseYear)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -331,5 +348,7 @@
         private System.Windows.Forms.DataGridView dgvAlbumTracks;
         private System.Windows.Forms.Button btnAddTrack;
         private System.Windows.Forms.Button btnRemoveTrack;
+        private System.Windows.Forms.ErrorProvider errorProviderName;
+        private System.Windows.Forms.ErrorProvider errorProviderReleaseYear;
     }
 }

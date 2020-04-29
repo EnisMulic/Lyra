@@ -70,6 +70,19 @@ namespace Lyra.WinUI.UserControls.Administrator
             uc.BringToFront();
         }
 
+        private void btnUploadImage_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opnfd = new OpenFileDialog
+            {
+                Filter = "Image Files (*.jpg;*.jpeg;.*.gif;)|*.jpg;*.jpeg;.*.gif"
+            };
+            if (opnfd.ShowDialog() == DialogResult.OK)
+            {
+                pbUserImage.SizeMode = PictureBoxSizeMode.StretchImage;
+                pbUserImage.Image = new Bitmap(opnfd.FileName);
+            }
+        }
+
         private async void btnSave_Click(object sender, EventArgs e)
         {
             try
@@ -107,5 +120,7 @@ namespace Lyra.WinUI.UserControls.Administrator
 
             }
         }
+
+        
     }
 }

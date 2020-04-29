@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Lyra.WinUI.Helpers;
+using Lyra.WinUI.Validators;
 
 namespace Lyra.WinUI.UserControlls.Administrator.Album
 {
@@ -147,6 +148,8 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
+            if (!ValidateChildren()) return;
+
             try
             {
                 var albumTracks = new List<int>();
@@ -155,13 +158,14 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
                     albumTracks.Add(Convert.ToInt32(Row.Cells["ID"].Value));
                 }
 
+                
 
                 var request = new Model.Requests.AlbumUpsertRequest()
                 {
                     Name = Convert.ToString(txtName.Text),
                     ReleaseYear = Convert.ToInt32(txtReleaseYear.Text),
                     ArtistID = Convert.ToInt32(cbArtist.SelectedValue),
-                    Image = ImageHelper.SystemDrawingToByteArray(pbAlbumImage.Image),
+                    Image = pbAlbumImage.Image != null ? ImageHelper.SystemDrawingToByteArray(pbAlbumImage.Image) : null,
                     Tracks = albumTracks
                 };
 
@@ -187,6 +191,18 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
             {
                 MessageBox.Show(error.Message);
             }
+        }
+
+        private void Name_Validating(object sender, CancelEventArgs e)
+        {
+            var validator = new AlbumValidator();
+            errorProviderName.SetError(txtName, validator.NameCheck(txtName.Text).Message);
+        }
+
+        private void ReleaseYear_Validating(object sender, CancelEventArgs e)
+        {
+            var validator = new AlbumValidator();
+            errorProviderReleaseYear.SetError(txtName, validator.ReleaseYearCheck(txtReleaseYear.Text).Message);
         }
     }
 }

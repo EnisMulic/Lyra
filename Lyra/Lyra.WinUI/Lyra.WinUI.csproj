@@ -180,6 +180,11 @@
     <Compile Include="UserControls\SignUp\ucSignUp.Designer.cs">
       <DependentUpon>ucSignUp.cs</DependentUpon>
     </Compile>
+    <Compile Include="Validators\AlbumValidator.cs" />
+    <Compile Include="Validators\BaseValidator.cs" />
+    <Compile Include="Validators\IAlbumValidator.cs" />
+    <Compile Include="Validators\IBaseValidator.cs" />
+    <Compile Include="Validators\ValidationResult.cs" />
     <EmbeddedResource Include="Forms\Administrator\frmAdminPanel.resx">
       <DependentUpon>frmAdminPanel.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -259,5 +264,6 @@
       <Name>Lyra.Model</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
