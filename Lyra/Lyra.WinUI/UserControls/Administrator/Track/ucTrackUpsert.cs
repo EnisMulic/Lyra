@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Lyra.Model.Requests;
 using Lyra.Model;
+using Lyra.WinUI.Validators;
 
 namespace Lyra.WinUI.UserControlls.Administrator.Track
 {
@@ -135,7 +136,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Track
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            try
+            if(ValidateChildren())
             {
                 var trackGenres = lbGenres.Items.Cast<Model.Genre>().Select(i => i.ID).ToList();
                 var trackArtists = lbFeaturedArtists.Items.Cast<Model.Artist>().Select(i => i.ID).ToList();
@@ -150,8 +151,8 @@ namespace Lyra.WinUI.UserControlls.Administrator.Track
                     FeaturedArtists = trackArtists
                 };
 
-                
-                if(_ID.HasValue)
+
+                if (_ID.HasValue)
                 {
                     var genresToDelete = _track.TrackGenres
                         .Where(i => !trackGenres.Any(j => j.Equals(i.GenreID)))
@@ -176,15 +177,27 @@ namespace Lyra.WinUI.UserControlls.Administrator.Track
                 }
                 else
                 {
-                    await _trackApiService.Insert<Model.Track>(request);   
+                    await _trackApiService.Insert<Model.Track>(request);
                 }
 
                 MessageBox.Show("Success", "Success", MessageBoxButtons.OK);
             }
-            catch(Exception error)
-            {
-                MessageBox.Show(error.Message);
-            }
+        }
+
+        private void Name_Validating(object sender, CancelEventArgs e)
+        {
+            var validator = new TrackValidator();
+            var result = validator.NameCheck(txtName.Text);
+            errorProviderName.SetError(txtName, result.Message);
+            e.Cancel = !result.IsValid;
+        }
+
+        private void Length_Validating(object sender, CancelEventArgs e)
+        {
+            var validator = new AlbumValidator();
+            var result = validator.ReleaseYearCheck(txtLength.Text);
+            errorProviderLength.SetError(txtLength, result.Message);
+            e.Cancel = !result.IsValid;
         }
     }
 }

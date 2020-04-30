@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnRemoveArtist = new System.Windows.Forms.Button();
             this.btnAddArtist = new System.Windows.Forms.Button();
             this.cbFeaturedArtist = new System.Windows.Forms.ComboBox();
@@ -47,8 +48,12 @@
             this.lbGenres = new System.Windows.Forms.ListBox();
             this.gbInfo = new System.Windows.Forms.GroupBox();
             this.gbArtists = new System.Windows.Forms.GroupBox();
+            this.errorProviderName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderLength = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbInfo.SuspendLayout();
             this.gbArtists.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderLength)).BeginInit();
             this.SuspendLayout();
             // 
             // btnRemoveArtist
@@ -135,6 +140,7 @@
             this.txtLength.Name = "txtLength";
             this.txtLength.Size = new System.Drawing.Size(188, 22);
             this.txtLength.TabIndex = 68;
+            this.txtLength.Validating += new System.ComponentModel.CancelEventHandler(this.Length_Validating);
             // 
             // btnSave
             // 
@@ -162,6 +168,7 @@
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(188, 22);
             this.txtName.TabIndex = 65;
+            this.txtName.Validating += new System.ComponentModel.CancelEventHandler(this.Name_Validating);
             // 
             // btnRemoveGenre
             // 
@@ -235,6 +242,14 @@
             this.gbArtists.TabStop = false;
             this.gbArtists.Text = "Featured Artists";
             // 
+            // errorProviderName
+            // 
+            this.errorProviderName.ContainerControl = this;
+            // 
+            // errorProviderLength
+            // 
+            this.errorProviderLength.ContainerControl = this;
+            // 
             // ucTrackUpsert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -258,6 +273,8 @@
             this.gbInfo.ResumeLayout(false);
             this.gbArtists.ResumeLayout(false);
             this.gbArtists.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderLength)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,5 +301,7 @@
         private System.Windows.Forms.ListBox lbGenres;
         private System.Windows.Forms.GroupBox gbInfo;
         private System.Windows.Forms.GroupBox gbArtists;
+        private System.Windows.Forms.ErrorProvider errorProviderName;
+        private System.Windows.Forms.ErrorProvider errorProviderLength;
     }
 }

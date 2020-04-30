@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Lyra.WinUI.Helpers;
+using Lyra.WinUI.Validators;
 
 namespace Lyra.WinUI.UserControlls.Administrator.Playlist
 {
@@ -141,7 +142,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Playlist
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            try
+            if(ValidateChildren())
             {
                 var playlistTracks = new List<int>();
                 foreach (DataGridViewRow Row in dgvPlaylistTracks.Rows)
@@ -179,10 +180,14 @@ namespace Lyra.WinUI.UserControlls.Administrator.Playlist
 
                 MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (Exception error)
-            {
-                MessageBox.Show(error.Message);
-            }
+        }
+
+        private void Name_Validating(object sender, CancelEventArgs e)
+        {
+            var validator = new PlaylistValidator();
+            var result = validator.NameCheck(txtName.Text);
+            errorProviderName.SetError(txtName, result.Message);
+            e.Cancel = !result.IsValid;
         }
     }
 }

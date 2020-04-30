@@ -181,9 +181,14 @@
       <DependentUpon>ucSignUp.cs</DependentUpon>
     </Compile>
     <Compile Include="Validators\AlbumValidator.cs" />
+    <Compile Include="Validators\ArtistValidator.cs" />
     <Compile Include="Validators\BaseValidator.cs" />
     <Compile Include="Validators\IAlbumValidator.cs" />
-    <Compile Include="Validators\IBaseValidator.cs" />
+    <Compile Include="Validators\IArtistValidator.cs" />
+    <Compile Include="Validators\IPlaylistValidator.cs" />
+    <Compile Include="Validators\ITrackValidator.cs" />
+    <Compile Include="Validators\PlaylistValidator.cs" />
+    <Compile Include="Validators\TrackValidator.cs" />
     <Compile Include="Validators\ValidationResult.cs" />
     <EmbeddedResource Include="Forms\Administrator\frmAdminPanel.resx">
       <DependentUpon>frmAdminPanel.cs</DependentUpon>

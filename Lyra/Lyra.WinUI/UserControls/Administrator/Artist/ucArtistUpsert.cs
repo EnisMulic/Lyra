@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Lyra.WinUI.UserControlls.Administrator.Album;
 using Lyra.WinUI.UserControlls.Administrator.Track;
 using Lyra.WinUI.Helpers;
+using Lyra.WinUI.Validators;
 
 namespace Lyra.WinUI.UserControlls.Administrator.Artist
 {
@@ -101,7 +102,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Artist
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            try
+            if(ValidateChildren())
             {
                 var request = new Model.Requests.ArtistUpsertRequest
                 {
@@ -109,7 +110,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Artist
                     Image = ImageHelper.SystemDrawingToByteArray(pbArtistImage.Image)
                 };
 
-                if(_ID.HasValue)
+                if (_ID.HasValue)
                 {
                     await _apiService.Update<Model.Artist>(_ID.Value, request);
                 }
@@ -120,12 +121,14 @@ namespace Lyra.WinUI.UserControlls.Administrator.Artist
 
                 MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch
-            {
-
-            }
         }
 
-        
+        private void Name_Validating(object sender, CancelEventArgs e)
+        {
+            var validator = new ArtistValidator();
+            var result = validator.NameCheck(txtName.Text);
+            errorProviderName.SetError(txtName, result.Message);
+            e.Cancel = !result.IsValid;
+        }
     }
 }

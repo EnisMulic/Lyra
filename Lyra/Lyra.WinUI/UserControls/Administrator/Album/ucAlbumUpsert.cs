@@ -148,9 +148,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            if (!ValidateChildren()) return;
-
-            try
+            if (ValidateChildren())
             {
                 var albumTracks = new List<int>();
                 foreach (DataGridViewRow Row in dgvAlbumTracks.Rows)
@@ -158,7 +156,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
                     albumTracks.Add(Convert.ToInt32(Row.Cells["ID"].Value));
                 }
 
-                
+
 
                 var request = new Model.Requests.AlbumUpsertRequest()
                 {
@@ -169,7 +167,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
                     Tracks = albumTracks
                 };
 
-                if(_ID.HasValue)
+                if (_ID.HasValue)
                 {
                     var tracksToDelete = _album.AlbumTracks
                         .Where(i => !albumTracks.Any(id => id.Equals(i.TrackID)))
@@ -187,22 +185,23 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
 
                 MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch(Exception error)
-            {
-                MessageBox.Show(error.Message);
-            }
+            
         }
 
         private void Name_Validating(object sender, CancelEventArgs e)
         {
             var validator = new AlbumValidator();
-            errorProviderName.SetError(txtName, validator.NameCheck(txtName.Text).Message);
+            var result = validator.NameCheck(txtName.Text);
+            errorProviderName.SetError(txtName, result.Message);
+            e.Cancel = !result.IsValid;
         }
 
         private void ReleaseYear_Validating(object sender, CancelEventArgs e)
         {
             var validator = new AlbumValidator();
-            errorProviderReleaseYear.SetError(txtName, validator.ReleaseYearCheck(txtReleaseYear.Text).Message);
+            var result = validator.ReleaseYearCheck(txtReleaseYear.Text);
+            errorProviderReleaseYear.SetError(txtReleaseYear, result.Message);
+            e.Cancel = !result.IsValid;
         }
     }
 }
