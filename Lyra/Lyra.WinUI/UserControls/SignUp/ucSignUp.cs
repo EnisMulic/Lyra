@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Lyra.Model.Requests;
+using Lyra.WinUI.Validators;
 
 namespace Lyra.WinUI.SignUp
 {
@@ -33,7 +34,7 @@ namespace Lyra.WinUI.SignUp
 
         private async void btnSignUp_Click(object sender, EventArgs e)
         {
-            try
+            if(ValidateChildren())
             {
                 APIService.Username = "Admin";
                 APIService.Password = "Password1";
@@ -46,18 +47,13 @@ namespace Lyra.WinUI.SignUp
                     Username = txtUsername.Text,
                     PhoneNumber = txtPhone.Text,
                     Password = txtPassword.Text,
-                    PasswordConfirmation = txtConfirmPassword.Text
+                    PasswordConfirmation = txtPasswordConfirm.Text
 
                 };
                 await _service.Insert<Model.User>(request);
 
                 ClearTextBoxes();
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-
 
         }
 
@@ -78,134 +74,52 @@ namespace Lyra.WinUI.SignUp
             func(Controls);
         }
 
-        bool UsernameInDatabase(string username)
+        private void FirstName_Validating(object sender, CancelEventArgs e)
         {
-            var search = new UserSearchRequest()
-            {
-                Username = username
-            };
-
-            var user = _service.Get<Model.User>(search);
-
-            return user != null ? true : false;
+            var validator = new UserValidator();
+            var result = validator.FirstNameCheck(txtFirstName.Text);
+            errorProviderFirstName.SetError(txtFirstName, result.Message);
+            e.Cancel = !result.IsValid;
         }
 
-        bool EmailInDatabase(string email)
+        private void LastName_Validating(object sender, CancelEventArgs e)
         {
-            var search = new UserSearchRequest()
-            {
-                Email = email
-            };
-
-            var user = _service.Get<Model.User>(search);
-
-            return user != null ? true : false;
+            var validator = new UserValidator();
+            var result = validator.FirstNameCheck(txtLastName.Text);
+            errorProviderLastName.SetError(txtLastName, result.Message);
+            e.Cancel = !result.IsValid;
         }
 
-        private void txtUsername_Validating(object sender, CancelEventArgs e)
+        private void Username_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtUsername.Text))
-            {
-                errorUsername.SetError(txtUsername, "Required field");
-                e.Cancel = true;
-            }
-            else if (UsernameInDatabase(txtUsername.Text))
-            {
-                errorUsername.SetError(txtUsername, "Username is taken");
-                e.Cancel = true;
-            }
-            else
-            {
-                errorUsername.SetError(txtUsername, "");
-            }
+            var validator = new UserValidator();
+            var result = validator.UsernameCheck(txtUsername.Text);
+            errorProviderUsername.SetError(txtUsername, result.Message);
+            e.Cancel = !result.IsValid;
         }
 
-        private void txtFirstName_Validating(object sender, CancelEventArgs e)
+        private void Email_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtFirstName.Text))
-            {
-                errorFirstName.SetError(txtFirstName, "Required field");
-                e.Cancel = true;
-            }
-            else
-            {
-                errorFirstName.SetError(txtUsername, "");
-            }
+            var validator = new UserValidator();
+            var result = validator.EmailCheck(txtEmail.Text);
+            errorProviderEmail.SetError(txtEmail, result.Message);
+            e.Cancel = !result.IsValid;
         }
 
-        private void txtLastName_Validating(object sender, CancelEventArgs e)
+        private void Password_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtLastName.Text))
-            {
-                errorLastName.SetError(txtLastName, "Required field");
-                e.Cancel = true;
-            }
-            else
-            {
-                errorLastName.SetError(txtLastName, "");
-            }
+            var validator = new UserValidator();
+            var result = validator.PasswordCheck(txtPassword.Text);
+            errorProviderPassword.SetError(txtPassword, result.Message);
+            e.Cancel = !result.IsValid;
         }
 
-        private void txtEmail_Validating(object sender, CancelEventArgs e)
+        private void PasswordConfirm_Validating(object sender, CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtEmail.Text))
-            {
-                errorEmail.SetError(txtEmail, "Required field");
-                e.Cancel = true;
-            }
-            else if (EmailInDatabase(txtEmail.Text))
-            {
-                errorEmail.SetError(txtEmail, "Email is taken");
-                e.Cancel = true;
-            }
-            else
-            {
-                errorEmail.SetError(txtEmail, "");
-            }
-        }
-
-        private void txtPhone_Validating(object sender, CancelEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtPhone.Text))
-            {
-                errorPhone.SetError(txtPhone, "Required field");
-                e.Cancel = true;
-            }
-            else
-            {
-                errorPhone.SetError(txtPhone, "");
-            }
-        }
-
-        private void txtPassword_Validating(object sender, CancelEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtPassword.Text))
-            {
-                errorPassword.SetError(txtPassword, "Required field");
-                e.Cancel = true;
-            }
-            else
-            {
-                errorPassword.SetError(txtPassword, "");
-            }
-        }
-
-        private void txtConfirmPassword_Validating(object sender, CancelEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtConfirmPassword.Text))
-            {
-                errorConfirmPassword.SetError(txtConfirmPassword, "Required field");
-                e.Cancel = true;
-            }
-            else if (txtConfirmPassword != txtPassword)
-            {
-                errorConfirmPassword.SetError(txtConfirmPassword, "Passwords do not match");
-                e.Cancel = true;
-            }
-            else
-            {
-                errorConfirmPassword.SetError(txtConfirmPassword, "");
-            }
+            var validator = new UserValidator();
+            var result = validator.PasswordConfirmCheck(txtPassword.Text, txtPasswordConfirm.Text);
+            errorProviderPasswordConfirm.SetError(txtPasswordConfirm, result.Message);
+            e.Cancel = !result.IsValid;
         }
 
         private void ucSignUp_MouseDown(object sender, MouseEventArgs e)

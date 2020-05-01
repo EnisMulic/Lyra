@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Lyra.WinUI.Helpers;
+using Lyra.WinUI.Validators;
 
 namespace Lyra.WinUI.UserControlls.Administrator.User
 {
@@ -44,7 +45,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            try
+            if(ValidateChildren())
             {
                 var roleList = clbRoles.CheckedItems.Cast<Model.Role>().Select(i => i.ID).ToList();
 
@@ -56,7 +57,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
                     Email = Convert.ToString(txtEmail.Text),
                     PhoneNumber = Convert.ToString(txtPhoneNumber.Text),
                     Password = Convert.ToString(txtPassword.Text),
-                    PasswordConfirmation = Convert.ToString(txtConfirmPassword.Text),
+                    PasswordConfirmation = Convert.ToString(txtPasswordConfirm.Text),
                     Image = ImageHelper.SystemDrawingToByteArray(pbUserImage.Image),
                     Roles = roleList
                 };
@@ -65,10 +66,54 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
 
                 MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch
-            {
+        }
 
-            }
+        private void FirstName_Validating(object sender, CancelEventArgs e)
+        {
+            var validator = new UserValidator();
+            var result = validator.FirstNameCheck(txtFirstName.Text);
+            errorProviderFirstName.SetError(txtFirstName, result.Message);
+            e.Cancel = !result.IsValid;
+        }
+
+        private void LastName_Validating(object sender, CancelEventArgs e)
+        {
+            var validator = new UserValidator();
+            var result = validator.FirstNameCheck(txtLastName.Text);
+            errorProviderLastName.SetError(txtLastName, result.Message);
+            e.Cancel = !result.IsValid;
+        }
+
+        private void Username_Validating(object sender, CancelEventArgs e)
+        {
+            var validator = new UserValidator();
+            var result = validator.UsernameCheck(txtUsername.Text);
+            errorProviderUsername.SetError(txtUsername, result.Message);
+            e.Cancel = !result.IsValid;
+        }
+
+        private void Email_Validating(object sender, CancelEventArgs e)
+        {
+            var validator = new UserValidator();
+            var result = validator.EmailCheck(txtEmail.Text);
+            errorProviderEmail.SetError(txtEmail, result.Message);
+            e.Cancel = !result.IsValid;
+        }
+
+        private void Password_Validating(object sender, CancelEventArgs e)
+        {
+            var validator = new UserValidator();
+            var result = validator.PasswordCheck(txtPassword.Text);
+            errorProviderPassword.SetError(txtPassword, result.Message);
+            e.Cancel = !result.IsValid;
+        }
+
+        private void PasswordConfirm_Validating(object sender, CancelEventArgs e)
+        {
+            var validator = new UserValidator();
+            var result = validator.PasswordConfirmCheck(txtPassword.Text, txtPasswordConfirm.Text);
+            errorProviderPasswordConfirm.SetError(txtPasswordConfirm, result.Message);
+            e.Cancel = !result.IsValid;
         }
     }
 }

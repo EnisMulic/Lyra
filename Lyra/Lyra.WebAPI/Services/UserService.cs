@@ -33,7 +33,17 @@ namespace Lyra.WebAPI.Services
 
             if (!string.IsNullOrWhiteSpace(search?.LastName))
             {
-                query = query.Where(i => i.FirstName.StartsWith(search.LastName));
+                query = query.Where(i => i.LastName.StartsWith(search.LastName));
+            }
+
+            if (!string.IsNullOrWhiteSpace(search?.Username))
+            {
+                query = query.Where(i => i.Username.Equals(search.Username));
+            }
+
+            if (!string.IsNullOrWhiteSpace(search?.Email))
+            {
+                query = query.Where(i => i.Email.Equals(search.Email));
             }
 
             var list = await query.ToListAsync();

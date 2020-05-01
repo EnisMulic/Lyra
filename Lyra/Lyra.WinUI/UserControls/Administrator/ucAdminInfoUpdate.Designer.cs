@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnPassword = new System.Windows.Forms.Button();
             this.btnInfo = new System.Windows.Forms.Button();
             this.btnUploadImage = new System.Windows.Forms.Button();
@@ -46,8 +47,16 @@
             this.gbInfo = new System.Windows.Forms.GroupBox();
             this.gbRoles = new System.Windows.Forms.GroupBox();
             this.clbRoles = new System.Windows.Forms.CheckedListBox();
+            this.errorProviderFirstName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderLastName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderUsername = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderEmail = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).BeginInit();
             this.gbRoles.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderFirstName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderLastName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderUsername)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmail)).BeginInit();
             this.SuspendLayout();
             // 
             // btnPassword
@@ -114,9 +123,9 @@
             this.lblEmail.AutoSize = true;
             this.lblEmail.Location = new System.Drawing.Point(538, 177);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(57, 13);
+            this.lblEmail.Size = new System.Drawing.Size(32, 13);
             this.lblEmail.TabIndex = 76;
-            this.lblEmail.Text = "First Name";
+            this.lblEmail.Text = "Email";
             // 
             // txtEmail
             // 
@@ -125,6 +134,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(188, 22);
             this.txtEmail.TabIndex = 75;
+            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.Email_Validating);
             // 
             // lblUsername
             // 
@@ -142,6 +152,7 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(188, 22);
             this.txtUsername.TabIndex = 73;
+            this.txtUsername.Validating += new System.ComponentModel.CancelEventHandler(this.Username_Validating);
             // 
             // lblLastName
             // 
@@ -159,6 +170,7 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(188, 22);
             this.txtLastName.TabIndex = 71;
+            this.txtLastName.Validating += new System.ComponentModel.CancelEventHandler(this.LastName_Validating);
             // 
             // lblFirstName
             // 
@@ -176,6 +188,7 @@
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(188, 22);
             this.txtFirstName.TabIndex = 69;
+            this.txtFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.FirstName_Validating);
             // 
             // btnSave
             // 
@@ -218,6 +231,22 @@
             this.clbRoles.Size = new System.Drawing.Size(673, 148);
             this.clbRoles.TabIndex = 61;
             // 
+            // errorProviderFirstName
+            // 
+            this.errorProviderFirstName.ContainerControl = this;
+            // 
+            // errorProviderLastName
+            // 
+            this.errorProviderLastName.ContainerControl = this;
+            // 
+            // errorProviderUsername
+            // 
+            this.errorProviderUsername.ContainerControl = this;
+            // 
+            // errorProviderEmail
+            // 
+            this.errorProviderEmail.ContainerControl = this;
+            // 
             // ucAdminInfoUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -244,6 +273,10 @@
             this.Load += new System.EventHandler(this.ucAdminInfoUpdate_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).EndInit();
             this.gbRoles.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderFirstName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderLastName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderUsername)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmail)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -269,5 +302,9 @@
         private System.Windows.Forms.GroupBox gbInfo;
         private System.Windows.Forms.GroupBox gbRoles;
         private System.Windows.Forms.CheckedListBox clbRoles;
+        private System.Windows.Forms.ErrorProvider errorProviderFirstName;
+        private System.Windows.Forms.ErrorProvider errorProviderLastName;
+        private System.Windows.Forms.ErrorProvider errorProviderUsername;
+        private System.Windows.Forms.ErrorProvider errorProviderEmail;
     }
 }

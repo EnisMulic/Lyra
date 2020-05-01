@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Lyra.WinUI.Helpers;
+using Lyra.WinUI.Validators;
 
 namespace Lyra.WinUI.UserControlls.Administrator.User
 {
@@ -76,7 +77,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            try
+            if(ValidateChildren())
             {
                 var checkedRoles = clbRoles.CheckedItems.Cast<Model.Role>().Select(i => i.ID).ToList();
 
@@ -106,75 +107,38 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
 
                 MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch
-            {
-
-            }
         }
 
-        private void lblLastName_Click(object sender, EventArgs e)
+        private void FirstName_Validating(object sender, CancelEventArgs e)
         {
-
+            var validator = new UserValidator();
+            var result = validator.FirstNameCheck(txtFirstName.Text);
+            errorProviderFirstName.SetError(txtFirstName, result.Message);
+            e.Cancel = !result.IsValid;
         }
 
-        private void txtUsername_TextChanged(object sender, EventArgs e)
+        private void LastName_Validating(object sender, CancelEventArgs e)
         {
-
+            var validator = new UserValidator();
+            var result = validator.FirstNameCheck(txtLastName.Text);
+            errorProviderLastName.SetError(txtLastName, result.Message);
+            e.Cancel = !result.IsValid;
         }
 
-        private void lblEmail_Click(object sender, EventArgs e)
+        private void Username_Validating(object sender, CancelEventArgs e)
         {
-
+            var validator = new UserValidator();
+            var result = validator.UsernameCheck(txtUsername.Text);
+            errorProviderUsername.SetError(txtUsername, result.Message);
+            e.Cancel = !result.IsValid;
         }
 
-        private void txtFirstName_TextChanged(object sender, EventArgs e)
+        private void Email_Validating(object sender, CancelEventArgs e)
         {
-
-        }
-
-        private void lblPhoneNumber_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblFirstName_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gbInfo_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtPhoneNumber_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lblUsername_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtLastName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pbUserImage_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void txtEmail_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void gbRoles_Enter(object sender, EventArgs e)
-        {
-
+            var validator = new UserValidator();
+            var result = validator.EmailCheck(txtEmail.Text);
+            errorProviderEmail.SetError(txtEmail, result.Message);
+            e.Cancel = !result.IsValid;
         }
     }
 }

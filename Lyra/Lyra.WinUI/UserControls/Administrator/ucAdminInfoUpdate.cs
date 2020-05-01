@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Lyra.WinUI.Helpers;
+using Lyra.WinUI.Validators;
 
 namespace Lyra.WinUI.UserControls.Administrator
 {
@@ -85,7 +86,7 @@ namespace Lyra.WinUI.UserControls.Administrator
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            try
+            if(ValidateChildren())
             {
                 var checkedRoles = clbRoles.CheckedItems.Cast<Model.Role>().Select(i => i.ID).ToList();
 
@@ -115,12 +116,38 @@ namespace Lyra.WinUI.UserControls.Administrator
 
                 MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch
-            {
-
-            }
         }
 
-        
+        private void FirstName_Validating(object sender, CancelEventArgs e)
+        {
+            var validator = new UserValidator();
+            var result = validator.FirstNameCheck(txtFirstName.Text);
+            errorProviderFirstName.SetError(txtFirstName, result.Message);
+            e.Cancel = !result.IsValid;
+        }
+
+        private void LastName_Validating(object sender, CancelEventArgs e)
+        {
+            var validator = new UserValidator();
+            var result = validator.FirstNameCheck(txtLastName.Text);
+            errorProviderLastName.SetError(txtLastName, result.Message);
+            e.Cancel = !result.IsValid;
+        }
+
+        private void Username_Validating(object sender, CancelEventArgs e)
+        {
+            var validator = new UserValidator();
+            var result = validator.UsernameCheck(txtUsername.Text);
+            errorProviderUsername.SetError(txtUsername, result.Message);
+            e.Cancel = !result.IsValid;
+        }
+
+        private void Email_Validating(object sender, CancelEventArgs e)
+        {
+            var validator = new UserValidator();
+            var result = validator.EmailCheck(txtEmail.Text);
+            errorProviderEmail.SetError(txtEmail, result.Message);
+            e.Cancel = !result.IsValid;
+        }
     }
 }

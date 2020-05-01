@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblPhoneNumber = new System.Windows.Forms.Label();
             this.txtPhoneNumber = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
@@ -42,14 +43,26 @@
             this.lblPassword = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblConfirmPassword = new System.Windows.Forms.Label();
-            this.txtConfirmPassword = new System.Windows.Forms.TextBox();
+            this.txtPasswordConfirm = new System.Windows.Forms.TextBox();
             this.pbUserImage = new System.Windows.Forms.PictureBox();
             this.btnUploadImage = new System.Windows.Forms.Button();
             this.clbRoles = new System.Windows.Forms.CheckedListBox();
             this.gbInfo = new System.Windows.Forms.GroupBox();
             this.gbRoles = new System.Windows.Forms.GroupBox();
+            this.errorProviderFirstName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderLastName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderUsername = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderEmail = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderPassword = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderPasswordConfirm = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).BeginInit();
             this.gbRoles.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderFirstName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderLastName)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderUsername)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderPassword)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderPasswordConfirm)).BeginInit();
             this.SuspendLayout();
             // 
             // lblPhoneNumber
@@ -74,9 +87,9 @@
             this.lblEmail.AutoSize = true;
             this.lblEmail.Location = new System.Drawing.Point(532, 158);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(32, 13);
+            this.lblEmail.Size = new System.Drawing.Size(35, 13);
             this.lblEmail.TabIndex = 43;
-            this.lblEmail.Text = "Email";
+            this.lblEmail.Text = "E-mail";
             // 
             // txtEmail
             // 
@@ -85,6 +98,7 @@
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(188, 22);
             this.txtEmail.TabIndex = 42;
+            this.txtEmail.Validating += new System.ComponentModel.CancelEventHandler(this.Email_Validating);
             // 
             // lblUsername
             // 
@@ -102,6 +116,7 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(188, 22);
             this.txtUsername.TabIndex = 40;
+            this.txtUsername.Validating += new System.ComponentModel.CancelEventHandler(this.Username_Validating);
             // 
             // lblLastName
             // 
@@ -119,6 +134,7 @@
             this.txtLastName.Name = "txtLastName";
             this.txtLastName.Size = new System.Drawing.Size(188, 22);
             this.txtLastName.TabIndex = 38;
+            this.txtLastName.Validating += new System.ComponentModel.CancelEventHandler(this.LastName_Validating);
             // 
             // lblFirstName
             // 
@@ -136,6 +152,7 @@
             this.txtFirstName.Name = "txtFirstName";
             this.txtFirstName.Size = new System.Drawing.Size(188, 22);
             this.txtFirstName.TabIndex = 36;
+            this.txtFirstName.Validating += new System.ComponentModel.CancelEventHandler(this.FirstName_Validating);
             // 
             // btnSave
             // 
@@ -164,6 +181,7 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(188, 22);
             this.txtPassword.TabIndex = 46;
+            this.txtPassword.Validating += new System.ComponentModel.CancelEventHandler(this.Password_Validating);
             // 
             // lblConfirmPassword
             // 
@@ -174,14 +192,15 @@
             this.lblConfirmPassword.TabIndex = 49;
             this.lblConfirmPassword.Text = "Confirm Password";
             // 
-            // txtConfirmPassword
+            // txtPasswordConfirm
             // 
-            this.txtConfirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtConfirmPassword.Location = new System.Drawing.Point(535, 301);
-            this.txtConfirmPassword.Name = "txtConfirmPassword";
-            this.txtConfirmPassword.PasswordChar = '*';
-            this.txtConfirmPassword.Size = new System.Drawing.Size(188, 22);
-            this.txtConfirmPassword.TabIndex = 48;
+            this.txtPasswordConfirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPasswordConfirm.Location = new System.Drawing.Point(535, 301);
+            this.txtPasswordConfirm.Name = "txtPasswordConfirm";
+            this.txtPasswordConfirm.PasswordChar = '*';
+            this.txtPasswordConfirm.Size = new System.Drawing.Size(188, 22);
+            this.txtPasswordConfirm.TabIndex = 48;
+            this.txtPasswordConfirm.Validating += new System.ComponentModel.CancelEventHandler(this.PasswordConfirm_Validating);
             // 
             // pbUserImage
             // 
@@ -232,6 +251,30 @@
             this.gbRoles.TabStop = false;
             this.gbRoles.Text = "Roles";
             // 
+            // errorProviderFirstName
+            // 
+            this.errorProviderFirstName.ContainerControl = this;
+            // 
+            // errorProviderLastName
+            // 
+            this.errorProviderLastName.ContainerControl = this;
+            // 
+            // errorProviderUsername
+            // 
+            this.errorProviderUsername.ContainerControl = this;
+            // 
+            // errorProviderEmail
+            // 
+            this.errorProviderEmail.ContainerControl = this;
+            // 
+            // errorProviderPassword
+            // 
+            this.errorProviderPassword.ContainerControl = this;
+            // 
+            // errorProviderPasswordConfirm
+            // 
+            this.errorProviderPasswordConfirm.ContainerControl = this;
+            // 
             // ucUserAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -239,7 +282,7 @@
             this.Controls.Add(this.btnUploadImage);
             this.Controls.Add(this.pbUserImage);
             this.Controls.Add(this.lblConfirmPassword);
-            this.Controls.Add(this.txtConfirmPassword);
+            this.Controls.Add(this.txtPasswordConfirm);
             this.Controls.Add(this.lblPassword);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.lblPhoneNumber);
@@ -260,6 +303,12 @@
             this.Load += new System.EventHandler(this.ucUserAdd_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).EndInit();
             this.gbRoles.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderFirstName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderLastName)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderUsername)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderPassword)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderPasswordConfirm)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -281,11 +330,17 @@
         private System.Windows.Forms.Label lblPassword;
         private System.Windows.Forms.TextBox txtPassword;
         private System.Windows.Forms.Label lblConfirmPassword;
-        private System.Windows.Forms.TextBox txtConfirmPassword;
+        private System.Windows.Forms.TextBox txtPasswordConfirm;
         private System.Windows.Forms.PictureBox pbUserImage;
         private System.Windows.Forms.Button btnUploadImage;
         private System.Windows.Forms.CheckedListBox clbRoles;
         private System.Windows.Forms.GroupBox gbInfo;
         private System.Windows.Forms.GroupBox gbRoles;
+        private System.Windows.Forms.ErrorProvider errorProviderFirstName;
+        private System.Windows.Forms.ErrorProvider errorProviderLastName;
+        private System.Windows.Forms.ErrorProvider errorProviderUsername;
+        private System.Windows.Forms.ErrorProvider errorProviderEmail;
+        private System.Windows.Forms.ErrorProvider errorProviderPassword;
+        private System.Windows.Forms.ErrorProvider errorProviderPasswordConfirm;
     }
 }
