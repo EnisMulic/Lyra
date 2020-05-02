@@ -22,6 +22,12 @@ namespace Lyra.WinUI
             _route = route;
         }
 
+        public async Task<Model.User> Authenticate()
+        {
+            var url = $"{Properties.Settings.Default.APIUrl}/User/Authenticate?username={Username}&password={Password}";
+            return await url.WithBasicAuth(Username, Password).GetJsonAsync<Model.User>();
+        }
+
         public async Task<T> Get<T>(object search)
         {
             var url = $"{Properties.Settings.Default.APIUrl}/{_route}";

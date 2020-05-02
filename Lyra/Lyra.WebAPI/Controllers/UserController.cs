@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
 using Lyra.Model;
@@ -21,6 +22,12 @@ namespace Lyra.WebAPI.Controllers
         public UserController(IUserService service) : base(service)
         {
             _service = service;
+        }
+
+        [HttpGet("Authenticate")]
+        public async Task<Model.User> Authenticate(string username, string password)
+        {
+            return await _service.Authenticate(username, password);
         }
     }
 }

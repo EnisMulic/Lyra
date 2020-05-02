@@ -10,14 +10,14 @@ namespace Lyra.WinUI.Validators
     public class UserValidator : BaseValidator, IUserValidator
     {
         private readonly APIService _apiService = new APIService("User");
-        public ValidationResult EmailCheck(string value)
+        public async Task<ValidationResult> EmailCheck(string value)
         {
-            //var request = new UserSearchRequest()
-            //{
-            //    Email = value
-            //};
+            var request = new UserSearchRequest()
+            {
+                Email = value
+            };
 
-            //var response = _apiService.Get<List<Model.User>>(request);
+            var response = await _apiService.Get<List<Model.User>>(request);
 
             if (!Required(value))
             {
@@ -27,10 +27,10 @@ namespace Lyra.WinUI.Validators
             {
                 return new ValidationResult("Value is not a valid email address", false);
             }
-            //else if(response.Result != null)
-            //{
-            //    return new ValidationResult("Email is taken", false);
-            //}
+            else if (response.Count == 1)
+            {
+                return new ValidationResult("Email is taken", false);
+            }
             else
             {
                 return new ValidationResult("", true);
@@ -89,23 +89,23 @@ namespace Lyra.WinUI.Validators
             }
         }
 
-        public ValidationResult UsernameCheck(string value)
+        public async Task<ValidationResult> UsernameCheck(string value)
         {
-            //var request = new UserSearchRequest()
-            //{
-            //    Username = value
-            //};
+            var request = new UserSearchRequest()
+            {
+                Username = value
+            };
 
-            //var response = _apiService.Get<List<Model.User>>(request);
+            var response = await _apiService.Get<List<Model.User>>(request);
 
             if (!Required(value))
             {
                 return new ValidationResult("This is a required field", false);
             }
-            //else if(response.Result != null)
-            //{
-            //    return new ValidationResult("Username is taken", false);
-            //}
+            else if (response.Count == 1)
+            {
+                return new ValidationResult("Username is taken", false);
+            }
             else
             {
                 return new ValidationResult("", true);

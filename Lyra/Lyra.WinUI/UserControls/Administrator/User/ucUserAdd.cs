@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Lyra.WinUI.Helpers;
 using Lyra.WinUI.Validators;
+using Lyra.WinUI.Administrator;
 
 namespace Lyra.WinUI.UserControlls.Administrator.User
 {
@@ -84,18 +85,18 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
             e.Cancel = !result.IsValid;
         }
 
-        private void Username_Validating(object sender, CancelEventArgs e)
+        private async void Username_Validating(object sender, CancelEventArgs e)
         {
             var validator = new UserValidator();
-            var result = validator.UsernameCheck(txtUsername.Text);
+            var result = await validator.UsernameCheck(txtUsername.Text);
             errorProviderUsername.SetError(txtUsername, result.Message);
             e.Cancel = !result.IsValid;
         }
 
-        private void Email_Validating(object sender, CancelEventArgs e)
+        private async void Email_Validating(object sender, CancelEventArgs e)
         {
             var validator = new UserValidator();
-            var result = validator.EmailCheck(txtEmail.Text);
+            var result = await validator.EmailCheck(txtEmail.Text);
             errorProviderEmail.SetError(txtEmail, result.Message);
             e.Cancel = !result.IsValid;
         }

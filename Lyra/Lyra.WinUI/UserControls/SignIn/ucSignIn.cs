@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Lyra.Model.Requests;
 using Lyra.WinUI.Administrator;
-
+using Lyra.WinUI.Validators;
 
 namespace Lyra.WinUI.SingIn
 {
@@ -33,36 +33,27 @@ namespace Lyra.WinUI.SingIn
             InitializeComponent();
         }
 
-        bool UsernameInDatabase(string username)
+        
+
+        private async void txtUsername_Validating(object sender, CancelEventArgs e)
         {
-            var search = new UserSearchRequest()
+            var request = new UserSearchRequest()
             {
-                Username = username
+                Username = txtUsername.Text
             };
 
-            var user = _service.Get<Model.User>(search);
+            var response = await _service.Get<List<Model.User>>(request);
 
-            return user != null;
-        }
-
-        private void txtUsername_Validating(object sender, CancelEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(txtUsername.Text))
+            if(response.Count == 0)
             {
-                errorUsername.SetError(txtUsername, "Required field");
-                e.Cancel = true;
-            }
-            else if (UsernameInDatabase(txtUsername.Text))
-            {
-                errorUsername.SetError(txtUsername, "Username does not exist");
+                errorProviderUsername.SetError(txtUsername, "Username does not exist");
                 e.Cancel = true;
             }
             else
             {
-                errorUsername.SetError(txtUsername, "");
+                errorProviderUsername.SetError(txtUsername, "");
+                e.Cancel = false;
             }
-
-
         }
 
         private void ucSignIn_MouseDown(object sender, MouseEventArgs e)
@@ -81,20 +72,23 @@ namespace Lyra.WinUI.SingIn
 
         private async void btnSignIn_ClickAsync(object sender, EventArgs e)
         {
-            try
+            if(ValidateChildren())
             {
                 APIService.Username = txtUsername.Text;
                 APIService.Password = txtPassword.Text;
 
-                var users = await _service.Get<List<Model.User>>(null);
-                var user = users.Find(i => i.Username == APIService.Username);
+                //var users = await _service.Get<List<Model.User>>(null);
+                //var user = users.Find(i => i.Username == APIService.Username);
+                var user = await _service.Authenticate();
 
-
-                LoadPanel(user);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Authenticatio", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if(user != null)
+                {
+                    LoadPanel(user);
+                }
+                else
+                {
+                    errorProviderPassword.SetError(txtPassword, "Wrong Password");
+                }
             }
         }
 
