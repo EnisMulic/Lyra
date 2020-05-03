@@ -21,6 +21,7 @@ namespace Lyra.WinUI.Administrator
     public partial class frmAdminPanel : Form
     {
         private static Model.User _user;
+        private Point lastPoint;
         public frmAdminPanel(Model.User user)
         {
             _user = user;
@@ -86,6 +87,21 @@ namespace Lyra.WinUI.Administrator
         {
             var uc = new ucAdminInfoUpdate(_user.ID);
             LoadUserControl(uc);
+        }
+
+        //Movable Form
+        private void frmMain_MouseDown(object sender, MouseEventArgs e)
+        {
+            lastPoint = new Point(e.X, e.Y);
+        }
+
+        private void frmMain_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                this.Left += e.X - lastPoint.X;
+                this.Top += e.Y - lastPoint.Y;
+            }
         }
     }
 }

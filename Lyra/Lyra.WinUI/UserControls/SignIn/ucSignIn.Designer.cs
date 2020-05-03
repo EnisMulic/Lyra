@@ -110,8 +110,6 @@
             this.Controls.Add(this.lblUsername);
             this.Name = "ucSignIn";
             this.Size = new System.Drawing.Size(364, 536);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ucSignIn_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ucSignIn_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderUsername)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPassword)).EndInit();
             this.ResumeLayout(false);

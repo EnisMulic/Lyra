@@ -131,8 +131,8 @@ namespace Lyra.WinUI.SignUp
         {
             if (e.Button == MouseButtons.Left)
             {
-                this.Left += e.X - lastPoint.X;
-                this.Top += e.Y - lastPoint.Y;
+                Parent.Left += e.X - lastPoint.X;
+                Parent.Top += e.Y - lastPoint.Y;
             }
         }
     }
