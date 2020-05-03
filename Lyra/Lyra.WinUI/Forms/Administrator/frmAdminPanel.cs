@@ -24,7 +24,8 @@ namespace Lyra.WinUI.Administrator
         public frmAdminPanel(Model.User user)
         {
             _user = user;
-            InitializeComponent();   
+            InitializeComponent();
+            AutoValidate = AutoValidate.Disable;
         }
 
         private void frmAdminPanel_Load(object sender, EventArgs e)

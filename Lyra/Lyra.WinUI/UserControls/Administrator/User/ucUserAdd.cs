@@ -20,7 +20,6 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
         public ucUserAdd()
         {
             InitializeComponent();
-            
         }
 
         private async void ucUserAdd_Load(object sender, EventArgs e)

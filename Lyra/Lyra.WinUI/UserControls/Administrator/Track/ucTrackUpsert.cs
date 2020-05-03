@@ -24,6 +24,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Track
         {
             _ID = ID;
             InitializeComponent();
+            AutoScroll = true;
         }
 
         private void BindComboList<T>(ComboBox comboBox, List<T> list)
@@ -51,7 +52,6 @@ namespace Lyra.WinUI.UserControlls.Administrator.Track
 
         private async void ucTrackEdit_Load(object sender, EventArgs e)
         {
-            this.AutoScroll = true;
             var artists = await _artistApiService.Get<List<Model.Artist>>(null);
             var featuredArtists = new List<Model.Artist>(artists);
             var genres = await _genreApiService.Get<List<Model.Genre>>(null);

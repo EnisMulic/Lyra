@@ -22,12 +22,11 @@ namespace Lyra.WinUI.UserControlls.Administrator.Artist
         {
             _ID = ID;
             InitializeComponent();
+            AutoScroll = true;
         }
 
         private async void ucArtistUpsert_Load(object sender, EventArgs e)
         {
-            AutoScroll = true;
-
             if (_ID.HasValue)
             {
                 var artist = await _apiService.GetById<Model.Artist>(_ID.Value);

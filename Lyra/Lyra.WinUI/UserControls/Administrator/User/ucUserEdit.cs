@@ -17,10 +17,6 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
         private readonly APIService _apiService = new APIService("User");
         private readonly APIService _roleApiService = new APIService("Role");
         private readonly int _ID;
-        public ucUserEdit()
-        {
-            InitializeComponent();
-        }
 
         public ucUserEdit(int ID)
         {

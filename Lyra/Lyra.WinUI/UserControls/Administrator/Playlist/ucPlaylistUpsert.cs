@@ -22,11 +22,11 @@ namespace Lyra.WinUI.UserControlls.Administrator.Playlist
         {
             _ID = ID;
             InitializeComponent();
+            AutoScroll = true;
         }
 
         private async void ucPlaylistUpsert_Load(object sender, EventArgs e)
         {
-            AutoScroll = true;
             var props = new List<string> { "ID", "Name", "Length" };
 
             var tracks = await _trackApiService.Get<List<Model.Track>>(null);

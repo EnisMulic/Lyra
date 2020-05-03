@@ -19,6 +19,7 @@ namespace Lyra.WinUI
         public frmMain()
         {
             InitializeComponent();
+            AutoValidate = AutoValidate.Disable;
         }
 
         private void btnSignInUC_Click(object sender, EventArgs e)

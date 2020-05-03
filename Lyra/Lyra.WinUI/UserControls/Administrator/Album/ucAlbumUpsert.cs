@@ -24,11 +24,11 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
         {
             _ID = ID;
             InitializeComponent();
+            AutoScroll = true;
         }
 
         private async void ucAlbumUpsert_Load(object sender, EventArgs e)
         {
-            AutoScroll = true;
             var props = new List<string> { "ID", "Name", "Length" };
 
             var artists = await _artistApiService.Get<List<Model.Artist>>(null);
