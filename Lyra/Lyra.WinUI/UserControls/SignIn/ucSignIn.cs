@@ -76,10 +76,13 @@ namespace Lyra.WinUI.SingIn
             {
                 APIService.Username = txtUsername.Text;
                 APIService.Password = txtPassword.Text;
-
-                //var users = await _service.Get<List<Model.User>>(null);
-                //var user = users.Find(i => i.Username == APIService.Username);
-                var user = await _service.Authenticate();
+                var request = new UserAuthenticationRequest()
+                {
+                    Username = APIService.Username,
+                    Password = APIService.Password
+                };
+                
+                var user = await _service.Authenticate(request);
 
                 if(user != null)
                 {

@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Lyra.WebAPI.Controllers
 {
-    
+    [AllowAnonymous]
     [Route("api/[controller]")]
     [ApiController]
     public class BaseController<T, TSearch> : ControllerBase

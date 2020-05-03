@@ -24,10 +24,11 @@ namespace Lyra.WebAPI.Controllers
             _service = service;
         }
 
-        [HttpGet("Authenticate")]
-        public async Task<Model.User> Authenticate(string username, string password)
+        [AllowAnonymous]
+        [HttpPost("Auth")]
+        public async Task<Model.User> Authenticate(UserAuthenticationRequest request)
         {
-            return await _service.Authenticate(username, password);
+            return await _service.Authenticate(request);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Lyra.WebAPI.Services;
+﻿using Lyra.Model.Requests;
+using Lyra.WebAPI.Services;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -39,9 +40,13 @@ namespace Lyra.WebAPI.Security
                 var authHeader = AuthenticationHeaderValue.Parse(Request.Headers["Authorization"]);
                 var credentialBytes = Convert.FromBase64String(authHeader.Parameter);
                 var credentials = Encoding.UTF8.GetString(credentialBytes).Split(':');
-                var username = credentials[0];
-                var password = credentials[1];
-                user = await _userService.Authenticate(username, password);
+                var request = new UserAuthenticationRequest()
+                {
+                    Username = credentials[0],
+                    Password = credentials[1]
+                };
+
+                user = await _userService.Authenticate(request);
             }
             catch
             {

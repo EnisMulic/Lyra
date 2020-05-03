@@ -60,17 +60,17 @@ namespace Lyra.WebAPI.Services
             return _mapper.Map<Model.User>(entity);
         }
 
-        public async Task<Model.User> Authenticate(string username, string password)
+        public async Task<Model.User> Authenticate(UserAuthenticationRequest request)
         {
             var user = await _context.Users
                 .Include(i => i.UserRoles)
                 .ThenInclude(j => j.Role)
-                .FirstOrDefaultAsync(i => i.Username == username);
+                .FirstOrDefaultAsync(i => i.Username == request.Username);
 
             
             if (user != null)
             {
-                var hash = GenerateHash(user.PasswordSalt, password);
+                var hash = GenerateHash(user.PasswordSalt, request.Password);
                 if(hash == user.PasswordHash)
                 {
                     return _mapper.Map<Model.User>(user);

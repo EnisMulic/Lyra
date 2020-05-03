@@ -7,6 +7,7 @@ using Flurl.Http;
 using Flurl;
 using Lyra.Model;
 using System.Windows.Forms;
+using Lyra.Model.Requests;
 
 namespace Lyra.WinUI
 {
@@ -22,10 +23,10 @@ namespace Lyra.WinUI
             _route = route;
         }
 
-        public async Task<Model.User> Authenticate()
+        public async Task<Model.User> Authenticate(UserAuthenticationRequest request)
         {
-            var url = $"{Properties.Settings.Default.APIUrl}/User/Authenticate?username={Username}&password={Password}";
-            return await url.WithBasicAuth(Username, Password).GetJsonAsync<Model.User>();
+            var url = $"{Properties.Settings.Default.APIUrl}/User/Auth";
+            return await url.WithBasicAuth(Username, Password).PostJsonAsync(request).ReceiveJson<User>(); ;
         }
 
         public async Task<T> Get<T>(object search)
