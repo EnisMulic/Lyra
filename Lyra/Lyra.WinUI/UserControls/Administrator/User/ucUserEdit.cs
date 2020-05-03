@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Lyra.WinUI.Helpers;
 using Lyra.WinUI.Validators;
 
-namespace Lyra.WinUI.UserControlls.Administrator.User
+namespace Lyra.WinUI.UserControls.Administrator.User
 {
     public partial class ucUserEdit : UserControl
     {

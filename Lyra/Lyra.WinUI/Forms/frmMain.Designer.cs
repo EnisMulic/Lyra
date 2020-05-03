@@ -33,7 +33,7 @@
             this.btnSignInUC = new System.Windows.Forms.Button();
             this.btnSingUpUC = new System.Windows.Forms.Button();
             this.pnlHeader = new System.Windows.Forms.Panel();
-            this.ucAppControl = new Lyra.WinUI.UserControlls.Shared.ucAppControl();
+            this.ucAppControl = new Lyra.WinUI.UserControls.Shared.ucAppControl();
             this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -128,6 +128,6 @@
         private System.Windows.Forms.Button btnSignInUC;
         private System.Windows.Forms.Button btnSingUpUC;
         private System.Windows.Forms.Panel pnlHeader;
-        private UserControlls.Shared.ucAppControl ucAppControl;
+        private UserControls.Shared.ucAppControl ucAppControl;
     }
 }

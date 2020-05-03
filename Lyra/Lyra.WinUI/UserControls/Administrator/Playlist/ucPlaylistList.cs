@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Lyra.WinUI.Helpers;
 
-namespace Lyra.WinUI.UserControlls.Administrator.Playlist
+namespace Lyra.WinUI.UserControls.Administrator.Playlist
 {
     public partial class ucPlaylistList : UserControl
     {
@@ -30,16 +30,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Playlist
         private void btnEditPlaylist_Click(object sender, EventArgs e)
         {
             int ID = Convert.ToInt32(dgvPlaylists.CurrentRow.Cells["ID"].Value);
-
-            var uc = new ucPlaylistUpsert(ID);
-
-            if (!Parent.Controls.Contains(uc))
-            {
-                Parent.Controls.Add(uc);
-                uc.Dock = DockStyle.Fill;
-            }
-
-            uc.BringToFront();
+            PanelHelper.SwapPanels(this.Parent, this, new ucPlaylistUpsert(ID));
         }
 
         private async void btnDeletePlaylist_Click(object sender, EventArgs e)
@@ -50,15 +41,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Playlist
 
         private void btnAddPlaylist_Click(object sender, EventArgs e)
         {
-            var uc = new ucPlaylistUpsert();
-
-            if (!Parent.Controls.Contains(uc))
-            {
-                Parent.Controls.Add(uc);
-                uc.Dock = DockStyle.Fill;
-            }
-
-            uc.BringToFront();
+            PanelHelper.SwapPanels(this.Parent, this, new ucPlaylistUpsert());
         }
 
         

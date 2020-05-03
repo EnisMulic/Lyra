@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Lyra.WinUI.Helpers;
 
-namespace Lyra.WinUI.UserControlls.Administrator.Artist
+namespace Lyra.WinUI.UserControls.Administrator.Artist
 {
     public partial class ucArtistList : UserControl
     {
@@ -30,16 +30,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Artist
         private void btnEditArtist_Click(object sender, EventArgs e)
         {
             int ID = Convert.ToInt32(dgvArtists.CurrentRow.Cells["ID"].Value);
-
-            var uc = new ucArtistUpsert(ID);
-
-            if (!Parent.Controls.Contains(uc))
-            {
-                Parent.Controls.Add(uc);
-                uc.Dock = DockStyle.Fill;
-            }
-
-            uc.BringToFront();
+            PanelHelper.SwapPanels(this.Parent, this, new ucArtistUpsert(ID));
         }
 
         private async void btnDeleteArtist_Click(object sender, EventArgs e)
@@ -50,15 +41,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Artist
 
         private void btnAddArtist_Click(object sender, EventArgs e)
         {
-            var uc = new ucArtistUpsert();
-
-            if (!Parent.Controls.Contains(uc))
-            {
-                Parent.Controls.Add(uc);
-                uc.Dock = DockStyle.Fill;
-            }
-
-            uc.BringToFront();
+            PanelHelper.SwapPanels(this.Parent, this, new ucArtistUpsert());
         }
     }
 }

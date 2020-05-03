@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Lyra.Model.Requests;
+using Lyra.WinUI.Helpers;
 
 namespace Lyra.WinUI.UserControls.Administrator
 {
@@ -51,8 +52,9 @@ namespace Lyra.WinUI.UserControls.Administrator
                 };
 
                 await _userApiService.Update<Model.User>(_ID, request);
-
+                
                 MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                PanelHelper.SwapPanels(this.Parent, this, new ucAdminPasswordUpdate(_ID));
             }
             catch
             {

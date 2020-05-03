@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Lyra.WinUI.Helpers;
 using Lyra.WinUI.Validators;
 
-namespace Lyra.WinUI.UserControlls.Administrator.Album
+namespace Lyra.WinUI.UserControls.Administrator.Album
 {
     public partial class ucAlbumUpsert : UserControl
     {
@@ -181,6 +181,10 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
                 else
                 {
                     await _albumApiService.Insert<Model.Album>(request);
+
+                    var parent = this.Parent;
+                    
+                    PanelHelper.SwapPanels(this.Parent, this, new ucAlbumUpsert());
                 }
 
                 MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

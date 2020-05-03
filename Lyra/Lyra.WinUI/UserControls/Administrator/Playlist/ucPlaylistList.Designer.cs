@@ -1,4 +1,4 @@
-﻿namespace Lyra.WinUI.UserControlls.Administrator.Playlist
+﻿namespace Lyra.WinUI.UserControls.Administrator.Playlist
 {
     partial class ucPlaylistList
     {

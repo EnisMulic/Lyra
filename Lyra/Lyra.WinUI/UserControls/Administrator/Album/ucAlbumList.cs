@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Lyra.WinUI.Helpers;
 
-namespace Lyra.WinUI.UserControlls.Administrator.Album
+namespace Lyra.WinUI.UserControls.Administrator.Album
 {
     public partial class ucAlbumList : UserControl
     {
@@ -36,29 +36,12 @@ namespace Lyra.WinUI.UserControlls.Administrator.Album
         private void btnEditAlbum_Click(object sender, EventArgs e)
         {
             int ID = Convert.ToInt32(dgvAlbums.CurrentRow.Cells["ID"].Value);
-
-            var uc = new ucAlbumUpsert(ID);
-
-            if (!Parent.Controls.Contains(uc))
-            {
-                Parent.Controls.Add(uc);
-                uc.Dock = DockStyle.Fill;
-            }
-
-            uc.BringToFront();
+            PanelHelper.SwapPanels(this.Parent, this, new ucAlbumUpsert(ID));
         }
 
         private void btnAddAlbum_Click(object sender, EventArgs e)
         {
-            var uc = new ucAlbumUpsert();
-
-            if (!Parent.Controls.Contains(uc))
-            {
-                Parent.Controls.Add(uc);
-                uc.Dock = DockStyle.Fill;
-            }
-
-            uc.BringToFront();
+            PanelHelper.SwapPanels(this.Parent, this, new ucAlbumUpsert());
         }
 
         

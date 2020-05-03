@@ -1,4 +1,4 @@
-﻿using Lyra.WinUI.SingIn;
+﻿using Lyra.WinUI.SignIn;
 using Lyra.WinUI.SignUp;
 using System;
 using System.Collections.Generic;
@@ -9,7 +9,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Lyra.WinUI.UserControlls.Shared;
+using Lyra.WinUI.UserControls.Shared;
+using Lyra.WinUI.Helpers;
 
 namespace Lyra.WinUI
 {
@@ -19,30 +20,18 @@ namespace Lyra.WinUI
         public frmMain()
         {
             InitializeComponent();
-            AutoValidate = AutoValidate.Disable;
         }
 
         private void btnSignInUC_Click(object sender, EventArgs e)
         {
-            
-            if (!pnlMain.Controls.Contains(ucSignIn.Instance))
-            {
-                pnlMain.Controls.Add(ucSignIn.Instance);
-                ucSignIn.Instance.Dock = DockStyle.Fill;
-            }
 
-            ucSignIn.Instance.BringToFront();
+            PanelHelper.AddPanel(pnlMain, new ucSignIn());
         }
 
         private void btnSingUpUC_Click(object sender, EventArgs e)
         {
-            if (!pnlMain.Controls.Contains(ucSignUp.Instance))
-            {
-                pnlMain.Controls.Add(ucSignUp.Instance);
-                ucSignUp.Instance.Dock = DockStyle.Fill;
-            }
 
-            ucSignUp.Instance.BringToFront();
+            PanelHelper.AddPanel(pnlMain, new ucSignUp());
         }
 
         private void frmMain_MouseDown(object sender, MouseEventArgs e)

@@ -1,4 +1,4 @@
-﻿namespace Lyra.WinUI.UserControlls.Shared
+﻿namespace Lyra.WinUI.UserControls.Shared
 {
     partial class ucAppControl
     {

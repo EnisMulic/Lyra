@@ -1,4 +1,4 @@
-﻿namespace Lyra.WinUI.UserControlls.Administrator.Track
+﻿namespace Lyra.WinUI.UserControls.Administrator.Track
 {
     partial class ucTrackList
     {

@@ -7,12 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Lyra.WinUI.UserControlls.Administrator.Album;
-using Lyra.WinUI.UserControlls.Administrator.Track;
+using Lyra.WinUI.UserControls.Administrator.Album;
+using Lyra.WinUI.UserControls.Administrator.Track;
 using Lyra.WinUI.Helpers;
 using Lyra.WinUI.Validators;
 
-namespace Lyra.WinUI.UserControlls.Administrator.Artist
+namespace Lyra.WinUI.UserControls.Administrator.Artist
 {
     public partial class ucArtistUpsert : UserControl
     {
@@ -116,6 +116,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Artist
                 else
                 {
                     await _apiService.Insert<Model.Artist>(request);
+                    PanelHelper.SwapPanels(this.Parent, this, new ucArtistUpsert());
                 }
 
                 MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

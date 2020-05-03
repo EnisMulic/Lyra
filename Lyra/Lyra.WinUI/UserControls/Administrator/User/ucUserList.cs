@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Lyra.WinUI.Helpers;
 
-namespace Lyra.WinUI.UserControlls.Administrator.User
+namespace Lyra.WinUI.UserControls.Administrator.User
 {
     public partial class ucUserList : UserControl
     {
@@ -30,16 +30,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
         private void btnEditUser_Click(object sender, EventArgs e)
         {
             int ID = Convert.ToInt32(dgvUsers.CurrentRow.Cells["ID"].Value);
-
-            var uc = new ucUserEdit(ID);
-
-            if (!Parent.Controls.Contains(uc))
-            {
-                Parent.Controls.Add(uc);
-                uc.Dock = DockStyle.Fill;
-            }
-
-            uc.BringToFront();
+            PanelHelper.SwapPanels(this.Parent, this, new ucUserEdit(ID));
         }
 
         private async void btnDeleteUser_Click(object sender, EventArgs e)
@@ -50,15 +41,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
 
         private void btnAddUser_Click(object sender, EventArgs e)
         {
-            var uc = new ucUserAdd();
-
-            if (!Parent.Controls.Contains(uc))
-            {
-                Parent.Controls.Add(uc);
-                uc.Dock = DockStyle.Fill;
-            }
-
-            uc.BringToFront();
+            PanelHelper.SwapPanels(this.Parent, this, new ucUserAdd());
         }
 
         

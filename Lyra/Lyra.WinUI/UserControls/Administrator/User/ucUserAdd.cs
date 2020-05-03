@@ -11,7 +11,7 @@ using Lyra.WinUI.Helpers;
 using Lyra.WinUI.Validators;
 using Lyra.WinUI.Administrator;
 
-namespace Lyra.WinUI.UserControlls.Administrator.User
+namespace Lyra.WinUI.UserControls.Administrator.User
 {
     public partial class ucUserAdd : UserControl
     {
@@ -65,6 +65,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.User
                 await _apiService.Insert<Model.User>(request);
 
                 MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                PanelHelper.SwapPanels(this.Parent, this, new ucUserAdd());
             }
         }
 

@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using Lyra.WinUI.Helpers;
 using Lyra.WinUI.Validators;
 
-namespace Lyra.WinUI.UserControlls.Administrator.Playlist
+namespace Lyra.WinUI.UserControls.Administrator.Playlist
 {
     public partial class ucPlaylistUpsert : UserControl
     {
@@ -176,6 +176,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Playlist
                     request.CreatedAt = DateTime.Now.ToString();
                     request.UserID = 9; //TODO : Get LoggedIn User
                     await _playlistApiService.Insert<Model.Playlist>(request);
+                    PanelHelper.SwapPanels(this.Parent, this, new ucPlaylistUpsert());
                 }
 
                 MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);

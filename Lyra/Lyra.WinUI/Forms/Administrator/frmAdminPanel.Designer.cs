@@ -40,7 +40,7 @@
             this.btnUser = new System.Windows.Forms.Button();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlHeader = new System.Windows.Forms.Panel();
-            this.ucAppControl = new Lyra.WinUI.UserControlls.Shared.ucAppControl();
+            this.ucAppControl = new Lyra.WinUI.UserControls.Shared.ucAppControl();
             this.pnlNavbar.SuspendLayout();
             this.pnlUserInfoMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).BeginInit();
@@ -240,7 +240,7 @@
         private System.Windows.Forms.Button btnArtist;
         private System.Windows.Forms.Panel pnlMain;
         private System.Windows.Forms.Panel pnlHeader;
-        private UserControlls.Shared.ucAppControl ucAppControl;
+        private UserControls.Shared.ucAppControl ucAppControl;
         private System.Windows.Forms.Panel pnlUserInfoMenu;
         private System.Windows.Forms.Label lblUsername;
         private UserControls.Shared.ucOvalPictureBox pbUserImage;

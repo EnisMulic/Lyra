@@ -1,10 +1,10 @@
 ﻿using Lyra.WinUI.Helpers;
-using Lyra.WinUI.UserControlls.Administrator.Album;
-using Lyra.WinUI.UserControlls.Administrator.Artist;
-using Lyra.WinUI.UserControlls.Administrator.Playlist;
-using Lyra.WinUI.UserControlls.Administrator.Track;
-using Lyra.WinUI.UserControlls.Administrator.User;
-using Lyra.WinUI.UserControlls.Shared;
+using Lyra.WinUI.UserControls.Administrator.Album;
+using Lyra.WinUI.UserControls.Administrator.Artist;
+using Lyra.WinUI.UserControls.Administrator.Playlist;
+using Lyra.WinUI.UserControls.Administrator.Track;
+using Lyra.WinUI.UserControls.Administrator.User;
+using Lyra.WinUI.UserControls.Shared;
 using Lyra.WinUI.UserControls.Administrator;
 using System;
 using System.Collections.Generic;
@@ -42,51 +42,40 @@ namespace Lyra.WinUI.Administrator
             btnUser_Click(sender, e);
         }
 
-        private void LoadUserControl(UserControl uc)
-        {
-            Refresh();
-            if (!pnlMain.Controls.Contains(uc))
-            {
-                pnlMain.Controls.Add(uc);
-                uc.Dock = DockStyle.Fill;
-            }
-
-            uc.BringToFront();
-        }
         private void btnUser_Click(object sender, EventArgs e)
         {
-            var uc = new ucUserList();
-            LoadUserControl(uc);
+            PanelHelper.RemovePanels(pnlMain);
+            PanelHelper.AddPanel(pnlMain, new ucUserList());
         }
 
         private void btnArtist_Click(object sender, EventArgs e)
         {
-            var uc = new ucArtistList();
-            LoadUserControl(uc);
+            PanelHelper.RemovePanels(pnlMain);
+            PanelHelper.AddPanel(pnlMain, new ucArtistList());
         }
 
         private void btnAlbum_Click(object sender, EventArgs e)
         {
-            var uc = new ucAlbumList();
-            LoadUserControl(uc);
+            PanelHelper.RemovePanels(pnlMain);
+            PanelHelper.AddPanel(pnlMain, new ucAlbumList());
         }
 
         private void btnTrack_Click(object sender, EventArgs e)
         {
-            var uc = new ucTrackList();
-            LoadUserControl(uc);
+            PanelHelper.RemovePanels(pnlMain);
+            PanelHelper.AddPanel(pnlMain, new ucTrackList());
         }
 
         private void btnPlaylist_Click(object sender, EventArgs e)
         {
-            var uc = new ucPlaylistList();
-            LoadUserControl(uc);
+            PanelHelper.RemovePanels(pnlMain);
+            PanelHelper.AddPanel(pnlMain, new ucPlaylistList());
         }
 
         private void btnUserInfo_Click(object sender, EventArgs e)
         {
-            var uc = new ucAdminInfoUpdate(_user.ID);
-            LoadUserControl(uc);
+            PanelHelper.RemovePanels(pnlMain);
+            PanelHelper.AddPanel(pnlMain, new ucAdminInfoUpdate(_user.ID));
         }
 
         //Movable Form

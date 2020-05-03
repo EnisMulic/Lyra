@@ -1,4 +1,4 @@
-﻿namespace Lyra.WinUI.UserControlls.Administrator.Album
+﻿namespace Lyra.WinUI.UserControls.Administrator.Album
 {
     partial class ucAlbumUpsert
     {

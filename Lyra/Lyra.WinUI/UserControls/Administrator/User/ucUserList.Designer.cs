@@ -1,4 +1,4 @@
-﻿namespace Lyra.WinUI.UserControlls.Administrator.User
+﻿namespace Lyra.WinUI.UserControls.Administrator.User
 {
     partial class ucUserList
     {

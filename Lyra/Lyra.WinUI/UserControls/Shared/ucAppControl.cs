@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Lyra.WinUI.UserControlls.Shared
+namespace Lyra.WinUI.UserControls.Shared
 {
     public partial class ucAppControl : UserControl
     {

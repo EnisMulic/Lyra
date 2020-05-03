@@ -77,6 +77,7 @@
             this.btnSignUp.TabIndex = 29;
             this.btnSignUp.Text = "Sign Up";
             this.btnSignUp.UseVisualStyleBackColor = true;
+            this.btnSignUp.Click += new System.EventHandler(this.btnSignUp_Click);
             // 
             // lblPasswordConfirm
             // 
@@ -245,8 +246,6 @@
             this.Controls.Add(this.txtFirstName);
             this.Name = "ucSignUp";
             this.Size = new System.Drawing.Size(387, 542);
-            this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ucSignUp_MouseDown);
-            this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ucSignUp_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderFirstName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderLastName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmail)).EndInit();

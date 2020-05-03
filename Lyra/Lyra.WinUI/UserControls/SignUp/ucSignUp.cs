@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Lyra.Model.Requests;
 using Lyra.WinUI.Validators;
+using Lyra.WinUI.Helpers;
 
 namespace Lyra.WinUI.SignUp
 {
@@ -52,7 +53,7 @@ namespace Lyra.WinUI.SignUp
                 };
                 await _service.Insert<Model.User>(request);
 
-                ClearTextBoxes();
+                PanelHelper.SwapPanels(this.Parent, this, new ucSignUp());
             }
 
         }

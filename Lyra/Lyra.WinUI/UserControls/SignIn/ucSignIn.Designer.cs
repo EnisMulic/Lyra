@@ -1,4 +1,4 @@
-﻿namespace Lyra.WinUI.SingIn
+﻿namespace Lyra.WinUI.SignIn
 {
     partial class ucSignIn
     {

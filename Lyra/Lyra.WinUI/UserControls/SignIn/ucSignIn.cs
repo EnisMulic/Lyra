@@ -11,13 +11,12 @@ using Lyra.Model.Requests;
 using Lyra.WinUI.Administrator;
 using Lyra.WinUI.Validators;
 
-namespace Lyra.WinUI.SingIn
+namespace Lyra.WinUI.SignIn
 {
     public partial class ucSignIn : UserControl
     {
         private readonly APIService _service = new APIService("User");
         private static ucSignIn _instance;
-        private Point lastPoint;
         public static ucSignIn Instance
         {
             get
@@ -53,20 +52,6 @@ namespace Lyra.WinUI.SingIn
             {
                 errorProviderUsername.SetError(txtUsername, "");
                 e.Cancel = false;
-            }
-        }
-
-        private void ucSignIn_MouseDown(object sender, MouseEventArgs e)
-        {
-            lastPoint = new Point(e.X, e.Y);
-        }
-
-        private void ucSignIn_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (e.Button == MouseButtons.Left)
-            {
-                this.Left += e.X - lastPoint.X;
-                this.Top += e.Y - lastPoint.Y;
             }
         }
 

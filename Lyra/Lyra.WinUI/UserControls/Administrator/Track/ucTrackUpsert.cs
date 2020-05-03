@@ -10,8 +10,9 @@ using System.Windows.Forms;
 using Lyra.Model.Requests;
 using Lyra.Model;
 using Lyra.WinUI.Validators;
+using Lyra.WinUI.Helpers;
 
-namespace Lyra.WinUI.UserControlls.Administrator.Track
+namespace Lyra.WinUI.UserControls.Administrator.Track
 {
     public partial class ucTrackUpsert : UserControl
     {
@@ -178,6 +179,7 @@ namespace Lyra.WinUI.UserControlls.Administrator.Track
                 else
                 {
                     await _trackApiService.Insert<Model.Track>(request);
+                    PanelHelper.SwapPanels(this.Parent, this, new ucTrackUpsert());
                 }
 
                 MessageBox.Show("Success", "Success", MessageBoxButtons.OK);
