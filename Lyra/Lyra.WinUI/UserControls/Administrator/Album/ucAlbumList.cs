@@ -31,6 +31,7 @@ namespace Lyra.WinUI.UserControls.Administrator.Album
         {
             int id = Convert.ToInt32(dgvAlbums.CurrentRow.Cells["ID"].Value);
             await _apiService.Delete<dynamic>(id);
+            PanelHelper.SwapPanels(this.Parent, this, new ucAlbumList());
         }
 
         private void btnEditAlbum_Click(object sender, EventArgs e)

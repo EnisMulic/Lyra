@@ -30,9 +30,9 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvAlbums = new System.Windows.Forms.DataGridView();
-            this.btnAddAlbum = new System.Windows.Forms.Button();
-            this.btnEditAlbum = new System.Windows.Forms.Button();
             this.btnDeleteAlbum = new System.Windows.Forms.Button();
+            this.btnEditAlbum = new System.Windows.Forms.Button();
+            this.btnAddAlbum = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlbums)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,35 +60,45 @@
             this.dgvAlbums.Size = new System.Drawing.Size(763, 526);
             this.dgvAlbums.TabIndex = 1;
             // 
-            // btnAddAlbum
+            // btnDeleteAlbum
             // 
-            this.btnAddAlbum.Location = new System.Drawing.Point(16, 53);
-            this.btnAddAlbum.Name = "btnAddAlbum";
-            this.btnAddAlbum.Size = new System.Drawing.Size(28, 23);
-            this.btnAddAlbum.TabIndex = 2;
-            this.btnAddAlbum.Text = "A";
-            this.btnAddAlbum.UseVisualStyleBackColor = true;
-            this.btnAddAlbum.Click += new System.EventHandler(this.btnAddAlbum_Click);
+            this.btnDeleteAlbum.BackgroundImage = global::Lyra.WinUI.Properties.Resources.delete;
+            this.btnDeleteAlbum.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDeleteAlbum.FlatAppearance.BorderSize = 0;
+            this.btnDeleteAlbum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteAlbum.Location = new System.Drawing.Point(104, 53);
+            this.btnDeleteAlbum.Name = "btnDeleteAlbum";
+            this.btnDeleteAlbum.Size = new System.Drawing.Size(28, 23);
+            this.btnDeleteAlbum.TabIndex = 10;
+            this.btnDeleteAlbum.UseVisualStyleBackColor = true;
+            this.btnDeleteAlbum.Click += new System.EventHandler(this.btnDeleteAlbum_Click);
             // 
             // btnEditAlbum
             // 
-            this.btnEditAlbum.Location = new System.Drawing.Point(50, 53);
+            this.btnEditAlbum.BackgroundImage = global::Lyra.WinUI.Properties.Resources.edit;
+            this.btnEditAlbum.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEditAlbum.FlatAppearance.BorderSize = 0;
+            this.btnEditAlbum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditAlbum.Location = new System.Drawing.Point(60, 53);
             this.btnEditAlbum.Name = "btnEditAlbum";
             this.btnEditAlbum.Size = new System.Drawing.Size(28, 23);
-            this.btnEditAlbum.TabIndex = 3;
-            this.btnEditAlbum.Text = "E";
+            this.btnEditAlbum.TabIndex = 9;
             this.btnEditAlbum.UseVisualStyleBackColor = true;
             this.btnEditAlbum.Click += new System.EventHandler(this.btnEditAlbum_Click);
             // 
-            // btnDeleteAlbum
+            // btnAddAlbum
             // 
-            this.btnDeleteAlbum.Location = new System.Drawing.Point(84, 53);
-            this.btnDeleteAlbum.Name = "btnDeleteAlbum";
-            this.btnDeleteAlbum.Size = new System.Drawing.Size(28, 23);
-            this.btnDeleteAlbum.TabIndex = 4;
-            this.btnDeleteAlbum.Text = "D";
-            this.btnDeleteAlbum.UseVisualStyleBackColor = true;
-            this.btnDeleteAlbum.Click += new System.EventHandler(this.btnDeleteAlbum_Click);
+            this.btnAddAlbum.BackgroundImage = global::Lyra.WinUI.Properties.Resources.add;
+            this.btnAddAlbum.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAddAlbum.FlatAppearance.BorderSize = 0;
+            this.btnAddAlbum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddAlbum.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnAddAlbum.Location = new System.Drawing.Point(16, 53);
+            this.btnAddAlbum.Name = "btnAddAlbum";
+            this.btnAddAlbum.Size = new System.Drawing.Size(28, 23);
+            this.btnAddAlbum.TabIndex = 8;
+            this.btnAddAlbum.UseVisualStyleBackColor = true;
+            this.btnAddAlbum.Click += new System.EventHandler(this.btnAddAlbum_Click);
             // 
             // ucAlbumList
             // 
@@ -109,8 +119,8 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgvAlbums;
-        private System.Windows.Forms.Button btnAddAlbum;
-        private System.Windows.Forms.Button btnEditAlbum;
         private System.Windows.Forms.Button btnDeleteAlbum;
+        private System.Windows.Forms.Button btnEditAlbum;
+        private System.Windows.Forms.Button btnAddAlbum;
     }
 }

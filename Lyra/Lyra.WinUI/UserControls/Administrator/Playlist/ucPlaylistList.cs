@@ -37,6 +37,7 @@ namespace Lyra.WinUI.UserControls.Administrator.Playlist
         {
             int id = Convert.ToInt32(dgvPlaylists.CurrentRow.Cells["ID"].Value);
             await _apiService.Delete<dynamic>(id);
+            PanelHelper.SwapPanels(this.Parent, this, new ucPlaylistList());
         }
 
         private void btnAddPlaylist_Click(object sender, EventArgs e)

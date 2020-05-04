@@ -48,31 +48,41 @@
             // 
             // btnDeletePlaylist
             // 
-            this.btnDeletePlaylist.Location = new System.Drawing.Point(84, 53);
+            this.btnDeletePlaylist.BackgroundImage = global::Lyra.WinUI.Properties.Resources.delete;
+            this.btnDeletePlaylist.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDeletePlaylist.FlatAppearance.BorderSize = 0;
+            this.btnDeletePlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeletePlaylist.Location = new System.Drawing.Point(104, 53);
             this.btnDeletePlaylist.Name = "btnDeletePlaylist";
             this.btnDeletePlaylist.Size = new System.Drawing.Size(28, 23);
-            this.btnDeletePlaylist.TabIndex = 7;
-            this.btnDeletePlaylist.Text = "D";
+            this.btnDeletePlaylist.TabIndex = 10;
             this.btnDeletePlaylist.UseVisualStyleBackColor = true;
             this.btnDeletePlaylist.Click += new System.EventHandler(this.btnDeletePlaylist_Click);
             // 
             // btnEditPlaylist
             // 
-            this.btnEditPlaylist.Location = new System.Drawing.Point(50, 53);
+            this.btnEditPlaylist.BackgroundImage = global::Lyra.WinUI.Properties.Resources.edit;
+            this.btnEditPlaylist.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEditPlaylist.FlatAppearance.BorderSize = 0;
+            this.btnEditPlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditPlaylist.Location = new System.Drawing.Point(60, 53);
             this.btnEditPlaylist.Name = "btnEditPlaylist";
             this.btnEditPlaylist.Size = new System.Drawing.Size(28, 23);
-            this.btnEditPlaylist.TabIndex = 6;
-            this.btnEditPlaylist.Text = "E";
+            this.btnEditPlaylist.TabIndex = 9;
             this.btnEditPlaylist.UseVisualStyleBackColor = true;
             this.btnEditPlaylist.Click += new System.EventHandler(this.btnEditPlaylist_Click);
             // 
             // btnAddPlaylist
             // 
+            this.btnAddPlaylist.BackgroundImage = global::Lyra.WinUI.Properties.Resources.add;
+            this.btnAddPlaylist.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAddPlaylist.FlatAppearance.BorderSize = 0;
+            this.btnAddPlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddPlaylist.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnAddPlaylist.Location = new System.Drawing.Point(16, 53);
             this.btnAddPlaylist.Name = "btnAddPlaylist";
             this.btnAddPlaylist.Size = new System.Drawing.Size(28, 23);
-            this.btnAddPlaylist.TabIndex = 5;
-            this.btnAddPlaylist.Text = "A";
+            this.btnAddPlaylist.TabIndex = 8;
             this.btnAddPlaylist.UseVisualStyleBackColor = true;
             this.btnAddPlaylist.Click += new System.EventHandler(this.btnAddPlaylist_Click);
             // 
@@ -87,6 +97,7 @@
             this.Name = "ucPlaylistList";
             this.Size = new System.Drawing.Size(796, 690);
             this.Load += new System.EventHandler(this.ucPlaylistList_Load);
+            this.Click += new System.EventHandler(this.btnDeletePlaylist_Click);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaylists)).EndInit();
             this.ResumeLayout(false);
 

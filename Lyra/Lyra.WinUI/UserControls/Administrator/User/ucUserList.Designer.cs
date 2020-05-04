@@ -48,31 +48,41 @@
             // 
             // btnDeleteUser
             // 
-            this.btnDeleteUser.Location = new System.Drawing.Point(84, 53);
+            this.btnDeleteUser.BackgroundImage = global::Lyra.WinUI.Properties.Resources.delete;
+            this.btnDeleteUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDeleteUser.FlatAppearance.BorderSize = 0;
+            this.btnDeleteUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteUser.Location = new System.Drawing.Point(104, 53);
             this.btnDeleteUser.Name = "btnDeleteUser";
             this.btnDeleteUser.Size = new System.Drawing.Size(28, 23);
             this.btnDeleteUser.TabIndex = 10;
-            this.btnDeleteUser.Text = "D";
             this.btnDeleteUser.UseVisualStyleBackColor = true;
             this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
             // 
             // btnEditUser
             // 
-            this.btnEditUser.Location = new System.Drawing.Point(50, 53);
+            this.btnEditUser.BackgroundImage = global::Lyra.WinUI.Properties.Resources.edit;
+            this.btnEditUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEditUser.FlatAppearance.BorderSize = 0;
+            this.btnEditUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditUser.Location = new System.Drawing.Point(60, 53);
             this.btnEditUser.Name = "btnEditUser";
             this.btnEditUser.Size = new System.Drawing.Size(28, 23);
             this.btnEditUser.TabIndex = 9;
-            this.btnEditUser.Text = "E";
             this.btnEditUser.UseVisualStyleBackColor = true;
             this.btnEditUser.Click += new System.EventHandler(this.btnEditUser_Click);
             // 
             // btnAddUser
             // 
+            this.btnAddUser.BackgroundImage = global::Lyra.WinUI.Properties.Resources.add;
+            this.btnAddUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAddUser.FlatAppearance.BorderSize = 0;
+            this.btnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddUser.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnAddUser.Location = new System.Drawing.Point(16, 53);
             this.btnAddUser.Name = "btnAddUser";
             this.btnAddUser.Size = new System.Drawing.Size(28, 23);
             this.btnAddUser.TabIndex = 8;
-            this.btnAddUser.Text = "A";
             this.btnAddUser.UseVisualStyleBackColor = true;
             this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 

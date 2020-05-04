@@ -30,9 +30,7 @@
         {
             this.pnlNavbar = new System.Windows.Forms.Panel();
             this.pnlUserInfoMenu = new System.Windows.Forms.Panel();
-            this.btnUserInfo = new System.Windows.Forms.Button();
             this.lblUsername = new System.Windows.Forms.Label();
-            this.pbUserImage = new Lyra.WinUI.UserControls.Shared.ucOvalPictureBox();
             this.btnPlaylist = new System.Windows.Forms.Button();
             this.btnTrack = new System.Windows.Forms.Button();
             this.btnAlbum = new System.Windows.Forms.Button();
@@ -41,10 +39,12 @@
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlHeader = new System.Windows.Forms.Panel();
             this.ucAppControl = new Lyra.WinUI.UserControls.Shared.ucAppControl();
+            this.btnUserInfo = new System.Windows.Forms.Button();
+            this.pbUserImage = new Lyra.WinUI.UserControls.Shared.ucOvalPictureBox();
             this.pnlNavbar.SuspendLayout();
             this.pnlUserInfoMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).BeginInit();
             this.pnlHeader.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlNavbar
@@ -76,17 +76,6 @@
             this.pnlUserInfoMenu.Size = new System.Drawing.Size(294, 59);
             this.pnlUserInfoMenu.TabIndex = 8;
             // 
-            // btnUserInfo
-            // 
-            this.btnUserInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUserInfo.Location = new System.Drawing.Point(261, 18);
-            this.btnUserInfo.Name = "btnUserInfo";
-            this.btnUserInfo.Size = new System.Drawing.Size(27, 27);
-            this.btnUserInfo.TabIndex = 0;
-            this.btnUserInfo.Text = "S";
-            this.btnUserInfo.UseVisualStyleBackColor = true;
-            this.btnUserInfo.Click += new System.EventHandler(this.btnUserInfo_Click);
-            // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
@@ -96,15 +85,6 @@
             this.lblUsername.Size = new System.Drawing.Size(151, 25);
             this.lblUsername.TabIndex = 1;
             this.lblUsername.Text = "[Placeholder]";
-            // 
-            // pbUserImage
-            // 
-            this.pbUserImage.BackColor = System.Drawing.Color.DarkGray;
-            this.pbUserImage.Location = new System.Drawing.Point(4, 6);
-            this.pbUserImage.Name = "pbUserImage";
-            this.pbUserImage.Size = new System.Drawing.Size(49, 49);
-            this.pbUserImage.TabIndex = 0;
-            this.pbUserImage.TabStop = false;
             // 
             // btnPlaylist
             // 
@@ -207,6 +187,28 @@
             this.ucAppControl.Size = new System.Drawing.Size(70, 35);
             this.ucAppControl.TabIndex = 0;
             // 
+            // btnUserInfo
+            // 
+            this.btnUserInfo.BackgroundImage = global::Lyra.WinUI.Properties.Resources.configurations;
+            this.btnUserInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnUserInfo.FlatAppearance.BorderSize = 0;
+            this.btnUserInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUserInfo.Location = new System.Drawing.Point(246, 14);
+            this.btnUserInfo.Name = "btnUserInfo";
+            this.btnUserInfo.Size = new System.Drawing.Size(32, 32);
+            this.btnUserInfo.TabIndex = 0;
+            this.btnUserInfo.UseVisualStyleBackColor = true;
+            this.btnUserInfo.Click += new System.EventHandler(this.btnUserInfo_Click);
+            // 
+            // pbUserImage
+            // 
+            this.pbUserImage.BackColor = System.Drawing.Color.DarkGray;
+            this.pbUserImage.Location = new System.Drawing.Point(4, 6);
+            this.pbUserImage.Name = "pbUserImage";
+            this.pbUserImage.Size = new System.Drawing.Size(49, 49);
+            this.pbUserImage.TabIndex = 0;
+            this.pbUserImage.TabStop = false;
+            // 
             // frmAdminPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -224,8 +226,8 @@
             this.pnlNavbar.ResumeLayout(false);
             this.pnlUserInfoMenu.ResumeLayout(false);
             this.pnlUserInfoMenu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).EndInit();
             this.pnlHeader.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).EndInit();
             this.ResumeLayout(false);
 
         }

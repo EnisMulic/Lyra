@@ -36,6 +36,7 @@ namespace Lyra.WinUI.UserControls.Administrator.Track
         {
             int id = Convert.ToInt32(dgvTracks.CurrentRow.Cells["ID"].Value);
             await _apiService.Delete<dynamic>(id);
+            PanelHelper.SwapPanels(this.Parent, this, new ucTrackList());
         }
 
         private void btnAddTrack_Click(object sender, EventArgs e)

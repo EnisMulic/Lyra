@@ -48,31 +48,41 @@
             // 
             // btnDeleteArtist
             // 
-            this.btnDeleteArtist.Location = new System.Drawing.Point(84, 53);
+            this.btnDeleteArtist.BackgroundImage = global::Lyra.WinUI.Properties.Resources.delete;
+            this.btnDeleteArtist.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDeleteArtist.FlatAppearance.BorderSize = 0;
+            this.btnDeleteArtist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteArtist.Location = new System.Drawing.Point(104, 53);
             this.btnDeleteArtist.Name = "btnDeleteArtist";
             this.btnDeleteArtist.Size = new System.Drawing.Size(28, 23);
             this.btnDeleteArtist.TabIndex = 7;
-            this.btnDeleteArtist.Text = "D";
             this.btnDeleteArtist.UseVisualStyleBackColor = true;
             this.btnDeleteArtist.Click += new System.EventHandler(this.btnDeleteArtist_Click);
             // 
             // btnEditArtist
             // 
-            this.btnEditArtist.Location = new System.Drawing.Point(50, 53);
+            this.btnEditArtist.BackgroundImage = global::Lyra.WinUI.Properties.Resources.edit;
+            this.btnEditArtist.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEditArtist.FlatAppearance.BorderSize = 0;
+            this.btnEditArtist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditArtist.Location = new System.Drawing.Point(60, 53);
             this.btnEditArtist.Name = "btnEditArtist";
             this.btnEditArtist.Size = new System.Drawing.Size(28, 23);
             this.btnEditArtist.TabIndex = 6;
-            this.btnEditArtist.Text = "E";
             this.btnEditArtist.UseVisualStyleBackColor = true;
             this.btnEditArtist.Click += new System.EventHandler(this.btnEditArtist_Click);
             // 
             // btnAddArtist
             // 
+            this.btnAddArtist.BackgroundImage = global::Lyra.WinUI.Properties.Resources.add;
+            this.btnAddArtist.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAddArtist.FlatAppearance.BorderSize = 0;
+            this.btnAddArtist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddArtist.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnAddArtist.Location = new System.Drawing.Point(16, 53);
             this.btnAddArtist.Name = "btnAddArtist";
             this.btnAddArtist.Size = new System.Drawing.Size(28, 23);
             this.btnAddArtist.TabIndex = 5;
-            this.btnAddArtist.Text = "A";
             this.btnAddArtist.UseVisualStyleBackColor = true;
             this.btnAddArtist.Click += new System.EventHandler(this.btnAddArtist_Click);
             // 

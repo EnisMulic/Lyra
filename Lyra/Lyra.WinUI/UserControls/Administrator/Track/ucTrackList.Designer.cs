@@ -48,31 +48,41 @@
             // 
             // btnDeleteTrack
             // 
-            this.btnDeleteTrack.Location = new System.Drawing.Point(84, 53);
+            this.btnDeleteTrack.BackgroundImage = global::Lyra.WinUI.Properties.Resources.delete;
+            this.btnDeleteTrack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDeleteTrack.FlatAppearance.BorderSize = 0;
+            this.btnDeleteTrack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteTrack.Location = new System.Drawing.Point(104, 53);
             this.btnDeleteTrack.Name = "btnDeleteTrack";
             this.btnDeleteTrack.Size = new System.Drawing.Size(28, 23);
             this.btnDeleteTrack.TabIndex = 10;
-            this.btnDeleteTrack.Text = "D";
             this.btnDeleteTrack.UseVisualStyleBackColor = true;
             this.btnDeleteTrack.Click += new System.EventHandler(this.btnDeleteTrack_Click);
             // 
             // btnEditTrack
             // 
-            this.btnEditTrack.Location = new System.Drawing.Point(50, 53);
+            this.btnEditTrack.BackgroundImage = global::Lyra.WinUI.Properties.Resources.edit;
+            this.btnEditTrack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEditTrack.FlatAppearance.BorderSize = 0;
+            this.btnEditTrack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditTrack.Location = new System.Drawing.Point(60, 53);
             this.btnEditTrack.Name = "btnEditTrack";
             this.btnEditTrack.Size = new System.Drawing.Size(28, 23);
             this.btnEditTrack.TabIndex = 9;
-            this.btnEditTrack.Text = "E";
             this.btnEditTrack.UseVisualStyleBackColor = true;
             this.btnEditTrack.Click += new System.EventHandler(this.btnEditTrack_Click);
             // 
             // btnAddTrack
             // 
+            this.btnAddTrack.BackgroundImage = global::Lyra.WinUI.Properties.Resources.add;
+            this.btnAddTrack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAddTrack.FlatAppearance.BorderSize = 0;
+            this.btnAddTrack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddTrack.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnAddTrack.Location = new System.Drawing.Point(16, 53);
             this.btnAddTrack.Name = "btnAddTrack";
             this.btnAddTrack.Size = new System.Drawing.Size(28, 23);
             this.btnAddTrack.TabIndex = 8;
-            this.btnAddTrack.Text = "A";
             this.btnAddTrack.UseVisualStyleBackColor = true;
             this.btnAddTrack.Click += new System.EventHandler(this.btnAddTrack_Click);
             // 

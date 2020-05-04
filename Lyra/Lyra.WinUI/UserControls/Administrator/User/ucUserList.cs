@@ -37,6 +37,7 @@ namespace Lyra.WinUI.UserControls.Administrator.User
         {
             int id = Convert.ToInt32(dgvUsers.CurrentRow.Cells["ID"].Value);
             await _apiService.Delete<dynamic>(id);
+            PanelHelper.SwapPanels(this.Parent, this, new ucUserList());
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
