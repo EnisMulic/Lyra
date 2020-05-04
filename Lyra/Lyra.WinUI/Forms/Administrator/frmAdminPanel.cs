@@ -42,6 +42,14 @@ namespace Lyra.WinUI.Administrator
             btnUser_Click(sender, e);
         }
 
+        private void btnSignOut_Click(object sender, EventArgs e)
+        {
+            var form = new frmMain();
+            form.Show();
+
+            Hide();
+        }
+
         private void btnUser_Click(object sender, EventArgs e)
         {
             PanelHelper.RemovePanels(pnlMain);
@@ -92,5 +100,7 @@ namespace Lyra.WinUI.Administrator
                 this.Top += e.Y - lastPoint.Y;
             }
         }
+
+        
     }
 }

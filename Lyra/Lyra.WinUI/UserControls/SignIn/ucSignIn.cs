@@ -32,7 +32,6 @@ namespace Lyra.WinUI.SignIn
             InitializeComponent();
         }
 
-        
 
         private async void txtUsername_Validating(object sender, CancelEventArgs e)
         {
@@ -89,8 +88,6 @@ namespace Lyra.WinUI.SignIn
                 form.Show();
 
                 ParentForm.Hide();
-
-                return;
             }
         }
     }
