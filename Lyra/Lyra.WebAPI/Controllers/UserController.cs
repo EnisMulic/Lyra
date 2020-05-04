@@ -30,5 +30,12 @@ namespace Lyra.WebAPI.Controllers
         {
             return await _service.Authenticate(request);
         }
+
+        [AllowAnonymous]
+        [HttpPost("SignUp")]
+        public async Task<User> SignUp(UserInsertRequest request)
+        {
+            return await _service.Insert(request);
+        }
     }
 }

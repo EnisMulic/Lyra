@@ -58,7 +58,7 @@ namespace Lyra.WinUI.UserControls.Administrator.User
                     PhoneNumber = Convert.ToString(txtPhoneNumber.Text),
                     Password = Convert.ToString(txtPassword.Text),
                     PasswordConfirmation = Convert.ToString(txtPasswordConfirm.Text),
-                    Image = ImageHelper.SystemDrawingToByteArray(pbUserImage.Image),
+                    Image = pbUserImage.Image != null ? ImageHelper.SystemDrawingToByteArray(pbUserImage.Image) : null,
                     Roles = roleList
                 };
 

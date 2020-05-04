@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Lyra.WebAPI.Services
 {
-    public class UserService : CRUDService<Model.User, UserSearchRequest, User, UserInsertRequest, UserUpdateRequest>, IUserService
+    public class UserService : CRUDService<Model.User, UserSearchRequest, Database.User, UserInsertRequest, UserUpdateRequest>, IUserService
     {
         private readonly LyraContext _context;
         private readonly IMapper _mapper;
@@ -158,12 +158,12 @@ namespace Lyra.WebAPI.Services
 
                 if(userRole == null)
                 {
-                    var newRole = new UserRole()
+                    var newRole = new Database.UserRole()
                     {
                         UserID = id,
                         RoleID = RoleID
                     };
-                    await _context.Set<UserRole>().AddAsync(newRole);
+                    await _context.Set<Database.UserRole>().AddAsync(newRole);
                 }
             }
 
@@ -176,7 +176,7 @@ namespace Lyra.WebAPI.Services
 
                 if (userRole != null)
                 {
-                    _context.Set<UserRole>().Remove(userRole);
+                    _context.Set<Database.UserRole>().Remove(userRole);
                 }
             }
 
@@ -186,6 +186,35 @@ namespace Lyra.WebAPI.Services
             return _mapper.Map<Model.User>(entity);
         }
 
-        
+        public async Task<Model.User> SignUp(UserInsertRequest request)
+        {
+            if (request.Password != request.PasswordConfirmation)
+            {
+                throw new Exception("Passwords do not match!");
+            }
+
+            var entity = _mapper.Map<Database.User>(request);
+            entity.PasswordSalt = GenerateSalt();
+            entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
+
+            await _context.Users.AddAsync(entity);
+            await _context.SaveChangesAsync();
+
+            var role = await _context.Roles
+                .Where(i => i.Name == "User")
+                .SingleAsync();
+
+
+            var userRole = new Database.UserRole()
+            {
+                UserID = entity.ID,
+                RoleID = role.ID
+            };
+
+            await _context.UserRoles.AddAsync(userRole);
+            await _context.SaveChangesAsync();
+
+            return _mapper.Map<Model.User>(entity);
+        }
     }
 }

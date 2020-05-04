@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Lyra.Model.Requests;
 using Lyra.WinUI.Validators;
 using Lyra.WinUI.Helpers;
+using Lyra.WinUI.Properties;
 
 namespace Lyra.WinUI.SignUp
 {
@@ -37,21 +38,22 @@ namespace Lyra.WinUI.SignUp
         {
             if(ValidateChildren())
             {
-                APIService.Username = "Admin";
-                APIService.Password = "Password1";
+                APIService.Username = "Enis";
+                APIService.Password = "12341234";
 
-                var request = new Model.Requests.UserInsertRequest()
+
+                var request = new UserInsertRequest
                 {
-                    FirstName = txtFirstName.Text,
-                    LastName = txtLastName.Text,
-                    Email = txtEmail.Text,
-                    Username = txtUsername.Text,
-                    PhoneNumber = txtPhone.Text,
-                    Password = txtPassword.Text,
-                    PasswordConfirmation = txtPasswordConfirm.Text
-
+                    FirstName = Convert.ToString(txtFirstName.Text),
+                    LastName = Convert.ToString(txtLastName.Text),
+                    Email = Convert.ToString(txtEmail.Text),
+                    Username = Convert.ToString(txtUsername.Text),
+                    PhoneNumber = Convert.ToString(txtPhone.Text),
+                    Password = Convert.ToString(txtPassword.Text),
+                    PasswordConfirmation = Convert.ToString(txtPasswordConfirm.Text),
+                    Image = ImageHelper.SystemDrawingToByteArray(Resources.profile_picture)
                 };
-                await _service.Insert<Model.User>(request);
+                await _service.SignUp(request);
 
                 PanelHelper.SwapPanels(this.Parent, this, new ucSignUp());
             }

@@ -94,7 +94,7 @@ namespace Lyra.WinUI.UserControls.Administrator.User
                     Username = Convert.ToString(txtUsername.Text),
                     Email = Convert.ToString(txtEmail.Text),
                     PhoneNumber = Convert.ToString(txtPhoneNumber.Text),
-                    Image = ImageHelper.SystemDrawingToByteArray(pbUserImage.Image),
+                    Image = pbUserImage.Image != null ? ImageHelper.SystemDrawingToByteArray(pbUserImage.Image) : null,
                     Roles = checkedRoles,
                     RolesToDelete = uncheckedRoles
                 };

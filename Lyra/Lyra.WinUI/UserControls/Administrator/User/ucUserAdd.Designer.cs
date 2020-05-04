@@ -44,8 +44,6 @@
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.lblConfirmPassword = new System.Windows.Forms.Label();
             this.txtPasswordConfirm = new System.Windows.Forms.TextBox();
-            this.pbUserImage = new System.Windows.Forms.PictureBox();
-            this.btnUploadImage = new System.Windows.Forms.Button();
             this.clbRoles = new System.Windows.Forms.CheckedListBox();
             this.gbInfo = new System.Windows.Forms.GroupBox();
             this.gbRoles = new System.Windows.Forms.GroupBox();
@@ -55,7 +53,8 @@
             this.errorProviderEmail = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderPassword = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderPasswordConfirm = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).BeginInit();
+            this.btnUploadImage = new System.Windows.Forms.Button();
+            this.pbUserImage = new System.Windows.Forms.PictureBox();
             this.gbRoles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderFirstName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderLastName)).BeginInit();
@@ -63,6 +62,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmail)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPasswordConfirm)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).BeginInit();
             this.SuspendLayout();
             // 
             // lblPhoneNumber
@@ -202,25 +202,6 @@
             this.txtPasswordConfirm.TabIndex = 48;
             this.txtPasswordConfirm.Validating += new System.ComponentModel.CancelEventHandler(this.PasswordConfirm_Validating);
             // 
-            // pbUserImage
-            // 
-            this.pbUserImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pbUserImage.Location = new System.Drawing.Point(50, 94);
-            this.pbUserImage.Name = "pbUserImage";
-            this.pbUserImage.Size = new System.Drawing.Size(188, 184);
-            this.pbUserImage.TabIndex = 50;
-            this.pbUserImage.TabStop = false;
-            // 
-            // btnUploadImage
-            // 
-            this.btnUploadImage.Location = new System.Drawing.Point(50, 301);
-            this.btnUploadImage.Name = "btnUploadImage";
-            this.btnUploadImage.Size = new System.Drawing.Size(188, 23);
-            this.btnUploadImage.TabIndex = 51;
-            this.btnUploadImage.Text = "Upload image";
-            this.btnUploadImage.UseVisualStyleBackColor = true;
-            this.btnUploadImage.Click += new System.EventHandler(this.btnUploadImage_Click);
-            // 
             // clbRoles
             // 
             this.clbRoles.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -275,6 +256,25 @@
             // 
             this.errorProviderPasswordConfirm.ContainerControl = this;
             // 
+            // btnUploadImage
+            // 
+            this.btnUploadImage.Location = new System.Drawing.Point(50, 301);
+            this.btnUploadImage.Name = "btnUploadImage";
+            this.btnUploadImage.Size = new System.Drawing.Size(188, 23);
+            this.btnUploadImage.TabIndex = 51;
+            this.btnUploadImage.Text = "Upload image";
+            this.btnUploadImage.UseVisualStyleBackColor = true;
+            this.btnUploadImage.Click += new System.EventHandler(this.btnUploadImage_Click);
+            // 
+            // pbUserImage
+            // 
+            this.pbUserImage.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pbUserImage.Location = new System.Drawing.Point(50, 94);
+            this.pbUserImage.Name = "pbUserImage";
+            this.pbUserImage.Size = new System.Drawing.Size(188, 184);
+            this.pbUserImage.TabIndex = 50;
+            this.pbUserImage.TabStop = false;
+            // 
             // ucUserAdd
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -301,7 +301,6 @@
             this.Name = "ucUserAdd";
             this.Size = new System.Drawing.Size(796, 690);
             this.Load += new System.EventHandler(this.ucUserAdd_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).EndInit();
             this.gbRoles.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderFirstName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderLastName)).EndInit();
@@ -309,6 +308,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmail)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPasswordConfirm)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

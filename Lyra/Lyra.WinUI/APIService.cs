@@ -25,8 +25,46 @@ namespace Lyra.WinUI
 
         public async Task<Model.User> Authenticate(UserAuthenticationRequest request)
         {
-            var url = $"{Properties.Settings.Default.APIUrl}/User/Auth";
-            return await url.WithBasicAuth(Username, Password).PostJsonAsync(request).ReceiveJson<User>(); ;
+            try
+            {
+                var url = $"{Properties.Settings.Default.APIUrl}/User/Auth";
+                return await url.WithBasicAuth(Username, Password).PostJsonAsync(request).ReceiveJson<User>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return default(Model.User);
+            }
+        }
+
+        public async Task<Model.User> SignUp(UserInsertRequest request)
+        {
+            try
+            {
+                var url = $"{Properties.Settings.Default.APIUrl}/User/SignUp";
+                return await url.PostJsonAsync(request).ReceiveJson<User>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return default(Model.User);
+            }
         }
 
         public async Task<T> Get<T>(object search)
@@ -123,16 +161,49 @@ namespace Lyra.WinUI
 
         public async Task<T> GetAlbums<T>(int id)
         {
-            var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}/Albums";
+            try
+            {
+                var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}/Albums";
 
-            return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
+                return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return default(T);
+            }
         }
 
         public async Task<T> GetTracks<T>(int id)
         {
-            var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}/Tracks";
+            try
+            {
+                var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}/Tracks";
 
-            return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
+                return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                MessageBox.Show(stringBuilder.ToString(), "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return default(T);
+            }
+
         }
 
     }
