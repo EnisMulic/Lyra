@@ -35,5 +35,17 @@ namespace Lyra.WinUI.Validators
                 return new ValidationResult("", true);
             }
         }
+
+        public ValidationResult MainArtistCheck(int mainArtist, List<int> featureArtists)
+        {
+            if(featureArtists.Contains(mainArtist))
+            {
+                return new ValidationResult("Artist is already featured", false);
+            }
+            else
+            {
+                return new ValidationResult("", true);
+            }
+        }
     }
 }

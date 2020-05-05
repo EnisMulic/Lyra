@@ -50,10 +50,12 @@
             this.gbArtists = new System.Windows.Forms.GroupBox();
             this.errorProviderName = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderLength = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderMainArtist = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbInfo.SuspendLayout();
             this.gbArtists.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderLength)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderMainArtist)).BeginInit();
             this.SuspendLayout();
             // 
             // btnRemoveArtist
@@ -114,6 +116,7 @@
             this.cbMainArtist.Name = "cbMainArtist";
             this.cbMainArtist.Size = new System.Drawing.Size(188, 24);
             this.cbMainArtist.TabIndex = 73;
+            this.cbMainArtist.Validating += new System.ComponentModel.CancelEventHandler(this.cbMainArtist_Validating);
             // 
             // lbFeaturedArtists
             // 
@@ -250,6 +253,10 @@
             // 
             this.errorProviderLength.ContainerControl = this;
             // 
+            // errorProviderMainArtist
+            // 
+            this.errorProviderMainArtist.ContainerControl = this;
+            // 
             // ucTrackUpsert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -275,6 +282,7 @@
             this.gbArtists.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderLength)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderMainArtist)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -303,5 +311,6 @@
         private System.Windows.Forms.GroupBox gbArtists;
         private System.Windows.Forms.ErrorProvider errorProviderName;
         private System.Windows.Forms.ErrorProvider errorProviderLength;
+        private System.Windows.Forms.ErrorProvider errorProviderMainArtist;
     }
 }

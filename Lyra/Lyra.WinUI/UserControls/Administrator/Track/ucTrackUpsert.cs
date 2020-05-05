@@ -107,7 +107,7 @@ namespace Lyra.WinUI.UserControls.Administrator.Track
         {
             var artist = cbFeaturedArtist.SelectedItem;
 
-            if (!lbFeaturedArtists.Items.Contains(artist))
+            if (!lbFeaturedArtists.Items.Contains(artist) && Convert.ToInt32(cbFeaturedArtist.SelectedValue) != Convert.ToInt32(cbMainArtist.SelectedValue))
             {
                 lbFeaturedArtists.Items.Add(artist);
             }
@@ -140,6 +140,7 @@ namespace Lyra.WinUI.UserControls.Administrator.Track
             if(ValidateChildren())
             {
                 var trackGenres = lbGenres.Items.Cast<Model.Genre>().Select(i => i.ID).ToList();
+
                 var trackArtists = lbFeaturedArtists.Items.Cast<Model.Artist>().Select(i => i.ID).ToList();
                 int mainArtist = Convert.ToInt32(cbMainArtist.SelectedValue);
 
@@ -160,19 +161,21 @@ namespace Lyra.WinUI.UserControls.Administrator.Track
                         .Select(i => i.GenreID)
                         .ToList();
 
+                    var artistToDelete = _track.TrackArtists
+                        .Where(i => !trackArtists.Any(j => j.Equals(i.ArtistID)))
+                        .Select(i => i.ArtistID)
+                        .ToList();
 
                     var oldMainArtist = _track.TrackArtists
                         .Where(i => i.TrackArtistRole == "Main")
                         .Select(i => i.ArtistID)
                         .SingleOrDefault();
 
-                    var artistToDelete = _track.TrackArtists
-                        .Where(i => !trackArtists.Any(j => j.Equals(i.ArtistID)) && i.ArtistID != oldMainArtist)
-                        .Select(i => i.ArtistID)
-                        .ToList();
+                    if (oldMainArtist != mainArtist)
+                        artistToDelete.Add(oldMainArtist);
 
                     request.GenresToDelete = genresToDelete;
-                    request.ArtistToDelete = artistToDelete;
+                    request.ArtistsToDelete = artistToDelete;
 
                     await _trackApiService.Update<Model.Track>(_ID.Value, request);
                 }
@@ -196,9 +199,20 @@ namespace Lyra.WinUI.UserControls.Administrator.Track
 
         private void Length_Validating(object sender, CancelEventArgs e)
         {
-            var validator = new AlbumValidator();
-            var result = validator.ReleaseYearCheck(txtLength.Text);
+            var validator = new TrackValidator();
+            var result = validator.LengthCheck(txtLength.Text);
             errorProviderLength.SetError(txtLength, result.Message);
+            e.Cancel = !result.IsValid;
+        }
+
+        private void cbMainArtist_Validating(object sender, CancelEventArgs e)
+        {
+            var trackArtists = lbFeaturedArtists.Items.Cast<Model.Artist>().Select(i => i.ID).ToList();
+            var mainArtist = Convert.ToInt32(cbMainArtist.SelectedValue);
+
+            var validator = new TrackValidator();
+            var result = validator.MainArtistCheck(mainArtist, trackArtists);
+            errorProviderMainArtist.SetError(cbMainArtist, result.Message);
             e.Cancel = !result.IsValid;
         }
     }
