@@ -23,7 +23,8 @@ namespace Lyra.WinUI.UserControls.Administrator.Track
         private async void ucTrackList_Load(object sender, EventArgs e)
         {
             var list = await _apiService.Get<List<Model.Track>>(null);
-            dgvTracks.DataSource = list;
+            List<string> props = new List<string> { "ID", "Name", "Length" };
+            DataGridViewHelper.PopulateWithList(dgvTracks, list, props);
         }
 
         private void btnEditTrack_Click(object sender, EventArgs e)

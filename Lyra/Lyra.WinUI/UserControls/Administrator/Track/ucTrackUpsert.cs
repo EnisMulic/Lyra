@@ -11,6 +11,8 @@ using Lyra.Model.Requests;
 using Lyra.Model;
 using Lyra.WinUI.Validators;
 using Lyra.WinUI.Helpers;
+using System.IO;
+using NAudio.Wave;
 
 namespace Lyra.WinUI.UserControls.Administrator.Track
 {
@@ -100,6 +102,38 @@ namespace Lyra.WinUI.UserControls.Administrator.Track
                     .ToList();
 
                 BindListBox(lbGenres, trackGenres);
+
+                //Load Track
+                if(_track.MP3File.Length != 0)
+                {
+                    Guid g = Guid.NewGuid();
+                    string file = _track.Name + "-" + g.ToString() + ".mp3";
+                    File.WriteAllBytes(file, _track.MP3File);
+                    MediaPlayer.URL = file;
+                    MediaPlayer.Ctlcontrols.stop();
+                }
+            }
+        }
+
+        private void btnUploadMp3File_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog opnfd = new OpenFileDialog
+            {
+                Filter = "All Supported Audio | *.mp3;"
+            };
+            if (opnfd.ShowDialog() == DialogResult.OK)
+            {
+                MediaPlayer.URL = opnfd.FileName;
+                MediaPlayer.Ctlcontrols.stop();
+
+                Mp3FileReader reader = new Mp3FileReader(opnfd.FileName);
+                TimeSpan duration = reader.TotalTime;
+                txtLength.Text = duration.ToString(@"hh\:mm\:ss");
+
+                if (string.IsNullOrEmpty(txtName.Text))
+                {
+                    txtName.Text = opnfd.SafeFileName.Replace(".mp3", "");
+                }
             }
         }
 
@@ -139,10 +173,14 @@ namespace Lyra.WinUI.UserControls.Administrator.Track
         {
             if(ValidateChildren())
             {
+                MediaPlayer.Ctlcontrols.stop();
+
                 var trackGenres = lbGenres.Items.Cast<Model.Genre>().Select(i => i.ID).ToList();
 
                 var trackArtists = lbFeaturedArtists.Items.Cast<Model.Artist>().Select(i => i.ID).ToList();
                 int mainArtist = Convert.ToInt32(cbMainArtist.SelectedValue);
+
+                byte[] MP3File = File.ReadAllBytes(MediaPlayer.URL);
 
                 var request = new TrackUpsertRequest()
                 {
@@ -150,7 +188,8 @@ namespace Lyra.WinUI.UserControls.Administrator.Track
                     Length = Convert.ToString(txtLength.Text),
                     Genres = trackGenres,
                     MainArtist = mainArtist,
-                    FeaturedArtists = trackArtists
+                    FeaturedArtists = trackArtists,
+                    MP3File = MP3File
                 };
 
 
@@ -215,5 +254,7 @@ namespace Lyra.WinUI.UserControls.Administrator.Track
             errorProviderMainArtist.SetError(cbMainArtist, result.Message);
             e.Cancel = !result.IsValid;
         }
+
+        
     }
 }

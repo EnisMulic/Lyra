@@ -95,6 +95,8 @@ namespace Lyra.WebAPI.Services
             _context.Tracks.Attach(entity);
             _context.Tracks.Update(entity);
 
+            entity.MP3File = request.MP3File;
+
             foreach (var ArtistID in request.ArtistsToDelete)
             {
                 var trackArtist = await _context.TrackArtists

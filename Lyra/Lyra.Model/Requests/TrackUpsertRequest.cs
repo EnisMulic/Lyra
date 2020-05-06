@@ -9,6 +9,7 @@ namespace Lyra.Model.Requests
     {
         public string Name { get; set; }
         public string Length { get; set; }
+        public byte[] MP3File { get; set; }
         public int MainArtist { get; set; }
         public List<int> FeaturedArtists { get; set; }
         public List<int> ArtistsToDelete { get; set; }
