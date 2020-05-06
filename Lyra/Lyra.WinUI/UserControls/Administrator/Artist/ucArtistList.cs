@@ -29,15 +29,21 @@ namespace Lyra.WinUI.UserControls.Administrator.Artist
 
         private void btnEditArtist_Click(object sender, EventArgs e)
         {
-            int ID = Convert.ToInt32(dgvArtists.CurrentRow.Cells["ID"].Value);
-            PanelHelper.SwapPanels(this.Parent, this, new ucArtistUpsert(ID));
+            if(dgvArtists.CurrentRow != null)
+            {
+                int ID = Convert.ToInt32(dgvArtists.CurrentRow.Cells["ID"].Value);
+                PanelHelper.SwapPanels(this.Parent, this, new ucArtistUpsert(ID));
+            }
         }
 
         private async void btnDeleteArtist_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(dgvArtists.CurrentRow.Cells["ID"].Value);
-            await _apiService.Delete<dynamic>(id);
-            PanelHelper.SwapPanels(this.Parent, this, new ucArtistList());
+            if(dgvArtists.CurrentRow != null)
+            {
+                int ID = Convert.ToInt32(dgvArtists.CurrentRow.Cells["ID"].Value);
+                await _apiService.Delete<dynamic>(ID);
+                PanelHelper.SwapPanels(this.Parent, this, new ucArtistList());
+            }
         }
 
         private void btnAddArtist_Click(object sender, EventArgs e)

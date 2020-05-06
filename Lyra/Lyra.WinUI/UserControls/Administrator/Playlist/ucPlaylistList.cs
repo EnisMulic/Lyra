@@ -29,15 +29,21 @@ namespace Lyra.WinUI.UserControls.Administrator.Playlist
 
         private void btnEditPlaylist_Click(object sender, EventArgs e)
         {
-            int ID = Convert.ToInt32(dgvPlaylists.CurrentRow.Cells["ID"].Value);
-            PanelHelper.SwapPanels(this.Parent, this, new ucPlaylistUpsert(ID));
+            if(dgvPlaylists.CurrentRow != null)
+            {
+                int ID = Convert.ToInt32(dgvPlaylists.CurrentRow.Cells["ID"].Value);
+                PanelHelper.SwapPanels(this.Parent, this, new ucPlaylistUpsert(ID));
+            }
         }
 
         private async void btnDeletePlaylist_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(dgvPlaylists.CurrentRow.Cells["ID"].Value);
-            await _apiService.Delete<dynamic>(id);
-            PanelHelper.SwapPanels(this.Parent, this, new ucPlaylistList());
+            if(dgvPlaylists.CurrentRow != null)
+            {
+                int ID = Convert.ToInt32(dgvPlaylists.CurrentRow.Cells["ID"].Value);
+                await _apiService.Delete<dynamic>(ID);
+                PanelHelper.SwapPanels(this.Parent, this, new ucPlaylistList());
+            }
         }
 
         private void btnAddPlaylist_Click(object sender, EventArgs e)

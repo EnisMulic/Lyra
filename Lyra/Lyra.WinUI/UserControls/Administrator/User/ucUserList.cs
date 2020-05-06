@@ -29,15 +29,22 @@ namespace Lyra.WinUI.UserControls.Administrator.User
 
         private void btnEditUser_Click(object sender, EventArgs e)
         {
-            int ID = Convert.ToInt32(dgvUsers.CurrentRow.Cells["ID"].Value);
-            PanelHelper.SwapPanels(this.Parent, this, new ucUserEdit(ID));
+            if(dgvUsers.CurrentRow != null)
+            {
+                int ID = Convert.ToInt32(dgvUsers.CurrentRow.Cells["ID"].Value);
+                PanelHelper.SwapPanels(this.Parent, this, new ucUserEdit(ID));
+            }
         }
 
         private async void btnDeleteUser_Click(object sender, EventArgs e)
         {
-            int id = Convert.ToInt32(dgvUsers.CurrentRow.Cells["ID"].Value);
-            await _apiService.Delete<dynamic>(id);
-            PanelHelper.SwapPanels(this.Parent, this, new ucUserList());
+            if (dgvUsers.CurrentRow != null)
+            {
+                int ID = Convert.ToInt32(dgvUsers.CurrentRow.Cells["ID"].Value);
+                await _apiService.Delete<dynamic>(ID);
+                PanelHelper.SwapPanels(this.Parent, this, new ucUserList());
+            }
+            
         }
 
         private void btnAddUser_Click(object sender, EventArgs e)
