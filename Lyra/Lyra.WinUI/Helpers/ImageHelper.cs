@@ -20,7 +20,7 @@ namespace Lyra.WinUI.Helpers
         public static byte[] SystemDrawingToByteArray(Image image)
         {
             MemoryStream stream = new MemoryStream();
-            image.Save(stream, image.RawFormat);
+            image?.Save(stream, image.RawFormat);
             return stream.ToArray();
         }
     }

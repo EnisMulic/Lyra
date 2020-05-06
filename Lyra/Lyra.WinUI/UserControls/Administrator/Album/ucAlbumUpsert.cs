@@ -163,7 +163,7 @@ namespace Lyra.WinUI.UserControls.Administrator.Album
                     Name = Convert.ToString(txtName.Text),
                     ReleaseYear = Convert.ToInt32(txtReleaseYear.Text),
                     ArtistID = Convert.ToInt32(cbArtist.SelectedValue),
-                    Image = pbAlbumImage.Image != null ? ImageHelper.SystemDrawingToByteArray(pbAlbumImage.Image) : null,
+                    Image = ImageHelper.SystemDrawingToByteArray(pbAlbumImage.Image),
                     Tracks = albumTracks
                 };
 
