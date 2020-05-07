@@ -28,7 +28,7 @@ namespace Lyra.WebAPI.Services
                 query = query.Where(x => x.Name.StartsWith(request.Name));
             }
 
-            var list = await query.ToListAsync();
+            var list = await query.Skip(request.Skip).Take(request.Limit).ToListAsync();
 
             return _mapper.Map<List<Model.Playlist>>(list);
         }

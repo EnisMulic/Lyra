@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Lyra.Model.Requests
 {
-    public class PlaylistSearchRequest
+    public class PlaylistSearchRequest : Page
     {
         public string Name { get; set; }
     }

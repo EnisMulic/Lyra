@@ -26,11 +26,26 @@ namespace Lyra.WebAPI.Services
             var query = _context.Tracks
                 .Include(i => i.TrackArtists)
                 .Include(i => i.TrackGenres)
+                .Select
+                (
+                    i => new Model.Track()
+                    {
+                        ID = i.ID,
+                        Name = i.Name,
+                        Length = i.Length.ToString(@"hh\:mm\:ss")
+                    }
+                )
                 .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(request?.Name))
             {
                 query = query.Where(x => x.Name.StartsWith(request.Name));
+            }
+
+            query = query.Skip(request.Skip);
+            if (request.Limit > 0)
+            {
+                query = query.Take(request.Limit);
             }
 
             var list = await query.ToListAsync();

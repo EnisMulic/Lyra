@@ -21,29 +21,35 @@ namespace Lyra.WebAPI.Services
             _mapper = mapper;
         }
 
-        public override async Task<List<Model.User>> Get(UserSearchRequest search)
+        public override async Task<List<Model.User>> Get(UserSearchRequest request)
         {
             var query = _context.Users.Include(i => i.UserRoles).AsQueryable();
 
-            if(!string.IsNullOrWhiteSpace(search?.FirstName))
+            if(!string.IsNullOrWhiteSpace(request?.FirstName))
             {
-                query = query.Where(i => i.FirstName.StartsWith(search.FirstName));
+                query = query.Where(i => i.FirstName.StartsWith(request.FirstName));
             }
 
 
-            if (!string.IsNullOrWhiteSpace(search?.LastName))
+            if (!string.IsNullOrWhiteSpace(request?.LastName))
             {
-                query = query.Where(i => i.LastName.StartsWith(search.LastName));
+                query = query.Where(i => i.LastName.StartsWith(request.LastName));
             }
 
-            if (!string.IsNullOrWhiteSpace(search?.Username))
+            if (!string.IsNullOrWhiteSpace(request?.Username))
             {
-                query = query.Where(i => i.Username.Equals(search.Username));
+                query = query.Where(i => i.Username.Equals(request.Username));
             }
 
-            if (!string.IsNullOrWhiteSpace(search?.Email))
+            if (!string.IsNullOrWhiteSpace(request?.Email))
             {
-                query = query.Where(i => i.Email.Equals(search.Email));
+                query = query.Where(i => i.Email.Equals(request.Email));
+            }
+
+            query = query.Skip(request.Skip);
+            if(request.Limit > 0)
+            {
+                query = query.Take(request.Limit);
             }
 
             var list = await query.ToListAsync();

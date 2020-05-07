@@ -4,8 +4,9 @@ using System.Text;
 
 namespace Lyra.Model.Requests
 {
-    public class TrackSearchRequest : Page
+    public class Page
     {
-        public string Name { get; set; }
+        public int Limit { get; set; }
+        public int Skip { get; set; }
     }
 }
