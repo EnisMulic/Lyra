@@ -23,14 +23,15 @@ namespace Lyra.WebAPI.Services
         {
             var query = _context.Artists.AsQueryable();
 
-            if(request.Limit > 0)
-            {
-                query = query.Skip(request.Skip).Take(request.Limit);
-            }
-
             if (!string.IsNullOrWhiteSpace(request?.Name))
             {
                 query = query.Where(x => x.Name.StartsWith(request.Name));
+            }
+
+            query = query.Skip(request.Skip);
+            if (request.Limit > 0)
+            {
+                query = query.Take(request.Limit);
             }
 
             var list = await query.ToListAsync();
