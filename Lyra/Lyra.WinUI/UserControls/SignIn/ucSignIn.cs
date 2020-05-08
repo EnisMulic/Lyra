@@ -40,9 +40,9 @@ namespace Lyra.WinUI.SignIn
                 Username = txtUsername.Text
             };
 
-            var response = await _service.Get<Model.PagedCollection<Model.User>>(request);
+            var response = await _service.Get<List<Model.User>>(request);
 
-            if(response.Data.Count == 0)
+            if(response.Count == 0)
             {
                 errorProviderUsername.SetError(txtUsername, "Username does not exist");
                 e.Cancel = true;

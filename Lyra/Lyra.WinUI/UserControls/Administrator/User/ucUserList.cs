@@ -38,12 +38,12 @@ namespace Lyra.WinUI.UserControls.Administrator.User
 
         private async Task LoadList(UserSearchRequest request)
         {
-            var list = await _apiService.Get<Lyra.Model.PagedCollection<Model.User>>(request);
+            var list = await _apiService.Get<List<Model.User>>(request);
             
-            if(list.Data.Count > 1)
+            if(list.Count > 1)
             {
                 dgvUsers.ColumnCount = 0;
-                DataGridViewHelper.PopulateWithList(dgvUsers, list.Data, _props);
+                DataGridViewHelper.PopulateWithList(dgvUsers, list, _props);
 
                 _page = request.Page;
                 btnPageNumber.Text = Convert.ToString(_page);

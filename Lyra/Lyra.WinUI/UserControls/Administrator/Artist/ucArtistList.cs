@@ -45,7 +45,7 @@ namespace Lyra.WinUI.UserControls.Administrator.Artist
                 dgvArtists.ColumnCount = 0;
                 DataGridViewHelper.PopulateWithList(dgvArtists, list, _props);
 
-                _page = request != null ? request.Page / request.ItemsPerPage + 1 : 1;
+                _page = request.Page;
                 btnPageNumber.Text = Convert.ToString(_page);
             }
         }

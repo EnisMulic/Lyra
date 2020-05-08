@@ -46,10 +46,10 @@ namespace Lyra.WebAPI.Services
                 query = query.Where(i => i.Email.Equals(request.Email));
             }
 
-            query = query.Skip(request.Skip);
-            if(request.Limit > 0)
+            query = query.Skip((request.Page - 1) * request.ItemsPerPage);
+            if(request.ItemsPerPage > 0)
             {
-                query = query.Take(request.Limit);
+                query = query.Take(request.ItemsPerPage);
             }
 
             var list = await query.ToListAsync();
