@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Lyra.Model.Requests
 {
-    public class Page
+    public class PageRequest
     {
-        public int Limit { get; set; }
-        public int Skip { get; set; }
+        public int Page { get; set; }
+        public int ItemsPerPage { get; set; }
     }
 }

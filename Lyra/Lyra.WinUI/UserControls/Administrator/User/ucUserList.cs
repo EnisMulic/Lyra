@@ -8,23 +8,46 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Lyra.WinUI.Helpers;
+using Lyra.Model.Requests;
+using Lyra.Model;
 
 namespace Lyra.WinUI.UserControls.Administrator.User
 {
     public partial class ucUserList : UserControl
     {
         private readonly APIService _apiService = new APIService("User");
-        
+        private readonly List<string> _props = new List<string> { "ID", "FirstName", "LastName", "Username", "Email", "PhoneNumber" };
+        private int _page { get; set; }
+        private int _itemsPerPage { get; set; }
         public ucUserList()
         {
+            _page = 1;
+            _itemsPerPage = 10;
             InitializeComponent();
         }
 
         private async void ucUserList_Load(object sender, EventArgs e)
         {
-            var list = await _apiService.Get<List<Model.User>>(null);
-            var proprs = new List<string> { "ID", "FirstName", "LastName", "Username", "Email", "PhoneNumber" };
-            DataGridViewHelper.PopulateWithList(dgvUsers, list, proprs);
+            var request = new UserSearchRequest()
+            {
+                Page = 1,
+                ItemsPerPage = _itemsPerPage
+            };
+            await LoadList(request);
+        }
+
+        private async Task LoadList(UserSearchRequest request)
+        {
+            var list = await _apiService.Get<Lyra.Model.PagedCollection<Model.User>>(request);
+            
+            if(list.Data.Count > 1)
+            {
+                dgvUsers.ColumnCount = 0;
+                DataGridViewHelper.PopulateWithList(dgvUsers, list.Data, _props);
+
+                _page = request.Page;
+                btnPageNumber.Text = Convert.ToString(_page);
+            }
         }
 
         private void btnEditUser_Click(object sender, EventArgs e)
@@ -52,6 +75,46 @@ namespace Lyra.WinUI.UserControls.Administrator.User
             PanelHelper.SwapPanels(this.Parent, this, new ucUserAdd());
         }
 
-        
+        private async void btnFirst_Click(object sender, EventArgs e)
+        {
+            if(_page > 1)
+            {
+                var request = new UserSearchRequest()
+                {
+                    Page = 1,
+                    ItemsPerPage = _itemsPerPage
+                };
+                await LoadList(request);
+            }
+        }
+        private async void btnNext_Click(object sender, EventArgs e)
+        {
+            var request = new UserSearchRequest()
+            {
+                Page = _page + 1,
+                ItemsPerPage = _itemsPerPage
+            };
+
+            await LoadList(request);
+        }
+
+        private async void btnBack_Click(object sender, EventArgs e)
+        {
+            if(_page > 1)
+            {
+                var request = new UserSearchRequest()
+                {
+                    Page = _page - 1,
+                    ItemsPerPage = _itemsPerPage
+                };
+
+                await LoadList(request);
+            }
+        }
+
+        private async void btnLast_Click(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

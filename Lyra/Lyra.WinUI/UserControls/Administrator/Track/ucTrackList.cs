@@ -8,23 +8,46 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Lyra.WinUI.Helpers;
+using Lyra.Model.Requests;
 
 namespace Lyra.WinUI.UserControls.Administrator.Track
 {
     public partial class ucTrackList : UserControl
     {
         private readonly APIService _apiService = new APIService("Track");
-        
+        private readonly List<string> _props = new List<string> { "ID", "Name", "Length" };
+        private int _page { get; set; }
+        private int _itemsPerPage { get; set; }
+
         public ucTrackList()
         {
+            _page = 1;
+            _itemsPerPage = 10;
             InitializeComponent();
         }
 
         private async void ucTrackList_Load(object sender, EventArgs e)
         {
-            var list = await _apiService.Get<List<Model.Track>>(null);
-            List<string> props = new List<string> { "ID", "Name", "Length" };
-            DataGridViewHelper.PopulateWithList(dgvTracks, list, props);
+            var request = new TrackSearchRequest()
+            {
+                Page = 1,
+                ItemsPerPage = _itemsPerPage
+            };
+            await LoadList(request);
+        }
+
+        private async Task LoadList(TrackSearchRequest request)
+        {
+            var list = await _apiService.Get<List<Model.Track>>(request);
+
+            if(list.Count > 1)
+            {
+                dgvTracks.ColumnCount = 0;
+                DataGridViewHelper.PopulateWithList(dgvTracks, list, _props);
+
+                _page = request != null ? request.Page / request.ItemsPerPage + 1 : 1;
+                btnPageNumber.Text = Convert.ToString(_page);
+            }
         }
 
         private void btnEditTrack_Click(object sender, EventArgs e)
@@ -51,6 +74,46 @@ namespace Lyra.WinUI.UserControls.Administrator.Track
             PanelHelper.SwapPanels(this.Parent, this, new ucTrackUpsert());
         }
 
-        
+        private async void btnFirst_Click(object sender, EventArgs e)
+        {
+            if (_page > 1)
+            {
+                var request = new TrackSearchRequest()
+                {
+                    Page = 1,
+                    ItemsPerPage = _itemsPerPage
+                };
+                await LoadList(request);
+            }
+        }
+        private async void btnNext_Click(object sender, EventArgs e)
+        {
+            var request = new TrackSearchRequest()
+            {
+                Page = _page + 1,
+                ItemsPerPage = _itemsPerPage
+            };
+
+            await LoadList(request);
+        }
+
+        private async void btnBack_Click(object sender, EventArgs e)
+        {
+            if (_page > 1)
+            {
+                var request = new TrackSearchRequest()
+                {
+                    Page = _page - 1,
+                    ItemsPerPage = _itemsPerPage
+                };
+
+                await LoadList(request);
+            }
+        }
+
+        private void btnLast_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
