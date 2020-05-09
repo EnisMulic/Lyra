@@ -75,18 +75,6 @@ namespace Lyra.WinUI.UserControls.Administrator.User
             PanelHelper.SwapPanels(this.Parent, this, new ucUserAdd());
         }
 
-        private async void btnFirst_Click(object sender, EventArgs e)
-        {
-            if(_page > 1)
-            {
-                var request = new UserSearchRequest()
-                {
-                    Page = 1,
-                    ItemsPerPage = _itemsPerPage
-                };
-                await LoadList(request);
-            }
-        }
         private async void btnNext_Click(object sender, EventArgs e)
         {
             var request = new UserSearchRequest()
@@ -98,7 +86,7 @@ namespace Lyra.WinUI.UserControls.Administrator.User
             await LoadList(request);
         }
 
-        private async void btnBack_Click(object sender, EventArgs e)
+        private async void btnPrevious_Click(object sender, EventArgs e)
         {
             if(_page > 1)
             {
@@ -110,11 +98,6 @@ namespace Lyra.WinUI.UserControls.Administrator.User
 
                 await LoadList(request);
             }
-        }
-
-        private async void btnLast_Click(object sender, EventArgs e)
-        {
-            
         }
     }
 }

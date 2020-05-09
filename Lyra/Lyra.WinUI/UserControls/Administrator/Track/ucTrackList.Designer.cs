@@ -32,11 +32,9 @@
             this.btnDeleteTrack = new System.Windows.Forms.Button();
             this.btnEditTrack = new System.Windows.Forms.Button();
             this.btnAddTrack = new System.Windows.Forms.Button();
-            this.btnLast = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPageNumber = new System.Windows.Forms.Button();
-            this.btnBack = new System.Windows.Forms.Button();
-            this.btnFirst = new System.Windows.Forms.Button();
+            this.btnPrevious = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTracks)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,21 +89,10 @@
             this.btnAddTrack.UseVisualStyleBackColor = true;
             this.btnAddTrack.Click += new System.EventHandler(this.btnAddTrack_Click);
             // 
-            // btnLast
-            // 
-            this.btnLast.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLast.Location = new System.Drawing.Point(746, 614);
-            this.btnLast.Name = "btnLast";
-            this.btnLast.Size = new System.Drawing.Size(33, 30);
-            this.btnLast.TabIndex = 20;
-            this.btnLast.Text = ">>";
-            this.btnLast.UseVisualStyleBackColor = true;
-            this.btnLast.Click += new System.EventHandler(this.btnLast_Click);
-            // 
             // btnNext
             // 
             this.btnNext.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.Location = new System.Drawing.Point(707, 614);
+            this.btnNext.Location = new System.Drawing.Point(746, 614);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(33, 30);
             this.btnNext.TabIndex = 19;
@@ -116,44 +103,31 @@
             // btnPageNumber
             // 
             this.btnPageNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPageNumber.Location = new System.Drawing.Point(668, 614);
+            this.btnPageNumber.Location = new System.Drawing.Point(707, 614);
             this.btnPageNumber.Name = "btnPageNumber";
             this.btnPageNumber.Size = new System.Drawing.Size(33, 30);
             this.btnPageNumber.TabIndex = 18;
-            this.btnPageNumber.Text = "0";
+            this.btnPageNumber.Text = "1";
             this.btnPageNumber.UseVisualStyleBackColor = true;
             // 
-            // btnBack
+            // btnPrevious
             // 
-            this.btnBack.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBack.Location = new System.Drawing.Point(629, 614);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(33, 30);
-            this.btnBack.TabIndex = 17;
-            this.btnBack.Text = "<";
-            this.btnBack.UseVisualStyleBackColor = true;
-            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
-            // 
-            // btnFirst
-            // 
-            this.btnFirst.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFirst.Location = new System.Drawing.Point(590, 614);
-            this.btnFirst.Name = "btnFirst";
-            this.btnFirst.Size = new System.Drawing.Size(33, 30);
-            this.btnFirst.TabIndex = 16;
-            this.btnFirst.Text = "<<";
-            this.btnFirst.UseVisualStyleBackColor = true;
-            this.btnFirst.Click += new System.EventHandler(this.btnFirst_Click);
+            this.btnPrevious.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrevious.Location = new System.Drawing.Point(668, 614);
+            this.btnPrevious.Name = "btnPrevious";
+            this.btnPrevious.Size = new System.Drawing.Size(33, 30);
+            this.btnPrevious.TabIndex = 17;
+            this.btnPrevious.Text = "<";
+            this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
             // ucTrackList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.btnLast);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnPageNumber);
-            this.Controls.Add(this.btnBack);
-            this.Controls.Add(this.btnFirst);
+            this.Controls.Add(this.btnPrevious);
             this.Controls.Add(this.btnDeleteTrack);
             this.Controls.Add(this.btnEditTrack);
             this.Controls.Add(this.btnAddTrack);
@@ -172,10 +146,8 @@
         private System.Windows.Forms.Button btnDeleteTrack;
         private System.Windows.Forms.Button btnEditTrack;
         private System.Windows.Forms.Button btnAddTrack;
-        private System.Windows.Forms.Button btnLast;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnPageNumber;
-        private System.Windows.Forms.Button btnBack;
-        private System.Windows.Forms.Button btnFirst;
+        private System.Windows.Forms.Button btnPrevious;
     }
 }

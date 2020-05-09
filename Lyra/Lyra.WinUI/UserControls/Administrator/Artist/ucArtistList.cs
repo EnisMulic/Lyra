@@ -74,18 +74,6 @@ namespace Lyra.WinUI.UserControls.Administrator.Artist
             PanelHelper.SwapPanels(this.Parent, this, new ucArtistUpsert());
         }
 
-        private async void btnFirst_Click(object sender, EventArgs e)
-        {
-            if (_page > 1)
-            {
-                var request = new ArtistSearchRequest()
-                {
-                    Page = 1,
-                    ItemsPerPage = _itemsPerPage
-                };
-                await LoadList(request);
-            }
-        }
         private async void btnNext_Click(object sender, EventArgs e)
         {
             var request = new ArtistSearchRequest()
@@ -97,7 +85,7 @@ namespace Lyra.WinUI.UserControls.Administrator.Artist
             await LoadList(request);
         }
 
-        private async void btnBack_Click(object sender, EventArgs e)
+        private async void btnPrevious_Click(object sender, EventArgs e)
         {
             if (_page > 1)
             {
@@ -109,11 +97,6 @@ namespace Lyra.WinUI.UserControls.Administrator.Artist
 
                 await LoadList(request);
             }
-        }
-
-        private void btnLast_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
