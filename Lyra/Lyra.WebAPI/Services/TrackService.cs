@@ -37,6 +37,14 @@ namespace Lyra.WebAPI.Services
                 )
                 .AsQueryable();
 
+            //if(request.ArtistID != 0)
+            //{
+            //    query = query.Where(i => i.TrackArtists
+            //        .Where(j => j.ArtistID == j.ArtistID)
+            //        .Select(j => j.ArtistID)
+            //        .Contains(request.ArtistID));
+            //}
+
             if (!string.IsNullOrWhiteSpace(request?.Name))
             {
                 query = query.Where(x => x.Name.StartsWith(request.Name));

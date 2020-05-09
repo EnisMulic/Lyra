@@ -29,12 +29,12 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnSave = new System.Windows.Forms.Button();
             this.lblName = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
@@ -46,6 +46,14 @@
             this.dgvTracks = new System.Windows.Forms.DataGridView();
             this.gbInfo = new System.Windows.Forms.GroupBox();
             this.errorProviderName = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnNextAlbums = new System.Windows.Forms.Button();
+            this.btnPageNumberAlbums = new System.Windows.Forms.Button();
+            this.btnPreviousAlbums = new System.Windows.Forms.Button();
+            this.pnlAlbumsPageButtons = new System.Windows.Forms.Panel();
+            this.pnlTracksPageButtons = new System.Windows.Forms.Panel();
+            this.btnNextTracks = new System.Windows.Forms.Button();
+            this.btnPreviousTracks = new System.Windows.Forms.Button();
+            this.btnPageNumberTracks = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbArtistImage)).BeginInit();
             this.gbAlbums.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlbums)).BeginInit();
@@ -53,6 +61,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvTracks)).BeginInit();
             this.gbInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderName)).BeginInit();
+            this.pnlAlbumsPageButtons.SuspendLayout();
+            this.pnlTracksPageButtons.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSave
@@ -107,11 +117,12 @@
             // gbAlbums
             // 
             this.gbAlbums.AutoSize = true;
+            this.gbAlbums.Controls.Add(this.pnlAlbumsPageButtons);
             this.gbAlbums.Controls.Add(this.dgvAlbums);
             this.gbAlbums.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbAlbums.Location = new System.Drawing.Point(38, 327);
             this.gbAlbums.Name = "gbAlbums";
-            this.gbAlbums.Size = new System.Drawing.Size(712, 157);
+            this.gbAlbums.Size = new System.Drawing.Size(712, 200);
             this.gbAlbums.TabIndex = 75;
             this.gbAlbums.TabStop = false;
             this.gbAlbums.Text = "Albums";
@@ -122,45 +133,45 @@
             this.dgvAlbums.AllowUserToAddRows = false;
             this.dgvAlbums.AllowUserToDeleteRows = false;
             this.dgvAlbums.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAlbums.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAlbums.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
             this.dgvAlbums.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAlbums.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAlbums.DefaultCellStyle = dataGridViewCellStyle20;
             this.dgvAlbums.Location = new System.Drawing.Point(13, 31);
             this.dgvAlbums.Name = "dgvAlbums";
             this.dgvAlbums.ReadOnly = true;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvAlbums.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvAlbums.RowHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.dgvAlbums.Size = new System.Drawing.Size(683, 96);
             this.dgvAlbums.TabIndex = 0;
-            this.dgvAlbums.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvAlbums_RowsAdded);
             // 
             // gbTracks
             // 
+            this.gbTracks.Controls.Add(this.pnlTracksPageButtons);
             this.gbTracks.Controls.Add(this.dgvTracks);
             this.gbTracks.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbTracks.Location = new System.Drawing.Point(38, 496);
+            this.gbTracks.Location = new System.Drawing.Point(38, 533);
             this.gbTracks.Name = "gbTracks";
-            this.gbTracks.Size = new System.Drawing.Size(712, 144);
+            this.gbTracks.Size = new System.Drawing.Size(712, 194);
             this.gbTracks.TabIndex = 76;
             this.gbTracks.TabStop = false;
             this.gbTracks.Text = "Tracks";
@@ -170,37 +181,36 @@
             // 
             this.dgvTracks.AllowUserToAddRows = false;
             this.dgvTracks.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTracks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTracks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.dgvTracks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvTracks.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvTracks.DefaultCellStyle = dataGridViewCellStyle23;
             this.dgvTracks.Location = new System.Drawing.Point(13, 30);
             this.dgvTracks.Name = "dgvTracks";
             this.dgvTracks.ReadOnly = true;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvTracks.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvTracks.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
             this.dgvTracks.Size = new System.Drawing.Size(683, 96);
             this.dgvTracks.TabIndex = 0;
-            this.dgvTracks.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgvTracks_RowsAdded);
             // 
             // gbInfo
             // 
@@ -220,6 +230,92 @@
             // 
             this.errorProviderName.ContainerControl = this;
             // 
+            // btnNextAlbums
+            // 
+            this.btnNextAlbums.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNextAlbums.Location = new System.Drawing.Point(85, 6);
+            this.btnNextAlbums.Name = "btnNextAlbums";
+            this.btnNextAlbums.Size = new System.Drawing.Size(33, 30);
+            this.btnNextAlbums.TabIndex = 27;
+            this.btnNextAlbums.Text = ">";
+            this.btnNextAlbums.UseVisualStyleBackColor = true;
+            this.btnNextAlbums.Click += new System.EventHandler(this.btnNextAlbums_Click);
+            // 
+            // btnPageNumberAlbums
+            // 
+            this.btnPageNumberAlbums.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPageNumberAlbums.Location = new System.Drawing.Point(46, 6);
+            this.btnPageNumberAlbums.Name = "btnPageNumberAlbums";
+            this.btnPageNumberAlbums.Size = new System.Drawing.Size(33, 30);
+            this.btnPageNumberAlbums.TabIndex = 26;
+            this.btnPageNumberAlbums.Text = "1";
+            this.btnPageNumberAlbums.UseVisualStyleBackColor = true;
+            // 
+            // btnPreviousAlbums
+            // 
+            this.btnPreviousAlbums.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPreviousAlbums.Location = new System.Drawing.Point(7, 6);
+            this.btnPreviousAlbums.Name = "btnPreviousAlbums";
+            this.btnPreviousAlbums.Size = new System.Drawing.Size(33, 30);
+            this.btnPreviousAlbums.TabIndex = 25;
+            this.btnPreviousAlbums.Text = "<";
+            this.btnPreviousAlbums.UseVisualStyleBackColor = true;
+            this.btnPreviousAlbums.Click += new System.EventHandler(this.btnPreviousAlbums_Click);
+            // 
+            // pnlAlbumsPageButtons
+            // 
+            this.pnlAlbumsPageButtons.Controls.Add(this.btnNextAlbums);
+            this.pnlAlbumsPageButtons.Controls.Add(this.btnPreviousAlbums);
+            this.pnlAlbumsPageButtons.Controls.Add(this.btnPageNumberAlbums);
+            this.pnlAlbumsPageButtons.Location = new System.Drawing.Point(569, 133);
+            this.pnlAlbumsPageButtons.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlAlbumsPageButtons.Name = "pnlAlbumsPageButtons";
+            this.pnlAlbumsPageButtons.Size = new System.Drawing.Size(127, 40);
+            this.pnlAlbumsPageButtons.TabIndex = 28;
+            // 
+            // pnlTracksPageButtons
+            // 
+            this.pnlTracksPageButtons.Controls.Add(this.btnNextTracks);
+            this.pnlTracksPageButtons.Controls.Add(this.btnPreviousTracks);
+            this.pnlTracksPageButtons.Controls.Add(this.btnPageNumberTracks);
+            this.pnlTracksPageButtons.Location = new System.Drawing.Point(569, 132);
+            this.pnlTracksPageButtons.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlTracksPageButtons.Name = "pnlTracksPageButtons";
+            this.pnlTracksPageButtons.Size = new System.Drawing.Size(127, 40);
+            this.pnlTracksPageButtons.TabIndex = 29;
+            // 
+            // btnNextTracks
+            // 
+            this.btnNextTracks.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNextTracks.Location = new System.Drawing.Point(85, 6);
+            this.btnNextTracks.Name = "btnNextTracks";
+            this.btnNextTracks.Size = new System.Drawing.Size(33, 30);
+            this.btnNextTracks.TabIndex = 27;
+            this.btnNextTracks.Text = ">";
+            this.btnNextTracks.UseVisualStyleBackColor = true;
+            this.btnNextTracks.Click += new System.EventHandler(this.btnNextTracks_Click);
+            // 
+            // btnPreviousTracks
+            // 
+            this.btnPreviousTracks.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPreviousTracks.Location = new System.Drawing.Point(7, 6);
+            this.btnPreviousTracks.Name = "btnPreviousTracks";
+            this.btnPreviousTracks.Size = new System.Drawing.Size(33, 30);
+            this.btnPreviousTracks.TabIndex = 25;
+            this.btnPreviousTracks.Text = "<";
+            this.btnPreviousTracks.UseVisualStyleBackColor = true;
+            this.btnPreviousTracks.Click += new System.EventHandler(this.btnPreviousTracks_Click);
+            // 
+            // btnPageNumberTracks
+            // 
+            this.btnPageNumberTracks.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPageNumberTracks.Location = new System.Drawing.Point(46, 6);
+            this.btnPageNumberTracks.Name = "btnPageNumberTracks";
+            this.btnPageNumberTracks.Size = new System.Drawing.Size(33, 30);
+            this.btnPageNumberTracks.TabIndex = 26;
+            this.btnPageNumberTracks.Text = "1";
+            this.btnPageNumberTracks.UseVisualStyleBackColor = true;
+            // 
             // ucArtistUpsert
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -229,7 +325,7 @@
             this.Controls.Add(this.gbTracks);
             this.Controls.Add(this.gbAlbums);
             this.Name = "ucArtistUpsert";
-            this.Size = new System.Drawing.Size(796, 690);
+            this.Size = new System.Drawing.Size(796, 747);
             this.Load += new System.EventHandler(this.ucArtistUpsert_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbArtistImage)).EndInit();
             this.gbAlbums.ResumeLayout(false);
@@ -239,6 +335,8 @@
             this.gbInfo.ResumeLayout(false);
             this.gbInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderName)).EndInit();
+            this.pnlAlbumsPageButtons.ResumeLayout(false);
+            this.pnlTracksPageButtons.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -257,5 +355,13 @@
         private System.Windows.Forms.DataGridView dgvAlbums;
         private System.Windows.Forms.DataGridView dgvTracks;
         private System.Windows.Forms.ErrorProvider errorProviderName;
+        private System.Windows.Forms.Button btnNextAlbums;
+        private System.Windows.Forms.Button btnPageNumberAlbums;
+        private System.Windows.Forms.Button btnPreviousAlbums;
+        private System.Windows.Forms.Panel pnlAlbumsPageButtons;
+        private System.Windows.Forms.Panel pnlTracksPageButtons;
+        private System.Windows.Forms.Button btnNextTracks;
+        private System.Windows.Forms.Button btnPreviousTracks;
+        private System.Windows.Forms.Button btnPageNumberTracks;
     }
 }

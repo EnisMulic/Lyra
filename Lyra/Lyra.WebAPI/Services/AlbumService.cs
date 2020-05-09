@@ -25,6 +25,11 @@ namespace Lyra.WebAPI.Services
         {
             var query = _context.Albums.AsQueryable();
 
+            if(request.ArtistID != 0)
+            {
+                query = query.Where(x => x.ArtistID == request.ArtistID);
+            }
+
             if (!string.IsNullOrWhiteSpace(request?.Name))
             {
                 query = query.Where(x => x.Name.StartsWith(request.Name));

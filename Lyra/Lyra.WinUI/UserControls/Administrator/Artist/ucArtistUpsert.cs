@@ -11,16 +11,27 @@ using Lyra.WinUI.UserControls.Administrator.Album;
 using Lyra.WinUI.UserControls.Administrator.Track;
 using Lyra.WinUI.Helpers;
 using Lyra.WinUI.Validators;
+using Lyra.Model.Requests;
 
 namespace Lyra.WinUI.UserControls.Administrator.Artist
 {
     public partial class ucArtistUpsert : UserControl
     {
         private readonly APIService _apiService = new APIService("Artist");
+        private readonly APIService _albumApiService = new APIService("Album");
+        private readonly APIService _trackApiService = new APIService("Track");
+        private List<string> albumProps = new List<string> { "ID", "Name", "ReleaseYear" };
+        private List<string> trackProps = new List<string> { "ID", "Name", "Length" };
+        private int _albumsPage;
+        private int _tracksPage;
+        private int _itemsPerPage;
         private readonly int? _ID;
         public ucArtistUpsert(int? ID = null)
         {
             _ID = ID;
+            _albumsPage = 1;
+            _tracksPage = 1;
+            _itemsPerPage = 10;
             InitializeComponent();
             AutoScroll = true;
         }
@@ -41,14 +52,24 @@ namespace Lyra.WinUI.UserControls.Administrator.Artist
                 gbAlbums.Visible = true;
                 gbTracks.Visible = true;
 
-                var albums = await _apiService.GetAlbums<List<Model.Album>>(_ID.Value);
-                var albumProps = new List<string> { "ID", "Name", "ReleaseYear" };
-                DataGridViewHelper.PopulateWithList(dgvAlbums, albums, albumProps);
 
+                BuildAlbumsList();
+                var albumRequest = new AlbumSearchRequest()
+                {
+                    ArtistID = _ID.Value,
+                    Page = _albumsPage,
+                    ItemsPerPage = _itemsPerPage
+                };
+                await LoadListAlbums(albumRequest);
 
-                var tracks = await _apiService.GetTracks<List<Model.Track>>(_ID.Value);
-                var trackProps = new List<string> { "ID", "Name", "Length" };
-                DataGridViewHelper.PopulateWithList(dgvTracks, tracks, trackProps);
+                BuildTracksList();
+                var trackRequest = new TrackSearchRequest()
+                {
+                    ArtistID = _ID.Value,
+                    Page = _tracksPage,
+                    ItemsPerPage = _itemsPerPage
+                };
+                await LoadListTracks(trackRequest);
 
                 gbTracks.Location = new Point(gbAlbums.Location.X, gbAlbums.Location.Y + gbAlbums.Height);
 
@@ -57,35 +78,58 @@ namespace Lyra.WinUI.UserControls.Administrator.Artist
             }
         }
 
-        private void SetButtonSavePosition()
-        {
-            btnSave.Location = new Point(gbTracks.Location.X, gbTracks.Location.Y + gbTracks.Height + 20);
-        }
-
-        private void SetDataGridViewSize(DataGridView dgv)
-        {
-            var height = 40;
-            foreach (DataGridViewRow dr in dgv.Rows)
-            {
-                height += dr.Height;
-            }
-
-            dgv.Height = height;
-        }
-
-
-        private void dgvAlbums_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        private void BuildAlbumsList()
         {
             SetDataGridViewSize(dgvAlbums);
             gbAlbums.Height = dgvAlbums.Height + 50;
             SetButtonSavePosition();
+            pnlAlbumsPageButtons.Location = new Point(pnlAlbumsPageButtons.Location.X, dgvAlbums.Height + 35);
         }
-
-        private void dgvTracks_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        private void BuildTracksList()
         {
             SetDataGridViewSize(dgvTracks);
-            gbTracks.Height = dgvTracks.Height + 50;
+            gbTracks.Height = dgvTracks.Height + 90;
             SetButtonSavePosition();
+            pnlTracksPageButtons.Location = new Point(pnlTracksPageButtons.Location.X, dgvTracks.Height + 35);
+        }
+
+        private async Task LoadListAlbums(AlbumSearchRequest request)
+        {
+            var list = await _albumApiService.Get<List<Model.Album>>(request);
+
+            if (list.Count > 1)
+            {
+                dgvAlbums.ColumnCount = 0;
+                DataGridViewHelper.PopulateWithList(dgvAlbums, list, albumProps);
+
+                _albumsPage = request.Page;
+                btnPageNumberAlbums.Text = Convert.ToString(_albumsPage);
+            }
+        }
+
+        private async Task LoadListTracks(TrackSearchRequest request)
+        {
+            var list = await _trackApiService.Get<List<Model.Track>>(request);
+
+            if (list.Count > 1)
+            {
+                dgvTracks.ColumnCount = 0;
+                DataGridViewHelper.PopulateWithList(dgvTracks, list, trackProps);
+
+                _tracksPage = request.Page;
+                btnPageNumberTracks.Text = Convert.ToString(_tracksPage);
+            }
+        }
+
+        private void SetButtonSavePosition()
+        {
+            btnSave.Location = new Point(gbTracks.Location.X, gbTracks.Location.Y + gbTracks.Height + 10);
+        }
+
+        private void SetDataGridViewSize(DataGridView dgv)
+        {
+            var rowHeight = 25;
+            dgv.Height = rowHeight * _itemsPerPage;
         }
 
         private void btnUploadImage_Click(object sender, EventArgs e)
@@ -129,6 +173,60 @@ namespace Lyra.WinUI.UserControls.Administrator.Artist
             var result = validator.NameCheck(txtName.Text);
             errorProviderName.SetError(txtName, result.Message);
             e.Cancel = !result.IsValid;
+        }
+
+        private async void btnPreviousAlbums_Click(object sender, EventArgs e)
+        {
+            if (_albumsPage > 1)
+            {
+                var request = new AlbumSearchRequest()
+                {
+                    ArtistID = _ID.Value,
+                    Page = _albumsPage - 1,
+                    ItemsPerPage = _itemsPerPage
+                };
+
+                await LoadListAlbums(request);
+            }
+        }
+
+        private async void btnNextAlbums_Click(object sender, EventArgs e)
+        {
+            var request = new AlbumSearchRequest()
+            {
+                ArtistID = _ID.Value,
+                Page = _albumsPage + 1,
+                ItemsPerPage = _itemsPerPage
+            };
+
+            await LoadListAlbums(request);
+        }
+
+        private async void btnPreviousTracks_Click(object sender, EventArgs e)
+        {
+            if (_tracksPage > 1)
+            {
+                var request = new TrackSearchRequest()
+                {
+                    ArtistID = _ID.Value,
+                    Page = _tracksPage - 1,
+                    ItemsPerPage = _itemsPerPage
+                };
+
+                await LoadListTracks(request);
+            }
+        }
+
+        private async void btnNextTracks_Click(object sender, EventArgs e)
+        {
+            var request = new TrackSearchRequest()
+            {
+                ArtistID = _ID.Value,
+                Page = _tracksPage + 1,
+                ItemsPerPage = _itemsPerPage
+            };
+
+            await LoadListTracks(request);
         }
     }
 }
