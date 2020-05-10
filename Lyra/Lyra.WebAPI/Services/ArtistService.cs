@@ -38,5 +38,44 @@ namespace Lyra.WebAPI.Services
 
             return _mapper.Map<List<Model.Artist>>(list);
         }
+<<<<<<< HEAD
+=======
+
+        public async Task<List<Model.Album>> GetAlbums(int ID, AlbumSearchRequest request)
+        {
+            var query =  _context.Albums
+                .Where(i => i.ArtistID == ID)
+                .AsQueryable();
+
+            query = query.Skip((request.Page - 1) * request.ItemsPerPage);
+            if (request.ItemsPerPage > 0)
+            {
+                query = query.Take(request.ItemsPerPage);
+            }
+
+            var list = await query.ToListAsync();
+
+            return _mapper.Map<List<Model.Album>>(list);
+        }
+
+        public async Task<List<Model.Track>> GetTracks(int ID, TrackSearchRequest request)
+        {
+            var query = _context.TrackArtists
+                .Include(i => i.Track)
+                .Where(i => i.ArtistID == ID)
+                .Select(i => i.Track)
+                .AsQueryable();
+
+            query = query.Skip((request.Page - 1) * request.ItemsPerPage);
+            if (request.ItemsPerPage > 0)
+            {
+                query = query.Take(request.ItemsPerPage);
+            }
+
+            var list = await query.ToListAsync();
+
+            return _mapper.Map<List<Model.Track>>(list);
+        }
+>>>>>>> artist-endpoints
     }
 }

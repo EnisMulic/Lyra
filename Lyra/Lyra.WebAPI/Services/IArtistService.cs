@@ -8,7 +8,7 @@ namespace Lyra.WebAPI.Services
 {
     public interface IArtistService : ICRUDService<Model.Artist, ArtistSearchRequest, ArtistUpsertRequest, ArtistUpsertRequest>
     {
-        Task<List<Model.Album>> GetAlbums(int ID);
-        Task<List<Model.Track>> GetTracks(int ID);
+        Task<List<Model.Album>> GetAlbums(int ID, AlbumSearchRequest request);
+        Task<List<Model.Track>> GetTracks(int ID, TrackSearchRequest request);
     }
 }
