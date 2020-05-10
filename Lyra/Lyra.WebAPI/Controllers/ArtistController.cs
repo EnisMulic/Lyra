@@ -20,15 +20,15 @@ namespace Lyra.WebAPI.Controllers
         }
 
         [HttpGet("{id}/Albums")]
-        public async Task<List<Album>> GetAlbums(int id)
+        public async Task<List<Album>> GetAlbums(int id, [FromQuery]AlbumSearchRequest request)
         {
-            return await _service.GetAlbums(id);
+            return await _service.GetAlbums(id, request);
         }
 
         [HttpGet("{id}/Tracks")]
-        public async Task<List<Track>> GetTracks(int id)
+        public async Task<List<Track>> GetTracks(int id, [FromQuery]TrackSearchRequest request)
         {
-            return await _service.GetTracks(id);
+            return await _service.GetTracks(id, request);
         }
     }
 }
