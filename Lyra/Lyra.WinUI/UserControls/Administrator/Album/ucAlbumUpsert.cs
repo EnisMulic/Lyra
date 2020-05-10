@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Lyra.WinUI.Helpers;
 using Lyra.WinUI.Validators;
+using Lyra.Model.Requests;
 
 namespace Lyra.WinUI.UserControls.Administrator.Album
 {
@@ -17,29 +18,41 @@ namespace Lyra.WinUI.UserControls.Administrator.Album
         private readonly APIService _albumApiService = new APIService("Album");
         private readonly APIService _trackApiService = new APIService("Track");
         private readonly APIService _artistApiService = new APIService("Artist");
+        private List<string> props = new List<string> { "ID", "Name", "Length" };
         private readonly int? _ID;
+        private int _albumTracksPage;
+        private int _allTracksPage;
+        private int _itemsPerPage;
         private static Model.Album _album = null;
         
         public ucAlbumUpsert(int? ID = null)
         {
             _ID = ID;
+            _allTracksPage = 1;
+            _albumTracksPage = 1;
+            _itemsPerPage = 10;
             InitializeComponent();
             AutoScroll = true;
         }
 
         private async void ucAlbumUpsert_Load(object sender, EventArgs e)
         {
-            var props = new List<string> { "ID", "Name", "Length" };
-
             var artists = await _artistApiService.Get<List<Model.Artist>>(null);
 
             cbArtist.DataSource = artists;
             cbArtist.ValueMember = "ID";
             cbArtist.DisplayMember = "Name";
 
-            var tracks = await _trackApiService.Get<List<Model.Track>>(null);
+            BuildAllTracksList();
+            BuildAlbumTracksList();
 
-            List<Model.Track> albumTracks = null;
+            var tracksRequest = new TrackSearchRequest()
+            {
+                Page = _allTracksPage,
+                ItemsPerPage = _itemsPerPage
+            };
+            await LoadListAllTracks(tracksRequest);
+            
             if (_ID.HasValue)
             {
                 _album = await _albumApiService.GetById<Model.Album>(_ID.Value);
@@ -54,18 +67,16 @@ namespace Lyra.WinUI.UserControls.Administrator.Album
                 }
 
                 cbArtist.SelectedItem = artists.Where(i => i.ID == _album.ArtistID).SingleOrDefault();
+                var request = new TrackSearchRequest()
+                {
+                    Page = _albumTracksPage,
+                    ItemsPerPage = _itemsPerPage
+                };
 
-                albumTracks = await _albumApiService.GetTracks<List<Model.Track>>(_ID.Value);
-                DataGridViewHelper.PopulateWithList(dgvAlbumTracks, albumTracks, props);
-
-                tracks.RemoveAll(i => albumTracks.Select(j => j.ID).Contains(i.ID));
+                await LoadListAlbumTracks(request);
             }
-            else
-            {
-                DataGridViewHelper.PopulateWithList(dgvAlbumTracks, new List<Model.Track>(), props);
-            }
-            DataGridViewHelper.PopulateWithList(dgvAllTracks, tracks, props);
-
+            
+            
             SetButtonSavePosition();
         }
 
@@ -76,32 +87,58 @@ namespace Lyra.WinUI.UserControls.Administrator.Album
 
         private void SetDataGridViewSize(DataGridView dgv)
         {
-            var height = 40;
-            foreach (DataGridViewRow dr in dgv.Rows)
-            {
-                height += dr.Height;
-            }
-
-            dgv.Height = height;
+            var rowHeight = 27;
+            dgv.Height = rowHeight * _itemsPerPage;
         }
 
         private void SetGroupBoxTracksHeight()
         {
-            gbTracks.Height = (dgvAllTracks.Height > dgvAlbumTracks.Height ? dgvAllTracks.Height : dgvAlbumTracks.Height) + 100;
+            gbTracks.Height = (dgvAllTracks.Height > dgvAlbumTracks.Height ? dgvAllTracks.Height : dgvAlbumTracks.Height) + 150;
         }
 
-        private void dgvAlbumTracks_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        private async Task LoadListAlbumTracks(TrackSearchRequest request)
+        {
+            var list = await _albumApiService.GetTracks<List<Model.Track>>(_ID.Value, request);
+
+            if (list.Count > 1)
+            {
+                dgvAlbumTracks.ColumnCount = 0;
+                DataGridViewHelper.PopulateWithList(dgvAlbumTracks, list, props);
+
+                _albumTracksPage = request.Page;
+                btnPageNumberAlbumTracks.Text = Convert.ToString(_albumTracksPage);
+            }
+        }
+
+
+        private async Task LoadListAllTracks(TrackSearchRequest request)
+        {
+            var list = await _trackApiService.Get<List<Model.Track>>(request);
+
+            if (list.Count > 1)
+            {
+                dgvAllTracks.ColumnCount = 0;
+                DataGridViewHelper.PopulateWithList(dgvAllTracks, list, props);
+
+                _allTracksPage = request.Page;
+                btnPageNumberAllTracks.Text = Convert.ToString(_allTracksPage);
+            }
+        }
+
+        private void BuildAlbumTracksList()
         {
             SetDataGridViewSize(dgvAlbumTracks);
             SetGroupBoxTracksHeight();
             SetButtonSavePosition();
+            pnlAlbumTracksPageButtons.Location = new Point(pnlAlbumTracksPageButtons.Location.X, dgvAlbumTracks.Height + 100);
         }
 
-        private void dgvAllTracks_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
+        private void BuildAllTracksList()
         {
             SetDataGridViewSize(dgvAllTracks);
             SetGroupBoxTracksHeight();
             SetButtonSavePosition();
+            pnlAllTracksPageButtons.Location = new Point(pnlAllTracksPageButtons.Location.X, dgvAllTracks.Height + 100);
         }
 
         private void btnUploadImage_Click(object sender, EventArgs e)
@@ -156,9 +193,7 @@ namespace Lyra.WinUI.UserControls.Administrator.Album
                     albumTracks.Add(Convert.ToInt32(Row.Cells["ID"].Value));
                 }
 
-
-
-                var request = new Model.Requests.AlbumUpsertRequest()
+                var request = new AlbumUpsertRequest()
                 {
                     Name = Convert.ToString(txtName.Text),
                     ReleaseYear = Convert.ToInt32(txtReleaseYear.Text),
@@ -206,6 +241,56 @@ namespace Lyra.WinUI.UserControls.Administrator.Album
             var result = validator.ReleaseYearCheck(txtReleaseYear.Text);
             errorProviderReleaseYear.SetError(txtReleaseYear, result.Message);
             e.Cancel = !result.IsValid;
+        }
+
+        private async void btnPreviousAlbumTracks_Click(object sender, EventArgs e)
+        {
+            if (_albumTracksPage > 1)
+            {
+                var request = new TrackSearchRequest()
+                {
+                    Page = _albumTracksPage - 1,
+                    ItemsPerPage = _itemsPerPage
+                };
+
+                await LoadListAlbumTracks(request);
+            }
+        }
+
+        private async void btnNextAlbumTracks_Click(object sender, EventArgs e)
+        {
+            var request = new TrackSearchRequest()
+            {
+                Page = _albumTracksPage + 1,
+                ItemsPerPage = _itemsPerPage
+            };
+
+            await LoadListAlbumTracks(request);
+        }
+
+        private async void btnPreviousAllTracks_Click(object sender, EventArgs e)
+        {
+            if (_allTracksPage > 1)
+            {
+                var request = new TrackSearchRequest()
+                {
+                    Page = _allTracksPage - 1,
+                    ItemsPerPage = _itemsPerPage
+                };
+
+                await LoadListAllTracks(request);
+            }
+        }
+
+        private async void btnNextAllTracks_Click(object sender, EventArgs e)
+        {
+            var request = new TrackSearchRequest()
+            {
+                Page = _allTracksPage + 1,
+                ItemsPerPage = _itemsPerPage
+            };
+
+            await LoadListAllTracks(request);
         }
     }
 }

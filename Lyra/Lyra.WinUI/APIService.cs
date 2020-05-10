@@ -159,11 +159,17 @@ namespace Lyra.WinUI
             }
         }
 
-        public async Task<T> GetAlbums<T>(int id)
+        public async Task<T> GetAlbums<T>(int id, AlbumSearchRequest search)
         {
             try
             {
                 var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}/Albums";
+
+                if (search != null)
+                {
+                    url += "?";
+                    url += await search.ToQueryString();
+                }
 
                 return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
             }
@@ -182,11 +188,17 @@ namespace Lyra.WinUI
             }
         }
 
-        public async Task<T> GetTracks<T>(int id)
+        public async Task<T> GetTracks<T>(int id, TrackSearchRequest search)
         {
             try
             {
                 var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{id}/Tracks";
+
+                if (search != null)
+                {
+                    url += "?";
+                    url += await search.ToQueryString();
+                }
 
                 return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
             }

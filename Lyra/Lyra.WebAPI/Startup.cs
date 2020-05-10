@@ -72,7 +72,7 @@ namespace Lyra.WebAPI
             services.AddScoped<IAlbumService, AlbumService>();
             services.AddScoped<IBaseService<Model.Genre, object>, GenreService>();
             services.AddScoped<IBaseService<Model.Role, object>, RoleService>();
-            services.AddScoped<ICRUDService<Model.Artist, ArtistSearchRequest, ArtistUpsertRequest, ArtistUpsertRequest>, ArtistService>();
+            services.AddScoped<IArtistService, ArtistService>();
             services.AddScoped<ICRUDService<Model.Track, TrackSearchRequest, TrackUpsertRequest, TrackUpsertRequest>, TrackService>();
             services.AddScoped<IPlaylistService, PlaylistService>();
             services.AddScoped<IUserService, UserService>();

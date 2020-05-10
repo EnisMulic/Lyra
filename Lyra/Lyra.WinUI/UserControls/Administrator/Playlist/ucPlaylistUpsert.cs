@@ -46,7 +46,7 @@ namespace Lyra.WinUI.UserControls.Administrator.Playlist
                     pbPlaylistImage.SizeMode = PictureBoxSizeMode.StretchImage;
                 }
 
-                playlistTracks = await _playlistApiService.GetTracks<List<Model.Track>>(_ID.Value);
+                playlistTracks = await _playlistApiService.GetTracks<List<Model.Track>>(_ID.Value, null);
                 DataGridViewHelper.PopulateWithList(dgvPlaylistTracks, playlistTracks, props);
 
                 tracks.RemoveAll(i => playlistTracks.Select(j => j.ID).Contains(i.ID));

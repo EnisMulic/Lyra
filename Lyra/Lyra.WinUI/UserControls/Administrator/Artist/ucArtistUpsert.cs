@@ -18,8 +18,6 @@ namespace Lyra.WinUI.UserControls.Administrator.Artist
     public partial class ucArtistUpsert : UserControl
     {
         private readonly APIService _apiService = new APIService("Artist");
-        private readonly APIService _albumApiService = new APIService("Album");
-        private readonly APIService _trackApiService = new APIService("Track");
         private List<string> albumProps = new List<string> { "ID", "Name", "ReleaseYear" };
         private List<string> trackProps = new List<string> { "ID", "Name", "Length" };
         private int _albumsPage;
@@ -95,7 +93,7 @@ namespace Lyra.WinUI.UserControls.Administrator.Artist
 
         private async Task LoadListAlbums(AlbumSearchRequest request)
         {
-            var list = await _albumApiService.Get<List<Model.Album>>(request);
+            var list = await _apiService.GetAlbums<List<Model.Album>>(_ID.Value, request);
 
             if (list.Count > 1)
             {
@@ -109,7 +107,7 @@ namespace Lyra.WinUI.UserControls.Administrator.Artist
 
         private async Task LoadListTracks(TrackSearchRequest request)
         {
-            var list = await _trackApiService.Get<List<Model.Track>>(request);
+            var list = await _apiService.GetTracks<List<Model.Track>>(_ID.Value, request);
 
             if (list.Count > 1)
             {
