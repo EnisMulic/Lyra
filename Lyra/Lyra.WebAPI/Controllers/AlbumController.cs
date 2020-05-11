@@ -19,9 +19,9 @@ namespace Lyra.WebAPI.Controllers
         }
 
         [HttpGet("{id}/Tracks")]
-        public async Task<List<Track>> GetTracks(int ID, [FromQuery]TrackSearchRequest request)
+        public async Task<List<Track>> GetTracks(int ID)
         {
-            return await _service.GetTracks(ID, request);
+            return await _service.GetTracks(ID);
         }
     }
 }

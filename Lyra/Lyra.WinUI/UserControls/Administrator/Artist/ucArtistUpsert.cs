@@ -107,7 +107,7 @@ namespace Lyra.WinUI.UserControls.Administrator.Artist
 
         private async Task LoadListTracks(TrackSearchRequest request)
         {
-            var list = await _apiService.GetTracks<List<Model.Track>>(_ID.Value, request);
+            var list = await _apiService.GetTracks<List<Model.Track>>(_ID.Value);
 
             if (list.Count > 1)
             {
