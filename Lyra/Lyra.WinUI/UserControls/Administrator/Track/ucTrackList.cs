@@ -46,9 +46,19 @@ namespace Lyra.WinUI.UserControls.Administrator.Track
                 DataGridViewHelper.PopulateWithList(dgvTracks, list, _props);
 
                 _page = request.Page;
-                btnPageNumber.Text = Convert.ToString(_page);
             }
+            else if (!string.IsNullOrEmpty(Convert.ToString(txtSearch.Text)) && request.Page == 1)
+            {
+                dgvTracks.ColumnCount = 0;
+                DataGridViewHelper.PopulateWithList(dgvTracks, list, _props);
+
+                _page = 1;
+            }
+
+            btnPageNumber.Text = Convert.ToString(_page);
         }
+
+        #region Buttons
 
         private void btnEditTrack_Click(object sender, EventArgs e)
         {
@@ -74,12 +84,33 @@ namespace Lyra.WinUI.UserControls.Administrator.Track
             PanelHelper.SwapPanels(this.Parent, this, new ucTrackUpsert());
         }
 
+        private async void btnSearch_Click(object sender, EventArgs e)
+        {
+            var search = Convert.ToString(txtSearch.Text);
+
+            var request = new TrackSearchRequest()
+            {
+                Page = 1,
+                ItemsPerPage = _itemsPerPage,
+                Name = search
+            };
+
+            await LoadList(request);
+        }
+
+        #endregion
+
+        #region Pagination
+
         private async void btnNext_Click(object sender, EventArgs e)
         {
+            var search = Convert.ToString(txtSearch.Text);
+
             var request = new TrackSearchRequest()
             {
                 Page = _page + 1,
-                ItemsPerPage = _itemsPerPage
+                ItemsPerPage = _itemsPerPage,
+                Name = search
             };
 
             await LoadList(request);
@@ -89,14 +120,20 @@ namespace Lyra.WinUI.UserControls.Administrator.Track
         {
             if (_page > 1)
             {
+                var search = Convert.ToString(txtSearch.Text);
+
                 var request = new TrackSearchRequest()
                 {
                     Page = _page - 1,
-                    ItemsPerPage = _itemsPerPage
+                    ItemsPerPage = _itemsPerPage,
+                    Name = search
                 };
 
                 await LoadList(request);
             }
         }
+
+        #endregion
+
     }
 }

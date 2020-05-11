@@ -44,6 +44,11 @@ namespace Lyra.WebAPI.Services
                 .Where(i => i.ArtistID == ID)
                 .AsQueryable();
 
+            if (!string.IsNullOrWhiteSpace(request?.Name))
+            {
+                query = query.Where(x => x.Name.StartsWith(request.Name));
+            }
+
             query = query.Skip((request.Page - 1) * request.ItemsPerPage);
             if (request.ItemsPerPage > 0)
             {
@@ -61,7 +66,22 @@ namespace Lyra.WebAPI.Services
                 .Include(i => i.Track)
                 .Where(i => i.ArtistID == ID)
                 .Select(i => i.Track)
+                .Select
+                (
+                    i => new Model.Track()
+                    {
+                        ID = i.ID,
+                        Name = i.Name,
+                        Length = i.Length.ToString(@"hh\:mm\:ss")
+                    }
+                )
                 .AsQueryable();
+
+
+            if (!string.IsNullOrWhiteSpace(request?.Name))
+            {
+                query = query.Where(x => x.Name.StartsWith(request.Name));
+            }
 
             query = query.Skip((request.Page - 1) * request.ItemsPerPage);
             if (request.ItemsPerPage > 0)

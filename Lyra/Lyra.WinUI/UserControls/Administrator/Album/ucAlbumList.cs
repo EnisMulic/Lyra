@@ -40,16 +40,25 @@ namespace Lyra.WinUI.UserControls.Administrator.Album
         {
             var list = await _apiService.Get<List<Model.Track>>(request);
 
-            if (list.Count > 1)
+            if (list.Count > 0)
             {
                 dgvAlbums.ColumnCount = 0;
                 DataGridViewHelper.PopulateWithList(dgvAlbums, list, _props);
 
                 _page = request.Page;
-                btnPageNumber.Text = Convert.ToString(_page);
             }
+            else if (!string.IsNullOrEmpty(Convert.ToString(txtSearch.Text)) && request.Page == 1)
+            {
+                dgvAlbums.ColumnCount = 0;
+                DataGridViewHelper.PopulateWithList(dgvAlbums, list, _props);
+
+                _page = 1;
+            }
+            
+            btnPageNumber.Text = Convert.ToString(_page);
         }
 
+        #region Buttons
         private async void btnDeleteAlbum_Click(object sender, EventArgs e)
         {
             if (dgvAlbums.CurrentRow != null)
@@ -74,12 +83,30 @@ namespace Lyra.WinUI.UserControls.Administrator.Album
             PanelHelper.SwapPanels(this.Parent, this, new ucAlbumUpsert());
         }
 
+        private async void btnSearch_Click(object sender, EventArgs e)
+        {
+            var search = Convert.ToString(txtSearch.Text);
+
+            var request = new AlbumSearchRequest()
+            {
+                Page = 1,
+                ItemsPerPage = _itemsPerPage,
+                Name = search
+            };
+
+            await LoadList(request);
+        }
+
+        #endregion
+
+        #region Pagination
         private async void btnNext_Click(object sender, EventArgs e)
         {
             var request = new AlbumSearchRequest()
             {
                 Page = _page + 1,
-                ItemsPerPage = _itemsPerPage
+                ItemsPerPage = _itemsPerPage,
+                Name = Convert.ToString(txtSearch.Text)
             };
 
             await LoadList(request);
@@ -92,11 +119,13 @@ namespace Lyra.WinUI.UserControls.Administrator.Album
                 var request = new AlbumSearchRequest()
                 {
                     Page = _page - 1,
-                    ItemsPerPage = _itemsPerPage
+                    ItemsPerPage = _itemsPerPage,
+                    Name = Convert.ToString(txtSearch.Text)
                 };
 
                 await LoadList(request);
             }
         }
+        #endregion
     }
 }

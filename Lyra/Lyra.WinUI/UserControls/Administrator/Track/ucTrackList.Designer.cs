@@ -35,6 +35,8 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPageNumber = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTracks)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +57,7 @@
             this.btnDeleteTrack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDeleteTrack.FlatAppearance.BorderSize = 0;
             this.btnDeleteTrack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteTrack.Location = new System.Drawing.Point(104, 53);
+            this.btnDeleteTrack.Location = new System.Drawing.Point(322, 53);
             this.btnDeleteTrack.Name = "btnDeleteTrack";
             this.btnDeleteTrack.Size = new System.Drawing.Size(28, 23);
             this.btnDeleteTrack.TabIndex = 10;
@@ -68,7 +70,7 @@
             this.btnEditTrack.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEditTrack.FlatAppearance.BorderSize = 0;
             this.btnEditTrack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditTrack.Location = new System.Drawing.Point(60, 53);
+            this.btnEditTrack.Location = new System.Drawing.Point(278, 53);
             this.btnEditTrack.Name = "btnEditTrack";
             this.btnEditTrack.Size = new System.Drawing.Size(28, 23);
             this.btnEditTrack.TabIndex = 9;
@@ -82,7 +84,7 @@
             this.btnAddTrack.FlatAppearance.BorderSize = 0;
             this.btnAddTrack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddTrack.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnAddTrack.Location = new System.Drawing.Point(16, 53);
+            this.btnAddTrack.Location = new System.Drawing.Point(234, 53);
             this.btnAddTrack.Name = "btnAddTrack";
             this.btnAddTrack.Size = new System.Drawing.Size(28, 23);
             this.btnAddTrack.TabIndex = 8;
@@ -121,10 +123,34 @@
             this.btnPrevious.UseVisualStyleBackColor = true;
             this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
+            // btnSearch
+            // 
+            this.btnSearch.BackgroundImage = global::Lyra.WinUI.Properties.Resources.search;
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnSearch.Location = new System.Drawing.Point(191, 54);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(28, 23);
+            this.btnSearch.TabIndex = 21;
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(16, 54);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(167, 22);
+            this.txtSearch.TabIndex = 20;
+            // 
             // ucTrackList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnPageNumber);
             this.Controls.Add(this.btnPrevious);
@@ -137,6 +163,7 @@
             this.Load += new System.EventHandler(this.ucTrackList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTracks)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -149,5 +176,7 @@
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnPageNumber;
         private System.Windows.Forms.Button btnPrevious;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }

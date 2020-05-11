@@ -35,6 +35,8 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPageNumber = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvArtists)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +57,7 @@
             this.btnDeleteArtist.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDeleteArtist.FlatAppearance.BorderSize = 0;
             this.btnDeleteArtist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteArtist.Location = new System.Drawing.Point(104, 53);
+            this.btnDeleteArtist.Location = new System.Drawing.Point(320, 53);
             this.btnDeleteArtist.Name = "btnDeleteArtist";
             this.btnDeleteArtist.Size = new System.Drawing.Size(28, 23);
             this.btnDeleteArtist.TabIndex = 7;
@@ -68,7 +70,7 @@
             this.btnEditArtist.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEditArtist.FlatAppearance.BorderSize = 0;
             this.btnEditArtist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditArtist.Location = new System.Drawing.Point(60, 53);
+            this.btnEditArtist.Location = new System.Drawing.Point(276, 53);
             this.btnEditArtist.Name = "btnEditArtist";
             this.btnEditArtist.Size = new System.Drawing.Size(28, 23);
             this.btnEditArtist.TabIndex = 6;
@@ -82,7 +84,7 @@
             this.btnAddArtist.FlatAppearance.BorderSize = 0;
             this.btnAddArtist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddArtist.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnAddArtist.Location = new System.Drawing.Point(16, 53);
+            this.btnAddArtist.Location = new System.Drawing.Point(232, 53);
             this.btnAddArtist.Name = "btnAddArtist";
             this.btnAddArtist.Size = new System.Drawing.Size(28, 23);
             this.btnAddArtist.TabIndex = 5;
@@ -121,10 +123,34 @@
             this.btnPrevious.UseVisualStyleBackColor = true;
             this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
+            // btnSearch
+            // 
+            this.btnSearch.BackgroundImage = global::Lyra.WinUI.Properties.Resources.search;
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnSearch.Location = new System.Drawing.Point(191, 54);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(28, 23);
+            this.btnSearch.TabIndex = 26;
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(16, 54);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(167, 22);
+            this.txtSearch.TabIndex = 25;
+            // 
             // ucArtistList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnPageNumber);
             this.Controls.Add(this.btnPrevious);
@@ -137,6 +163,7 @@
             this.Load += new System.EventHandler(this.ucArtistList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvArtists)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -149,5 +176,7 @@
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnPageNumber;
         private System.Windows.Forms.Button btnPrevious;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }

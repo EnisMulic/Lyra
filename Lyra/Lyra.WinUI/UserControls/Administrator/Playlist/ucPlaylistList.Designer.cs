@@ -35,6 +35,8 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPageNumber = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaylists)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,7 +57,7 @@
             this.btnDeletePlaylist.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnDeletePlaylist.FlatAppearance.BorderSize = 0;
             this.btnDeletePlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeletePlaylist.Location = new System.Drawing.Point(104, 53);
+            this.btnDeletePlaylist.Location = new System.Drawing.Point(322, 53);
             this.btnDeletePlaylist.Name = "btnDeletePlaylist";
             this.btnDeletePlaylist.Size = new System.Drawing.Size(28, 23);
             this.btnDeletePlaylist.TabIndex = 10;
@@ -68,7 +70,7 @@
             this.btnEditPlaylist.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnEditPlaylist.FlatAppearance.BorderSize = 0;
             this.btnEditPlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditPlaylist.Location = new System.Drawing.Point(60, 53);
+            this.btnEditPlaylist.Location = new System.Drawing.Point(278, 53);
             this.btnEditPlaylist.Name = "btnEditPlaylist";
             this.btnEditPlaylist.Size = new System.Drawing.Size(28, 23);
             this.btnEditPlaylist.TabIndex = 9;
@@ -82,7 +84,7 @@
             this.btnAddPlaylist.FlatAppearance.BorderSize = 0;
             this.btnAddPlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAddPlaylist.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnAddPlaylist.Location = new System.Drawing.Point(16, 53);
+            this.btnAddPlaylist.Location = new System.Drawing.Point(234, 53);
             this.btnAddPlaylist.Name = "btnAddPlaylist";
             this.btnAddPlaylist.Size = new System.Drawing.Size(28, 23);
             this.btnAddPlaylist.TabIndex = 8;
@@ -121,10 +123,34 @@
             this.btnPrevious.UseVisualStyleBackColor = true;
             this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
+            // btnSearch
+            // 
+            this.btnSearch.BackgroundImage = global::Lyra.WinUI.Properties.Resources.search;
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnSearch.Location = new System.Drawing.Point(191, 54);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(28, 23);
+            this.btnSearch.TabIndex = 26;
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(16, 54);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(167, 22);
+            this.txtSearch.TabIndex = 25;
+            // 
             // ucPlaylistList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnPageNumber);
             this.Controls.Add(this.btnPrevious);
@@ -135,9 +161,9 @@
             this.Name = "ucPlaylistList";
             this.Size = new System.Drawing.Size(796, 690);
             this.Load += new System.EventHandler(this.ucPlaylistList_Load);
-            this.Click += new System.EventHandler(this.btnDeletePlaylist_Click);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPlaylists)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -150,5 +176,7 @@
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnPageNumber;
         private System.Windows.Forms.Button btnPrevious;
+        private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.TextBox txtSearch;
     }
 }

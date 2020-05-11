@@ -29,12 +29,14 @@
         private void InitializeComponent()
         {
             this.dgvUsers = new System.Windows.Forms.DataGridView();
-            this.btnDeleteUser = new System.Windows.Forms.Button();
-            this.btnEditUser = new System.Windows.Forms.Button();
-            this.btnAddUser = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.btnPageNumber = new System.Windows.Forms.Button();
             this.btnPrevious = new System.Windows.Forms.Button();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.btnDeleteUser = new System.Windows.Forms.Button();
+            this.btnEditUser = new System.Windows.Forms.Button();
+            this.btnAddUser = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,46 +50,6 @@
             this.dgvUsers.ReadOnly = true;
             this.dgvUsers.Size = new System.Drawing.Size(763, 526);
             this.dgvUsers.TabIndex = 0;
-            // 
-            // btnDeleteUser
-            // 
-            this.btnDeleteUser.BackgroundImage = global::Lyra.WinUI.Properties.Resources.delete;
-            this.btnDeleteUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnDeleteUser.FlatAppearance.BorderSize = 0;
-            this.btnDeleteUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteUser.Location = new System.Drawing.Point(104, 53);
-            this.btnDeleteUser.Name = "btnDeleteUser";
-            this.btnDeleteUser.Size = new System.Drawing.Size(28, 23);
-            this.btnDeleteUser.TabIndex = 10;
-            this.btnDeleteUser.UseVisualStyleBackColor = true;
-            this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
-            // 
-            // btnEditUser
-            // 
-            this.btnEditUser.BackgroundImage = global::Lyra.WinUI.Properties.Resources.edit;
-            this.btnEditUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnEditUser.FlatAppearance.BorderSize = 0;
-            this.btnEditUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEditUser.Location = new System.Drawing.Point(60, 53);
-            this.btnEditUser.Name = "btnEditUser";
-            this.btnEditUser.Size = new System.Drawing.Size(28, 23);
-            this.btnEditUser.TabIndex = 9;
-            this.btnEditUser.UseVisualStyleBackColor = true;
-            this.btnEditUser.Click += new System.EventHandler(this.btnEditUser_Click);
-            // 
-            // btnAddUser
-            // 
-            this.btnAddUser.BackgroundImage = global::Lyra.WinUI.Properties.Resources.add;
-            this.btnAddUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnAddUser.FlatAppearance.BorderSize = 0;
-            this.btnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddUser.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnAddUser.Location = new System.Drawing.Point(16, 53);
-            this.btnAddUser.Name = "btnAddUser";
-            this.btnAddUser.Size = new System.Drawing.Size(28, 23);
-            this.btnAddUser.TabIndex = 8;
-            this.btnAddUser.UseVisualStyleBackColor = true;
-            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
             // 
             // btnNext
             // 
@@ -121,10 +83,74 @@
             this.btnPrevious.UseVisualStyleBackColor = true;
             this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(16, 53);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(167, 22);
+            this.txtSearch.TabIndex = 15;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.BackgroundImage = global::Lyra.WinUI.Properties.Resources.search;
+            this.btnSearch.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearch.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnSearch.Location = new System.Drawing.Point(191, 53);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(28, 23);
+            this.btnSearch.TabIndex = 16;
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // btnDeleteUser
+            // 
+            this.btnDeleteUser.BackgroundImage = global::Lyra.WinUI.Properties.Resources.delete;
+            this.btnDeleteUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnDeleteUser.FlatAppearance.BorderSize = 0;
+            this.btnDeleteUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteUser.Location = new System.Drawing.Point(327, 53);
+            this.btnDeleteUser.Name = "btnDeleteUser";
+            this.btnDeleteUser.Size = new System.Drawing.Size(28, 23);
+            this.btnDeleteUser.TabIndex = 10;
+            this.btnDeleteUser.UseVisualStyleBackColor = true;
+            this.btnDeleteUser.Click += new System.EventHandler(this.btnDeleteUser_Click);
+            // 
+            // btnEditUser
+            // 
+            this.btnEditUser.BackgroundImage = global::Lyra.WinUI.Properties.Resources.edit;
+            this.btnEditUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnEditUser.FlatAppearance.BorderSize = 0;
+            this.btnEditUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditUser.Location = new System.Drawing.Point(283, 53);
+            this.btnEditUser.Name = "btnEditUser";
+            this.btnEditUser.Size = new System.Drawing.Size(28, 23);
+            this.btnEditUser.TabIndex = 9;
+            this.btnEditUser.UseVisualStyleBackColor = true;
+            this.btnEditUser.Click += new System.EventHandler(this.btnEditUser_Click);
+            // 
+            // btnAddUser
+            // 
+            this.btnAddUser.BackgroundImage = global::Lyra.WinUI.Properties.Resources.add;
+            this.btnAddUser.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnAddUser.FlatAppearance.BorderSize = 0;
+            this.btnAddUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddUser.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnAddUser.Location = new System.Drawing.Point(237, 52);
+            this.btnAddUser.Name = "btnAddUser";
+            this.btnAddUser.Size = new System.Drawing.Size(28, 23);
+            this.btnAddUser.TabIndex = 8;
+            this.btnAddUser.UseVisualStyleBackColor = true;
+            this.btnAddUser.Click += new System.EventHandler(this.btnAddUser_Click);
+            // 
             // ucUserList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnPageNumber);
             this.Controls.Add(this.btnPrevious);
@@ -137,6 +163,7 @@
             this.Load += new System.EventHandler(this.ucUserList_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -149,5 +176,7 @@
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnPageNumber;
         private System.Windows.Forms.Button btnPrevious;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnSearch;
     }
 }

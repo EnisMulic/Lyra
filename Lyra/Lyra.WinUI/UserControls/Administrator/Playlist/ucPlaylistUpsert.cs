@@ -34,6 +34,7 @@ namespace Lyra.WinUI.UserControls.Administrator.Playlist
             AutoScroll = true;
         }
 
+        #region Setup
         private async void ucPlaylistUpsert_Load(object sender, EventArgs e)
         {
             BuildAllTracksList();
@@ -60,7 +61,7 @@ namespace Lyra.WinUI.UserControls.Administrator.Playlist
                     pbPlaylistImage.SizeMode = PictureBoxSizeMode.StretchImage;
                 }
 
-                _playlistTracks = await _playlistApiService.GetTracks<List<Model.Track>>(_ID.Value);
+                _playlistTracks = await _playlistApiService.GetTracks<List<Model.Track>>(_ID.Value, null);
 
                 var request = new TrackSearchRequest()
                 {
@@ -83,6 +84,37 @@ namespace Lyra.WinUI.UserControls.Administrator.Playlist
         {
             btnSave.Location = new Point(gbTracks.Location.X, gbTracks.Location.Y + gbTracks.Height + 20);
         }
+
+
+        private void SetDataGridViewSize(DataGridView dgv)
+        {
+            var rowHeight = 27;
+            dgv.Height = rowHeight * _itemsPerPage;
+        }
+
+        private void SetGroupBoxTracksHeight()
+        {
+            gbTracks.Height = (dgvAllTracks.Height > dgvPlaylistTracks.Height ? dgvAllTracks.Height : dgvPlaylistTracks.Height) + 150;
+        }
+
+        private void BuildPlaylistTracksList()
+        {
+            SetDataGridViewSize(dgvPlaylistTracks);
+            SetGroupBoxTracksHeight();
+            SetButtonSavePosition();
+            pnlPlaylistTracksPageButtons.Location = new Point(pnlPlaylistTracksPageButtons.Location.X, dgvPlaylistTracks.Height + 90);
+        }
+
+        private void BuildAllTracksList()
+        {
+            SetDataGridViewSize(dgvAllTracks);
+            SetGroupBoxTracksHeight();
+            SetButtonSavePosition();
+            pnlAllTracksPageButtons.Location = new Point(pnlAllTracksPageButtons.Location.X, dgvAllTracks.Height + 90);
+        }
+
+        #endregion
+
 
         private void btnUploadImage_Click(object sender, EventArgs e)
         {
@@ -150,20 +182,16 @@ namespace Lyra.WinUI.UserControls.Administrator.Playlist
             }
         }
 
-        private void SetDataGridViewSize(DataGridView dgv)
-        {
-            var rowHeight = 27;
-            dgv.Height = rowHeight * _itemsPerPage;
-        }
-
-        private void SetGroupBoxTracksHeight()
-        {
-            gbTracks.Height = (dgvAllTracks.Height > dgvPlaylistTracks.Height ? dgvAllTracks.Height : dgvPlaylistTracks.Height) + 150;
-        }
+        
 
         private void LoadListPlaylistTracks(TrackSearchRequest request)
         {
             var list = _playlistTracks;
+            if (!string.IsNullOrEmpty(request.Name))
+            {
+                list = list.Where(i => i.Name.StartsWith(request.Name)).ToList();
+            }
+
             list = list.Skip((request.Page - 1) * request.ItemsPerPage).ToList();
             if (request.ItemsPerPage > 0)
             {
@@ -177,13 +205,17 @@ namespace Lyra.WinUI.UserControls.Administrator.Playlist
                 DataGridViewHelper.PopulateWithList(dgvPlaylistTracks, list, props);
 
                 _playlistTracksPage = request.Page;
-                btnPageNumberPlaylistTracks.Text = Convert.ToString(_playlistTracksPage);
+                
             }
-            else
+            else if (!string.IsNullOrEmpty(Convert.ToString(txtSearchPlaylistTracks.Text)) && request.Page == 1)
             {
                 dgvPlaylistTracks.ColumnCount = 0;
-                DataGridViewHelper.PopulateWithList(dgvPlaylistTracks, new List<Model.Track>(), props);
+                DataGridViewHelper.PopulateWithList(dgvPlaylistTracks, list, props);
+
+                _playlistTracksPage = 1;
             }
+
+            btnPageNumberPlaylistTracks.Text = Convert.ToString(_playlistTracksPage);
         }
 
 
@@ -199,62 +231,16 @@ namespace Lyra.WinUI.UserControls.Administrator.Playlist
                 _allTracksPage = request.Page;
                 btnPageNumberAllTracks.Text = Convert.ToString(_allTracksPage);
             }
-        }
-
-        private void BuildPlaylistTracksList()
-        {
-            SetDataGridViewSize(dgvPlaylistTracks);
-            SetGroupBoxTracksHeight();
-            SetButtonSavePosition();
-            pnlPlaylistTracksPageButtons.Location = new Point(pnlPlaylistTracksPageButtons.Location.X, dgvPlaylistTracks.Height + 90);
-        }
-
-        private void BuildAllTracksList()
-        {
-            SetDataGridViewSize(dgvAllTracks);
-            SetGroupBoxTracksHeight();
-            SetButtonSavePosition();
-            pnlAllTracksPageButtons.Location = new Point(pnlAllTracksPageButtons.Location.X, dgvAllTracks.Height + 90);
-        }
-
-
-        private async void btnSave_Click(object sender, EventArgs e)
-        {
-            if(ValidateChildren())
+            else if (!string.IsNullOrEmpty(Convert.ToString(txtSearchAllTracks.Text)) && request.Page == 1)
             {
-                var playlistTracks = _playlistTracks.Select(i => i.ID).ToList();
-                
+                dgvAllTracks.ColumnCount = 0;
+                DataGridViewHelper.PopulateWithList(dgvAllTracks, list, props);
 
-                var request = new PlaylistUpsertRequest
-                {
-                    Name = Convert.ToString(txtName.Text),
-                    Image = ImageHelper.SystemDrawingToByteArray(pbPlaylistImage.Image),
-                    Tracks = playlistTracks
-                };
-
-                if (_ID.HasValue)
-                {
-                    var tracksToDelete = _playlist.PlaylistTracks
-                        .Where(i => !playlistTracks.Any(j => j.Equals(i.TrackID)))
-                        .Select(i => i.TrackID)
-                        .ToList();
-
-                    request.TracksToDelete = tracksToDelete;
-                    request.UserID = _playlist.UserID;
-                    request.CreatedAt = _playlist.CreatedAt;
-
-                    await _playlistApiService.Update<Model.Playlist>(_ID.Value, request);
-                }
-                else
-                {
-                    request.CreatedAt = DateTime.Now.ToString();
-                    request.UserID = 9; //TODO : Get LoggedIn User
-                    await _playlistApiService.Insert<Model.Playlist>(request);
-                    PanelHelper.SwapPanels(this.Parent, this, new ucPlaylistUpsert());
-                }
-
-                MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                _allTracksPage = 1;
             }
+
+            btnPageNumberAllTracks.Text = Convert.ToString(_allTracksPage);
+
         }
 
         #region Validation
@@ -267,7 +253,7 @@ namespace Lyra.WinUI.UserControls.Administrator.Playlist
         }
         #endregion
 
-        #region Pagination Button Events
+        #region Pagination
         private void btnPreviousPlaylistTracks_Click(object sender, EventArgs e)
         {
             if (_playlistTracksPage > 1)
@@ -318,5 +304,75 @@ namespace Lyra.WinUI.UserControls.Administrator.Playlist
             await LoadListAllTracks(request);
         }
         #endregion
+
+        #region Search
+        private async void btnSearchAllTracks_Click(object sender, EventArgs e)
+        {
+            var search = Convert.ToString(txtSearchAllTracks.Text);
+
+            var request = new TrackSearchRequest()
+            {
+                Page = 1,
+                ItemsPerPage = _itemsPerPage,
+                Name = search
+            };
+
+            await LoadListAllTracks(request);
+        }
+
+        private void btnSearchPlaylistTracks_Click(object sender, EventArgs e)
+        {
+            var search = Convert.ToString(txtSearchPlaylistTracks.Text);
+
+            var request = new TrackSearchRequest()
+            {
+                Page = 1,
+                ItemsPerPage = _itemsPerPage,
+                Name = search
+            };
+
+            LoadListPlaylistTracks(request);
+        }
+
+        #endregion
+
+        private async void btnSave_Click(object sender, EventArgs e)
+        {
+            if (ValidateChildren())
+            {
+                var playlistTracks = _playlistTracks.Select(i => i.ID).ToList();
+
+
+                var request = new PlaylistUpsertRequest
+                {
+                    Name = Convert.ToString(txtName.Text),
+                    Image = ImageHelper.SystemDrawingToByteArray(pbPlaylistImage.Image),
+                    Tracks = playlistTracks
+                };
+
+                if (_ID.HasValue)
+                {
+                    var tracksToDelete = _playlist.PlaylistTracks
+                        .Where(i => !playlistTracks.Any(j => j.Equals(i.TrackID)))
+                        .Select(i => i.TrackID)
+                        .ToList();
+
+                    request.TracksToDelete = tracksToDelete;
+                    request.UserID = _playlist.UserID;
+                    request.CreatedAt = _playlist.CreatedAt;
+
+                    await _playlistApiService.Update<Model.Playlist>(_ID.Value, request);
+                }
+                else
+                {
+                    request.CreatedAt = DateTime.Now.ToString();
+                    request.UserID = 9; //TODO : Get LoggedIn User
+                    await _playlistApiService.Insert<Model.Playlist>(request);
+                    PanelHelper.SwapPanels(this.Parent, this, new ucPlaylistUpsert());
+                }
+
+                MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
     }
 }

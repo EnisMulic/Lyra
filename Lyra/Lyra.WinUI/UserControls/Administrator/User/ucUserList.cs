@@ -46,10 +46,19 @@ namespace Lyra.WinUI.UserControls.Administrator.User
                 DataGridViewHelper.PopulateWithList(dgvUsers, list, _props);
 
                 _page = request.Page;
-                btnPageNumber.Text = Convert.ToString(_page);
             }
+            else if (!string.IsNullOrEmpty(Convert.ToString(txtSearch.Text)) && request.Page == 1)
+            {
+                dgvUsers.ColumnCount = 0;
+                DataGridViewHelper.PopulateWithList(dgvUsers, list, _props);
+
+                _page = 1;
+            }
+
+            btnPageNumber.Text = Convert.ToString(_page);
         }
 
+        #region Buttons
         private void btnEditUser_Click(object sender, EventArgs e)
         {
             if(dgvUsers.CurrentRow != null)
@@ -75,12 +84,39 @@ namespace Lyra.WinUI.UserControls.Administrator.User
             PanelHelper.SwapPanels(this.Parent, this, new ucUserAdd());
         }
 
+        private async void btnSearch_Click(object sender, EventArgs e)
+        {
+            var search = Convert.ToString(txtSearch.Text);
+
+            var request = new UserSearchRequest()
+            {
+                Page = 1,
+                ItemsPerPage = _itemsPerPage,
+                FirstName = search,
+                LastName = search,
+                Email = search,
+                Username = search
+            };
+
+            await LoadList(request);
+        }
+
+        #endregion
+
+        #region Pagination
+
         private async void btnNext_Click(object sender, EventArgs e)
         {
+            var search = Convert.ToString(txtSearch.Text);
+
             var request = new UserSearchRequest()
             {
                 Page = _page + 1,
-                ItemsPerPage = _itemsPerPage
+                ItemsPerPage = _itemsPerPage,
+                FirstName = search,
+                LastName = search,
+                Email = search,
+                Username = search
             };
 
             await LoadList(request);
@@ -90,14 +126,22 @@ namespace Lyra.WinUI.UserControls.Administrator.User
         {
             if(_page > 1)
             {
+                var search = Convert.ToString(txtSearch.Text);
+
                 var request = new UserSearchRequest()
                 {
                     Page = _page - 1,
-                    ItemsPerPage = _itemsPerPage
+                    ItemsPerPage = _itemsPerPage,
+                    FirstName = search,
+                    LastName = search,
+                    Email = search,
+                    Username = search
                 };
 
                 await LoadList(request);
             }
         }
+
+        #endregion
     }
 }

@@ -2,6 +2,7 @@
 using Lyra.Model.Requests;
 using Lyra.WebAPI.Database;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,26 +26,33 @@ namespace Lyra.WebAPI.Services
         {
             var query = _context.Users.Include(i => i.UserRoles).AsQueryable();
 
-            if(!string.IsNullOrWhiteSpace(request?.FirstName))
-            {
-                query = query.Where(i => i.FirstName.StartsWith(request.FirstName));
-            }
+            bool isRequestNull = !string.IsNullOrWhiteSpace(request.FirstName) || 
+                                 !string.IsNullOrWhiteSpace(request.LastName) ||
+                                 !string.IsNullOrWhiteSpace(request.Username) ||
+                                 !string.IsNullOrWhiteSpace(request.Email);
 
-
-            if (!string.IsNullOrWhiteSpace(request?.LastName))
+            if (isRequestNull)
             {
-                query = query.Where(i => i.LastName.StartsWith(request.LastName));
+                query = query.Where(i =>
+                    (
+                        !string.IsNullOrWhiteSpace(request.FirstName) &&
+                        i.FirstName.StartsWith(request.FirstName)
+                    ) ||
+                    (
+                        !string.IsNullOrWhiteSpace(request.LastName) &&
+                        i.LastName.StartsWith(request.LastName)
+                    ) ||
+                    (
+                        !string.IsNullOrWhiteSpace(request.Username) &&
+                        i.Username.Equals(request.Username)
+                    ) ||
+                    (
+                        !string.IsNullOrWhiteSpace(request.Email) &&
+                        i.Email.Equals(request.Email)
+                    )
+                );
             }
-
-            if (!string.IsNullOrWhiteSpace(request?.Username))
-            {
-                query = query.Where(i => i.Username.Equals(request.Username));
-            }
-
-            if (!string.IsNullOrWhiteSpace(request?.Email))
-            {
-                query = query.Where(i => i.Email.Equals(request.Email));
-            }
+            
 
             query = query.Skip((request.Page - 1) * request.ItemsPerPage);
             if(request.ItemsPerPage > 0)

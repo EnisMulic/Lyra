@@ -188,11 +188,17 @@ namespace Lyra.WinUI
             }
         }
 
-        public async Task<T> GetTracks<T>(int ID)
+        public async Task<T> GetTracks<T>(int ID, TrackSearchRequest search)
         {
             try
             {
                 var url = $"{Properties.Settings.Default.APIUrl}/{_route}/{ID}/Tracks";
+
+                if (search != null)
+                {
+                    url += "?";
+                    url += await search.ToQueryString();
+                }
 
                 return await url.WithBasicAuth(Username, Password).GetJsonAsync<T>();
             }
