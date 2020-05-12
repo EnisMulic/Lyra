@@ -9,7 +9,7 @@ namespace Lyra.WebAPI.Database
     {
         public int ID { get; set; }
         public string Name { get; set; }
-        public DateTime Created { get; set; }
+        public DateTime CreatedAt { get; set; }
         public byte[] Image { get; set; }
         public ICollection<PlaylistTrack> PlaylistTracks { get; set; }
         public int UserID { get; set; }
