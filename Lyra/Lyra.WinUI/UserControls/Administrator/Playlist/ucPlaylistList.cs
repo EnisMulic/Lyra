@@ -38,7 +38,7 @@ namespace Lyra.WinUI.UserControls.Administrator.Playlist
 
         private async Task LoadList(PlaylistSearchRequest request)
         {
-            var list = await _apiService.Get<List<Model.Track>>(request);
+            var list = await _apiService.Get<List<Model.Playlist>>(request);
 
             if (list.Count > 0)
             {

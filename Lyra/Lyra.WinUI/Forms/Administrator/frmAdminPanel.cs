@@ -25,6 +25,7 @@ namespace Lyra.WinUI.Administrator
         public frmAdminPanel(Model.User user)
         {
             _user = user;
+            SignedInUserHelper.User = _user;
             InitializeComponent();
             AutoValidate = AutoValidate.Disable;
         }

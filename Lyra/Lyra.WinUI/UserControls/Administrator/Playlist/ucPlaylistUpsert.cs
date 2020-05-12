@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Lyra.WinUI.Helpers;
 using Lyra.WinUI.Validators;
 using Lyra.Model.Requests;
+using Lyra.WinUI.Administrator;
 
 namespace Lyra.WinUI.UserControls.Administrator.Playlist
 {
@@ -366,7 +367,7 @@ namespace Lyra.WinUI.UserControls.Administrator.Playlist
                 else
                 {
                     request.CreatedAt = DateTime.Now.ToString();
-                    request.UserID = 9; //TODO : Get LoggedIn User
+                    request.UserID = SignedInUserHelper.User.ID;
                     await _playlistApiService.Insert<Model.Playlist>(request);
                     PanelHelper.SwapPanels(this.Parent, this, new ucPlaylistUpsert());
                 }
