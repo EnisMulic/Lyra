@@ -110,6 +110,18 @@
     <Compile Include="UserControls\Administrator\Artist\ucArtistList.Designer.cs">
       <DependentUpon>ucArtistList.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Administrator\Genre\ucGenreList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Administrator\Genre\ucGenreList.Designer.cs">
+      <DependentUpon>ucGenreList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Administrator\Genre\ucGenreUpsert.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\Administrator\Genre\ucGenreUpsert.Designer.cs">
+      <DependentUpon>ucGenreUpsert.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Administrator\Playlist\ucPlaylistUpsert.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -188,8 +200,10 @@
     <Compile Include="Validators\AlbumValidator.cs" />
     <Compile Include="Validators\ArtistValidator.cs" />
     <Compile Include="Validators\BaseValidator.cs" />
+    <Compile Include="Validators\GenreValidator.cs" />
     <Compile Include="Validators\IAlbumValidator.cs" />
     <Compile Include="Validators\IArtistValidator.cs" />
+    <Compile Include="Validators\IGenreValidator.cs" />
     <Compile Include="Validators\IPlaylistValidator.cs" />
     <Compile Include="Validators\ITrackValidator.cs" />
     <Compile Include="Validators\IUserValidator.cs" />
@@ -219,6 +233,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Administrator\Artist\ucArtistList.resx">
       <DependentUpon>ucArtistList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Administrator\Genre\ucGenreList.resx">
+      <DependentUpon>ucGenreList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\Administrator\Genre\ucGenreUpsert.resx">
+      <DependentUpon>ucGenreUpsert.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\Administrator\Playlist\ucPlaylistUpsert.resx">
       <DependentUpon>ucPlaylistUpsert.cs</DependentUpon>

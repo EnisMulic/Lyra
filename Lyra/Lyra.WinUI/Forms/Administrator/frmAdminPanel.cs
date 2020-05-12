@@ -15,6 +15,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Lyra.WinUI.UserControls.Administrator.Genre;
 
 namespace Lyra.WinUI.Administrator
 {
@@ -81,6 +82,12 @@ namespace Lyra.WinUI.Administrator
             PanelHelper.AddPanel(pnlMain, new ucPlaylistList());
         }
 
+        private void btnGenre_Click(object sender, EventArgs e)
+        {
+            PanelHelper.RemovePanels(pnlMain);
+            PanelHelper.AddPanel(pnlMain, new ucGenreList());
+        }
+
         private void btnUserInfo_Click(object sender, EventArgs e)
         {
             PanelHelper.RemovePanels(pnlMain);
@@ -101,7 +108,5 @@ namespace Lyra.WinUI.Administrator
                 this.Top += e.Y - lastPoint.Y;
             }
         }
-
-        
     }
 }

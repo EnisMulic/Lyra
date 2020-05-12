@@ -32,6 +32,8 @@ namespace Lyra.WebAPI.Mapper
             CreateMap<Database.Role, Model.Role>();
 
             CreateMap<Database.Genre, Model.Genre>();
+            CreateMap<Database.Genre, Model.Requests.GenreUpsertRequest>().ReverseMap();
+
             CreateMap<Database.TrackGenre, Model.TrackGenre>();
             CreateMap<Database.TrackArtist, Model.TrackArtist>();
         }
