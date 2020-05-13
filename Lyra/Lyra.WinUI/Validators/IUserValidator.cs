@@ -10,8 +10,8 @@ namespace Lyra.WinUI.Validators
     {
         ValidationResult FirstNameCheck(string value);
         ValidationResult LastNameCheck(string value);
-        Task<ValidationResult> EmailCheck(string value);
-        Task<ValidationResult> UsernameCheck(string value);
+        ValidationResult EmailCheck(string value);
+        ValidationResult UsernameCheck(string value);
         ValidationResult PasswordCheck(string value);
         ValidationResult PasswordConfirmCheck(string password, string confirmpassword);
     }

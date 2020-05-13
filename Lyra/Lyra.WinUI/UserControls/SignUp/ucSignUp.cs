@@ -38,24 +38,31 @@ namespace Lyra.WinUI.SignUp
         {
             if(ValidateChildren())
             {
-                APIService.Username = "Enis";
-                APIService.Password = "12341234";
-
-
-                var request = new UserInsertRequest
+                try
                 {
-                    FirstName = Convert.ToString(txtFirstName.Text),
-                    LastName = Convert.ToString(txtLastName.Text),
-                    Email = Convert.ToString(txtEmail.Text),
-                    Username = Convert.ToString(txtUsername.Text),
-                    PhoneNumber = Convert.ToString(txtPhone.Text),
-                    Password = Convert.ToString(txtPassword.Text),
-                    PasswordConfirmation = Convert.ToString(txtPasswordConfirm.Text),
-                    Image = ImageHelper.SystemDrawingToByteArray(Resources.profile_picture)
-                };
-                await _service.SignUp(request);
+                    APIService.Username = "Enis";
+                    APIService.Password = "12341234";
 
-                PanelHelper.SwapPanels(this.Parent, this, new ucSignUp());
+
+                    var request = new UserInsertRequest
+                    {
+                        FirstName = Convert.ToString(txtFirstName.Text),
+                        LastName = Convert.ToString(txtLastName.Text),
+                        Email = Convert.ToString(txtEmail.Text),
+                        Username = Convert.ToString(txtUsername.Text),
+                        PhoneNumber = Convert.ToString(txtPhone.Text),
+                        Password = Convert.ToString(txtPassword.Text),
+                        PasswordConfirmation = Convert.ToString(txtPasswordConfirm.Text),
+                        Image = ImageHelper.SystemDrawingToByteArray(Resources.profile_picture)
+                    };
+                    await _service.SignUp(request);
+
+                    PanelHelper.SwapPanels(this.Parent, this, new ucSignUp());
+                }
+                catch
+                {
+                    MessageBox.Show("Error");
+                }
             }
 
         }
@@ -93,18 +100,18 @@ namespace Lyra.WinUI.SignUp
             e.Cancel = !result.IsValid;
         }
 
-        private async void Username_Validating(object sender, CancelEventArgs e)
+        private void Username_Validating(object sender, CancelEventArgs e)
         {
             var validator = new UserValidator();
-            var result = await validator.UsernameCheck(txtUsername.Text);
+            var result = validator.UsernameCheck(txtUsername.Text);
             errorProviderUsername.SetError(txtUsername, result.Message);
             e.Cancel = !result.IsValid;
         }
 
-        private async void Email_Validating(object sender, CancelEventArgs e)
+        private void Email_Validating(object sender, CancelEventArgs e)
         {
             var validator = new UserValidator();
-            var result = await validator.EmailCheck(txtEmail.Text);
+            var result = validator.EmailCheck(txtEmail.Text);
             errorProviderEmail.SetError(txtEmail, result.Message);
             e.Cancel = !result.IsValid;
         }

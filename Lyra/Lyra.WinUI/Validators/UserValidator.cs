@@ -1,4 +1,5 @@
 ﻿using Lyra.Model.Requests;
+using Lyra.WinUI.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,15 +11,8 @@ namespace Lyra.WinUI.Validators
     public class UserValidator : BaseValidator, IUserValidator
     {
         private readonly APIService _apiService = new APIService("User");
-        public async Task<ValidationResult> EmailCheck(string value)
+        public ValidationResult EmailCheck(string value)
         {
-            var request = new UserSearchRequest()
-            {
-                Email = value
-            };
-
-            var response = await _apiService.Get<List<Model.User>>(request);
-
             if (!Required(value))
             {
                 return new ValidationResult("This is a required field", false);
@@ -26,10 +20,6 @@ namespace Lyra.WinUI.Validators
             else if (!Email(value))
             {
                 return new ValidationResult("Value is not a valid email address", false);
-            }
-            else if (response.Count == 1)
-            {
-                return new ValidationResult("Email is taken", false);
             }
             else
             {
@@ -89,22 +79,11 @@ namespace Lyra.WinUI.Validators
             }
         }
 
-        public async Task<ValidationResult> UsernameCheck(string value)
+        public ValidationResult UsernameCheck(string value)
         {
-            var request = new UserSearchRequest()
-            {
-                Username = value
-            };
-
-            var response = await _apiService.Get<List<Model.User>>(request);
-
             if (!Required(value))
             {
                 return new ValidationResult("This is a required field", false);
-            }
-            else if (response.Count == 1)
-            {
-                return new ValidationResult("Username is taken", false);
             }
             else
             {

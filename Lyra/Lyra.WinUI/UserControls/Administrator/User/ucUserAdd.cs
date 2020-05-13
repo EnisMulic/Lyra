@@ -47,25 +47,32 @@ namespace Lyra.WinUI.UserControls.Administrator.User
         {
             if(ValidateChildren())
             {
-                var roleList = clbRoles.CheckedItems.Cast<Model.Role>().Select(i => i.ID).ToList();
-
-                var request = new Model.Requests.UserInsertRequest
+                try
                 {
-                    FirstName = Convert.ToString(txtFirstName.Text),
-                    LastName = Convert.ToString(txtLastName.Text),
-                    Username = Convert.ToString(txtUsername.Text),
-                    Email = Convert.ToString(txtEmail.Text),
-                    PhoneNumber = Convert.ToString(txtPhoneNumber.Text),
-                    Password = Convert.ToString(txtPassword.Text),
-                    PasswordConfirmation = Convert.ToString(txtPasswordConfirm.Text),
-                    Image = pbUserImage.Image != null ? ImageHelper.SystemDrawingToByteArray(pbUserImage.Image) : null,
-                    Roles = roleList
-                };
+                    var roleList = clbRoles.CheckedItems.Cast<Model.Role>().Select(i => i.ID).ToList();
 
-                await _apiService.Insert<Model.User>(request);
+                    var request = new Model.Requests.UserInsertRequest
+                    {
+                        FirstName = Convert.ToString(txtFirstName.Text),
+                        LastName = Convert.ToString(txtLastName.Text),
+                        Username = Convert.ToString(txtUsername.Text),
+                        Email = Convert.ToString(txtEmail.Text),
+                        PhoneNumber = Convert.ToString(txtPhoneNumber.Text),
+                        Password = Convert.ToString(txtPassword.Text),
+                        PasswordConfirmation = Convert.ToString(txtPasswordConfirm.Text),
+                        Image = pbUserImage.Image != null ? ImageHelper.SystemDrawingToByteArray(pbUserImage.Image) : null,
+                        Roles = roleList
+                    };
 
-                MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                PanelHelper.SwapPanels(this.Parent, this, new ucUserAdd());
+                    await _apiService.Insert<Model.User>(request);
+
+                    MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    PanelHelper.SwapPanels(this.Parent, this, new ucUserAdd());
+                }
+                catch
+                {
+                    MessageBox.Show("Error");
+                }
             }
         }
 
@@ -85,18 +92,18 @@ namespace Lyra.WinUI.UserControls.Administrator.User
             e.Cancel = !result.IsValid;
         }
 
-        private async void Username_Validating(object sender, CancelEventArgs e)
+        private void Username_Validating(object sender, CancelEventArgs e)
         {
             var validator = new UserValidator();
-            var result = await validator.UsernameCheck(txtUsername.Text);
+            var result = validator.UsernameCheck(txtUsername.Text);
             errorProviderUsername.SetError(txtUsername, result.Message);
             e.Cancel = !result.IsValid;
         }
 
-        private async void Email_Validating(object sender, CancelEventArgs e)
+        private void Email_Validating(object sender, CancelEventArgs e)
         {
             var validator = new UserValidator();
-            var result = await validator.EmailCheck(txtEmail.Text);
+            var result = validator.EmailCheck(txtEmail.Text);
             errorProviderEmail.SetError(txtEmail, result.Message);
             e.Cancel = !result.IsValid;
         }

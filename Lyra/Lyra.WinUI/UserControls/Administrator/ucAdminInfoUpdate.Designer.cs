@@ -227,7 +227,6 @@
             this.clbRoles.FormattingEnabled = true;
             this.clbRoles.Location = new System.Drawing.Point(23, 36);
             this.clbRoles.Name = "clbRoles";
-            this.clbRoles.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.clbRoles.Size = new System.Drawing.Size(673, 148);
             this.clbRoles.TabIndex = 61;
             // 

@@ -75,33 +75,40 @@ namespace Lyra.WinUI.UserControls.Administrator.User
         {
             if(ValidateChildren())
             {
-                var checkedRoles = clbRoles.CheckedItems.Cast<Model.Role>().Select(i => i.ID).ToList();
-
-                List<int> uncheckedRoles = new List<int>();
-                for (int i = 0; i < clbRoles.Items.Count; i++)
+                try
                 {
-                    if (!clbRoles.GetItemChecked(i))
+                    var checkedRoles = clbRoles.CheckedItems.Cast<Model.Role>().Select(i => i.ID).ToList();
+
+                    List<int> uncheckedRoles = new List<int>();
+                    for (int i = 0; i < clbRoles.Items.Count; i++)
                     {
-                        int RoleID = clbRoles.Items.Cast<Model.Role>().ToList()[i].ID;
-                        uncheckedRoles.Add(RoleID);
+                        if (!clbRoles.GetItemChecked(i))
+                        {
+                            int RoleID = clbRoles.Items.Cast<Model.Role>().ToList()[i].ID;
+                            uncheckedRoles.Add(RoleID);
+                        }
                     }
+
+                    var request = new Model.Requests.UserUpdateRequest
+                    {
+                        FirstName = Convert.ToString(txtFirstName.Text),
+                        LastName = Convert.ToString(txtLastName.Text),
+                        Username = Convert.ToString(txtUsername.Text),
+                        Email = Convert.ToString(txtEmail.Text),
+                        PhoneNumber = Convert.ToString(txtPhoneNumber.Text),
+                        Image = pbUserImage.Image != null ? ImageHelper.SystemDrawingToByteArray(pbUserImage.Image) : null,
+                        Roles = checkedRoles,
+                        RolesToDelete = uncheckedRoles
+                    };
+
+                    await _apiService.Update<Model.User>(_ID, request);
+
+                    MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
-                var request = new Model.Requests.UserUpdateRequest
+                catch
                 {
-                    FirstName = Convert.ToString(txtFirstName.Text),
-                    LastName = Convert.ToString(txtLastName.Text),
-                    Username = Convert.ToString(txtUsername.Text),
-                    Email = Convert.ToString(txtEmail.Text),
-                    PhoneNumber = Convert.ToString(txtPhoneNumber.Text),
-                    Image = pbUserImage.Image != null ? ImageHelper.SystemDrawingToByteArray(pbUserImage.Image) : null,
-                    Roles = checkedRoles,
-                    RolesToDelete = uncheckedRoles
-                };
-
-                await _apiService.Update<Model.User>(_ID, request);
-
-                MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Error");
+                }
             }
         }
 
@@ -121,18 +128,18 @@ namespace Lyra.WinUI.UserControls.Administrator.User
             e.Cancel = !result.IsValid;
         }
 
-        private async void Username_Validating(object sender, CancelEventArgs e)
+        private void Username_Validating(object sender, CancelEventArgs e)
         {
             var validator = new UserValidator();
-            var result = await validator.UsernameCheck(txtUsername.Text);
+            var result = validator.UsernameCheck(txtUsername.Text);
             errorProviderUsername.SetError(txtUsername, result.Message);
             e.Cancel = !result.IsValid;
         }
 
-        private async void Email_Validating(object sender, CancelEventArgs e)
+        private void Email_Validating(object sender, CancelEventArgs e)
         {
             var validator = new UserValidator();
-            var result = await validator.EmailCheck(txtEmail.Text);
+            var result = validator.EmailCheck(txtEmail.Text);
             errorProviderEmail.SetError(txtEmail, result.Message);
             e.Cancel = !result.IsValid;
         }

@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Lyra.Model.Requests;
 using Lyra.WebAPI.Database;
+using Lyra.WebAPI.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using System;
@@ -124,6 +125,16 @@ namespace Lyra.WebAPI.Services
             {
                 throw new Exception("Passwords do not match!");
             }
+
+            if(!await IsEmailUnique(request.Email))
+            {
+                throw new UserException("Email is taken!");
+            }
+
+            if(!await IsUsernameUnique(request.Username))
+            {
+                throw new UserException("Username is taken");
+            }
             
             var entity = _mapper.Map<Database.User>(request);
             entity.PasswordSalt = GenerateSalt();
@@ -149,6 +160,17 @@ namespace Lyra.WebAPI.Services
 
         public override async Task<Model.User> Update(int id, UserUpdateRequest request)
         {
+            if (!await IsEmailUniqueForUser(id, request.Email))
+            {
+                throw new UserException("Email is taken!");
+            }
+
+            if (!await IsUsernameUniqueForUser(id, request.Username))
+            {
+                throw new UserException("Username is taken");
+            }
+
+
             var entity = _context.Users.Find(id);
             _context.Users.Attach(entity);
             _context.Users.Update(entity);
@@ -229,6 +251,28 @@ namespace Lyra.WebAPI.Services
             await _context.SaveChangesAsync();
 
             return _mapper.Map<Model.User>(entity);
+        }
+
+        public async Task<bool> IsEmailUnique(string Email)
+        {
+            return !await _context.Users.AnyAsync(i => i.Email == Email);
+        }
+
+        public async Task<bool> IsEmailUniqueForUser(int ID, string Email)
+        {
+            var user = await _context.Users.FindAsync(ID);
+            return await IsEmailUnique(Email) && Email != user.Email;
+        }
+
+        public async Task<bool> IsUsernameUnique(string Username)
+        {
+            return !await _context.Users.AnyAsync(i => i.Username == Username);
+        }
+
+        public async Task<bool> IsUsernameUniqueForUser(int ID, string Username)
+        {
+            var user = await _context.Users.FindAsync(ID);
+            return await IsUsernameUnique(Username) && Username != user.Username;
         }
     }
 }
