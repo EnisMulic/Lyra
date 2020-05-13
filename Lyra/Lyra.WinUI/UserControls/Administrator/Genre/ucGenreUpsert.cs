@@ -31,10 +31,10 @@ namespace Lyra.WinUI.UserControls.Administrator.Genre
             }
         }
 
-        private async void Name_Validating(object sender, CancelEventArgs e)
+        private void Name_Validating(object sender, CancelEventArgs e)
         {
             var validator = new GenreValidator();
-            var result = await validator.NameCheck(txtName.Text);
+            var result = validator.NameCheck(txtName.Text);
             errorProviderName.SetError(txtName, result.Message);
             e.Cancel = !result.IsValid;
         }
@@ -43,22 +43,29 @@ namespace Lyra.WinUI.UserControls.Administrator.Genre
         {
             if (ValidateChildren())
             {
-                var request = new Model.Requests.GenreUpsertRequest
+                try
                 {
-                    Name = Convert.ToString(txtName.Text),
-                };
+                    var request = new Model.Requests.GenreUpsertRequest
+                    {
+                        Name = Convert.ToString(txtName.Text),
+                    };
 
-                if (_ID.HasValue)
-                {
-                    await _apiService.Update<Model.Genre>(_ID.Value, request);
-                }
-                else
-                {
-                    await _apiService.Insert<Model.Genre>(request);
-                    PanelHelper.SwapPanels(this.Parent, this, new ucGenreUpsert());
-                }
+                    if (_ID.HasValue)
+                    {
+                        await _apiService.Update<Model.Genre>(_ID.Value, request);
+                    }
+                    else
+                    {
+                        await _apiService.Insert<Model.Genre>(request);
+                        PanelHelper.SwapPanels(this.Parent, this, new ucGenreUpsert());
+                    }
 
-                MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Success", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch
+                {
+                    MessageBox.Show("Error");
+                }
             }
         }
     }

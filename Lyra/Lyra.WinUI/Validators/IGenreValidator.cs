@@ -8,6 +8,6 @@ namespace Lyra.WinUI.Validators
 {
     public interface IGenreValidator
     {
-        Task<ValidationResult> NameCheck(string value);
+        ValidationResult NameCheck(string value);
     }
 }

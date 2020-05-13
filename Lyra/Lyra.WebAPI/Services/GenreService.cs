@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Lyra.Model.Requests;
 using Lyra.WebAPI.Database;
+using Lyra.WebAPI.Exceptions;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,39 @@ namespace Lyra.WebAPI.Services
             var list = await query.ToListAsync();
 
             return _mapper.Map<List<Model.Genre>>(list);
+        }
+
+        public override async Task<Model.Genre> Insert(GenreUpsertRequest request)
+        {
+            if(await _context.Genres.AnyAsync(i => i.Name == request.Name))
+            {
+                throw new UserException("Genre already exists!");
+            }
+            var entity = _mapper.Map<Database.Genre>(request);
+
+            _context.Set<Database.Genre>().Add(entity);
+            await _context.SaveChangesAsync();
+
+            return _mapper.Map<Model.Genre>(entity);
+        }
+
+        public override async Task<Model.Genre> Update(int id, GenreUpsertRequest request)
+        {
+            var genre = await _context.Genres.FindAsync(id);
+            if (await _context.Genres.AnyAsync(i => i.Name == request.Name) && request.Name != genre.Name)
+            {
+                throw new UserException("Genre already exists!");
+            }
+
+            var entity = _context.Set<Genre>().Find(id);
+            _context.Set<Genre>().Attach(entity);
+            _context.Set<Genre>().Update(entity);
+
+            _mapper.Map(request, entity);
+
+            await _context.SaveChangesAsync();
+
+            return _mapper.Map<Model.Genre>(entity);
         }
     }
 }
