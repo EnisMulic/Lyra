@@ -14,7 +14,7 @@ namespace Lyra.Mobile
             InitializeComponent();
 
             DependencyService.Register<MockDataStore>();
-            MainPage = new MainPage();
+            MainPage = new SignUpPage();
         }
 
         protected override void OnStart()

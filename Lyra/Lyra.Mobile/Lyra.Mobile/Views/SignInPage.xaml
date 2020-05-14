@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:vm="clr-namespace:Lyra.Mobile.ViewModels"
+             mc:Ignorable="d"
+             x:Class="Lyra.Mobile.Views.SignInPage"
+             Style="{StaticResource PageStyle}">
+    <ContentPage.BindingContext>
+        <vm:SignInViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand"
+                     Padding="50">
+            <Label Text="Username"/>
+            <Entry Text="{Binding Username}"></Entry>
+            <Label Text="Password"/>
+            <Entry Text="{Binding Password}"
+                   IsPassword="True"></Entry>
+            <Button Text="Sign In"
+                    Margin="0, 20, 0, 0"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
