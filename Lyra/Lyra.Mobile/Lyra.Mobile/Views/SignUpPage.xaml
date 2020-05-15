@@ -30,7 +30,9 @@
                    IsPassword="True"></Entry>
             <Button Text="Sign Up"
                     Margin="0, 20, 0, 0"
-                    BackgroundColor="White"
+                    TextColor="White"
+                    BorderColor="White"
+                    BackgroundColor="Transparent"
                     CornerRadius="20"
                     Command="{Binding SignUpCommand}"></Button>
             <Button Text="Sign In"
