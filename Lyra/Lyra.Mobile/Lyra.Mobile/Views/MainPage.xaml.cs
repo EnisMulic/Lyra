@@ -36,6 +36,15 @@ namespace Lyra.Mobile.Views
                     case (int)MenuItemType.About:
                         MenuPages.Add(id, new NavigationPage(new AboutPage()));
                         break;
+                    case (int)MenuItemType.Activity:
+                        MenuPages.Add(id, new NavigationPage(new ActivityPage()));
+                        break;
+                    case (int)MenuItemType.YourMusic:
+                        MenuPages.Add(id, new NavigationPage(new YourMusicPage()));
+                        break;
+                    case (int)MenuItemType.Settings:
+                        MenuPages.Add(id, new NavigationPage(new SettingsPage()));
+                        break;
                 }
             }
 

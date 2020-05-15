@@ -7,7 +7,10 @@ namespace Lyra.Mobile.Models
     public enum MenuItemType
     {
         Browse,
-        About
+        About, /*Remove Later*/
+        Activity,
+        YourMusic,
+        Settings
     }
     public class HomeMenuItem
     {
