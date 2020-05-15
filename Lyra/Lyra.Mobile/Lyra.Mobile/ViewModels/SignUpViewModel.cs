@@ -1,11 +1,18 @@
-﻿using System;
+﻿using Lyra.Mobile.Views;
+using Lyra.Model.Requests;
+using Lyra.WinUI;
+using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace Lyra.Mobile.ViewModels
 {
     public class SignUpViewModel : BaseViewModel
     {
+        private readonly APIService _service = new APIService("User");
         string firstName = string.Empty;
         public string FirstName
         {
@@ -34,11 +41,11 @@ namespace Lyra.Mobile.ViewModels
             set { SetProperty(ref email, value); }
         }
 
-        string phone = string.Empty;
-        public string Phone
+        string phoneNumber = string.Empty;
+        public string PhoneNumber
         {
-            get { return phone; }
-            set { SetProperty(ref phone, value); }
+            get { return phoneNumber; }
+            set { SetProperty(ref phoneNumber, value); }
         }
 
         string password = string.Empty;
@@ -53,6 +60,43 @@ namespace Lyra.Mobile.ViewModels
         {
             get { return passwordConfirmation; }
             set { SetProperty(ref passwordConfirmation, value); }
+        }
+        
+        public ICommand SignUpCommand { get; set; }
+        public ICommand SignInLoadCommand { get; set; }
+        public SignUpViewModel()
+        {
+            SignUpCommand = new Command(async () => await SignUp());
+            SignInLoadCommand = new Command(() => SignInLoad());
+        }
+
+        private async Task SignUp()
+        {
+            try
+            {
+                var request = new UserInsertRequest()
+                {
+                    FirstName = FirstName,
+                    LastName = LastName,
+                    Username = Username,
+                    Email = Email,
+                    PhoneNumber = PhoneNumber,
+                    Password = Password,
+                    PasswordConfirmation = PasswordConfirmation,
+                    Roles = new List<int> {2}
+                };
+
+                await _service.SignUp(request);
+            }
+            catch(Exception error)
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", error.Message, "OK");
+            }
+        }
+
+        void SignInLoad()
+        {
+            Application.Current.MainPage = new SignInPage();
         }
     }
 }

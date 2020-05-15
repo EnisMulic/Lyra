@@ -1,11 +1,19 @@
-﻿using System;
+﻿using Lyra.Mobile.Views;
+using Lyra.Model.Requests;
+using Lyra.WinUI;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
 
 namespace Lyra.Mobile.ViewModels
 {
     public class SignInViewModel : BaseViewModel
     {
+        private readonly APIService _service = new APIService("User");
         string username = string.Empty;
         public string Username
         {
@@ -19,5 +27,47 @@ namespace Lyra.Mobile.ViewModels
             get { return password; }
             set { SetProperty(ref password, value); }
         }
+
+        public ICommand SignInCommand { get; set; }
+        public ICommand SignUpLoadCommand { get; set; }
+        public SignInViewModel()
+        {
+            SignInCommand = new Command(async () => await SignIn());
+            SignUpLoadCommand = new Command(() => SignUpLoad());
+        }
+
+        void SignUpLoad()
+        {
+            Application.Current.MainPage = new SignUpPage();
+        }
+
+        async Task SignIn()
+        {
+            IsBusy = true;
+            APIService.Username = Username;
+            APIService.Password = Password;
+            var request = new UserAuthenticationRequest()
+            {
+                Username = APIService.Username,
+                Password = APIService.Password
+            };
+
+            var user = await _service.Authenticate(request);
+
+            if (user != null)
+            {
+                var userRole = user.UserRoles.FirstOrDefault(i => i.Role.Name == "User");
+                if (userRole != null)
+                {
+                    Application.Current.MainPage = new MainPage();
+                }
+            }
+            else
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "Wrong Username or Password", "OK");
+            }
+        }
     }
+
 }
+ 

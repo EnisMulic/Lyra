@@ -11,14 +11,22 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand"
-                     Padding="50">
+                     Padding="90">
             <Label Text="Username"/>
             <Entry Text="{Binding Username}"></Entry>
             <Label Text="Password"/>
             <Entry Text="{Binding Password}"
                    IsPassword="True"></Entry>
             <Button Text="Sign In"
-                    Margin="0, 20, 0, 0"></Button>
+                    Margin="0, 20, 0, 0"
+                    BackgroundColor="White"
+                    CornerRadius="20"
+                    Command="{Binding SignInCommand}"></Button>
+            <Button Text="Sign Up"
+                    Margin="0, 20, 0, 0"
+                    BackgroundColor="White"
+                    CornerRadius="20"
+                    Command="{Binding SignUpLoadCommand}"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

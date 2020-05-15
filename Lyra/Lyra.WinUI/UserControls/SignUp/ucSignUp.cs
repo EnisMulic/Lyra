@@ -53,7 +53,8 @@ namespace Lyra.WinUI.SignUp
                         PhoneNumber = Convert.ToString(txtPhone.Text),
                         Password = Convert.ToString(txtPassword.Text),
                         PasswordConfirmation = Convert.ToString(txtPasswordConfirm.Text),
-                        Image = ImageHelper.SystemDrawingToByteArray(Resources.profile_picture)
+                        Image = ImageHelper.SystemDrawingToByteArray(Resources.profile_picture),
+                        Roles = new List<int>{1}
                     };
                     await _service.SignUp(request);
 

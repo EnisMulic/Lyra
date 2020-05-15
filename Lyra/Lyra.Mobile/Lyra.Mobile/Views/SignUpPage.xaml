@@ -11,7 +11,7 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand"
-                     Padding="50">
+                     Padding="90">
             <Label Text="First Name" />
             <Entry Text="{Binding FirstName}"></Entry>
             <Label Text="Last Name" />
@@ -21,7 +21,7 @@
             <Label Text="Email"/>
             <Entry Text="{Binding Email}"></Entry>
             <Label Text="Phone Number"/>
-            <Entry Text="{Binding Phone}"></Entry>
+            <Entry Text="{Binding PhoneNumber}"></Entry>
             <Label Text="Password"/>
             <Entry Text="{Binding Password}"
                    IsPassword="True"></Entry>
@@ -29,7 +29,15 @@
             <Entry Text="{Binding PasswordConfirmation}"
                    IsPassword="True"></Entry>
             <Button Text="Sign Up"
-                    Margin="0, 20, 0, 0"></Button>
+                    Margin="0, 20, 0, 0"
+                    BackgroundColor="White"
+                    CornerRadius="20"
+                    Command="{Binding SignUpCommand}"></Button>
+            <Button Text="Sign In"
+                    Margin="0, 20, 0, 0"
+                    BackgroundColor="White"
+                    CornerRadius="20"
+                    Command="{Binding SignInLoadCommand}"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
