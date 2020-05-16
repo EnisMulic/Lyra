@@ -160,18 +160,21 @@ namespace Lyra.WebAPI.Services
 
         public override async Task<Model.User> Update(int id, UserUpdateRequest request)
         {
-            if (!await IsEmailUniqueForUser(id, request.Email))
+
+            var entity = _context.Users.Find(id);
+
+            if(entity.Email != request.Email && await IsEmailUnique(request.Email) == false)
             {
                 throw new UserException("Email is taken!");
             }
 
-            if (!await IsUsernameUniqueForUser(id, request.Username))
+            if (entity.Username != request.Username && await IsUsernameUnique(request.Username) == false)
             {
                 throw new UserException("Username is taken");
             }
 
 
-            var entity = _context.Users.Find(id);
+            
             _context.Users.Attach(entity);
             _context.Users.Update(entity);
 
@@ -258,21 +261,9 @@ namespace Lyra.WebAPI.Services
             return !await _context.Users.AnyAsync(i => i.Email == Email);
         }
 
-        public async Task<bool> IsEmailUniqueForUser(int ID, string Email)
-        {
-            var user = await _context.Users.FindAsync(ID);
-            return await IsEmailUnique(Email) && Email != user.Email;
-        }
-
         public async Task<bool> IsUsernameUnique(string Username)
         {
             return !await _context.Users.AnyAsync(i => i.Username == Username);
-        }
-
-        public async Task<bool> IsUsernameUniqueForUser(int ID, string Username)
-        {
-            var user = await _context.Users.FindAsync(ID);
-            return await IsUsernameUnique(Username) && Username != user.Username;
         }
     }
 }
