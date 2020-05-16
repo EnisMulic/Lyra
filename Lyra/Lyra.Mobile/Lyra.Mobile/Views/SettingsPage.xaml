@@ -2,14 +2,67 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:vm="clr-namespace:Lyra.Mobile.ViewModels" xmlns:converters="clr-namespace:Lyra.Mobile.Converters"
              mc:Ignorable="d"
              x:Class="Lyra.Mobile.Views.SettingsPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="ImgConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <vm:SettingsViewModel/>
+    </ContentPage.BindingContext>
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+        <StackLayout VerticalOptions="CenterAndExpand"
+                     Padding="90, 20, 90, 90">
+            <Frame 
+                Padding="0"
+                WidthRequest="165"
+                HeightRequest="165" 
+                CornerRadius="100"
+                IsClippedToBounds="True"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                BorderColor="Black"
+            >
+                <Image 
+                    Source="{Binding UserImage, Converter={StaticResource ImgConverter}}" 
+                    Aspect="AspectFill"
+                >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer 
+                            Command="{Binding ChangeImage}"
+                            CommandParameter="Image1"
+                        />
+                    </Image.GestureRecognizers>
+                </Image>
+            </Frame>
+            
+            <Label Text="First Name" />
+            <Entry Text="{Binding FirstName}"></Entry>
+            <Label Text="Last Name" />
+            <Entry Text="{Binding LastName}"></Entry>
+            <Label Text="Username"/>
+            <Entry Text="{Binding Username}"></Entry>
+            <Label Text="Email"/>
+            <Entry Text="{Binding Email}"></Entry>
+            <Label Text="Phone Number"/>
+            <Entry Text="{Binding PhoneNumber}"></Entry>
+            
+            <Button 
+                Text="Save"
+                Margin="0, 20, 0, 0"
+                CornerRadius="20"
+                Style="{StaticResource PurpleButton}"
+                Command="{Binding SaveCommand}"
+            ></Button>
+            <Button 
+                Text="Change Password"
+                Margin="0, 20, 0, 0"
+                CornerRadius="20"
+                Style="{StaticResource PurpleButton}"
+            ></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

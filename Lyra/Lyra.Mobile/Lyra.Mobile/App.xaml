@@ -17,6 +17,10 @@
             <Style TargetType="ContentPage" x:Key="PageStyle">
                 <Setter Property="BackgroundColor" Value="#9b5ab6" />
             </Style>
+            <Style TargetType="Button" x:Key="PurpleButton">
+                <Setter Property="BackgroundColor" Value="#9b5ab6"/>
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

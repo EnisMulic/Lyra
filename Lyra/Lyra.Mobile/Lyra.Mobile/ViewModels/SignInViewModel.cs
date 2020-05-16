@@ -1,4 +1,5 @@
-﻿using Lyra.Mobile.Views;
+﻿using Lyra.Mobile.Helpers;
+using Lyra.Mobile.Views;
 using Lyra.Model.Requests;
 using Lyra.WinUI;
 using System;
@@ -60,6 +61,7 @@ namespace Lyra.Mobile.ViewModels
                 if (userRole != null)
                 {
                     Application.Current.MainPage = new MainPage();
+                    SignedInUserHelper.User = user;
                 }
             }
             else
