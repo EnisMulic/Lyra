@@ -62,6 +62,7 @@
                 Margin="0, 20, 0, 0"
                 CornerRadius="20"
                 Style="{StaticResource PurpleButton}"
+                Clicked="OnButtonClicked"
             ></Button>
         </StackLayout>
     </ContentPage.Content>

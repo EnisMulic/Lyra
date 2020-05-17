@@ -10,16 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace Lyra.Mobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SettingsPage : ContentPage
+    public partial class ChangePasswordPage : ContentPage
     {
-        public SettingsPage()
+        public ChangePasswordPage()
         {
             InitializeComponent();
-        }
-
-        async void OnButtonClicked(object sender, EventArgs args)
-        {
-            await Navigation.PushAsync(new ChangePasswordPage());
         }
     }
 }

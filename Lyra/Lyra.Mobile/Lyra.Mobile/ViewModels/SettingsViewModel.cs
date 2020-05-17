@@ -1,4 +1,5 @@
 ﻿using Lyra.Mobile.Helpers;
+using Lyra.Mobile.Views;
 using Lyra.Model.Requests;
 using Lyra.WinUI;
 using System;
@@ -8,6 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace Lyra.Mobile.ViewModels
@@ -69,19 +71,14 @@ namespace Lyra.Mobile.ViewModels
             email = SignedInUserHelper.User.Email;
             phoneNumber = SignedInUserHelper.User.PhoneNumber;
 
+
             SaveCommand = new Command(async () => await SaveSettings());
-            ChangePasswordPageCommand = new Command(() => ChangePasswordPageLoad());
             ChangeImage = new Command(async () => await OnTapped());
         }
 
         private async Task OnTapped()
         {
             UserImage = await UploadImageHelper.UploadImage(UserImage);
-        }
-
-        private void ChangePasswordPageLoad()
-        {
-            throw new NotImplementedException();
         }
 
         private async Task SaveSettings()
