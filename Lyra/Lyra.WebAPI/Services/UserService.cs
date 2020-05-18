@@ -265,5 +265,35 @@ namespace Lyra.WebAPI.Services
         {
             return !await _context.Users.AnyAsync(i => i.Username == Username);
         }
+
+        public async Task<List<Model.UserFavouriteTrack>> GetFavouriteTracks(int id)
+        {
+            var list = await _context.UserFavouriteTracks
+                .Where(i => i.UserID == id)
+                .Include(i => i.Track)
+                .ToListAsync();
+
+            return _mapper.Map<List<Model.UserFavouriteTrack>>(list);
+        }
+
+        public async Task<List<Model.UserFavouriteAlbum>> GetFavouriteAlbums(int id)
+        {
+            var list = await _context.UserFavouriteAlbums
+                .Where(i => i.UserID == id)
+                .Include(i => i.Album)
+                .ToListAsync();
+
+            return _mapper.Map<List<Model.UserFavouriteAlbum>>(list);
+        }
+
+        public async Task<List<Model.UserFavouriteArtist>> GetFavouriteArtists(int id)
+        {
+            var list = await _context.UserFavouriteArtists
+                .Where(i => i.UserID == id)
+                .Include(i => i.Artist)
+                .ToListAsync();
+
+            return _mapper.Map<List<Model.UserFavouriteArtist>>(list);
+        }
     }
 }
