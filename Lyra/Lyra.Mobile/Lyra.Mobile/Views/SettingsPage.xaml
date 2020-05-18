@@ -30,13 +30,13 @@
                     Source="{Binding UserImage, Converter={StaticResource ImgConverter}}" 
                     Aspect="AspectFill"
                 >
-                    <Image.GestureRecognizers>
-                        <TapGestureRecognizer 
-                            Command="{Binding ChangeImage}"
-                            CommandParameter="Image1"
-                        />
-                    </Image.GestureRecognizers>
                 </Image>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer 
+                        Command="{Binding ChangeImage}"
+                        CommandParameter="Image1"
+                    />
+                </Frame.GestureRecognizers>
             </Frame>
             
             <Label Text="First Name" />

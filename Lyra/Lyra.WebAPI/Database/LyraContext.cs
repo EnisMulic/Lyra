@@ -26,6 +26,12 @@ namespace Lyra.WebAPI.Database
         public DbSet<AlbumTrack> AlbumTracks { get; set; }
         public DbSet<Role> Roles  { get; set; }
         public DbSet<UserRole> UserRoles  { get; set; }
+        public DbSet<UserFavouriteArtist> UserFavouriteArtists { get; set; }
+        public DbSet<UserFavouriteAlbum> UserFavouriteAlbums { get; set; }
+        public DbSet<UserFavouriteTrack> UserFavouriteTracks { get; set; }
+        public DbSet<UserActivityArtist> UserActivityArtists { get; set; }
+        public DbSet<UserActivityAlbum> UserActivityAlbums { get; set; }
+        public DbSet<UserActivityTrack> UserActivityTracks  { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -39,6 +45,12 @@ namespace Lyra.WebAPI.Database
                 .HasKey(k => new { k.TrackID, k.ArtistID });
             modelBuilder.Entity<UserRole>()
                 .HasKey(k => new { k.UserID, k.RoleID });
+            modelBuilder.Entity<UserFavouriteArtist>()
+                .HasKey(k => new { k.UserID, k.ArtistID });
+            modelBuilder.Entity<UserFavouriteAlbum>()
+                .HasKey(k => new { k.UserID, k.AlbumID });
+            modelBuilder.Entity<UserFavouriteTrack>()
+                .HasKey(k => new { k.UserID, k.TrackID });
 
             modelBuilder.Entity<Artist>()
                 .HasData
