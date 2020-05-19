@@ -6,7 +6,7 @@ using Lyra.Model;
 using Lyra.Model.Requests;
 using Xamarin.Forms;
 
-namespace Lyra.WinUI
+namespace Lyra.Mobile.Services
 {
     public class APIService
     {
@@ -216,6 +216,75 @@ namespace Lyra.WinUI
                 return default(T);
             }
 
+        }
+
+        public async Task<List<Model.Artist>> GetFavouriteArtists(int ID)
+        {
+            try
+            {
+                var url = $"{APIUrl}/Users/{ID}/FavouriteArtists";
+
+                return await url.WithBasicAuth(Username, Password).GetJsonAsync<List<Model.Artist>>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                await Application.Current.MainPage.DisplayAlert("Error", stringBuilder.ToString(), "OK");
+                return default;
+            }
+        }
+
+        public async Task<List<Model.Album>> GetFavouriteAlbums(int ID)
+        {
+            try
+            {
+                var url = $"{APIUrl}/Users/{ID}/FavouriteAlbums";
+
+                return await url.WithBasicAuth(Username, Password).GetJsonAsync<List<Model.Album>>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                await Application.Current.MainPage.DisplayAlert("Error", stringBuilder.ToString(), "OK");
+                return default;
+            }
+        }
+
+        public async Task<List<Model.Track>> GetFavouriteTracks(int ID)
+        {
+            try
+            {
+                var url = $"{APIUrl}/Users/{ID}/FavouriteTracks";
+
+                return await url.WithBasicAuth(Username, Password).GetJsonAsync<List<Model.Track>>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                await Application.Current.MainPage.DisplayAlert("Error", stringBuilder.ToString(), "OK");
+                return default;
+            }
         }
 
     }
