@@ -23,6 +23,12 @@ namespace Lyra.WebAPI.Services
         {
             var query = _context.Playlists.AsQueryable();
 
+            if(request.UserID != 0)
+            {
+                query = query.Where(i => i.UserID == request.UserID);
+            }
+
+
             if (!string.IsNullOrWhiteSpace(request?.Name))
             {
                 query = query.Where(x => x.Name.StartsWith(request.Name));
@@ -43,6 +49,7 @@ namespace Lyra.WebAPI.Services
         {
             var entity = await _context.Playlists
                 .Include(i => i.PlaylistTracks)
+                .Include(i => i.User)
                 .Where(i => i.ID == id)
                 .SingleOrDefaultAsync();
 

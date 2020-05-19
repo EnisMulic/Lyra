@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace Lyra.Mobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class YourMusicPage : ContentPage
+    public partial class YourMusicPage : TabbedPage
     {
         public YourMusicPage()
         {

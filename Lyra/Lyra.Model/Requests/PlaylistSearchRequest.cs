@@ -6,6 +6,7 @@ namespace Lyra.Model.Requests
 {
     public class PlaylistSearchRequest : PageRequest
     {
+        public int UserID { get; set; }
         public string Name { get; set; }
     }
 }
