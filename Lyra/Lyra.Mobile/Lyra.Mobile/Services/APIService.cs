@@ -222,7 +222,7 @@ namespace Lyra.Mobile.Services
         {
             try
             {
-                var url = $"{APIUrl}/Users/{ID}/FavouriteArtists";
+                var url = $"{APIUrl}/User/{ID}/FavouriteArtists";
 
                 return await url.WithBasicAuth(Username, Password).GetJsonAsync<List<Model.Artist>>();
             }
@@ -245,7 +245,7 @@ namespace Lyra.Mobile.Services
         {
             try
             {
-                var url = $"{APIUrl}/Users/{ID}/FavouriteAlbums";
+                var url = $"{APIUrl}/User/{ID}/FavouriteAlbums";
 
                 return await url.WithBasicAuth(Username, Password).GetJsonAsync<List<Model.Album>>();
             }
@@ -268,7 +268,7 @@ namespace Lyra.Mobile.Services
         {
             try
             {
-                var url = $"{APIUrl}/Users/{ID}/FavouriteTracks";
+                var url = $"{APIUrl}/User/{ID}/FavouriteTracks";
 
                 return await url.WithBasicAuth(Username, Password).GetJsonAsync<List<Model.Track>>();
             }

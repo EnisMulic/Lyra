@@ -10,8 +10,8 @@ namespace Lyra.WebAPI.Services
     {
         Task<Model.User> Authenticate(UserAuthenticationRequest request);
         Task<Model.User> SignUp(UserInsertRequest request);
-        Task<List<Model.UserFavouriteTrack>> GetFavouriteTracks(int id);
-        Task<List<Model.UserFavouriteAlbum>> GetFavouriteAlbums(int id);
-        Task<List<Model.UserFavouriteArtist>> GetFavouriteArtists(int id);
+        Task<List<Model.Track>> GetFavouriteTracks(int id);
+        Task<List<Model.Album>> GetFavouriteAlbums(int id);
+        Task<List<Model.Artist>> GetFavouriteArtists(int id);
     }
 }

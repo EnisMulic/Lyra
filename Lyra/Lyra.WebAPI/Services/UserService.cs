@@ -266,34 +266,34 @@ namespace Lyra.WebAPI.Services
             return !await _context.Users.AnyAsync(i => i.Username == Username);
         }
 
-        public async Task<List<Model.UserFavouriteTrack>> GetFavouriteTracks(int id)
+        public async Task<List<Model.Track>> GetFavouriteTracks(int id)
         {
             var list = await _context.UserFavouriteTracks
                 .Where(i => i.UserID == id)
-                .Include(i => i.Track)
+                .Select(i => i.Track)
                 .ToListAsync();
 
-            return _mapper.Map<List<Model.UserFavouriteTrack>>(list);
+            return _mapper.Map<List<Model.Track>>(list);
         }
 
-        public async Task<List<Model.UserFavouriteAlbum>> GetFavouriteAlbums(int id)
+        public async Task<List<Model.Album>> GetFavouriteAlbums(int id)
         {
             var list = await _context.UserFavouriteAlbums
                 .Where(i => i.UserID == id)
-                .Include(i => i.Album)
+                .Select(i => i.Album)
                 .ToListAsync();
 
-            return _mapper.Map<List<Model.UserFavouriteAlbum>>(list);
+            return _mapper.Map<List<Model.Album>>(list);
         }
 
-        public async Task<List<Model.UserFavouriteArtist>> GetFavouriteArtists(int id)
+        public async Task<List<Model.Artist>> GetFavouriteArtists(int id)
         {
             var list = await _context.UserFavouriteArtists
                 .Where(i => i.UserID == id)
-                .Include(i => i.Artist)
+                .Select(i => i.Artist)
                 .ToListAsync();
 
-            return _mapper.Map<List<Model.UserFavouriteArtist>>(list);
+            return _mapper.Map<List<Model.Artist>>(list);
         }
     }
 }

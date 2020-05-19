@@ -37,9 +37,9 @@ namespace Lyra.WebAPI.Mapper
             CreateMap<Database.TrackGenre, Model.TrackGenre>();
             CreateMap<Database.TrackArtist, Model.TrackArtist>();
 
-            CreateMap<Database.UserFavouriteTrack, Model.UserFavouriteTrack>().ReverseMap();
-            CreateMap<Database.UserFavouriteAlbum, Model.UserFavouriteAlbum>().ReverseMap();
-            CreateMap<Database.UserFavouriteArtist, Model.UserFavouriteArtist>().ReverseMap();
+            CreateMap<Database.UserFavouriteTrack, Model.Track>().ReverseMap();
+            CreateMap<Database.UserFavouriteAlbum, Model.Album>().ReverseMap();
+            CreateMap<Database.UserFavouriteArtist, Model.Artist>().ReverseMap();
         }
 
         

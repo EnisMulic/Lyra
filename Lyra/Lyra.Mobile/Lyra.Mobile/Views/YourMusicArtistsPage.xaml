@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:vm="clr-namespace:Lyra.Mobile.ViewModels" 
+             xmlns:converters="clr-namespace:Lyra.Mobile.Converters"
+             mc:Ignorable="d"
+             x:Class="Lyra.Mobile.Views.YourMusicArtistsPage"
+             Title="Artists">
+    <ContentPage.BindingContext>
+        <vm:YourMusicArtistsViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="ImgConvertor"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView ItemsSource="{Binding ArtistsList}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Horizontal">
+                                <StackLayout>
+                                    <Frame 
+                                        Padding="0"
+                                        WidthRequest="100"
+                                        HeightRequest="100" 
+                                        CornerRadius="100"
+                                        IsClippedToBounds="True"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center"
+                                        BorderColor="Black"
+                                    >
+                                        <Image Source="{Binding Image, Converter={StaticResource ImgConvertor}}"
+                                               Aspect="AspectFill"
+                                        ></Image>
+                                    </Frame>
+                                </StackLayout>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding Name}" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           Padding="10, 20, 0, 0"
+                                           FontSize="16" />
+                                </StackLayout>
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

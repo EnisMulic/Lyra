@@ -40,21 +40,21 @@ namespace Lyra.WebAPI.Controllers
 
         [Authorize]
         [HttpGet("{id}/FavouriteTracks")]
-        public async Task<List<UserFavouriteTrack>> GetFavouriteTracks(int id)
+        public async Task<List<Track>> GetFavouriteTracks(int id)
         {
             return await _service.GetFavouriteTracks(id);
         }
 
         [Authorize]
         [HttpGet("{id}/FavouriteAlbums")]
-        public async Task<List<UserFavouriteAlbum>> GetFavouriteAlbums(int id)
+        public async Task<List<Album>> GetFavouriteAlbums(int id)
         {
             return await _service.GetFavouriteAlbums(id);
         }
 
         [Authorize]
         [HttpGet("{id}/FavouriteArtists")]
-        public async Task<List<UserFavouriteArtist>> GetFavouriteArtists(int id)
+        public async Task<List<Artist>> GetFavouriteArtists(int id)
         {
             return await _service.GetFavouriteArtists(id);
         }
