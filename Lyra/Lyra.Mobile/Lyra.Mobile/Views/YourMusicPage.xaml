@@ -7,34 +7,11 @@
              mc:Ignorable="d"
              x:Class="Lyra.Mobile.Views.YourMusicPage">
   <!--Pages can be added as references or inline-->
-    <!--<ContentPage Title="Playlists" >
-        
-    </ContentPage>
-    
-    <ContentPage Title="Artists" >
-        
-    </ContentPage>
+    <local:YourMusicPlaylistsPage></local:YourMusicPlaylistsPage>
 
-    <ContentPage Title="Albums" >
-        
-    </ContentPage>
+    <local:YourMusicArtistsPage></local:YourMusicArtistsPage>
 
-    <ContentPage Title="Tracks" >
-        
-    </ContentPage>-->
-    <local:YourMusicPlaylistsPage>
-        
-    </local:YourMusicPlaylistsPage>
+    <local:YourMusicAlbumsPage></local:YourMusicAlbumsPage>
 
-    <local:YourMusicArtistPage>
-        
-    </local:YourMusicArtistPage>
-
-    <local:YourMusicAlbumPage>
-        
-    </local:YourMusicAlbumPage>
-
-    <local:YourMusicTrackPage>
-        
-    </local:YourMusicTrackPage>
+    <local:YourMusicTracksPage></local:YourMusicTracksPage>
 </TabbedPage>
