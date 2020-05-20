@@ -281,6 +281,17 @@ namespace Lyra.WebAPI.Services
             var list = await _context.UserFavouriteAlbums
                 .Where(i => i.UserID == id)
                 .Select(i => i.Album)
+                .Select
+                (
+                    i => new Album()
+                    {
+                        ID = i.ID,
+                        Image = i.Image,
+                        ReleaseYear = i.ReleaseYear,
+                        Name = i.Name,
+                        Artist = i.Artist
+                    }
+                )
                 .ToListAsync();
 
             return _mapper.Map<List<Model.Album>>(list);

@@ -35,6 +35,10 @@
                                            Style="{DynamicResource ListItemTextStyle}" 
                                            Padding="10, 20, 0, 0"
                                            FontSize="16" />
+                                    <Label Text="{Binding Artist.Name, StringFormat='by {0:F0}'}"
+                                           LineBreakMode="NoWrap"
+                                           Padding="10, 0, 0, 0"
+                                           FontSize="12" />
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>
