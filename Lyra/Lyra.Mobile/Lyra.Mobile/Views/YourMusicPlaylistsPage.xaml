@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:vm="clr-namespace:Lyra.Mobile.ViewModels" 
              xmlns:converters="clr-namespace:Lyra.Mobile.Converters"
+             xmlns:ext="clr-namespace:Lyra.Mobile.Extensions"
              mc:Ignorable="d"
              x:Class="Lyra.Mobile.Views.YourMusicPlaylistsPage"
              Title="Playlists">
@@ -18,6 +19,21 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
+            <StackLayout Padding="10" Orientation="Horizontal" >
+                <Image Source="{ext:ImageResource Lyra.Mobile.Assets.add.png}"
+                       WidthRequest="100"
+                       HeightRequest="100"
+                ></Image>
+                <Label Text="Create Playlist" 
+                       LineBreakMode="NoWrap" 
+                       Style="{DynamicResource ListItemTextStyle}" 
+                       Padding="10, 20, 0, 0"
+                       FontSize="16" 
+                />
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnTapped"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>
             <ListView ItemsSource="{Binding PlaylistsList}">
                 <ListView.ItemTemplate>
                     <DataTemplate>

@@ -26,5 +26,10 @@ namespace Lyra.Mobile.Views
             await model.Init();
         }
 
+        async void OnTapped(object sender, EventArgs args)
+        {
+            await Navigation.PushAsync(new NewPlaylistPage());
+        }
+
     }
 }

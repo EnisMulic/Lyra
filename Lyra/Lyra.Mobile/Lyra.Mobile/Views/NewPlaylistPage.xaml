@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:converters="clr-namespace:Lyra.Mobile.Converters" 
+             xmlns:vm="clr-namespace:Lyra.Mobile.ViewModels"
+             mc:Ignorable="d"
+             x:Class="Lyra.Mobile.Views.NewPlaylistPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="ImgConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <vm:NewPlaylistViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout VerticalOptions="CenterAndExpand"
+                     Padding="90, 0, 90, 0">
+            <Frame 
+                Padding="0"
+                WidthRequest="500"
+                HeightRequest="250" 
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                BorderColor="Black"
+            >
+                <Image 
+                    Source="{Binding Image, Converter={StaticResource ImgConverter}}" 
+                    Aspect="AspectFill"
+                >
+                </Image>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer 
+                        Command="{Binding ChangeImage}"
+                        CommandParameter="Image1"
+                    />
+                </Frame.GestureRecognizers>
+            </Frame>
+
+            <Label Text="Name" />
+            <Entry Text="{Binding Name}"></Entry>
+            <Button 
+                Text="Save"
+                Margin="0, 20, 0, 0"
+                CornerRadius="20"
+                Style="{StaticResource PurpleButton}"
+                Command="{Binding SaveCommand}"
+            ></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

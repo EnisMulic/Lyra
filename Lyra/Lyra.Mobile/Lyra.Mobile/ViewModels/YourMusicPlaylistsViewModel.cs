@@ -16,8 +16,15 @@ namespace Lyra.Mobile.ViewModels
         private readonly APIService _service = new APIService("Playlist");
         public ObservableCollection<Model.Playlist> PlaylistsList { get; set; } = new ObservableCollection<Model.Playlist> ();
         private bool IsLoaded = false;
+        public ICommand NewPlaylistCommand { get; set; }
         public YourMusicPlaylistsViewModel()
         {
+            NewPlaylistCommand = new Command(() => CreateNewPlaylist());
+        }
+
+        private void CreateNewPlaylist()
+        {
+            throw new NotImplementedException();
         }
 
         public async Task Init()
