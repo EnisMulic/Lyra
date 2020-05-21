@@ -269,8 +269,20 @@ namespace Lyra.WebAPI.Services
         public async Task<List<Model.Track>> GetFavouriteTracks(int id)
         {
             var list = await _context.UserFavouriteTracks
+                .Include(i => i.Track.TrackArtists)
+                .ThenInclude(i => i.Artist)
                 .Where(i => i.UserID == id)
                 .Select(i => i.Track)
+                .Select
+                (
+                    i => new Track()
+                    {
+                        ID = i.ID,
+                        Name = i.Name,
+                        Length = i.Length,
+                        TrackArtists = i.TrackArtists
+                    }
+                )
                 .ToListAsync();
 
             return _mapper.Map<List<Model.Track>>(list);

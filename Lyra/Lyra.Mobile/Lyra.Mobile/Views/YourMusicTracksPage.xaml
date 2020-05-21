@@ -14,6 +14,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:ImageConverter x:Key="ImgConvertor"></converters:ImageConverter>
+            <converters:MainArtistConverter x:Key="MainArtistConvertor"></converters:MainArtistConverter>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -27,8 +28,21 @@
                                     <Label Text="{Binding Name}" 
                                            LineBreakMode="NoWrap" 
                                            Style="{DynamicResource ListItemTextStyle}" 
-                                           Padding="10, 20, 0, 0"
+                                           Padding="10, 0, 0, 0"
                                            FontSize="16" />
+                                    <Label FontSize="16"
+                                           Padding="10, 0, 0, 0"
+                                           LineBreakMode="NoWrap" >
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <Span Text="by" />
+                                                    <Span Text=" " />
+                                                    <Span Text="{Binding TrackArtists, Converter={StaticResource MainArtistConvertor}}" />
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>
