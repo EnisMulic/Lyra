@@ -15,7 +15,6 @@ namespace Lyra.Mobile.ViewModels
     {
         private readonly APIService _service = new APIService("Playlist");
         public ObservableCollection<Model.Playlist> PlaylistsList { get; set; } = new ObservableCollection<Model.Playlist> ();
-        private bool IsLoaded = false;
         public ICommand NewPlaylistCommand { get; set; }
         public YourMusicPlaylistsViewModel()
         {
@@ -29,22 +28,18 @@ namespace Lyra.Mobile.ViewModels
 
         public async Task Init()
         {
+            PlaylistsList.Clear();
             try
             {
-                if(!IsLoaded)
+                var request = new PlaylistSearchRequest()
                 {
-                    var request = new PlaylistSearchRequest()
-                    {
-                        UserID = SignedInUserHelper.User.ID
-                    };
+                    UserID = SignedInUserHelper.User.ID
+                };
 
-                    var playlists = await _service.Get<List<Model.Playlist>>(request);
-                    foreach (var playlist in playlists)
-                    {
-                        PlaylistsList.Add(playlist);
-                    }
-
-                    IsLoaded = true;
+                var playlists = await _service.Get<List<Model.Playlist>>(request);
+                foreach (var playlist in playlists)
+                {
+                    PlaylistsList.Add(playlist);
                 }
             }
             catch

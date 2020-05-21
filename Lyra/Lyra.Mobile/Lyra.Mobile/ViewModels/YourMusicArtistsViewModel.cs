@@ -12,26 +12,21 @@ namespace Lyra.Mobile.ViewModels
     {
         private readonly APIService _service = new APIService("");
         public ObservableCollection<Model.Artist> ArtistsList { get; set; } = new ObservableCollection<Model.Artist>();
-        private bool IsLoaded = false;
         public YourMusicArtistsViewModel()
         {
         }
 
         public async Task Init()
         {
+            ArtistsList.Clear();
             try
             {
-                if (!IsLoaded)
+                int ID = SignedInUserHelper.User.ID;
+
+                var artists = await _service.GetFavouriteArtists(ID);
+                foreach (var artist in artists)
                 {
-                    int ID = SignedInUserHelper.User.ID;
-
-                    var artists = await _service.GetFavouriteArtists(ID);
-                    foreach (var artist in artists)
-                    {
-                        ArtistsList.Add(artist);
-                    }
-
-                    IsLoaded = true;
+                    ArtistsList.Add(artist);
                 }
             }
             catch
