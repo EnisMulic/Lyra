@@ -32,6 +32,7 @@ namespace Lyra.WebAPI.Database
         public DbSet<UserActivityArtist> UserActivityArtists { get; set; }
         public DbSet<UserActivityAlbum> UserActivityAlbums { get; set; }
         public DbSet<UserActivityTrack> UserActivityTracks  { get; set; }
+        public DbSet<UserActivityPlaylist> UserActivityPlaylists  { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

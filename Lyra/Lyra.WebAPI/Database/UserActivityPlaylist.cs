@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace Lyra.WebAPI.Database
 {
-    public class UserActivityAlbum
+    public class UserActivityPlaylist
     {
         [Key]
         public int ID { get; set; }
         public int UserID { get; set; }
         public User User { get; set; }
-        public int AlbumID { get; set; }
-        public Album Album { get; set; }
+        public int PlaylistID { get; set; }
+        public Playlist Playlist { get; set; }
         public DateTime InteractedAt { get; set; }
     }
 }

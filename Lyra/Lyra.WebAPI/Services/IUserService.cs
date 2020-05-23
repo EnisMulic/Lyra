@@ -13,5 +13,9 @@ namespace Lyra.WebAPI.Services
         Task<List<Model.Track>> GetFavouriteTracks(int id);
         Task<List<Model.Album>> GetFavouriteAlbums(int id);
         Task<List<Model.Artist>> GetFavouriteArtists(int id);
+        Task<List<Model.UserActivityTrack>> GetActivityTracks(int id);
+        Task<List<Model.UserActivityAlbum>> GetActivityAlbums(int id);
+        Task<List<Model.UserActivityArtist>> GetActivityArtists(int id);
+        Task<List<Model.UserActivityPlaylist>> GetActivityPlaylists(int id);
     }
 }

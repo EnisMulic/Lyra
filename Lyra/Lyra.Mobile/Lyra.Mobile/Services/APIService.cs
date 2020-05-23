@@ -287,5 +287,99 @@ namespace Lyra.Mobile.Services
             }
         }
 
+
+        public async Task<List<UserActivityTrack>> GetActivityTracks(int ID)
+        {
+            try
+            {
+                var url = $"{APIUrl}/User/{ID}/ActivityTracks";
+
+                return await url.WithBasicAuth(Username, Password).GetJsonAsync<List<UserActivityTrack>>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                await Application.Current.MainPage.DisplayAlert("Error", stringBuilder.ToString(), "OK");
+                return default;
+            }
+        }
+
+        public async Task<List<UserActivityAlbum>> GetActivityAlbums(int ID)
+        {
+            try
+            {
+                var url = $"{APIUrl}/User/{ID}/ActivityAlbums";
+
+                return await url.WithBasicAuth(Username, Password).GetJsonAsync<List<UserActivityAlbum>>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                await Application.Current.MainPage.DisplayAlert("Error", stringBuilder.ToString(), "OK");
+                return default;
+            }
+        }
+
+        public async Task<List<UserActivityArtist>> GetActivityArtists(int ID)
+        {
+            try
+            {
+                var url = $"{APIUrl}/User/{ID}/ActivityArtists";
+
+                return await url.WithBasicAuth(Username, Password).GetJsonAsync<List<UserActivityArtist>>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                await Application.Current.MainPage.DisplayAlert("Error", stringBuilder.ToString(), "OK");
+                return default;
+            }
+        }
+
+
+        public async Task<List<UserActivityPlaylist>> GetActivityPlaylists(int ID)
+        {
+            try
+            {
+                var url = $"{APIUrl}/User/{ID}/ActivityPlaylists";
+
+                return await url.WithBasicAuth(Username, Password).GetJsonAsync<List<UserActivityPlaylist>>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                await Application.Current.MainPage.DisplayAlert("Error", stringBuilder.ToString(), "OK");
+                return default;
+            }
+        }
+
     }
 }

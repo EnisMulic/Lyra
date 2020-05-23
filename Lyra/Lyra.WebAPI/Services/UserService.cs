@@ -275,7 +275,7 @@ namespace Lyra.WebAPI.Services
                 .Select(i => i.Track)
                 .Select
                 (
-                    i => new Track()
+                    i => new Database.Track()
                     {
                         ID = i.ID,
                         Name = i.Name,
@@ -295,7 +295,7 @@ namespace Lyra.WebAPI.Services
                 .Select(i => i.Album)
                 .Select
                 (
-                    i => new Album()
+                    i => new Database.Album()
                     {
                         ID = i.ID,
                         Image = i.Image,
@@ -317,6 +317,47 @@ namespace Lyra.WebAPI.Services
                 .ToListAsync();
 
             return _mapper.Map<List<Model.Artist>>(list);
+        }
+
+        public async Task<List<Model.UserActivityTrack>> GetActivityTracks(int id)
+        {
+            var list = await _context.UserActivityTracks
+                .Include(i => i.Track.TrackArtists)
+                .ThenInclude(i => i.Artist)
+                .Where(i => i.UserID == id)
+                .ToListAsync();
+
+            return _mapper.Map<List<Model.UserActivityTrack>>(list);
+        }
+
+        public async Task<List<Model.UserActivityAlbum>> GetActivityAlbums(int id)
+        {
+            var list = await _context.UserActivityAlbums
+                .Where(i => i.UserID == id)
+                .Include(i => i.Album)
+                .ToListAsync();
+
+            return _mapper.Map<List<Model.UserActivityAlbum>>(list);
+        }
+
+        public async Task<List<Model.UserActivityArtist>> GetActivityArtists(int id)
+        {
+            var list = await _context.UserActivityArtists
+                .Where(i => i.UserID == id)
+                .Include(i => i.Artist)
+                .ToListAsync();
+
+            return _mapper.Map<List<Model.UserActivityArtist>>(list);
+        }
+
+        public async Task<List<Model.UserActivityPlaylist>> GetActivityPlaylists(int id)
+        {
+            var list = await _context.UserActivityPlaylists
+                .Where(i => i.UserID == id)
+                .Include(i => i.Playlist)
+                .ToListAsync();
+
+            return _mapper.Map<List<Model.UserActivityPlaylist>>(list);
         }
     }
 }

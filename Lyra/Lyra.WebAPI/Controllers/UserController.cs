@@ -58,5 +58,34 @@ namespace Lyra.WebAPI.Controllers
         {
             return await _service.GetFavouriteArtists(id);
         }
+
+        [Authorize]
+        [HttpGet("{id}/ActivityArtists")]
+        public async Task<List<UserActivityArtist>> GetActivityArtists(int id)
+        {
+            return await _service.GetActivityArtists(id);
+        }
+
+        [Authorize]
+        [HttpGet("{id}/ActivityAlbums")]
+        public async Task<List<UserActivityAlbum>> GetActivityAlbums(int id)
+        {
+            return await _service.GetActivityAlbums(id);
+        }
+
+        [Authorize]
+        [HttpGet("{id}/ActivityTracks")]
+        public async Task<List<UserActivityTrack>> GetActivityTracks(int id)
+        {
+            return await _service.GetActivityTracks(id);
+        }
+
+        [Authorize]
+        [HttpGet("{id}/ActivityPlaylists")]
+        public async Task<List<UserActivityPlaylist>> GetActivityPlaylists(int id)
+        {
+            return await _service.GetActivityPlaylists(id);
+        }
+
     }
 }
