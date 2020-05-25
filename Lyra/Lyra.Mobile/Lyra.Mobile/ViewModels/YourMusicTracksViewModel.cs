@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace Lyra.Mobile.ViewModels
 {
@@ -12,6 +13,28 @@ namespace Lyra.Mobile.ViewModels
     {
         private readonly APIService _service = new APIService("");
         public ObservableCollection<Model.Track> TracksList { get; set; } = new ObservableCollection<Model.Track>();
+
+        private Model.Track _selectedTrack { get; set; }
+        public Model.Track SelectedTrack
+        {
+            get { return _selectedTrack; }
+            set 
+            { 
+                if(_selectedTrack != value)
+                {
+                    _selectedTrack = value;
+                    HandleSelectedItem();
+                }
+            }
+        }
+
+        private void HandleSelectedItem()
+        {
+            Application.Current.MainPage.DisplayAlert("Selected", _selectedTrack.Name, "OK");
+            MusicPlayerViewModel MusicPlayer = new MusicPlayerViewModel(_selectedTrack, null);
+
+        }
+
         public YourMusicTracksViewModel()
         {
         }
