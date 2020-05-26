@@ -12,10 +12,20 @@
 
   <ItemGroup>
     <None Remove="Assets\add.png" />
+    <None Remove="Assets\next.png" />
+    <None Remove="Assets\pause.png" />
+    <None Remove="Assets\play.png" />
+    <None Remove="Assets\playBlack.png" />
+    <None Remove="Assets\previous.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Assets\add.png" />
+    <EmbeddedResource Include="Assets\next.png" />
+    <EmbeddedResource Include="Assets\pause.png" />
+    <EmbeddedResource Include="Assets\play.png" />
+    <EmbeddedResource Include="Assets\playBlack.png" />
+    <EmbeddedResource Include="Assets\previous.png" />
   </ItemGroup>
 
   <ItemGroup>

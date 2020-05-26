@@ -104,6 +104,12 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Assets\add.png" />
+    <EmbeddedResource Include="Assets\pause.png" />
+    <EmbeddedResource Include="Assets\play.png" />
+    <EmbeddedResource Include="Assets\playBlack.png" />
+    <Resource Include="Assets\next.png" />
+    <Content Include="Assets\previous.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />
@@ -133,7 +139,6 @@
     <Content Include="Assets\Wide310x150Logo.scale-200.png" />
     <Content Include="Assets\Wide310x150Logo.scale-400.png" />
     <Content Include="xamarin_logo.png" />
-    <Content Include="add.png" />
     <Content Include="save.png" />
     <Content Include="cancel.png" />
   </ItemGroup>

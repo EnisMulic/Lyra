@@ -18,7 +18,7 @@ namespace Lyra.Mobile.Views
         public MusicPlayerPage(Model.Track track, IEnumerable<Model.Track> tracks)
         {
             InitializeComponent();
-            BindingContext = model = new MusicPlayerViewModel(track, null);
+            BindingContext = model = new MusicPlayerViewModel(track, new ObservableCollection<Model.Track>(tracks));
         }
     }
 }

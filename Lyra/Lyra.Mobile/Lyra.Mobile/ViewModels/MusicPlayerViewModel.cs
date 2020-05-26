@@ -1,4 +1,6 @@
-﻿using Lyra.Mobile.Services;
+﻿using Lyra.Mobile.Extensions;
+using Lyra.Mobile.Helpers;
+using Lyra.Mobile.Services;
 using Lyra.Model;
 using MediaManager;
 using MediaManager.Player;
@@ -6,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Reflection;
 using System.Text;
 using System.Windows.Input;
 using Xamarin.Essentials;
@@ -17,24 +20,24 @@ namespace Lyra.Mobile.ViewModels
     {
         #region Properties
         private readonly APIService _trackService = new APIService("Track");
-        ObservableCollection<Track> musicList;
-        public ObservableCollection<Track> MusicList
+        ObservableCollection<Track> trackList;
+        public ObservableCollection<Track> TrackList
         {
-            get { return musicList; }
+            get { return trackList; }
             set
             {
-                musicList = value;
+                trackList = value;
                 OnPropertyChanged();
             }
         }
 
-        private Track selectedMusic;
-        public Track SelectedMusic
+        private Track selectedTrack;
+        public Track SelectedTrack
         {
-            get { return selectedMusic; }
+            get { return selectedTrack; }
             set
             {
-                selectedMusic = value;
+                selectedTrack = value;
                 OnPropertyChanged();
             }
         }
@@ -83,20 +86,22 @@ namespace Lyra.Mobile.ViewModels
             set
             {
                 isPlaying = value;
-                OnPropertyChanged();
                 OnPropertyChanged(nameof(PlayIcon));
             }
         }
 
-        public string PlayIcon { get => isPlaying ? "pause.png" : "play.png"; }
-
+        public ImageSource PlayIcon
+        {
+            get => isPlaying ? ImageSource.FromResource("Lyra.Mobile.Assets.pause.png", typeof(ImageResourceExtension).GetTypeInfo().Assembly)
+                             : ImageSource.FromResource("Lyra.Mobile.Assets.play.png", typeof(ImageResourceExtension).GetTypeInfo().Assembly);
+        }
         #endregion
 
         public MusicPlayerViewModel(Track selectedMusic, ObservableCollection<Track> musicList)
         {
-            this.selectedMusic = selectedMusic;
-            this.musicList = musicList;
-            PlayMusic(selectedMusic);
+            this.selectedTrack = selectedMusic;
+            this.trackList = musicList;
+            PlayTrack(selectedMusic);
             isPlaying = true;
         }
 
@@ -104,8 +109,6 @@ namespace Lyra.Mobile.ViewModels
 
         public ICommand PlayCommand => new Command(Play);
         public ICommand ChangeCommand => new Command(ChangeMusic);
-        public ICommand BackCommand => new Command(() => Application.Current.MainPage.Navigation.PopAsync());
-        public ICommand ShareCommand => new Command(() => Share.RequestAsync(selectedMusic.MP3File.ToString(), selectedMusic.Name)); //.ToString() is a hot fix
 
 
         private async void Play()
@@ -113,55 +116,30 @@ namespace Lyra.Mobile.ViewModels
             if (isPlaying)
             {
                 await CrossMediaManager.Current.Pause();
-                IsPlaying = false; ;
+                IsPlaying = false;
             }
             else
             {
                 await CrossMediaManager.Current.Play();
-                IsPlaying = true; ;
+                IsPlaying = true;
             }
         }
 
         private void ChangeMusic(object obj)
         {
             if ((string)obj == "P")
-                PreviousMusic();
+                PreviousTrack();
             else if ((string)obj == "N")
-                NextMusic();
+                NextTrack();
         }
 
-        private async void PlayMusic(Track music)
+        private async void PlayTrack(Track music)
         {
-            
-
-
             var track = await _trackService.GetById<Model.Track>(music.ID);
             var mediaInfo = CrossMediaManager.Current;
-            //await mediaInfo.Play(new MemoryStream(music?.MP3File));
 
 
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-            string filename = Path.Combine(path, Guid.NewGuid() + ".mp3");
-
-            //using (var streamWriter = new StreamWriter(filename, true))
-            //{
-            //    streamWriter.WriteLine();
-            //}
-
-            //using (var streamReader = new StreamReader(filename))
-            //{
-            //    string content = streamReader.ReadToEnd();
-            //    System.Diagnostics.Debug.WriteLine(content);
-            //}
-
-
-
-            //var fileName =  Guid.NewGuid() + ".mp3";
-            using (var fs = new FileStream(filename, FileMode.Create, FileAccess.Write))
-            {
-                fs.Write(track.MP3File, 0, track.MP3File.Length);
-                fs.Close();
-            }
+            string filename = FileHelper.SaveFile(track.MP3File, track.Name + Guid.NewGuid() + "mp3");        
             await mediaInfo.Play(filename);
 
 
@@ -171,7 +149,8 @@ namespace Lyra.Mobile.ViewModels
             mediaInfo.MediaItemFinished += (sender, args) =>
             {
                 IsPlaying = false;
-                NextMusic();
+                FileHelper.DeleteFile(filename);
+                NextTrack();
             };
 
             Device.StartTimer(TimeSpan.FromMilliseconds(500), () =>
@@ -183,25 +162,25 @@ namespace Lyra.Mobile.ViewModels
             });
         }
 
-        private void NextMusic()
+        private void NextTrack()
         {
-            var currentIndex = musicList.IndexOf(selectedMusic);
+            var currentIndex = trackList.IndexOf(selectedTrack);
 
-            if (currentIndex < musicList.Count - 1)
+            if (currentIndex < trackList.Count - 1)
             {
-                SelectedMusic = musicList[currentIndex + 1];
-                PlayMusic(selectedMusic);
+                SelectedTrack = trackList[currentIndex + 1];
+                PlayTrack(selectedTrack);
             }
         }
 
-        private void PreviousMusic()
+        private void PreviousTrack()
         {
-            var currentIndex = musicList.IndexOf(selectedMusic);
+            var currentIndex = trackList.IndexOf(selectedTrack);
 
             if (currentIndex > 0)
             {
-                SelectedMusic = musicList[currentIndex - 1];
-                PlayMusic(selectedMusic);
+                SelectedTrack = trackList[currentIndex - 1];
+                PlayTrack(selectedTrack);
             }
         }
     }
