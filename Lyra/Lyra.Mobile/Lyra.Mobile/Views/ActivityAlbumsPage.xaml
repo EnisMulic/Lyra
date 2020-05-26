@@ -11,7 +11,7 @@
     </ContentPage.BindingContext>
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converters:ImageConverter x:Key="ImgConvertor"></converters:ImageConverter>
+            <converters:ImageConverter x:Key="ImgConverter"></converters:ImageConverter>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -22,7 +22,7 @@
                         <ViewCell>
                             <StackLayout Padding="10" Orientation="Horizontal">
                                 <StackLayout>
-                                    <Image Source="{Binding Album.Image, Converter={StaticResource ImgConvertor}}"
+                                    <Image Source="{Binding Album.Image, Converter={StaticResource ImgConverter}}"
                                            WidthRequest="100"
                                            HeightRequest="100"
                                     ></Image>

@@ -11,7 +11,7 @@
     </ContentPage.BindingContext>
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converters:ImageConverter x:Key="ImgConvertor"></converters:ImageConverter>
+            <converters:ImageConverter x:Key="ImgConverter"></converters:ImageConverter>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -32,7 +32,7 @@
                                         VerticalOptions="Center"
                                         BorderColor="Black"
                                     >
-                                        <Image Source="{Binding Artist.Image, Converter={StaticResource ImgConvertor}}"
+                                        <Image Source="{Binding Artist.Image, Converter={StaticResource ImgConverter}}"
                                                Aspect="AspectFill"
                                         ></Image>
                                     </Frame>

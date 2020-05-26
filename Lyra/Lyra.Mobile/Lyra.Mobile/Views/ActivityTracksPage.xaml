@@ -11,8 +11,8 @@
     </ContentPage.BindingContext>
     <ContentPage.Resources>
         <ResourceDictionary>
-            <converters:ImageConverter x:Key="ImgConvertor"></converters:ImageConverter>
-            <converters:MainArtistConverter x:Key="MainArtistConvertor"></converters:MainArtistConverter>
+            <converters:ImageConverter x:Key="ImgConverter"></converters:ImageConverter>
+            <converters:MainArtistConverter x:Key="MainArtistConverter"></converters:MainArtistConverter>
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
@@ -36,7 +36,7 @@
                                                 <FormattedString.Spans>
                                                     <Span Text="by" />
                                                     <Span Text=" " />
-                                                    <Span Text="{Binding Track.TrackArtists, Converter={StaticResource MainArtistConvertor}}" />
+                                                    <Span Text="{Binding Track.TrackArtists, Converter={StaticResource MainArtistConverter}}" />
                                                 </FormattedString.Spans>
                                             </FormattedString>
                                         </Label.FormattedText>
