@@ -27,10 +27,10 @@ namespace Lyra.Mobile.Views
             await model.Init();
         }
 
-        private void Track_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private async void Track_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var track = (e.SelectedItem as Track);
-            Navigation.PushAsync(new MusicPlayerPage(track, new List<Track> { track }));
+            await Navigation.PushAsync(new MusicPlayerPage(track, new List<Track> { track }));
         }
     }
 }

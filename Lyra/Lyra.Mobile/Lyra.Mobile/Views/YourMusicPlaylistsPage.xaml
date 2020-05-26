@@ -34,7 +34,8 @@
                     <TapGestureRecognizer Tapped="OnTapped"/>
                 </StackLayout.GestureRecognizers>
             </StackLayout>
-            <ListView ItemsSource="{Binding PlaylistsList}">
+            <ListView ItemsSource="{Binding PlaylistsList}"
+                      ItemSelected="Playlist_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

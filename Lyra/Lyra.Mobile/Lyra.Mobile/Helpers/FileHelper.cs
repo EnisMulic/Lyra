@@ -10,13 +10,19 @@ namespace Lyra.Mobile.Helpers
         private static string _path { get; set; } = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         public static string SaveFile(byte[] file, string filename, string path = null)
         {
-            filename = Path.Combine(string.IsNullOrEmpty(path) ? _path : path, filename);
-            using (var fs = new FileStream(filename, FileMode.Create, FileAccess.Write))
+            if(file.Length > 0)
             {
-                fs.Write(file, 0, file.Length);
-                fs.Close();
+                filename = Path.Combine(string.IsNullOrEmpty(path) ? _path : path, filename);
+                using (var fs = new FileStream(filename, FileMode.Create, FileAccess.Write))
+                {
+                    fs.Write(file, 0, file.Length);
+                    fs.Close();
+                }
+
+                return filename;
             }
-            return filename;
+
+            return null;
         }
 
         public static bool DeleteFile(string filename, string path = null)

@@ -1,4 +1,5 @@
 ﻿using Lyra.Mobile.ViewModels;
+using Lyra.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +26,12 @@ namespace Lyra.Mobile.Views
         {
             base.OnAppearing();
             await model.Init();
+        }
+
+        private async void Track_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var track = (e.SelectedItem as Track);
+            await Navigation.PushAsync(new MusicPlayerPage(track, new List<Track> { track }));
         }
     }
 }

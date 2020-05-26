@@ -16,7 +16,8 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
-            <ListView ItemsSource="{Binding AlbumsList}">
+            <ListView ItemsSource="{Binding AlbumsList}"
+                      ItemSelected="Album_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

@@ -140,26 +140,28 @@ namespace Lyra.Mobile.ViewModels
 
 
             string filename = FileHelper.SaveFile(track.MP3File, track.Name + Guid.NewGuid() + "mp3");        
-            await mediaInfo.Play(filename);
-
-
-
-            IsPlaying = true;
-
-            mediaInfo.MediaItemFinished += (sender, args) =>
+            
+            if(!string.IsNullOrEmpty(filename))
             {
-                IsPlaying = false;
-                FileHelper.DeleteFile(filename);
-                NextTrack();
-            };
+                await mediaInfo.Play(filename);
 
-            Device.StartTimer(TimeSpan.FromMilliseconds(500), () =>
-            {
-                Duration = mediaInfo.Duration;
-                Maximum = duration.TotalSeconds;
-                Position = mediaInfo.Position;
-                return true;
-            });
+                IsPlaying = true;
+
+                mediaInfo.MediaItemFinished += (sender, args) =>
+                {
+                    IsPlaying = false;
+                    FileHelper.DeleteFile(filename);
+                    NextTrack();
+                };
+
+                Device.StartTimer(TimeSpan.FromMilliseconds(500), () =>
+                {
+                    Duration = mediaInfo.Duration;
+                    Maximum = duration.TotalSeconds;
+                    Position = mediaInfo.Position;
+                    return true;
+                });
+            }
         }
 
         private void NextTrack()

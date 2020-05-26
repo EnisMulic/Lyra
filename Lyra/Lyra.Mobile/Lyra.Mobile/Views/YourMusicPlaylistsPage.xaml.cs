@@ -1,4 +1,6 @@
-﻿using Lyra.Mobile.ViewModels;
+﻿using Lyra.Mobile.Services;
+using Lyra.Mobile.ViewModels;
+using Lyra.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +16,7 @@ namespace Lyra.Mobile.Views
     public partial class YourMusicPlaylistsPage : ContentPage
     {
         private YourMusicPlaylistsViewModel model = null;
+        private readonly APIService _service = new APIService("Playlist");
         public YourMusicPlaylistsPage()
         {
             InitializeComponent();
@@ -31,5 +34,15 @@ namespace Lyra.Mobile.Views
             await Navigation.PushAsync(new NewPlaylistPage());
         }
 
+        private async void Playlist_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var selectedPlaylist = (e.SelectedItem as Playlist);
+            var tracks = await _service.GetTracks<List<Track>>(selectedPlaylist.ID, null);
+
+            if(tracks.Count > 0)
+            {
+                await Navigation.PushAsync(new MusicPlayerPage(tracks[0], new List<Track>(tracks)));
+            }
+        }
     }
 }
