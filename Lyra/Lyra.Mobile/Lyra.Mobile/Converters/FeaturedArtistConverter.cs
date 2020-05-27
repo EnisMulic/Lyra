@@ -22,17 +22,20 @@ namespace Lyra.Mobile.Converters
                     .ToList();
 
 
-                string featuredArtists = "";
-                for(int i = 0; i < ftArtists.Count; i++)
+                if(ftArtists.Count() > 0)
                 {
-                    featuredArtists += ftArtists[i].Name;
-                    if(i < ftArtists.Count - 1)
+                    string featuredArtists = "";
+                    for (int i = 0; i < ftArtists.Count; i++)
                     {
-                        featuredArtists += ", ";
+                        featuredArtists += ftArtists[i]?.Name;
+                        if (i < ftArtists.Count - 1)
+                        {
+                            featuredArtists += ", ";
+                        }
                     }
-                }
 
-                return featuredArtists;
+                    return "ft " + featuredArtists;
+                }
             }
 
             return null;

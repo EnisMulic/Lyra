@@ -8,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Input;
@@ -97,12 +98,14 @@ namespace Lyra.Mobile.ViewModels
         }
         #endregion
 
-        public MusicPlayerViewModel(Track selectedMusic, ObservableCollection<Track> musicList)
+        public MusicPlayerViewModel(ObservableCollection<Track> trackList)
         {
-            this.selectedTrack = selectedMusic;
-            this.trackList = musicList;
-            PlayTrack(selectedMusic);
-            isPlaying = true;
+            this.trackList = trackList;
+
+            if(trackList != null)
+            {
+                PlayTrack(trackList[0].ID);
+            }
         }
 
         
@@ -133,15 +136,14 @@ namespace Lyra.Mobile.ViewModels
                 NextTrack();
         }
 
-        private async void PlayTrack(Track music)
+        private async void PlayTrack(int ID)
         {
-            var track = await _trackService.GetById<Model.Track>(music.ID);
+            SelectedTrack = await _trackService.GetById<Model.Track>(ID);
             var mediaInfo = CrossMediaManager.Current;
 
+            string filename = FileHelper.SaveFile(selectedTrack.MP3File, selectedTrack.Name + Guid.NewGuid() + "mp3");        
 
-            string filename = FileHelper.SaveFile(track.MP3File, track.Name + Guid.NewGuid() + "mp3");        
-            
-            if(!string.IsNullOrEmpty(filename))
+            if (!string.IsNullOrEmpty(filename))
             {
                 await mediaInfo.Play(filename);
 
@@ -161,28 +163,30 @@ namespace Lyra.Mobile.ViewModels
                     Position = mediaInfo.Position;
                     return true;
                 });
+
+                isPlaying = true;
             }
         }
 
         private void NextTrack()
         {
-            var currentIndex = trackList.IndexOf(selectedTrack);
+            var currentIndex = trackList.Select(i => i.ID).ToList().IndexOf(selectedTrack.ID);
 
             if (currentIndex < trackList.Count - 1)
             {
                 SelectedTrack = trackList[currentIndex + 1];
-                PlayTrack(selectedTrack);
+                PlayTrack(selectedTrack.ID);
             }
         }
 
         private void PreviousTrack()
         {
-            var currentIndex = trackList.IndexOf(selectedTrack);
+            var currentIndex = trackList.Select(i => i.ID).ToList().IndexOf(selectedTrack.ID);
 
             if (currentIndex > 0)
             {
                 SelectedTrack = trackList[currentIndex - 1];
-                PlayTrack(selectedTrack);
+                PlayTrack(selectedTrack.ID);
             }
         }
     }

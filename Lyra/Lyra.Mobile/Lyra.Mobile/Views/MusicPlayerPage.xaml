@@ -54,7 +54,7 @@
                         VerticalOptions="Center"
                     >
                         <Image 
-                            Source="{Binding SelectedMusic.CoverImage}"
+                            Source="{Binding SelectedTrack.CoverImage}"
                             Aspect="AspectFill" 
                             HeightRequest="150" 
                             WidthRequest="150" 
@@ -71,7 +71,7 @@
                                 <FormattedString>
                                     <FormattedString.Spans>
                                         <Span Text="{Binding SelectedTrack.TrackArtists, Converter={StaticResource MainArtistConverter}}" />
-                                        <Span Text=" ft " />
+                                        <Span Text=" " />
                                         <Span Text="{Binding SelectedTrack.TrackArtists, Converter={StaticResource FeaturedArtistConverter}}" />
                                     </FormattedString.Spans>
                                 </FormattedString>

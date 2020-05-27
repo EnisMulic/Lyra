@@ -38,11 +38,7 @@ namespace Lyra.Mobile.Views
         {
             var selectedPlaylist = (e.SelectedItem as Playlist);
             var tracks = await _service.GetTracks<List<Track>>(selectedPlaylist.ID, null);
-
-            if(tracks.Count > 0)
-            {
-                await Navigation.PushAsync(new MusicPlayerPage(tracks[0], new List<Track>(tracks)));
-            }
+            await Navigation.PushAsync(new MusicPlayerPage(new List<Track>(tracks)));
         }
     }
 }

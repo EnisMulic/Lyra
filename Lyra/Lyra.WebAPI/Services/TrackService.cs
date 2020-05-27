@@ -65,6 +65,7 @@ namespace Lyra.WebAPI.Services
         {
             var entity = await _context.Tracks
                 .Include(i => i.TrackArtists)
+                .ThenInclude(i => i.Artist)
                 .Include(i => i.TrackGenres)
                 .SingleOrDefaultAsync(i => i.ID == ID);
 
