@@ -44,6 +44,10 @@
                                            Style="{DynamicResource ListItemTextStyle}" 
                                            Padding="10, 20, 0, 0"
                                            FontSize="16" />
+                                    <Label Text="{Binding InteractedAt, StringFormat='{0:dd/MM/yyyy hh:mm:ss}'}"
+                                           LineBreakMode="NoWrap"
+                                           Padding="10, 0, 0, 0"
+                                           FontSize="10" />
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>
