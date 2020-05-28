@@ -266,9 +266,9 @@ namespace Lyra.WebAPI.Services
             return !await _context.Users.AnyAsync(i => i.Username == Username);
         }
 
-        public async Task<List<Model.Track>> GetFavouriteTracks(int id)
+        public async Task<List<Model.Track>> GetFavouriteTracks(int id, TrackSearchRequest request)
         {
-            var list = await _context.UserFavouriteTracks
+            var query = _context.UserFavouriteTracks
                 .Include(i => i.Track.TrackArtists)
                 .ThenInclude(i => i.Artist)
                 .Where(i => i.UserID == id)
@@ -283,14 +283,27 @@ namespace Lyra.WebAPI.Services
                         TrackArtists = i.TrackArtists
                     }
                 )
-                .ToListAsync();
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(request?.Name))
+            {
+                query = query.Where(x => x.Name.StartsWith(request.Name));
+            }
+
+            query = query.Skip((request.Page - 1) * request.ItemsPerPage);
+            if (request.ItemsPerPage > 0)
+            {
+                query = query.Take(request.ItemsPerPage);
+            }
+
+            var list = await query.ToListAsync();
 
             return _mapper.Map<List<Model.Track>>(list);
         }
 
-        public async Task<List<Model.Album>> GetFavouriteAlbums(int id)
+        public async Task<List<Model.Album>> GetFavouriteAlbums(int id, AlbumSearchRequest request)
         {
-            var list = await _context.UserFavouriteAlbums
+            var query =  _context.UserFavouriteAlbums
                 .Where(i => i.UserID == id)
                 .Select(i => i.Album)
                 .Select
@@ -304,58 +317,139 @@ namespace Lyra.WebAPI.Services
                         Artist = i.Artist
                     }
                 )
-                .ToListAsync();
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(request?.Name))
+            {
+                query = query.Where(x => x.Name.StartsWith(request.Name));
+            }
+
+            query = query.Skip((request.Page - 1) * request.ItemsPerPage);
+            if (request.ItemsPerPage > 0)
+            {
+                query = query.Take(request.ItemsPerPage);
+            }
+
+            var list = await query.ToListAsync();
 
             return _mapper.Map<List<Model.Album>>(list);
         }
 
-        public async Task<List<Model.Artist>> GetFavouriteArtists(int id)
+        public async Task<List<Model.Artist>> GetFavouriteArtists(int id, ArtistSearchRequest request)
         {
-            var list = await _context.UserFavouriteArtists
+            var query = _context.UserFavouriteArtists
                 .Where(i => i.UserID == id)
                 .Select(i => i.Artist)
-                .ToListAsync();
+                .AsQueryable();
+
+
+            if (!string.IsNullOrWhiteSpace(request?.Name))
+            {
+                query = query.Where(x => x.Name.StartsWith(request.Name));
+            }
+
+            query = query.Skip((request.Page - 1) * request.ItemsPerPage);
+            if (request.ItemsPerPage > 0)
+            {
+                query = query.Take(request.ItemsPerPage);
+            }
+
+            var list = await query.ToListAsync();
 
             return _mapper.Map<List<Model.Artist>>(list);
         }
 
-        public async Task<List<Model.UserActivityTrack>> GetActivityTracks(int id)
+        public async Task<List<Model.UserActivityTrack>> GetActivityTracks(int id, TrackSearchRequest request)
         {
-            var list = await _context.UserActivityTracks
+            var query =  _context.UserActivityTracks
                 .Include(i => i.Track.TrackArtists)
                 .ThenInclude(i => i.Artist)
                 .Where(i => i.UserID == id)
-                .ToListAsync();
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(request?.Name))
+            {
+                query = query.Where(x => x.Track.Name.StartsWith(request.Name));
+            }
+
+            query = query.Skip((request.Page - 1) * request.ItemsPerPage);
+            if (request.ItemsPerPage > 0)
+            {
+                query = query.Take(request.ItemsPerPage);
+            }
+
+            var list = await query.ToListAsync();
 
             return _mapper.Map<List<Model.UserActivityTrack>>(list);
         }
 
-        public async Task<List<Model.UserActivityAlbum>> GetActivityAlbums(int id)
+        public async Task<List<Model.UserActivityAlbum>> GetActivityAlbums(int id, AlbumSearchRequest request)
         {
-            var list = await _context.UserActivityAlbums
+            var query =  _context.UserActivityAlbums
                 .Where(i => i.UserID == id)
                 .Include(i => i.Album)
-                .ToListAsync();
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(request?.Name))
+            {
+                query = query.Where(x => x.Album.Name.StartsWith(request.Name));
+            }
+
+            query = query.Skip((request.Page - 1) * request.ItemsPerPage);
+            if (request.ItemsPerPage > 0)
+            {
+                query = query.Take(request.ItemsPerPage);
+            }
+
+            var list = await query.ToListAsync();
 
             return _mapper.Map<List<Model.UserActivityAlbum>>(list);
         }
 
-        public async Task<List<Model.UserActivityArtist>> GetActivityArtists(int id)
+        public async Task<List<Model.UserActivityArtist>> GetActivityArtists(int id, ArtistSearchRequest request)
         {
-            var list = await _context.UserActivityArtists
+            var query =  _context.UserActivityArtists
                 .Where(i => i.UserID == id)
                 .Include(i => i.Artist)
-                .ToListAsync();
+                .AsQueryable();
+
+
+            if (!string.IsNullOrWhiteSpace(request?.Name))
+            {
+                query = query.Where(x => x.Artist.Name.StartsWith(request.Name));
+            }
+
+            query = query.Skip((request.Page - 1) * request.ItemsPerPage);
+            if (request.ItemsPerPage > 0)
+            {
+                query = query.Take(request.ItemsPerPage);
+            }
+
+            var list = await query.ToListAsync();
+
 
             return _mapper.Map<List<Model.UserActivityArtist>>(list);
         }
 
-        public async Task<List<Model.UserActivityPlaylist>> GetActivityPlaylists(int id)
+        public async Task<List<Model.UserActivityPlaylist>> GetActivityPlaylists(int id, PlaylistSearchRequest request)
         {
-            var list = await _context.UserActivityPlaylists
+            var query =  _context.UserActivityPlaylists
                 .Where(i => i.UserID == id)
                 .Include(i => i.Playlist)
-                .ToListAsync();
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(request?.Name))
+            {
+                query = query.Where(x => x.Playlist.Name.StartsWith(request.Name));
+            }
+
+            query = query.Skip((request.Page - 1) * request.ItemsPerPage);
+            if (request.ItemsPerPage > 0)
+            {
+                query = query.Take(request.ItemsPerPage);
+            }
+
+            var list = await query.ToListAsync();
 
             return _mapper.Map<List<Model.UserActivityPlaylist>>(list);
         }

@@ -40,51 +40,51 @@ namespace Lyra.WebAPI.Controllers
 
         [Authorize]
         [HttpGet("{id}/FavouriteTracks")]
-        public async Task<List<Track>> GetFavouriteTracks(int id)
+        public async Task<List<Track>> GetFavouriteTracks(int id, [FromQuery] TrackSearchRequest request)
         {
-            return await _service.GetFavouriteTracks(id);
+            return await _service.GetFavouriteTracks(id, request);
         }
 
         [Authorize]
         [HttpGet("{id}/FavouriteAlbums")]
-        public async Task<List<Album>> GetFavouriteAlbums(int id)
+        public async Task<List<Album>> GetFavouriteAlbums(int id, [FromQuery] AlbumSearchRequest request)
         {
-            return await _service.GetFavouriteAlbums(id);
+            return await _service.GetFavouriteAlbums(id, request);
         }
 
         [Authorize]
         [HttpGet("{id}/FavouriteArtists")]
-        public async Task<List<Artist>> GetFavouriteArtists(int id)
+        public async Task<List<Artist>> GetFavouriteArtists(int id, [FromQuery] ArtistSearchRequest request)
         {
-            return await _service.GetFavouriteArtists(id);
+            return await _service.GetFavouriteArtists(id, request);
         }
 
         [Authorize]
         [HttpGet("{id}/ActivityArtists")]
-        public async Task<List<UserActivityArtist>> GetActivityArtists(int id)
+        public async Task<List<UserActivityArtist>> GetActivityArtists(int id, [FromQuery] ArtistSearchRequest request)
         {
-            return await _service.GetActivityArtists(id);
+            return await _service.GetActivityArtists(id, request);
         }
 
         [Authorize]
         [HttpGet("{id}/ActivityAlbums")]
-        public async Task<List<UserActivityAlbum>> GetActivityAlbums(int id)
+        public async Task<List<UserActivityAlbum>> GetActivityAlbums(int id, [FromQuery] AlbumSearchRequest request)
         {
-            return await _service.GetActivityAlbums(id);
+            return await _service.GetActivityAlbums(id, request);
         }
 
         [Authorize]
         [HttpGet("{id}/ActivityTracks")]
-        public async Task<List<UserActivityTrack>> GetActivityTracks(int id)
+        public async Task<List<UserActivityTrack>> GetActivityTracks(int id, [FromQuery] TrackSearchRequest request)
         {
-            return await _service.GetActivityTracks(id);
+            return await _service.GetActivityTracks(id, request);
         }
 
         [Authorize]
         [HttpGet("{id}/ActivityPlaylists")]
-        public async Task<List<UserActivityPlaylist>> GetActivityPlaylists(int id)
+        public async Task<List<UserActivityPlaylist>> GetActivityPlaylists(int id, [FromQuery] PlaylistSearchRequest request)
         {
-            return await _service.GetActivityPlaylists(id);
+            return await _service.GetActivityPlaylists(id, request);
         }
 
     }

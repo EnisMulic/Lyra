@@ -218,11 +218,17 @@ namespace Lyra.Mobile.Services
 
         }
 
-        public async Task<List<Model.Artist>> GetFavouriteArtists(int ID)
+        public async Task<List<Model.Artist>> GetFavouriteArtists(int ID, ArtistSearchRequest search)
         {
             try
             {
                 var url = $"{APIUrl}/User/{ID}/FavouriteArtists";
+
+                if (search != null)
+                {
+                    url += "?";
+                    url += await search.ToQueryString();
+                }
 
                 return await url.WithBasicAuth(Username, Password).GetJsonAsync<List<Model.Artist>>();
             }
@@ -241,11 +247,17 @@ namespace Lyra.Mobile.Services
             }
         }
 
-        public async Task<List<Model.Album>> GetFavouriteAlbums(int ID)
+        public async Task<List<Model.Album>> GetFavouriteAlbums(int ID, AlbumSearchRequest search)
         {
             try
             {
                 var url = $"{APIUrl}/User/{ID}/FavouriteAlbums";
+
+                if (search != null)
+                {
+                    url += "?";
+                    url += await search.ToQueryString();
+                }
 
                 return await url.WithBasicAuth(Username, Password).GetJsonAsync<List<Model.Album>>();
             }
@@ -264,11 +276,17 @@ namespace Lyra.Mobile.Services
             }
         }
 
-        public async Task<List<Model.Track>> GetFavouriteTracks(int ID)
+        public async Task<List<Model.Track>> GetFavouriteTracks(int ID, TrackSearchRequest search)
         {
             try
             {
                 var url = $"{APIUrl}/User/{ID}/FavouriteTracks";
+
+                if (search != null)
+                {
+                    url += "?";
+                    url += await search.ToQueryString();
+                }
 
                 return await url.WithBasicAuth(Username, Password).GetJsonAsync<List<Model.Track>>();
             }
@@ -288,11 +306,17 @@ namespace Lyra.Mobile.Services
         }
 
 
-        public async Task<List<UserActivityTrack>> GetActivityTracks(int ID)
+        public async Task<List<UserActivityTrack>> GetActivityTracks(int ID, TrackSearchRequest search)
         {
             try
             {
                 var url = $"{APIUrl}/User/{ID}/ActivityTracks";
+
+                if (search != null)
+                {
+                    url += "?";
+                    url += await search.ToQueryString();
+                }
 
                 return await url.WithBasicAuth(Username, Password).GetJsonAsync<List<UserActivityTrack>>();
             }
@@ -311,11 +335,17 @@ namespace Lyra.Mobile.Services
             }
         }
 
-        public async Task<List<UserActivityAlbum>> GetActivityAlbums(int ID)
+        public async Task<List<UserActivityAlbum>> GetActivityAlbums(int ID, AlbumSearchRequest search)
         {
             try
             {
                 var url = $"{APIUrl}/User/{ID}/ActivityAlbums";
+
+                if (search != null)
+                {
+                    url += "?";
+                    url += await search.ToQueryString();
+                }
 
                 return await url.WithBasicAuth(Username, Password).GetJsonAsync<List<UserActivityAlbum>>();
             }
@@ -334,11 +364,17 @@ namespace Lyra.Mobile.Services
             }
         }
 
-        public async Task<List<UserActivityArtist>> GetActivityArtists(int ID)
+        public async Task<List<UserActivityArtist>> GetActivityArtists(int ID, ArtistSearchRequest search)
         {
             try
             {
                 var url = $"{APIUrl}/User/{ID}/ActivityArtists";
+
+                if (search != null)
+                {
+                    url += "?";
+                    url += await search.ToQueryString();
+                }
 
                 return await url.WithBasicAuth(Username, Password).GetJsonAsync<List<UserActivityArtist>>();
             }
@@ -358,11 +394,17 @@ namespace Lyra.Mobile.Services
         }
 
 
-        public async Task<List<UserActivityPlaylist>> GetActivityPlaylists(int ID)
+        public async Task<List<UserActivityPlaylist>> GetActivityPlaylists(int ID, PlaylistSearchRequest search)
         {
             try
             {
                 var url = $"{APIUrl}/User/{ID}/ActivityPlaylists";
+
+                if (search != null)
+                {
+                    url += "?";
+                    url += await search.ToQueryString();
+                }
 
                 return await url.WithBasicAuth(Username, Password).GetJsonAsync<List<UserActivityPlaylist>>();
             }

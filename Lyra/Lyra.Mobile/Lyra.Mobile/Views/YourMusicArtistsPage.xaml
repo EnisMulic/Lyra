@@ -18,6 +18,13 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
+            <SearchBar x:Name="searchBar"
+                       Placeholder="Search..."
+                       HorizontalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Italic" 
+                       SearchCommand="{Binding PerformSearch}"
+                       SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
             <ListView ItemsSource="{Binding ArtistsList}"
                       ItemSelected="Artist_ItemSelected">
                 <ListView.ItemTemplate>

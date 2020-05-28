@@ -15,26 +15,39 @@ namespace Lyra.Mobile.ViewModels
     {
         private readonly APIService _service = new APIService("Playlist");
         public ObservableCollection<Model.Playlist> PlaylistsList { get; set; } = new ObservableCollection<Model.Playlist> ();
-        public ICommand NewPlaylistCommand { get; set; }
+        public ICommand PerformSearch { get; set; }
+
         public YourMusicPlaylistsViewModel()
         {
-            NewPlaylistCommand = new Command(() => CreateNewPlaylist());
+            PerformSearch = new Command(async (object query) => await Search(query));
         }
 
-        private void CreateNewPlaylist()
+        
+
+        private async Task Search(object query)
         {
-            throw new NotImplementedException();
+            var request = new PlaylistSearchRequest()
+            {
+                UserID = SignedInUserHelper.User.ID,
+                Name = query as string
+            };
+
+            await Init(request);
         }
 
-        public async Task Init()
+
+        public async Task Init(PlaylistSearchRequest request = null)
         {
             PlaylistsList.Clear();
             try
             {
-                var request = new PlaylistSearchRequest()
+                if(request == null)
                 {
-                    UserID = SignedInUserHelper.User.ID
-                };
+                    request = new PlaylistSearchRequest()
+                    {
+                        UserID = SignedInUserHelper.User.ID
+                    };
+                }
 
                 var playlists = await _service.Get<List<Model.Playlist>>(request);
                 foreach (var playlist in playlists)

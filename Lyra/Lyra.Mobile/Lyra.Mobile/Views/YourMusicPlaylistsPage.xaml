@@ -19,6 +19,13 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout>
+            <SearchBar x:Name="searchBar"
+                       Placeholder="Search..."
+                       HorizontalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Italic" 
+                       SearchCommand="{Binding PerformSearch}"
+                       SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
             <StackLayout Padding="10" Orientation="Horizontal" >
                 <Image Source="{ext:ImageResource Lyra.Mobile.Assets.add.png}"
                        WidthRequest="100"
