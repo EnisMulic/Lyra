@@ -64,6 +64,8 @@ namespace Lyra.WebAPI.Services
         {
             var query = _context.TrackArtists
                 .Include(i => i.Track)
+                .ThenInclude(i => i.TrackArtists)
+                .ThenInclude(i => i.Artist)
                 .Where(i => i.ArtistID == ID)
                 .Select(i => i.Track)
                 .Select

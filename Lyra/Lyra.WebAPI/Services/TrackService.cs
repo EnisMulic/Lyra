@@ -25,6 +25,7 @@ namespace Lyra.WebAPI.Services
         {
             var query = _context.Tracks
                 .Include(i => i.TrackArtists)
+                .ThenInclude(i => i.Artist)
                 .Include(i => i.TrackGenres)
                 .Select
                 (

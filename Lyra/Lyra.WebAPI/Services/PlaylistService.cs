@@ -56,13 +56,28 @@ namespace Lyra.WebAPI.Services
             return _mapper.Map<Model.Playlist>(entity);
         }
 
-        public async Task<List<Model.Track>> GetTracks(int ID)
+        public async Task<List<Model.Track>> GetTracks(int ID, TrackSearchRequest request)
         {
-            var list = await _context.PlaylistTracks
+            var query = _context.PlaylistTracks
                 .Include(i => i.Track)
+                .ThenInclude(i => i.TrackArtists)
+                .ThenInclude(i => i.Artist)
                 .Where(i => i.PlaylistID == ID)
                 .Select(i => i.Track)
-                .ToListAsync();
+                .AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(request?.Name))
+            {
+                query = query.Where(x => x.Name.StartsWith(request.Name));
+            }
+
+            query = query.Skip((request.Page - 1) * request.ItemsPerPage);
+            if (request.ItemsPerPage > 0)
+            {
+                query = query.Take(request.ItemsPerPage);
+            }
+
+            var list = await query.ToListAsync();
 
             return _mapper.Map<List<Model.Track>>(list);
         }
