@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:converters="clr-namespace:Lyra.Mobile.Converters" 
+             xmlns:vm="clr-namespace:Lyra.Mobile.ViewModels"
+             mc:Ignorable="d"
+             x:Class="Lyra.Mobile.Views.PlaylistDetailsPage">
+    <ContentPage.BindingContext>
+        <vm:PlaylistDetailsViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="ImgConverter"></converters:ImageConverter>
+            <converters:MainArtistConverter x:Key="MainArtistConverter"></converters:MainArtistConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar x:Name="searchBar"
+                       Placeholder="Search..."
+                       HorizontalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Italic" 
+                       SearchCommand="{Binding PerformSearch}"
+                       SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"
+            />
+            <Label HorizontalOptions="Center"
+                   FontSize="20"
+                   Padding="0, 5, 0, 0"
+                   Text="{Binding Playlist.Name}"></Label>
+            <Frame 
+                Margin="50"
+                WidthRequest="250"
+                HeightRequest="250" 
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                BorderColor="Black"
+            >
+                <Image 
+                    Source="{Binding Image, Converter={StaticResource ImgConverter}}" 
+                    Aspect="AspectFill"
+                >
+                </Image>
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer 
+                        Command="{Binding ChangeImage}"
+                        CommandParameter="Image1"
+                    />
+                </Frame.GestureRecognizers>
+            </Frame>
+
+            <ListView ItemsSource="{Binding TracksList}"
+                      ItemSelected="Track_ItemSelected"
+            >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Horizontal">
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{Binding Name}" 
+                                           LineBreakMode="NoWrap" 
+                                           Style="{DynamicResource ListItemTextStyle}" 
+                                           Padding="10, 0, 0, 0"
+                                           FontSize="16" />
+                                    <Label FontSize="16"
+                                           Padding="10, 0, 0, 0"
+                                           LineBreakMode="NoWrap" >
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <Span Text="by" />
+                                                    <Span Text=" " />
+                                                    <Span Text="{Binding TrackArtists, Converter={StaticResource MainArtistConverter}}" />
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
