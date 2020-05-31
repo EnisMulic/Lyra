@@ -46,6 +46,14 @@ namespace Lyra.WebAPI.Controllers
         }
 
         [Authorize]
+        [HttpPost("{id}/FavouriteTrack")]
+        public async Task<Track> InsertFavouriteTrack(int id, int trackID)
+        {
+            return await _service.InsertFavouriteTrack(id, trackID);
+        }
+
+
+        [Authorize]
         [HttpGet("{id}/FavouriteAlbums")]
         public async Task<List<Album>> GetFavouriteAlbums(int id, [FromQuery] AlbumSearchRequest request)
         {
@@ -53,10 +61,24 @@ namespace Lyra.WebAPI.Controllers
         }
 
         [Authorize]
+        [HttpPost("{id}/FavouriteAlbum")]
+        public async Task<Album> InsertFavouriteAlbum(int id, int albumID)
+        {
+            return await _service.InsertFavouriteAlbum(id, albumID);
+        }
+
+        [Authorize]
         [HttpGet("{id}/FavouriteArtists")]
         public async Task<List<Artist>> GetFavouriteArtists(int id, [FromQuery] ArtistSearchRequest request)
         {
             return await _service.GetFavouriteArtists(id, request);
+        }
+
+        [Authorize]
+        [HttpPost("{id}/FavouriteArtist")]
+        public async Task<Artist> InsertFavouriteArtist(int id, int artistID)
+        {
+            return await _service.InsertFavouriteArtist(id, artistID);
         }
 
         [Authorize]

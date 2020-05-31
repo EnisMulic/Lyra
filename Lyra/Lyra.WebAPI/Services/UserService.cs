@@ -453,5 +453,84 @@ namespace Lyra.WebAPI.Services
 
             return _mapper.Map<List<Model.UserActivityPlaylist>>(list);
         }
+
+        public async Task<Model.Track> InsertFavouriteTrack(int id, int TrackID)
+        {
+            var entity = new UserFavouriteTrack()
+            {
+                UserID = id,
+                TrackID = TrackID
+            };
+
+            await _context.UserFavouriteTracks.AddAsync(entity);
+
+            return _mapper.Map<Model.Track>(entity);
+        }
+
+        public async Task<Model.Album> InsertFavouriteAlbum(int id, int AlbumID)
+        {
+            var entity = new UserFavouriteAlbum()
+            {
+                UserID = id,
+                AlbumID = AlbumID
+            };
+
+            await _context.UserFavouriteAlbums.AddAsync(entity);
+
+            return _mapper.Map<Model.Album>(entity);
+        }
+
+        public async Task<Model.Artist> InsertFavouriteArtist(int id, int ArtistID)
+        {
+            var entity = new UserFavouriteArtist()
+            {
+                UserID = id,
+                ArtistID = ArtistID
+            };
+
+            await _context.UserFavouriteArtists.AddAsync(entity);
+
+            return _mapper.Map<Model.Artist>(entity);
+        }
+
+        public async Task<Model.UserActivityTrack> InsertActivityTrack(int id, Model.UserActivityTrack request)
+        {
+            var entity = _mapper.Map<Database.UserActivityTrack>(request);
+
+            await _context.UserActivityTracks.AddAsync(entity);
+            await _context.SaveChangesAsync();
+
+            return _mapper.Map<Model.UserActivityTrack>(entity);
+        }
+
+        public async Task<Model.UserActivityAlbum> InsertActivityAlbum(int id, Model.UserActivityAlbum request)
+        {
+            var entity = _mapper.Map<Database.UserActivityAlbum>(request);
+
+            await _context.UserActivityAlbums.AddAsync(entity);
+            await _context.SaveChangesAsync();
+
+            return _mapper.Map<Model.UserActivityAlbum>(entity);
+        }
+
+        public async Task<Model.UserActivityArtist> InsertActivityArtist(int id, Model.UserActivityArtist request)
+        {
+            var entity = _mapper.Map<Database.UserActivityArtist>(request);
+
+            await _context.UserActivityArtists.AddAsync(entity);
+            await _context.SaveChangesAsync();
+
+            return _mapper.Map<Model.UserActivityArtist>(entity);
+        }
+
+        public async Task<Model.UserActivityPlaylist> InsertActivityPlaylist(int id, Model.UserActivityPlaylist request)
+        {
+            var entity = _mapper.Map<Database.UserActivityPlaylist>(request);
+
+            await _context.UserActivityPlaylists.AddAsync(entity);
+            await _context.SaveChangesAsync();
+
+            return _mapper.Map<Model.UserActivityPlaylist>(entity);
+        }
     }
 }
