@@ -14,9 +14,12 @@ namespace Lyra.WebAPI.Services
         Task<Model.User> SignUp(UserInsertRequest request);
         Task<List<Model.Track>> GetFavouriteTracks(int id, TrackSearchRequest request);
         Task<Model.Track> InsertFavouriteTrack(int id, int TrackID);
+        Task<bool> DeleteFavouriteTrack(int id, int TrackID);
         Task<List<Model.Album>> GetFavouriteAlbums(int id, AlbumSearchRequest request);
         Task<Model.Album> InsertFavouriteAlbum(int id, int AlbumID);
+        Task<bool> DeleteFavouriteAlbum(int id, int AlbumID);
         Task<List<Model.Artist>> GetFavouriteArtists(int id, ArtistSearchRequest request);
+        Task<bool> DeleteFavouriteArtist(int id, int ArtistID);
         Task<Model.Artist> InsertFavouriteArtist(int id, int ArtistID);
         Task<List<Model.UserActivityTrack>> GetActivityTracks(int id, TrackSearchRequest request);
         Task<Model.UserActivityTrack> InsertActivityTrack(int id, Model.UserActivityTrack request);

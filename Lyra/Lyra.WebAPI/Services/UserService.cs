@@ -463,6 +463,7 @@ namespace Lyra.WebAPI.Services
             };
 
             await _context.UserFavouriteTracks.AddAsync(entity);
+            await _context.SaveChangesAsync();
 
             return _mapper.Map<Model.Track>(entity);
         }
@@ -476,6 +477,7 @@ namespace Lyra.WebAPI.Services
             };
 
             await _context.UserFavouriteAlbums.AddAsync(entity);
+            await _context.SaveChangesAsync();
 
             return _mapper.Map<Model.Album>(entity);
         }
@@ -488,7 +490,8 @@ namespace Lyra.WebAPI.Services
                 ArtistID = ArtistID
             };
 
-            await _context.UserFavouriteArtists.AddAsync(entity);
+            var Entity = await _context.UserFavouriteArtists.AddAsync(entity);
+            await _context.SaveChangesAsync();
 
             return _mapper.Map<Model.Artist>(entity);
         }
@@ -531,6 +534,54 @@ namespace Lyra.WebAPI.Services
             await _context.SaveChangesAsync();
 
             return _mapper.Map<Model.UserActivityPlaylist>(entity);
+        }
+
+        public async Task<bool> DeleteFavouriteTrack(int id, int TrackID)
+        {
+            var entity = await _context.UserFavouriteTracks
+                .Where(i => i.UserID == id && i.TrackID == TrackID)
+                .SingleOrDefaultAsync();
+
+            if(entity != null)
+            {
+                _context.Remove(entity);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+
+            return false;
+        }
+
+        public async Task<bool> DeleteFavouriteAlbum(int id, int AlbumID)
+        {
+            var entity = await _context.UserFavouriteAlbums
+                .Where(i => i.UserID == id && i.AlbumID == AlbumID)
+                .SingleOrDefaultAsync();
+
+            if (entity != null)
+            {
+                _context.Remove(entity);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+
+            return false;
+        }
+
+        public async Task<bool> DeleteFavouriteArtist(int id, int ArtistID)
+        {
+            var entity = await _context.UserFavouriteArtists
+                .Where(i => i.UserID == id && i.ArtistID == ArtistID)
+                .SingleOrDefaultAsync();
+
+            if (entity != null)
+            {
+                _context.Remove(entity);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+
+            return false;
         }
     }
 }

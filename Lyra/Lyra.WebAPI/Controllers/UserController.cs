@@ -109,5 +109,25 @@ namespace Lyra.WebAPI.Controllers
             return await _service.GetActivityPlaylists(id, request);
         }
 
+        [Authorize]
+        [HttpDelete("{id}/FavouriteTrack")]
+        public async Task<bool> DeleteFavouriteTrack(int id, int trackID)
+        {
+            return await _service.DeleteFavouriteTrack(id, trackID);
+        }
+
+        [Authorize]
+        [HttpDelete("{id}/FavouriteAlbum")]
+        public async Task<bool> DeleteFavouriteAlbum(int id, int albumID)
+        {
+            return await _service.DeleteFavouriteAlbum(id, albumID);
+        }
+
+        [Authorize]
+        [HttpDelete("{id}/FavouriteArtist")]
+        public async Task<bool> DeleteFavouriteArtist(int id, int artistID)
+        {
+            return await _service.DeleteFavouriteArtist(id, artistID);
+        }
     }
 }
