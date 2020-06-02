@@ -24,27 +24,17 @@ namespace Lyra.WebAPI.Services
         public override async Task<List<Model.Track>> Get(TrackSearchRequest request)
         {
             var query = _context.Tracks
-                .Include(i => i.TrackArtists)
-                .ThenInclude(i => i.Artist)
-                .Include(i => i.TrackGenres)
                 .Select
                 (
-                    i => new Model.Track()
+                    i => new Database.Track()
                     {
                         ID = i.ID,
                         Name = i.Name,
-                        Length = i.Length.ToString(@"hh\:mm\:ss")
+                        Length = i.Length,
+                        TrackArtists = i.TrackArtists
                     }
                 )
                 .AsQueryable();
-
-            //if(request.ArtistID != 0)
-            //{
-            //    query = query.Where(i => i.TrackArtists
-            //        .Where(j => j.ArtistID == j.ArtistID)
-            //        .Select(j => j.ArtistID)
-            //        .Contains(request.ArtistID));
-            //}
 
             if (!string.IsNullOrWhiteSpace(request?.Name))
             {

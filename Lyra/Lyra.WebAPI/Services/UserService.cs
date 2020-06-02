@@ -465,7 +465,7 @@ namespace Lyra.WebAPI.Services
             await _context.UserFavouriteTracks.AddAsync(entity);
             await _context.SaveChangesAsync();
 
-            return _mapper.Map<Model.Track>(entity);
+            return _mapper.Map<Model.Track>(entity.Track);
         }
 
         public async Task<Model.Album> InsertFavouriteAlbum(int id, int AlbumID)

@@ -46,10 +46,10 @@ namespace Lyra.WebAPI.Controllers
         }
 
         [Authorize]
-        [HttpPost("{id}/FavouriteTrack")]
-        public async Task<Track> InsertFavouriteTrack(int id, int trackID)
+        [HttpPost("{id}/FavouriteTrack/{trackId}")]
+        public async Task<Track> InsertFavouriteTrack(int id, int trackId)
         {
-            return await _service.InsertFavouriteTrack(id, trackID);
+            return await _service.InsertFavouriteTrack(id, trackId);
         }
 
 

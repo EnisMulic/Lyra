@@ -423,5 +423,142 @@ namespace Lyra.Mobile.Services
             }
         }
 
+        public async Task<Track> InsertFavouriteTrack(int ID, int TrackID)
+        {
+            try
+            {
+                var url = $"{APIUrl}/User/{ID}/FavouriteTrack/{TrackID}";
+
+                return await url.WithBasicAuth(Username, Password).PostJsonAsync(null).ReceiveJson<Track>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                await Application.Current.MainPage.DisplayAlert("Error", stringBuilder.ToString(), "OK");
+                return default;
+            }
+        }
+
+        public async Task<Album> InsertFavouriteAlbum(int ID, int AlbumID)
+        {
+            try
+            {
+                var url = $"{APIUrl}/User/{ID}/FavouriteAlbum/{AlbumID}";
+
+                return await url.WithBasicAuth(Username, Password).PostJsonAsync(null).ReceiveJson<Album>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                await Application.Current.MainPage.DisplayAlert("Error", stringBuilder.ToString(), "OK");
+                return default;
+            }
+        }
+
+        public async Task<Artist> InsertFavouriteArtist(int ID, int ArtistID)
+        {
+            try
+            {
+                var url = $"{APIUrl}/User/{ID}/FavouriteArtist/{ArtistID}";
+
+                return await url.WithBasicAuth(Username, Password).PostJsonAsync(null).ReceiveJson<Artist>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                await Application.Current.MainPage.DisplayAlert("Error", stringBuilder.ToString(), "OK");
+                return default;
+            }
+        }
+
+        public async Task<bool> DeleteFavouriteTrack(int id, int TrackID)
+        {
+            try
+            {
+                var url = $"{APIUrl}/User/{id}/FavouriteTrack/{TrackID}";
+
+                return await url.WithBasicAuth(Username, Password).DeleteAsync().ReceiveJson<bool>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                await Application.Current.MainPage.DisplayAlert("Error", stringBuilder.ToString(), "OK");
+                return false;
+            }
+        }
+
+        public async Task<bool> DeleteFavouriteAlbum(int id, int AlbumID)
+        {
+            try
+            {
+                var url = $"{APIUrl}/User/{id}/FavouriteAlbum/{AlbumID}";
+
+                return await url.WithBasicAuth(Username, Password).DeleteAsync().ReceiveJson<bool>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                await Application.Current.MainPage.DisplayAlert("Error", stringBuilder.ToString(), "OK");
+                return false;
+            }
+        }
+
+        public async Task<bool> DeleteFavouriteArtist(int id, int ArtistID)
+        {
+            try
+            {
+                var url = $"{APIUrl}/User/{id}/FavouriteArtist/{ArtistID}";
+
+                return await url.WithBasicAuth(Username, Password).DeleteAsync().ReceiveJson<bool>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                await Application.Current.MainPage.DisplayAlert("Error", stringBuilder.ToString(), "OK");
+                return false;
+            }
+        }
     }
 }
