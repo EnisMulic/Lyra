@@ -62,6 +62,7 @@ namespace Lyra.Mobile.ViewModels
                 {
                     Application.Current.MainPage = new MainPage();
                     SignedInUserHelper.User = user;
+                    new FavouritesHelper();
                 }
             }
             else
