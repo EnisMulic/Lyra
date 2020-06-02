@@ -5,6 +5,7 @@ using Lyra.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -15,15 +16,14 @@ namespace Lyra.Mobile.ViewModels
     public class YourMusicTracksViewModel : BaseViewModel
     {
         private readonly APIService _service = new APIService("");
-        public ObservableCollection<Model.Track> TracksList { get; set; } = new ObservableCollection<Model.Track>();
-
+        private readonly APIService _userService = new APIService("User");
+        public ObservableCollection<TrackViewModel> TracksList { get; set; } = new ObservableCollection<TrackViewModel>();
         public ICommand PerformSearch { get; set; }
 
         public YourMusicTracksViewModel()
         {
             PerformSearch = new Command(async (object query) => await Search(query));
         }
-
 
         private async Task Search(object query)
         {
@@ -42,10 +42,10 @@ namespace Lyra.Mobile.ViewModels
             {
                 int ID = SignedInUserHelper.User.ID;
 
-                var tracks = await _service.GetFavouriteTracks(ID, null);
+                var tracks = FavouritesHelper.FavouriteTracks;//.Where(i => i.Name == request?.Name);// await _service.GetFavouriteTracks(ID, null);
                 foreach (var track in tracks)
                 {
-                    TracksList.Add(track);
+                    TracksList.Add(new TrackViewModel(track));
                 }
             }
             catch
