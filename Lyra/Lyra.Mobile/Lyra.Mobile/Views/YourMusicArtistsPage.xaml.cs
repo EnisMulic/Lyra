@@ -32,8 +32,8 @@ namespace Lyra.Mobile.Views
 
         private async void Artist_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var selectedArtist = (e.SelectedItem as Artist);
-            await Navigation.PushAsync(new ArtistDetailsPage(selectedArtist));
+            var artistVM = (e.SelectedItem as ArtistViewModel);
+            await Navigation.PushAsync(new ArtistDetailsPage(artistVM.Artist));
         }
     }
 }

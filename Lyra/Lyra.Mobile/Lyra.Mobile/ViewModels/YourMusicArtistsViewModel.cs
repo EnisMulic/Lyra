@@ -14,7 +14,7 @@ namespace Lyra.Mobile.ViewModels
     public class YourMusicArtistsViewModel : BaseViewModel
     {
         private readonly APIService _service = new APIService("");
-        public ObservableCollection<Model.Artist> ArtistsList { get; set; } = new ObservableCollection<Model.Artist>();
+        public ObservableCollection<ArtistViewModel> ArtistsList { get; set; } = new ObservableCollection<ArtistViewModel>();
 
         public ICommand PerformSearch { get; set; }
 
@@ -44,7 +44,7 @@ namespace Lyra.Mobile.ViewModels
                 var artists = await _service.GetFavouriteArtists(ID, request);
                 foreach (var artist in artists)
                 {
-                    ArtistsList.Add(artist);
+                    ArtistsList.Add(new ArtistViewModel(artist));
                 }
             }
             catch
