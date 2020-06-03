@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:vm="clr-namespace:Lyra.Mobile.ViewModels" 
              xmlns:converters="clr-namespace:Lyra.Mobile.Converters"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
              mc:Ignorable="d"
              x:Class="Lyra.Mobile.Views.YourMusicAlbumsPage"
              Title="Albums">
@@ -32,21 +33,30 @@
                         <ViewCell>
                             <StackLayout Padding="10" Orientation="Horizontal">
                                 <StackLayout>
-                                    <Image Source="{Binding Image, Converter={StaticResource ImgConverter}}"
+                                    <Image Source="{Binding Album.Image, Converter={StaticResource ImgConverter}}"
                                            WidthRequest="100"
                                            HeightRequest="100"
                                     ></Image>
                                 </StackLayout>
                                 <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding Name}" 
+                                    <Label Text="{Binding Album.Name}" 
                                            LineBreakMode="NoWrap" 
                                            Style="{DynamicResource ListItemTextStyle}" 
                                            Padding="10, 20, 0, 0"
                                            FontSize="16" />
-                                    <Label Text="{Binding Artist.Name, StringFormat='by {0:F0}'}"
+                                    <Label Text="{Binding Album.Artist.Name, StringFormat='by {0:F0}'}"
                                            LineBreakMode="NoWrap"
                                            Padding="10, 0, 0, 0"
                                            FontSize="12" />
+                                </StackLayout>
+                                <StackLayout>
+                                    <ImageButton 
+                                            Source="{Binding IsFavouriteImage}"
+                                            HorizontalOptions="End"
+                                            WidthRequest="25"
+                                            HeightRequest="25"
+                                            Command="{Binding ToggleFavouriteCommand}"
+                                    ></ImageButton>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

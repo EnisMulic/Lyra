@@ -32,8 +32,8 @@ namespace Lyra.Mobile.Views
 
         private async void Album_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var selectedAlbum = (e.SelectedItem as Album);
-            await Navigation.PushAsync(new AlbumDetailsPage(selectedAlbum));
+            var albumVM = (e.SelectedItem as AlbumViewModel);
+            await Navigation.PushAsync(new AlbumDetailsPage(albumVM.Album));
         }
     }
 }
