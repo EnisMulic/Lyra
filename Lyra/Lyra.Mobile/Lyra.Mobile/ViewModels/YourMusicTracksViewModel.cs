@@ -16,7 +16,6 @@ namespace Lyra.Mobile.ViewModels
     public class YourMusicTracksViewModel : BaseViewModel
     {
         private readonly APIService _service = new APIService("");
-        private readonly APIService _userService = new APIService("User");
         public ObservableCollection<TrackViewModel> TracksList { get; set; } = new ObservableCollection<TrackViewModel>();
         public ICommand PerformSearch { get; set; }
 
@@ -42,7 +41,7 @@ namespace Lyra.Mobile.ViewModels
             {
                 int ID = SignedInUserHelper.User.ID;
 
-                var tracks = FavouritesHelper.FavouriteTracks;//.Where(i => i.Name == request?.Name);// await _service.GetFavouriteTracks(ID, null);
+                var tracks = await _service.GetFavouriteTracks(ID, request);
                 foreach (var track in tracks)
                 {
                     TracksList.Add(new TrackViewModel(track));
