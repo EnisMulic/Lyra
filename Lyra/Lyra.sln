@@ -17,7 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyra.Mobile.Android", "Lyra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyra.Mobile.iOS", "Lyra.Mobile\Lyra.Mobile.iOS\Lyra.Mobile.iOS.csproj", "{A6BD528D-E14D-473A-AF28-3B876FA8D6B2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Lyra.Mobile", "Lyra.Mobile\Lyra.Mobile\Lyra.Mobile.csproj", "{92242342-9017-45AD-9DE7-558742E503F9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Lyra.Mobile", "Lyra.Mobile\Lyra.Mobile\Lyra.Mobile.csproj", "{92242342-9017-45AD-9DE7-558742E503F9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{06D5DC9A-F913-4C99-A0D7-607F973877EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -61,10 +61,10 @@ namespace Lyra.WebAPI.Controllers
         }
 
         [Authorize]
-        [HttpPost("{id}/FavouriteAlbum")]
-        public async Task<Album> InsertFavouriteAlbum(int id, int albumID)
+        [HttpPost("{id}/FavouriteAlbum/{albumId}")]
+        public async Task<Album> InsertFavouriteAlbum(int id, int albumId)
         {
-            return await _service.InsertFavouriteAlbum(id, albumID);
+            return await _service.InsertFavouriteAlbum(id, albumId);
         }
 
         [Authorize]
@@ -75,10 +75,10 @@ namespace Lyra.WebAPI.Controllers
         }
 
         [Authorize]
-        [HttpPost("{id}/FavouriteArtist")]
-        public async Task<Artist> InsertFavouriteArtist(int id, int artistID)
+        [HttpPost("{id}/FavouriteArtist/{artistId}")]
+        public async Task<Artist> InsertFavouriteArtist(int id, int artistId)
         {
-            return await _service.InsertFavouriteArtist(id, artistID);
+            return await _service.InsertFavouriteArtist(id, artistId);
         }
 
         [Authorize]
@@ -110,24 +110,24 @@ namespace Lyra.WebAPI.Controllers
         }
 
         [Authorize]
-        [HttpDelete("{id}/FavouriteTrack")]
-        public async Task<bool> DeleteFavouriteTrack(int id, int trackID)
+        [HttpDelete("{id}/FavouriteTrack/{trackId}")]
+        public async Task<bool> DeleteFavouriteTrack(int id, int trackId)
         {
-            return await _service.DeleteFavouriteTrack(id, trackID);
+            return await _service.DeleteFavouriteTrack(id, trackId);
         }
 
         [Authorize]
-        [HttpDelete("{id}/FavouriteAlbum")]
-        public async Task<bool> DeleteFavouriteAlbum(int id, int albumID)
+        [HttpDelete("{id}/FavouriteAlbum/{albumId}")]
+        public async Task<bool> DeleteFavouriteAlbum(int id, int albumId)
         {
-            return await _service.DeleteFavouriteAlbum(id, albumID);
+            return await _service.DeleteFavouriteAlbum(id, albumId);
         }
 
         [Authorize]
-        [HttpDelete("{id}/FavouriteArtist")]
-        public async Task<bool> DeleteFavouriteArtist(int id, int artistID)
+        [HttpDelete("{id}/FavouriteArtist/{artistId}")]
+        public async Task<bool> DeleteFavouriteArtist(int id, int artistId)
         {
-            return await _service.DeleteFavouriteArtist(id, artistID);
+            return await _service.DeleteFavouriteArtist(id, artistId);
         }
     }
 }

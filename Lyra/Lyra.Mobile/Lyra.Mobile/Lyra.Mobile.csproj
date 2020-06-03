@@ -12,20 +12,28 @@
 
   <ItemGroup>
     <None Remove="Assets\add.png" />
+    <None Remove="Assets\heart-empty.png" />
+    <None Remove="Assets\heart-filled.png" />
     <None Remove="Assets\next.png" />
     <None Remove="Assets\pause.png" />
     <None Remove="Assets\play.png" />
     <None Remove="Assets\playBlack.png" />
     <None Remove="Assets\previous.png" />
+    <None Remove="heart-empty.png" />
+    <None Remove="heart-filled.png" />
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="Assets\add.png" />
+    <EmbeddedResource Include="Assets\heart-empty.png" />
+    <EmbeddedResource Include="Assets\heart-filled.png" />
     <EmbeddedResource Include="Assets\next.png" />
     <EmbeddedResource Include="Assets\pause.png" />
     <EmbeddedResource Include="Assets\play.png" />
     <EmbeddedResource Include="Assets\playBlack.png" />
     <EmbeddedResource Include="Assets\previous.png" />
+    <Resource Include="heart-empty.png" />
+    <Resource Include="heart-filled.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -43,52 +51,64 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\ActivityAlbumsPage.xaml">
+    <EmbeddedResource Update="Views\Activity\ActivityAlbumsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ActivityArtistsPage.xaml">
+    <EmbeddedResource Update="Views\Activity\ActivityArtistsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ActivityPage.xaml">
+    <EmbeddedResource Update="Views\Activity\ActivityPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ActivityPlaylistsPage.xaml">
+    <EmbeddedResource Update="Views\Activity\ActivityPlaylistsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ActivityTracksPage.xaml">
+    <EmbeddedResource Update="Views\Activity\ActivityTracksPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ChangePasswordPage.xaml">
+    <EmbeddedResource Update="Views\Shared\AlbumDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\MusicPlayerPage.xaml">
+    <EmbeddedResource Update="Views\Shared\ArtistDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewPlaylistPage.xaml">
+    <EmbeddedResource Update="Views\Settings\ChangePasswordPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\SettingsPage.xaml">
+    <EmbeddedResource Update="Views\Shared\MusicPlayerPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\SignInPage.xaml">
+    <EmbeddedResource Update="Views\Shared\NewPlaylistPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\SignUpPage.xaml">
+    <EmbeddedResource Update="Views\Shared\PlaylistDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\YourMusicAlbumsPage.xaml">
+    <EmbeddedResource Update="Views\SearchPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\YourMusicArtistsPage.xaml">
+    <EmbeddedResource Update="Views\Settings\SettingsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\YourMusicPage.xaml">
+    <EmbeddedResource Update="Views\SignIn\SignInPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\YourMusicPlaylistsPage.xaml">
+    <EmbeddedResource Update="Views\SignUp\SignUpPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\YourMusicTracksPage.xaml">
+    <EmbeddedResource Update="Views\YourMusic\YourMusicAlbumsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\YourMusic\YourMusicArtistsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\YourMusic\YourMusicPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\YourMusic\YourMusicPlaylistsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\YourMusic\YourMusicTracksPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
