@@ -1,5 +1,8 @@
-﻿using Lyra.Mobile.ViewModels;
+﻿using Lyra.Mobile.Helpers;
+using Lyra.Mobile.Services;
+using Lyra.Mobile.ViewModels;
 using Lyra.Model;
+using Lyra.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +17,7 @@ namespace Lyra.Mobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class YourMusicTracksPage : ContentPage
     {
+        private readonly APIService _service = new APIService("User");
         private YourMusicTracksViewModel model = null;
         public YourMusicTracksPage()
         {
@@ -31,6 +35,13 @@ namespace Lyra.Mobile.Views
         {
             var trackVM = (e.SelectedItem as TrackViewModel);
             await Navigation.PushAsync(new MusicPlayerPage(new List<Track> { trackVM.Track }));
+
+            var request = new UserActivityTrackInsertRequest()
+            {
+                TrackID = trackVM.Track.ID,
+                InteractedAt = DateTime.Now
+            };
+            await _service.InsertActivityTrack(SignedInUserHelper.User.ID, request);
         }
     }
 }

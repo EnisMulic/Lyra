@@ -22,12 +22,12 @@ namespace Lyra.WebAPI.Services
         Task<bool> DeleteFavouriteArtist(int id, int ArtistID);
         Task<Model.Artist> InsertFavouriteArtist(int id, int ArtistID);
         Task<List<Model.UserActivityTrack>> GetActivityTracks(int id, TrackSearchRequest request);
-        Task<Model.UserActivityTrack> InsertActivityTrack(int id, Model.UserActivityTrack request);
+        Task<Model.UserActivityTrack> InsertActivityTrack(int id, UserActivityTrackInsertRequest request);
         Task<List<Model.UserActivityAlbum>> GetActivityAlbums(int id, AlbumSearchRequest request);
-        Task<Model.UserActivityAlbum> InsertActivityAlbum(int id, Model.UserActivityAlbum request);
+        Task<Model.UserActivityAlbum> InsertActivityAlbum(int id, UserActivityAlbumInsertRequest request);
         Task<List<Model.UserActivityArtist>> GetActivityArtists(int id, ArtistSearchRequest request);
-        Task<Model.UserActivityArtist> InsertActivityArtist(int id, Model.UserActivityArtist request);
+        Task<Model.UserActivityArtist> InsertActivityArtist(int id, UserActivityArtistInsertRequest request);
         Task<List<Model.UserActivityPlaylist>> GetActivityPlaylists(int id, PlaylistSearchRequest request);
-        Task<Model.UserActivityPlaylist> InsertActivityPlaylist(int id, Model.UserActivityPlaylist request);
+        Task<Model.UserActivityPlaylist> InsertActivityPlaylist(int id, UserActivityPlaylistInsertRequest request);
     }
 }

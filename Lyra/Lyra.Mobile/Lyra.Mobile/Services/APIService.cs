@@ -560,5 +560,98 @@ namespace Lyra.Mobile.Services
                 return false;
             }
         }
+
+        public async Task<UserActivityTrack> InsertActivityTrack(int id, UserActivityTrackInsertRequest request)
+        {
+            try
+            {
+                var url = $"{APIUrl}/User/{id}/ActivityTrack";
+
+                return await url.WithBasicAuth(Username, Password).PostJsonAsync(request).ReceiveJson<UserActivityTrack>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                await Application.Current.MainPage.DisplayAlert("Error", stringBuilder.ToString(), "OK");
+                return default;
+            }
+        }
+
+        public async Task<UserActivityAlbum> InsertActivityAlbum(int id, UserActivityAlbumInsertRequest request)
+        {
+            try
+            {
+                var url = $"{APIUrl}/User/{id}/ActivityAlbum";
+
+                return await url.WithBasicAuth(Username, Password).PostJsonAsync(request).ReceiveJson<UserActivityAlbum>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                await Application.Current.MainPage.DisplayAlert("Error", stringBuilder.ToString(), "OK");
+                return default;
+            }
+        }
+
+        public async Task<UserActivityArtist> InsertActivityArtist(int id, UserActivityArtistInsertRequest request)
+        {
+            try
+            {
+                var url = $"{APIUrl}/User/{id}/ActivityArtist";
+
+                return await url.WithBasicAuth(Username, Password).PostJsonAsync(request).ReceiveJson<UserActivityArtist>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                await Application.Current.MainPage.DisplayAlert("Error", stringBuilder.ToString(), "OK");
+                return default;
+            }
+        }
+
+        public async Task<UserActivityPlaylist> InsertActivityPlaylist(int id, UserActivityPlaylistInsertRequest request)
+        {
+            try
+            {
+                var url = $"{APIUrl}/User/{id}/ActivityPlaylist";
+
+                return await url.WithBasicAuth(Username, Password).PostJsonAsync(request).ReceiveJson<UserActivityPlaylist>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                await Application.Current.MainPage.DisplayAlert("Error", stringBuilder.ToString(), "OK");
+                return default;
+            }
+        }
+
     }
 }

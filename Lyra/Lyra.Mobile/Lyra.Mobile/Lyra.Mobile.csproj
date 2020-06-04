@@ -19,8 +19,6 @@
     <None Remove="Assets\play.png" />
     <None Remove="Assets\playBlack.png" />
     <None Remove="Assets\previous.png" />
-    <None Remove="heart-empty.png" />
-    <None Remove="heart-filled.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -32,8 +30,6 @@
     <EmbeddedResource Include="Assets\play.png" />
     <EmbeddedResource Include="Assets\playBlack.png" />
     <EmbeddedResource Include="Assets\previous.png" />
-    <Resource Include="heart-empty.png" />
-    <Resource Include="heart-filled.png" />
   </ItemGroup>
 
   <ItemGroup>

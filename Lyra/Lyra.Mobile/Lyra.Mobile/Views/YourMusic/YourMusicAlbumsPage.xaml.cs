@@ -1,6 +1,8 @@
-﻿using Lyra.Mobile.Services;
+﻿using Lyra.Mobile.Helpers;
+using Lyra.Mobile.Services;
 using Lyra.Mobile.ViewModels;
 using Lyra.Model;
+using Lyra.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +19,7 @@ namespace Lyra.Mobile.Views
     {
         private YourMusicAlbumsViewModel model = null;
         private readonly APIService _service = new APIService("Album");
+        private readonly APIService _loggingService = new APIService("User");
 
         public YourMusicAlbumsPage()
         {
@@ -34,6 +37,13 @@ namespace Lyra.Mobile.Views
         {
             var albumVM = (e.SelectedItem as AlbumViewModel);
             await Navigation.PushAsync(new AlbumDetailsPage(albumVM.Album));
+
+            var request = new UserActivityAlbumInsertRequest()
+            {
+                AlbumID = albumVM.Album.ID,
+                InteractedAt = DateTime.Now
+            };
+            await _loggingService.InsertActivityAlbum(SignedInUserHelper.User.ID, request);
         }
     }
 }

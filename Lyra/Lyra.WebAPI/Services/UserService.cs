@@ -365,6 +365,7 @@ namespace Lyra.WebAPI.Services
                 .Include(i => i.Track.TrackArtists)
                 .ThenInclude(i => i.Artist)
                 .Where(i => i.UserID == id)
+                .OrderByDescending(i => i.InteractedAt)
                 .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(request?.Name))
@@ -388,6 +389,7 @@ namespace Lyra.WebAPI.Services
             var query =  _context.UserActivityAlbums
                 .Where(i => i.UserID == id)
                 .Include(i => i.Album)
+                .OrderByDescending(i => i.InteractedAt)
                 .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(request?.Name))
@@ -411,6 +413,7 @@ namespace Lyra.WebAPI.Services
             var query =  _context.UserActivityArtists
                 .Where(i => i.UserID == id)
                 .Include(i => i.Artist)
+                .OrderByDescending(i => i.InteractedAt)
                 .AsQueryable();
 
 
@@ -436,6 +439,7 @@ namespace Lyra.WebAPI.Services
             var query =  _context.UserActivityPlaylists
                 .Where(i => i.UserID == id)
                 .Include(i => i.Playlist)
+                .OrderByDescending(i => i.InteractedAt)
                 .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(request?.Name))
@@ -496,9 +500,10 @@ namespace Lyra.WebAPI.Services
             return _mapper.Map<Model.Artist>(entity);
         }
 
-        public async Task<Model.UserActivityTrack> InsertActivityTrack(int id, Model.UserActivityTrack request)
+        public async Task<Model.UserActivityTrack> InsertActivityTrack(int id, UserActivityTrackInsertRequest request)
         {
             var entity = _mapper.Map<Database.UserActivityTrack>(request);
+            entity.UserID = id;
 
             await _context.UserActivityTracks.AddAsync(entity);
             await _context.SaveChangesAsync();
@@ -506,9 +511,10 @@ namespace Lyra.WebAPI.Services
             return _mapper.Map<Model.UserActivityTrack>(entity);
         }
 
-        public async Task<Model.UserActivityAlbum> InsertActivityAlbum(int id, Model.UserActivityAlbum request)
+        public async Task<Model.UserActivityAlbum> InsertActivityAlbum(int id, UserActivityAlbumInsertRequest request)
         {
             var entity = _mapper.Map<Database.UserActivityAlbum>(request);
+            entity.UserID = id;
 
             await _context.UserActivityAlbums.AddAsync(entity);
             await _context.SaveChangesAsync();
@@ -516,9 +522,10 @@ namespace Lyra.WebAPI.Services
             return _mapper.Map<Model.UserActivityAlbum>(entity);
         }
 
-        public async Task<Model.UserActivityArtist> InsertActivityArtist(int id, Model.UserActivityArtist request)
+        public async Task<Model.UserActivityArtist> InsertActivityArtist(int id, UserActivityArtistInsertRequest request)
         {
             var entity = _mapper.Map<Database.UserActivityArtist>(request);
+            entity.UserID = id;
 
             await _context.UserActivityArtists.AddAsync(entity);
             await _context.SaveChangesAsync();
@@ -526,9 +533,10 @@ namespace Lyra.WebAPI.Services
             return _mapper.Map<Model.UserActivityArtist>(entity);
         }
 
-        public async Task<Model.UserActivityPlaylist> InsertActivityPlaylist(int id, Model.UserActivityPlaylist request)
+        public async Task<Model.UserActivityPlaylist> InsertActivityPlaylist(int id, UserActivityPlaylistInsertRequest request)
         {
             var entity = _mapper.Map<Database.UserActivityPlaylist>(request);
+            entity.UserID = id;
 
             await _context.UserActivityPlaylists.AddAsync(entity);
             await _context.SaveChangesAsync();
