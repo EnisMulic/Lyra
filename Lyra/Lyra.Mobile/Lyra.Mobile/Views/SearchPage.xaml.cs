@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lyra.Mobile.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,11 @@ namespace Lyra.Mobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SearchPage : ContentPage
     {
+        private SearchViewModel model;
         public SearchPage()
         {
             InitializeComponent();
+            BindingContext = model = new SearchViewModel();
         }
 
         private void Artist_ItemSelected(object sender, SelectedItemChangedEventArgs e)

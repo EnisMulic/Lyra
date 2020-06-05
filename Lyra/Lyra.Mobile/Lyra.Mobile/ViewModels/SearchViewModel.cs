@@ -17,11 +17,10 @@ namespace Lyra.Mobile.ViewModels
         private readonly APIService _artistService = new APIService("Artist");
         private readonly APIService _albumService = new APIService("Album");
         private readonly APIService _playlistService = new APIService("Playlist");
-        public ObservableCollection<Model.Track> TracksList { get; set; } = new ObservableCollection<Model.Track>();
-        public ObservableCollection<Model.Artist> ArtistsList { get; set; } = new ObservableCollection<Model.Artist>();
-        public ObservableCollection<Model.Album> AlbumsList { get; set; } = new ObservableCollection<Model.Album>();
-        public ObservableCollection<Model.Playlist> PlaylistsList { get; set; } = new ObservableCollection<Model.Playlist>();
-
+        public ObservableCollection<TrackViewModel> TracksList { get; set; } = new ObservableCollection<TrackViewModel>();
+        public ObservableCollection<ArtistViewModel> ArtistsList { get; set; } = new ObservableCollection<ArtistViewModel>();
+        public ObservableCollection<AlbumViewModel> AlbumsList { get; set; } = new ObservableCollection<AlbumViewModel>();
+        public ObservableCollection<Playlist> PlaylistsList { get; set; } = new ObservableCollection<Playlist>();
         public ICommand PerformSearch { get; set; }
 
         public SearchViewModel()
@@ -43,7 +42,11 @@ namespace Lyra.Mobile.ViewModels
                 Name = queryString
             };
             var tracksList = await _trackService.Get<List<Model.Track>>(trackRequest);
-            PopulateList(TracksList, tracksList);
+            TracksList.Clear();
+            foreach (var Item in tracksList)
+            {
+                TracksList.Add(new TrackViewModel(Item));
+            }
 
             var albumRequest = new AlbumSearchRequest()
             {
@@ -52,7 +55,11 @@ namespace Lyra.Mobile.ViewModels
                 Name = queryString
             };
             var albumsList = await _albumService.Get<List<Model.Album>>(albumRequest);
-            PopulateList(AlbumsList, albumsList);
+            AlbumsList.Clear();
+            foreach (var Item in albumsList)
+            {
+                AlbumsList.Add(new AlbumViewModel(Item));
+            }
 
             var artistRequest = new ArtistSearchRequest()
             {
@@ -61,7 +68,11 @@ namespace Lyra.Mobile.ViewModels
                 Name = queryString
             };
             var artistsList = await _artistService.Get<List<Model.Artist>>(artistRequest);
-            PopulateList(ArtistsList, artistsList);
+            ArtistsList.Clear();
+            foreach (var Item in artistsList)
+            {
+                ArtistsList.Add(new ArtistViewModel(Item));
+            }
 
             var playlistRequest = new PlaylistSearchRequest()
             {
@@ -70,17 +81,14 @@ namespace Lyra.Mobile.ViewModels
                 Name = queryString
             };
             var playlistsList = await _playlistService.Get<List<Model.Playlist>>(playlistRequest);
-            PopulateList(PlaylistsList, playlistsList);
-        }
-
-        private void PopulateList<T>(ObservableCollection<T> ObservableList, List<T> List)
-        {
-            ObservableList.Clear();
-            foreach (var Item in List)
+            PlaylistsList.Clear();
+            foreach (var Item in playlistsList)
             {
-                ObservableList.Add(Item);
+                PlaylistsList.Add(Item);
             }
         }
+
+        
           
     }
 }

@@ -46,5 +46,10 @@ namespace Lyra.Mobile.Views
             if (viewModel.Items.Count == 0)
                 viewModel.IsBusy = true;
         }
+
+        private async void searchBar_SearchButtonPressed(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new SearchPage());
+        }
     }
 }
