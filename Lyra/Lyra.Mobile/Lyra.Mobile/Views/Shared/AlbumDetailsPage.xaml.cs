@@ -1,4 +1,5 @@
-﻿using Lyra.Mobile.ViewModels;
+﻿using Lyra.Mobile.Services;
+using Lyra.Mobile.ViewModels;
 using Lyra.Model;
 using System;
 using System.Collections.Generic;
@@ -14,6 +15,7 @@ namespace Lyra.Mobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AlbumDetailsPage : ContentPage
     {
+        private readonly APIService _service = new APIService("Album");
         private AlbumDetailsViewModel model = null;
         public AlbumDetailsPage(Album album)
         {
@@ -24,7 +26,8 @@ namespace Lyra.Mobile.Views
         private async void Track_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var track = (e.SelectedItem as Track);
-            await Navigation.PushAsync(new MusicPlayerPage(new List<Track> { track }));
+            var queue = await _service.GetTracks<List<Track>>(model.Album.ID, null);
+            await Navigation.PushAsync(new MusicPlayerPage(track, queue));
         }
 
         protected async override void OnAppearing()

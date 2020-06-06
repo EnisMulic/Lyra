@@ -98,14 +98,10 @@ namespace Lyra.Mobile.ViewModels
         }
         #endregion
 
-        public MusicPlayerViewModel(ObservableCollection<Track> trackList)
+        public MusicPlayerViewModel(Track track, ObservableCollection<Track> trackList)
         {
             this.trackList = trackList;
-
-            if(trackList != null)
-            {
-                PlayTrack(trackList[0].ID);
-            }
+            PlayTrack(track.ID);
         }
 
         
@@ -170,22 +166,22 @@ namespace Lyra.Mobile.ViewModels
 
         private void NextTrack()
         {
-            var currentIndex = trackList.Select(i => i.ID).ToList().IndexOf(selectedTrack.ID);
+            var currentIndex = trackList?.Select(i => i.ID).ToList().IndexOf(selectedTrack.ID);
 
-            if (currentIndex < trackList.Count - 1)
+            if (currentIndex != null && currentIndex < trackList.Count - 1)
             {
-                SelectedTrack = trackList[currentIndex + 1];
+                SelectedTrack = trackList[(int)currentIndex + 1];
                 PlayTrack(selectedTrack.ID);
             }
         }
 
         private void PreviousTrack()
         {
-            var currentIndex = trackList.Select(i => i.ID).ToList().IndexOf(selectedTrack.ID);
+            var currentIndex = trackList?.Select(i => i.ID).ToList().IndexOf(selectedTrack.ID);
 
-            if (currentIndex > 0)
+            if (currentIndex != null && currentIndex > 0)
             {
-                SelectedTrack = trackList[currentIndex - 1];
+                SelectedTrack = trackList[(int)currentIndex - 1];
                 PlayTrack(selectedTrack.ID);
             }
         }

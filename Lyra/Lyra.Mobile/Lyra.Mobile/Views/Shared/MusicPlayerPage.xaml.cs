@@ -15,10 +15,15 @@ namespace Lyra.Mobile.Views
     public partial class MusicPlayerPage : ContentPage
     {
         private MusicPlayerViewModel model = null;
-        public MusicPlayerPage(IEnumerable<Model.Track> tracks)
+        public MusicPlayerPage(Model.Track track, IEnumerable<Model.Track> tracks)
         {
             InitializeComponent();
-            BindingContext = model = new MusicPlayerViewModel( new ObservableCollection<Model.Track>(tracks));
+            ObservableCollection<Model.Track> queue = null;
+            if(tracks != null)
+            {
+                queue = new ObservableCollection<Model.Track>(tracks);
+            }
+            BindingContext = model = new MusicPlayerViewModel(track, queue);
         }
     }
 }
