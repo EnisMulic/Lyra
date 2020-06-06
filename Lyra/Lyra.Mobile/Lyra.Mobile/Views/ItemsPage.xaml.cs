@@ -49,7 +49,8 @@ namespace Lyra.Mobile.Views
 
         private async void searchBar_SearchButtonPressed(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new SearchPage());
+            SearchBar searchBar = (SearchBar)sender;
+            await Navigation.PushAsync(new SearchPage(searchBar.Text));
         }
     }
 }

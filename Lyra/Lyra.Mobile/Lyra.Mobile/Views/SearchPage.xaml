@@ -23,6 +23,7 @@
                        HorizontalTextAlignment="Center"
                        FontSize="Medium"
                        FontAttributes="Italic" 
+                       Text="{Binding SearchString}"
                        SearchCommand="{Binding PerformSearch}"
                        SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
 
@@ -59,7 +60,15 @@
                                            Padding="10, 20, 0, 0"
                                            FontSize="16" />
                                 </StackLayout>
-
+                                <StackLayout>
+                                    <ImageButton 
+                                            Source="{Binding IsFavouriteImage}"
+                                            HorizontalOptions="End"
+                                            WidthRequest="25"
+                                            HeightRequest="25"
+                                            Command="{Binding ToggleFavouriteCommand}"
+                                    ></ImageButton>
+                                </StackLayout>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
@@ -97,6 +106,15 @@
                                         </Label.FormattedText>
                                     </Label>
                                 </StackLayout>
+                                <StackLayout>
+                                    <ImageButton 
+                                            Source="{Binding IsFavouriteImage}"
+                                            HorizontalOptions="End"
+                                            WidthRequest="25"
+                                            HeightRequest="25"
+                                            Command="{Binding ToggleFavouriteCommand}"
+                                    ></ImageButton>
+                                </StackLayout>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
@@ -129,6 +147,15 @@
                                            LineBreakMode="NoWrap"
                                            Padding="10, 0, 0, 0"
                                            FontSize="12" />
+                                </StackLayout>
+                                <StackLayout>
+                                    <ImageButton 
+                                            Source="{Binding IsFavouriteImage}"
+                                            HorizontalOptions="End"
+                                            WidthRequest="25"
+                                            HeightRequest="25"
+                                            Command="{Binding ToggleFavouriteCommand}"
+                                    ></ImageButton>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

@@ -60,16 +60,16 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
-                                        <ImageButton 
-                                            Grid.Row="0"
-                                            Grid.Column="1"
+                                    </Grid>
+                                </StackLayout>
+                                <StackLayout>
+                                    <ImageButton 
                                             Source="{Binding IsFavouriteImage}"
                                             HorizontalOptions="End"
                                             WidthRequest="25"
                                             HeightRequest="25"
                                             Command="{Binding ToggleFavouriteCommand}"
-                                        ></ImageButton>
-                                    </Grid>
+                                    ></ImageButton>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

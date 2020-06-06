@@ -21,11 +21,25 @@ namespace Lyra.Mobile.ViewModels
         public ObservableCollection<ArtistViewModel> ArtistsList { get; set; } = new ObservableCollection<ArtistViewModel>();
         public ObservableCollection<AlbumViewModel> AlbumsList { get; set; } = new ObservableCollection<AlbumViewModel>();
         public ObservableCollection<Playlist> PlaylistsList { get; set; } = new ObservableCollection<Playlist>();
+
+        private string searchString;
+        public string SearchString
+        {
+            get { return searchString; }
+            set { SetProperty(ref searchString, value); }
+        }
         public ICommand PerformSearch { get; set; }
 
         public SearchViewModel()
         {
             PerformSearch = new Command(async (object query) => await Search(query));
+        }
+
+        public SearchViewModel(string search)
+        {
+            SearchString = search;
+            PerformSearch = new Command(async (object query) => await Search(query));
+            PerformSearch.Execute(search);
         }
 
 

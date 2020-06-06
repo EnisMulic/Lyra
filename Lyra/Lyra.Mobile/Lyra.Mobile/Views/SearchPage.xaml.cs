@@ -14,10 +14,10 @@ namespace Lyra.Mobile.Views
     public partial class SearchPage : ContentPage
     {
         private SearchViewModel model;
-        public SearchPage()
+        public SearchPage(string search = null)
         {
             InitializeComponent();
-            BindingContext = model = new SearchViewModel();
+            BindingContext = model = new SearchViewModel(search);
         }
 
         private void Artist_ItemSelected(object sender, SelectedItemChangedEventArgs e)
