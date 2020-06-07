@@ -23,7 +23,7 @@ namespace Lyra.Mobile.ViewModels
             set { SetProperty(ref album, value); }
         }
 
-        public ObservableCollection<Model.Track> TracksList { get; set; } = new ObservableCollection<Model.Track>();
+        public ObservableCollection<TrackViewModel> TracksList { get; set; } = new ObservableCollection<TrackViewModel>();
         public ICommand PerformSearch { get; set; }
 
         public AlbumDetailsViewModel()
@@ -55,7 +55,7 @@ namespace Lyra.Mobile.ViewModels
                 var tracks = await _service.GetTracks<List<Track>>(Album.ID, request);
                 foreach (var track in tracks)
                 {
-                    TracksList.Add(track);
+                    TracksList.Add(new TrackViewModel(track));
                 }
             }
             catch

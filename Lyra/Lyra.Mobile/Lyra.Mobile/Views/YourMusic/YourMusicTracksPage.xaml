@@ -38,7 +38,7 @@
                                             <RowDefinition Height="50" />
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="25*"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <Label 
@@ -60,16 +60,14 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
+                                        <ImageButton Grid.Row="0" Grid.Column="1"
+                                                Source="{Binding IsFavouriteImage}"
+                                                HorizontalOptions="End"
+                                                WidthRequest="30"
+                                                HeightRequest="30"
+                                                Command="{Binding ToggleFavouriteCommand}"
+                                        ></ImageButton>
                                     </Grid>
-                                </StackLayout>
-                                <StackLayout>
-                                    <ImageButton 
-                                            Source="{Binding IsFavouriteImage}"
-                                            HorizontalOptions="End"
-                                            WidthRequest="25"
-                                            HeightRequest="25"
-                                            Command="{Binding ToggleFavouriteCommand}"
-                                    ></ImageButton>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>

@@ -26,19 +26,29 @@
                        Text="{Binding SearchString}"
                        SearchCommand="{Binding PerformSearch}"
                        SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
-
-            <!-- Artists -->
-            <Label>Artists</Label>
-            <ListView HasUnevenRows="true"
+            <Grid VerticalOptions="StartAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <!-- Artists -->
+                <Label>Artists</Label>
+                <ListView 
+                      Grid.Row="0" Grid.Column="0"
+                      HasUnevenRows="true"
                       ItemsSource="{Binding ArtistsList}"
-                      ItemSelected="Artist_ItemSelected"
-            >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Padding="10" Orientation="Horizontal">
-                                <StackLayout>
-                                    <Frame 
+                      ItemSelected="Artist_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10" Orientation="Horizontal">
+                                    <StackLayout>
+                                        <Frame 
                                         Padding="0"
                                         WidthRequest="100"
                                         HeightRequest="100" 
@@ -48,78 +58,85 @@
                                         VerticalOptions="Center"
                                         BorderColor="Black"
                                     >
-                                        <Image Source="{Binding Artist.Image, Converter={StaticResource ImgConverter}}"
+                                            <Image Source="{Binding Artist.Image, Converter={StaticResource ImgConverter}}"
                                                Aspect="AspectFill"
                                         ></Image>
-                                    </Frame>
-                                </StackLayout>
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding Artist.Name}" 
+                                        </Frame>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Text="{Binding Artist.Name}" 
                                            LineBreakMode="NoWrap" 
                                            Style="{DynamicResource ListItemTextStyle}" 
                                            Padding="10, 20, 0, 0"
                                            FontSize="16" />
-                                </StackLayout>
-                                <StackLayout>
-                                    <ImageButton 
+                                    </StackLayout>
+                                    <StackLayout>
+                                        <ImageButton 
                                             Source="{Binding IsFavouriteImage}"
                                             HorizontalOptions="End"
                                             WidthRequest="25"
                                             HeightRequest="25"
                                             Command="{Binding ToggleFavouriteCommand}"
                                     ></ImageButton>
+                                    </StackLayout>
                                 </StackLayout>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            
-            
-            <!-- Tracks -->
-            <Label>Tracks</Label>
-            <ListView HasUnevenRows="true"
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <!-- Tracks -->
+                <Label>Tracks</Label>
+                <ListView 
+                      Grid.Row="1" Grid.Column="0"
+                      HasUnevenRows="true"
                       ItemsSource="{Binding TracksList}"
-                      ItemSelected="Track_ItemSelected"
-            >
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout Padding="10" Orientation="Horizontal">
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding Track.Name}" 
+                      ItemSelected="Track_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Padding="10" Orientation="Horizontal">
+                                    <StackLayout Orientation="Vertical">
+                                        <Label Text="{Binding Track.Name}" 
                                            LineBreakMode="NoWrap" 
                                            Style="{DynamicResource ListItemTextStyle}" 
                                            Padding="10, 0, 0, 0"
                                            FontSize="16" />
-                                    <Label FontSize="16"
+                                        <Label FontSize="16"
                                            Padding="10, 0, 0, 0"
                                            LineBreakMode="NoWrap" >
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <FormattedString.Spans>
-                                                    <Span Text="by" />
-                                                    <Span Text=" " />
-                                                    <Span Text="{Binding Track.TrackArtists, Converter={StaticResource MainArtistConverter}}" />
-                                                </FormattedString.Spans>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
-                                </StackLayout>
-                                <StackLayout>
-                                    <ImageButton 
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="by" />
+                                                        <Span Text=" " />
+                                                        <Span Text="{Binding Track.TrackArtists, Converter={StaticResource MainArtistConverter}}" />
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
+                                    <StackLayout>
+                                        <ImageButton 
                                             Source="{Binding IsFavouriteImage}"
                                             HorizontalOptions="End"
                                             WidthRequest="25"
                                             HeightRequest="25"
                                             Command="{Binding ToggleFavouriteCommand}"
                                     ></ImageButton>
+                                    </StackLayout>
                                 </StackLayout>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+
+            </Grid>
+            
+            
+            
+            
             
             
             <!-- Albums -->

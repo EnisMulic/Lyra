@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:vm="clr-namespace:Lyra.Mobile.ViewModels" 
              xmlns:converters="clr-namespace:Lyra.Mobile.Converters"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
              mc:Ignorable="d"
              x:Class="Lyra.Mobile.Views.AlbumDetailsPage">
     <ContentPage.BindingContext>
@@ -56,24 +57,41 @@
                         <ViewCell>
                             <StackLayout Padding="10" Orientation="Horizontal">
                                 <StackLayout Orientation="Vertical">
-                                    <Label Text="{Binding Name}" 
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="50" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="25*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label 
+                                           Grid.Row="0"
+                                           Grid.Column="0"
+                                           FontSize="16"
+                                           Padding="10, 0, 0, 0"
                                            LineBreakMode="NoWrap" 
-                                           Style="{DynamicResource ListItemTextStyle}" 
-                                           Padding="10, 0, 0, 0"
-                                           FontSize="16" />
-                                    <Label FontSize="16"
-                                           Padding="10, 0, 0, 0"
-                                           LineBreakMode="NoWrap" >
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <FormattedString.Spans>
-                                                    <Span Text="by" />
-                                                    <Span Text=" " />
-                                                    <Span Text="{Binding TrackArtists, Converter={StaticResource MainArtistConverter}}" />
-                                                </FormattedString.Spans>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
+                                        >
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="{Binding Track.Name}" Style="{DynamicResource ListItemTextStyle}" />
+                                                        <Span Text="{x:Static system:Environment.NewLine}" />
+                                                        <Span Text="by" />
+                                                        <Span Text=" " />
+                                                        <Span Text="{Binding Track.TrackArtists, Converter={StaticResource MainArtistConverter}}" />
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <ImageButton Grid.Row="0" Grid.Column="1"
+                                                Source="{Binding IsFavouriteImage}"
+                                                HorizontalOptions="End"
+                                                WidthRequest="30"
+                                                HeightRequest="30"
+                                                Command="{Binding ToggleFavouriteCommand}"
+                                        ></ImageButton>
+                                    </Grid>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>
