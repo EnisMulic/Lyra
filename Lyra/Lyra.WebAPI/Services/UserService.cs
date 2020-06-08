@@ -272,22 +272,11 @@ namespace Lyra.WebAPI.Services
                 .Include(i => i.Track.TrackArtists)
                 .ThenInclude(i => i.Artist)
                 .Where(i => i.UserID == id)
-                .Select(i => i.Track)
-                .Select
-                (
-                    i => new Database.Track()
-                    {
-                        ID = i.ID,
-                        Name = i.Name,
-                        Length = i.Length,
-                        TrackArtists = i.TrackArtists
-                    }
-                )
                 .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(request?.Name))
             {
-                query = query.Where(x => x.Name.StartsWith(request.Name));
+                query = query.Where(x => x.Track.Name.StartsWith(request.Name));
             }
 
             query = query.Skip((request.Page - 1) * request.ItemsPerPage);
@@ -298,7 +287,7 @@ namespace Lyra.WebAPI.Services
 
             var list = await query.ToListAsync();
 
-            return _mapper.Map<List<Model.Track>>(list);
+            return _mapper.Map<List<Model.Track>>(list.Select(i => i.Track).ToList());
         }
 
         public async Task<List<Model.Album>> GetFavouriteAlbums(int id, AlbumSearchRequest request)
