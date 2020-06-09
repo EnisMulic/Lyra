@@ -1,7 +1,9 @@
-﻿using Lyra.Mobile.Extensions;
+﻿using Acr.UserDialogs;
+using Lyra.Mobile.Extensions;
 using Lyra.Mobile.Helpers;
 using Lyra.Mobile.Services;
 using Lyra.Model;
+using Lyra.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -15,7 +17,9 @@ namespace Lyra.Mobile.ViewModels
     public class TrackViewModel : BaseViewModel
     {
         private readonly APIService _userService = new APIService("User");
+        private readonly APIService _playlistService = new APIService("Playlist");
         public ICommand ToggleFavouriteCommand { get; set; }
+        public ICommand ShowPlaylistsCommand { get; set; }
 
         private bool _isFavourite;
 
@@ -42,6 +46,12 @@ namespace Lyra.Mobile.ViewModels
                                : ImageSource.FromResource("Lyra.Mobile.Assets.heart-empty.png", typeof(ImageResourceExtension).GetTypeInfo().Assembly);
 
         }
+
+        public ImageSource AddImage
+        {
+            get => ImageSource.FromResource("Lyra.Mobile.Assets.add.png", typeof(ImageResourceExtension).GetTypeInfo().Assembly);
+        }
+
         public TrackViewModel()
         {
 
@@ -54,6 +64,51 @@ namespace Lyra.Mobile.ViewModels
             IsFavourite = FavouritesHelper.FavouriteTracks.Find(i => i.ID == Track.ID) != null;
 
             ToggleFavouriteCommand = new Command(async () => await ToggleFavourite());
+            ShowPlaylistsCommand = new Command(async () => await ShowPlaylists());
+        }
+
+        private async Task ShowPlaylists()
+        {
+            var request = new PlaylistSearchRequest()
+            {
+                UserID = SignedInUserHelper.User.ID
+            };
+            var playlists = await _playlistService.Get<List<Playlist>>(request);
+
+            var cfg = new ActionSheetConfig()
+               .SetTitle("Add to Playlist")
+               .SetCancel();
+
+            foreach (var playlist in playlists)
+            {
+                cfg.Add(
+                    playlist.Name,
+                    async () => await AddToPlaylist(playlist.ID, Track.ID));
+            }
+
+            UserDialogs.Instance.ActionSheet(cfg);
+        }
+
+        private async Task AddToPlaylist(int PlaylistID, int TrackID)
+        {
+            try
+            {
+                var playlist = await _playlistService.GetById<Playlist>(PlaylistID);
+                var request = new PlaylistUpsertRequest()
+                {
+                    Name = playlist.Name,
+                    Image = playlist.Image,
+                    CreatedAt = playlist.CreatedAt,
+                    UserID = playlist.UserID,
+                    Tracks = new List<int>() { TrackID }
+                };
+
+                await _playlistService.Update<Playlist>(PlaylistID, request);
+            }
+            catch
+            {
+
+            }
         }
 
         private async Task ToggleFavourite()

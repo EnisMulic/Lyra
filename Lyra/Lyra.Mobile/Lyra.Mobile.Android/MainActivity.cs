@@ -7,6 +7,7 @@ using Android.Views;
 using Android.Widget;
 using Android.OS;
 using MediaManager;
+using Acr.UserDialogs;
 
 namespace Lyra.Mobile.Droid
 {
@@ -15,6 +16,8 @@ namespace Lyra.Mobile.Droid
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            UserDialogs.Init(this);
+
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 

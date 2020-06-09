@@ -1,4 +1,5 @@
-﻿using Lyra.Mobile.Helpers;
+﻿using Acr.UserDialogs;
+using Lyra.Mobile.Helpers;
 using Lyra.Mobile.Services;
 using Lyra.Mobile.ViewModels;
 using Lyra.Model;
@@ -18,6 +19,7 @@ namespace Lyra.Mobile.Views
     public partial class YourMusicTracksPage : ContentPage
     {
         private readonly APIService _service = new APIService("User");
+        private readonly APIService _playlistService = new APIService("Playlist");
         private YourMusicTracksViewModel model = null;
         public YourMusicTracksPage()
         {

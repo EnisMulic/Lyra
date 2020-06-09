@@ -33,6 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Acr.UserDialogs" Version="7.1.0.442" />
     <PackageReference Include="Flurl" Version="2.8.2" />
     <PackageReference Include="Flurl.Http" Version="2.4.2" />
     <PackageReference Include="Plugin.MediaManager.Forms" Version="0.9.0" />
