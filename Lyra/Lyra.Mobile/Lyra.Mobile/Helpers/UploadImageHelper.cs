@@ -22,24 +22,30 @@ namespace Lyra.Mobile.Helpers
                 return image;
             }
 
-            var mediaOptions = new PickMediaOptions()
+            try
             {
-                PhotoSize = PhotoSize.Medium
-            };
-
-            var selectedImageFile = await CrossMedia.Current.PickPhotoAsync(mediaOptions);
-
-            if (selectedImageFile != null)
-            {
-                using (var memoryStream = new MemoryStream())
+                var mediaOptions = new PickMediaOptions()
                 {
-                    var sourceStream = selectedImageFile.GetStream();
-                    sourceStream.CopyTo(memoryStream);
-                    return memoryStream.ToArray();
+                    PhotoSize = PhotoSize.Medium
+                };
+
+
+                var selectedImageFile = await CrossMedia.Current.PickPhotoAsync(mediaOptions);
+
+                if (selectedImageFile != null)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        var sourceStream = selectedImageFile.GetStream();
+                        sourceStream.CopyTo(memoryStream);
+                        return memoryStream.ToArray();
+                    }
                 }
             }
-
-            await Application.Current.MainPage.DisplayAlert("Error", "Image could not be loaded!", "OK");
+            catch
+            {
+                await Application.Current.MainPage.DisplayAlert("Error", "Image could not be loaded!", "OK");
+            }
             return image;
         }
     }
