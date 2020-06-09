@@ -54,7 +54,7 @@
                         VerticalOptions="Center"
                     >
                         <Image 
-                            Source="{Binding SelectedTrack.CoverImage}"
+                            Source="{Binding CoverImage}"
                             Aspect="AspectFill" 
                             HeightRequest="150" 
                             WidthRequest="150" 

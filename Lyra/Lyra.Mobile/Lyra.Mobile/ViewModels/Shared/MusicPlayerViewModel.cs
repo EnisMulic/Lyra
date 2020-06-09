@@ -96,11 +96,14 @@ namespace Lyra.Mobile.ViewModels
             get => isPlaying ? ImageSource.FromResource("Lyra.Mobile.Assets.pause.png", typeof(ImageResourceExtension).GetTypeInfo().Assembly)
                              : ImageSource.FromResource("Lyra.Mobile.Assets.play.png", typeof(ImageResourceExtension).GetTypeInfo().Assembly);
         }
+
+        public ImageSource CoverImage { get; set; }
         #endregion
 
-        public MusicPlayerViewModel(Track track, ObservableCollection<Track> trackList)
+        public MusicPlayerViewModel(Track track, ObservableCollection<Track> trackList, Image coverImage)
         {
             this.trackList = trackList;
+            CoverImage = coverImage?.Source;
             PlayTrack(track.ID);
         }
 

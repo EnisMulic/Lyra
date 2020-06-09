@@ -3,6 +3,7 @@ using Lyra.Mobile.ViewModels;
 using Lyra.Model;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,7 +28,11 @@ namespace Lyra.Mobile.Views
         {
             var track = (e.SelectedItem as Track);
             var queue = await _service.GetTracks<List<Track>>(model.Playlist.ID, null);
-            await Navigation.PushAsync(new MusicPlayerPage(track, queue));
+            Image coverImage = new Image()
+            {
+                Source = ImageSource.FromStream(() => new MemoryStream(model.Playlist.Image))
+            };
+            await Navigation.PushAsync(new MusicPlayerPage(track, queue, coverImage));
         }
 
         protected async override void OnAppearing()

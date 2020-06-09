@@ -54,7 +54,7 @@ namespace Lyra.Mobile.Views
         private async void Track_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var trackVM = (e.SelectedItem as TrackViewModel);
-            await Navigation.PushAsync(new MusicPlayerPage(trackVM.Track, null));
+            await Navigation.PushAsync(new MusicPlayerPage(trackVM.Track, null, null));
 
             var request = new UserActivityTrackInsertRequest()
             {
