@@ -34,20 +34,13 @@
                    Text="{Binding Album.Artist.Name, StringFormat='by {0:F0}'}"
                    LineBreakMode="NoWrap"
                    FontSize="12" />
-            <Frame 
-                Margin="50"
-                WidthRequest="250"
-                HeightRequest="250" 
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                BorderColor="Black"
-            >
-                <Image 
+            <Image 
                     Source="{Binding Album.Image, Converter={StaticResource ImgConverter}}" 
+                    Margin="45, 0, 45, 45"
+                    WidthRequest="200"
+                    HeightRequest="250" 
                     Aspect="AspectFill"
-                >
-                </Image>
-            </Frame>
+            ></Image>
 
             <ListView ItemsSource="{Binding TracksList}"
                       ItemSelected="Track_ItemSelected"
@@ -63,6 +56,7 @@
                                         </Grid.RowDefinitions>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="25*"/>
+                                            <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <Label 

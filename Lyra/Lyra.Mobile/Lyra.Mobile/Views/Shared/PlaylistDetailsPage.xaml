@@ -31,9 +31,7 @@
                    Padding="0, 5, 0, 0"
                    Text="{Binding Playlist.Name}"></Label>
             <Frame 
-                Margin="50"
-                WidthRequest="250"
-                HeightRequest="250" 
+                Padding="0"
                 HorizontalOptions="Center"
                 VerticalOptions="Center"
                 BorderColor="Black"
@@ -41,8 +39,9 @@
                 <Image 
                     Source="{Binding Image, Converter={StaticResource ImgConverter}}" 
                     Aspect="AspectFill"
-                >
-                </Image>
+                    WidthRequest="250"
+                    HeightRequest="250" 
+                ></Image>
                 <Frame.GestureRecognizers>
                     <TapGestureRecognizer 
                         Command="{Binding ChangeImage}"
