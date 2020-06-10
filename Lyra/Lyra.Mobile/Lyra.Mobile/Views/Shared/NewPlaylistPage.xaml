@@ -4,7 +4,9 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:converters="clr-namespace:Lyra.Mobile.Converters" 
-             xmlns:vm="clr-namespace:Lyra.Mobile.ViewModels"
+             xmlns:vm="clr-namespace:Lyra.Mobile.ViewModels" 
+             xmlns:Validators="clr-namespace:Lyra.Mobile.Validators.Implementations" 
+             xmlns:Behaviors="clr-namespace:Lyra.Mobile.Behaviors"
              mc:Ignorable="d"
              x:Class="Lyra.Mobile.Views.NewPlaylistPage">
     <ContentPage.Resources>
@@ -18,6 +20,9 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand"
                      Padding="90, 0, 90, 0">
+            <StackLayout.Behaviors>
+                <Behaviors:ValidationGroupBehavior x:Name="form" />
+            </StackLayout.Behaviors>
             <Frame 
                 Padding="0"
                 WidthRequest="500"
@@ -40,7 +45,15 @@
             </Frame>
 
             <Label Text="Name" />
-            <Entry Text="{Binding Name}"></Entry>
+            <Entry Text="{Binding Name}">
+                <Entry.Behaviors>
+                    <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                        <Behaviors:ValidationBehavior.Validators>
+                            <Validators:RequiredValidator />
+                        </Behaviors:ValidationBehavior.Validators>
+                    </Behaviors:ValidationBehavior>
+                </Entry.Behaviors>
+            </Entry>
             <Button 
                 Text="Save"
                 Margin="0, 20, 0, 0"

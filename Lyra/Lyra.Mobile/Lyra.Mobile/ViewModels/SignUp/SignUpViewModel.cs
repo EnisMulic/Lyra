@@ -13,49 +13,49 @@ namespace Lyra.Mobile.ViewModels
     public class SignUpViewModel : BaseViewModel
     {
         private readonly APIService _service = new APIService("User");
-        string firstName = string.Empty;
+        string firstName;
         public string FirstName
         {
             get { return firstName; }
             set { SetProperty(ref firstName, value); }
         }
 
-        string lastName = string.Empty;
+        string lastName;
         public string LastName
         {
             get { return lastName; }
             set { SetProperty(ref lastName, value); }
         }
 
-        string username = string.Empty;
+        string username;
         public string Username
         {
             get { return username; }
             set { SetProperty(ref username, value); }
         }
 
-        string email = string.Empty;
+        string email;
         public string Email
         {
             get { return email; }
             set { SetProperty(ref email, value); }
         }
 
-        string phoneNumber = string.Empty;
+        string phoneNumber;
         public string PhoneNumber
         {
             get { return phoneNumber; }
             set { SetProperty(ref phoneNumber, value); }
         }
 
-        string password = string.Empty;
+        string password;
         public string Password
         {
             get { return password; }
             set { SetProperty(ref password, value); }
         }
 
-        string passwordConfirmation = string.Empty;
+        string passwordConfirmation;
         public string PasswordConfirmation
         {
             get { return passwordConfirmation; }

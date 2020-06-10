@@ -13,21 +13,21 @@ namespace Lyra.Mobile.ViewModels
     public class ChangePasswordViewModel : BaseViewModel
     {
         private readonly APIService _service = new APIService("User");
-        string oldPassword = string.Empty;
-        public string OldPassword
+        string currentPassword;
+        public string CurrentPassword
         {
-            get { return oldPassword; }
-            set { SetProperty(ref oldPassword, value); }
+            get { return currentPassword; }
+            set { SetProperty(ref currentPassword, value); }
         }
 
-        string newPassword = string.Empty;
+        string newPassword;
         public string NewPassword
         {
             get { return newPassword; }
             set { SetProperty(ref newPassword, value); }
         }
 
-        string newPasswordConfirmation = string.Empty;
+        string newPasswordConfirmation;
         public string NewPasswordConfirmation
         {
             get { return newPasswordConfirmation; }
@@ -43,9 +43,9 @@ namespace Lyra.Mobile.ViewModels
 
         private async Task SavePassword()
         {
-            try
+            if (NewPassword == NewPasswordConfirmation)
             {
-                if (APIService.Password == OldPassword) //Temp Validation
+                try
                 {
                     var user = SignedInUserHelper.User;
                     var request = new UserUpdateRequest()
@@ -62,13 +62,17 @@ namespace Lyra.Mobile.ViewModels
 
                     await _service.Update<Model.User>(SignedInUserHelper.User.ID, request);
                     APIService.Password = NewPassword;
-                    
+
                     await Application.Current.MainPage.DisplayAlert("Success", "You have successfully changed your password", "OK");
                 }
+                catch
+                {
+                    await Application.Current.MainPage.DisplayAlert("Error", "An error occured", "OK");
+                }
             }
-            catch
+            else
             {
-                await Application.Current.MainPage.DisplayAlert("Error", "An error occured", "OK");
+                await Application.Current.MainPage.DisplayAlert("Error", "Confirmation password does not match", "OK");
             }
         }
     }

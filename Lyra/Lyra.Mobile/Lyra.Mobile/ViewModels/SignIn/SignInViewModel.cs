@@ -15,14 +15,14 @@ namespace Lyra.Mobile.ViewModels
     public class SignInViewModel : BaseViewModel
     {
         private readonly APIService _service = new APIService("User");
-        string username = string.Empty;
+        string username;
         public string Username
         {
             get { return username; }
             set { SetProperty(ref username, value); }
         }
 
-        string password = string.Empty;
+        string password;
         public string Password
         {
             get { return password; }

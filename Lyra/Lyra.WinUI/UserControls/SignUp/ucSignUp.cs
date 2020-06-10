@@ -117,6 +117,14 @@ namespace Lyra.WinUI.SignUp
             e.Cancel = !result.IsValid;
         }
 
+        private void PhoneNumber_Validating(object sender, CancelEventArgs e)
+        {
+            var validator = new UserValidator();
+            var result = validator.PhoneCheck(txtPhone.Text);
+            errorProviderPhoneNumber.SetError(txtPhone, result.Message);
+            e.Cancel = !result.IsValid;
+        }
+
         private void Password_Validating(object sender, CancelEventArgs e)
         {
             var validator = new UserValidator();

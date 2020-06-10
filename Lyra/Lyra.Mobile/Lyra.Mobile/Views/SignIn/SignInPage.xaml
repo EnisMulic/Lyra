@@ -2,7 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:vm="clr-namespace:Lyra.Mobile.ViewModels"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:vm="clr-namespace:Lyra.Mobile.ViewModels" 
+             xmlns:Behaviors="clr-namespace:Lyra.Mobile.Behaviors" 
+             xmlns:Validators="clr-namespace:Lyra.Mobile.Validators.Implementations"
              mc:Ignorable="d"
              x:Class="Lyra.Mobile.Views.SignInPage"
              Style="{StaticResource PageStyle}">
@@ -12,11 +15,29 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand"
                      Padding="90">
+            <StackLayout.Behaviors>
+                <Behaviors:ValidationGroupBehavior x:Name="form" />
+            </StackLayout.Behaviors>
             <Label Text="Username"/>
-            <Entry Text="{Binding Username}"></Entry>
+            <Entry Text="{Binding Username}">
+                <Entry.Behaviors>
+                    <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                        <Behaviors:ValidationBehavior.Validators>
+                            <Validators:RequiredValidator />
+                        </Behaviors:ValidationBehavior.Validators>
+                    </Behaviors:ValidationBehavior>
+                </Entry.Behaviors>
+            </Entry>
             <Label Text="Password"/>
-            <Entry Text="{Binding Password}"
-                   IsPassword="True"></Entry>
+            <Entry Text="{Binding Password}" IsPassword="True">
+                <Entry.Behaviors>
+                    <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                        <Behaviors:ValidationBehavior.Validators>
+                            <Validators:RequiredValidator />
+                        </Behaviors:ValidationBehavior.Validators>
+                    </Behaviors:ValidationBehavior>
+                </Entry.Behaviors>
+            </Entry>
             <Button Text="Sign In"
                     Margin="0, 20, 0, 0"
                     TextColor="White"

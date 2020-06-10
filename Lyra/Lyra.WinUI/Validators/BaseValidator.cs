@@ -34,7 +34,10 @@ namespace Lyra.WinUI.Validators
 
         protected bool PhoneNumber(string value)
         {
-            throw new NotImplementedException();
+            Regex regex = new Regex(@"^(\+)?([0-9]){9,16}$");
+            Match match = regex.Match(value);
+
+            return match.Success;
         }
 
         protected bool Range(string value, int min, int max)

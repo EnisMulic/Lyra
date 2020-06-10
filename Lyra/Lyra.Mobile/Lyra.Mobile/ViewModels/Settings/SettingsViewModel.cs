@@ -23,35 +23,35 @@ namespace Lyra.Mobile.ViewModels
             get { return userImage; }
             set { SetProperty(ref userImage, value); }
         }
-        string firstName = string.Empty;
+        string firstName;
         public string FirstName
         {
             get { return firstName; }
             set { SetProperty(ref firstName, value); }
         }
 
-        string lastName = string.Empty;
+        string lastName;
         public string LastName
         {
             get { return lastName; }
             set { SetProperty(ref lastName, value); }
         }
 
-        string username = string.Empty;
+        string username;
         public string Username
         {
             get { return username; }
             set { SetProperty(ref username, value); }
         }
 
-        string email = string.Empty;
+        string email;
         public string Email
         {
             get { return email; }
             set { SetProperty(ref email, value); }
         }
 
-        string phoneNumber = string.Empty;
+        string phoneNumber;
         public string PhoneNumber
         {
             get { return phoneNumber; }

@@ -51,6 +51,7 @@
             this.errorProviderPassword = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderPasswordConfirm = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderPhone = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderPhoneNumber = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderFirstName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderLastName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmail)).BeginInit();
@@ -58,6 +59,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPassword)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPasswordConfirm)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPhone)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderPhoneNumber)).BeginInit();
             this.SuspendLayout();
             // 
             // txtUsername
@@ -133,6 +135,7 @@
             this.txtPhone.Name = "txtPhone";
             this.txtPhone.Size = new System.Drawing.Size(322, 26);
             this.txtPhone.TabIndex = 23;
+            this.txtPhone.Validating += new System.ComponentModel.CancelEventHandler(this.PhoneNumber_Validating);
             // 
             // lblEmail
             // 
@@ -225,6 +228,10 @@
             // 
             this.errorProviderPhone.ContainerControl = this;
             // 
+            // errorProviderPhoneNumber
+            // 
+            this.errorProviderPhoneNumber.ContainerControl = this;
+            // 
             // ucSignUp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -253,6 +260,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPassword)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPasswordConfirm)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderPhone)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderPhoneNumber)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -282,5 +290,6 @@
         private System.Windows.Forms.ErrorProvider errorProviderPassword;
         private System.Windows.Forms.ErrorProvider errorProviderPasswordConfirm;
         private System.Windows.Forms.ErrorProvider errorProviderPhone;
+        private System.Windows.Forms.ErrorProvider errorProviderPhoneNumber;
     }
 }

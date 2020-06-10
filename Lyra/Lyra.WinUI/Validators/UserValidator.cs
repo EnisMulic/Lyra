@@ -79,6 +79,18 @@ namespace Lyra.WinUI.Validators
             }
         }
 
+        public ValidationResult PhoneCheck(string value)
+        {
+            if (!PhoneNumber(value) && !string.IsNullOrEmpty(value))
+            {
+                return new ValidationResult("Value is not a valid phone number", false);
+            }
+            else
+            {
+                return new ValidationResult("", true);
+            }
+        }
+
         public ValidationResult UsernameCheck(string value)
         {
             if (!Required(value))

@@ -2,7 +2,10 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:vm="clr-namespace:Lyra.Mobile.ViewModels" xmlns:converters="clr-namespace:Lyra.Mobile.Converters"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:vm="clr-namespace:Lyra.Mobile.ViewModels" 
+             xmlns:converters="clr-namespace:Lyra.Mobile.Converters" 
+             xmlns:Behaviors="clr-namespace:Lyra.Mobile.Behaviors" xmlns:Validators="clr-namespace:Lyra.Mobile.Validators.Implementations"
              mc:Ignorable="d"
              x:Class="Lyra.Mobile.Views.SettingsPage">
     <ContentPage.Resources>
@@ -16,6 +19,9 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="CenterAndExpand"
                      Padding="90, 20, 90, 90">
+            <StackLayout.Behaviors>
+                <Behaviors:ValidationGroupBehavior x:Name="form" />
+            </StackLayout.Behaviors>
             <Frame 
                 Padding="0"
                 WidthRequest="165"
@@ -40,15 +46,57 @@
             </Frame>
             
             <Label Text="First Name" />
-            <Entry Text="{Binding FirstName}"></Entry>
+            <Entry Text="{Binding FirstName}">
+                <Entry.Behaviors>
+                    <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                        <Behaviors:ValidationBehavior.Validators>
+                            <Validators:RequiredValidator />
+                        </Behaviors:ValidationBehavior.Validators>
+                    </Behaviors:ValidationBehavior>
+                </Entry.Behaviors>
+            </Entry>
             <Label Text="Last Name" />
-            <Entry Text="{Binding LastName}"></Entry>
+            <Entry Text="{Binding LastName}">
+                <Entry.Behaviors>
+                    <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                        <Behaviors:ValidationBehavior.Validators>
+                            <Validators:RequiredValidator />
+                        </Behaviors:ValidationBehavior.Validators>
+                    </Behaviors:ValidationBehavior>
+                </Entry.Behaviors>
+            </Entry>
             <Label Text="Username"/>
-            <Entry Text="{Binding Username}"></Entry>
+            <Entry Text="{Binding Username}">
+                <Entry.Behaviors>
+                    <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                        <Behaviors:ValidationBehavior.Validators>
+                            <Validators:RequiredValidator />
+                        </Behaviors:ValidationBehavior.Validators>
+                    </Behaviors:ValidationBehavior>
+                </Entry.Behaviors>
+            </Entry>
             <Label Text="Email"/>
-            <Entry Text="{Binding Email}"></Entry>
+            <Entry Text="{Binding Email}">
+                <Entry.Behaviors>
+                    <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                        <Behaviors:ValidationBehavior.Validators>
+                            <Validators:RequiredValidator />
+                            <Validators:FormatValidator Format="[^@]+@[^\.]+\..+" Message="Incorect format"/>
+                        </Behaviors:ValidationBehavior.Validators>
+                    </Behaviors:ValidationBehavior>
+                </Entry.Behaviors>
+            </Entry>
             <Label Text="Phone Number"/>
-            <Entry Text="{Binding PhoneNumber}"></Entry>
+            <Entry Text="{Binding PhoneNumber}">
+                <Entry.Behaviors>
+                    <Behaviors:ValidationBehavior Group="{x:Reference form}" PropertyName="Text">
+                        <Behaviors:ValidationBehavior.Validators>
+                            <Validators:RequiredValidator />
+                            <Validators:FormatValidator Format="^(\+)?([ 0-9]){9,16}$" Message="Incorect format"/>
+                        </Behaviors:ValidationBehavior.Validators>
+                    </Behaviors:ValidationBehavior>
+                </Entry.Behaviors>
+            </Entry>
             
             <Button 
                 Text="Save"
