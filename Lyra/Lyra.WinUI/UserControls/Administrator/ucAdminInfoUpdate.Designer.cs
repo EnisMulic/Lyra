@@ -51,12 +51,14 @@
             this.errorProviderLastName = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderUsername = new System.Windows.Forms.ErrorProvider(this.components);
             this.errorProviderEmail = new System.Windows.Forms.ErrorProvider(this.components);
+            this.errorProviderPhoneNumber = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).BeginInit();
             this.gbRoles.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderFirstName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderLastName)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderUsername)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmail)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderPhoneNumber)).BeginInit();
             this.SuspendLayout();
             // 
             // btnPassword
@@ -117,6 +119,7 @@
             this.txtPhoneNumber.Name = "txtPhoneNumber";
             this.txtPhoneNumber.Size = new System.Drawing.Size(188, 22);
             this.txtPhoneNumber.TabIndex = 77;
+            this.txtPhoneNumber.Validating += new System.ComponentModel.CancelEventHandler(this.PhoneNumber_Validating);
             // 
             // lblEmail
             // 
@@ -246,6 +249,10 @@
             // 
             this.errorProviderEmail.ContainerControl = this;
             // 
+            // errorProviderPhoneNumber
+            // 
+            this.errorProviderPhoneNumber.ContainerControl = this;
+            // 
             // ucAdminInfoUpdate
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -276,6 +283,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderLastName)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderUsername)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProviderEmail)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProviderPhoneNumber)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -305,5 +313,6 @@
         private System.Windows.Forms.ErrorProvider errorProviderLastName;
         private System.Windows.Forms.ErrorProvider errorProviderUsername;
         private System.Windows.Forms.ErrorProvider errorProviderEmail;
+        private System.Windows.Forms.ErrorProvider errorProviderPhoneNumber;
     }
 }

@@ -143,5 +143,13 @@ namespace Lyra.WinUI.UserControls.Administrator.User
             errorProviderEmail.SetError(txtEmail, result.Message);
             e.Cancel = !result.IsValid;
         }
+
+        private void PhoneNumber_Validating(object sender, CancelEventArgs e)
+        {
+            var validator = new UserValidator();
+            var result = validator.EmailCheck(txtPhoneNumber.Text);
+            errorProviderPhoneNumber.SetError(txtPhoneNumber, result.Message);
+            e.Cancel = !result.IsValid;
+        }
     }
 }
