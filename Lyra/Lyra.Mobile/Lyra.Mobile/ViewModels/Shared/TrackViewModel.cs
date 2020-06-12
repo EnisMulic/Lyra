@@ -40,10 +40,9 @@ namespace Lyra.Mobile.ViewModels
             set { SetProperty(ref _track, value); }
         }
 
-        public ImageSource IsFavouriteImage
+        public string IsFavouriteImage
         {
-            get => IsFavourite ? ImageSource.FromResource("Lyra.Mobile.Assets.heart-filled.png", typeof(ImageResourceExtension).GetTypeInfo().Assembly)
-                               : ImageSource.FromResource("Lyra.Mobile.Assets.heart-empty.png", typeof(ImageResourceExtension).GetTypeInfo().Assembly);
+            get => IsFavourite ? "heart-filled.png" : "heart-empty.png";
 
         }
 

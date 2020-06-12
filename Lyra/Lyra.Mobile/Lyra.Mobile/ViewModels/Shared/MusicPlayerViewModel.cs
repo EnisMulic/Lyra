@@ -91,10 +91,9 @@ namespace Lyra.Mobile.ViewModels
             }
         }
 
-        public ImageSource PlayIcon
+        public string PlayIcon
         {
-            get => isPlaying ? ImageSource.FromResource("Lyra.Mobile.Assets.pause.png", typeof(ImageResourceExtension).GetTypeInfo().Assembly)
-                             : ImageSource.FromResource("Lyra.Mobile.Assets.play.png", typeof(ImageResourceExtension).GetTypeInfo().Assembly);
+            get => isPlaying ? "pause.png" : "play.png";
         }
 
         public ImageSource CoverImage { get; set; }

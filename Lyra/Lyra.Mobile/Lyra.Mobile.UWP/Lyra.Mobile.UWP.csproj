@@ -104,12 +104,14 @@
     </AppxManifest>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Assets\add.png" />
-    <EmbeddedResource Include="Assets\pause.png" />
-    <EmbeddedResource Include="Assets\play.png" />
-    <EmbeddedResource Include="Assets\playBlack.png" />
-    <Resource Include="Assets\next.png" />
-    <Content Include="Assets\previous.png" />
+    <Content Include="add.png" />
+    <Content Include="heart-empty.png" />
+    <Content Include="heart-filled.png" />
+    <Content Include="pause.png" />
+    <Content Include="play.png" />
+    <Content Include="playBlack.png" />
+    <Content Include="next.png" />
+    <Content Include="previous.png" />
     <Content Include="Properties\Default.rd.xml" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-200.png" />

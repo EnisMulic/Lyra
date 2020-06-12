@@ -63,7 +63,7 @@
                                             </Label.FormattedText>
                                         </Label>
                                         <ImageButton Grid.Row="0" Grid.Column="1"
-                                                Source="{Binding AddImage}" 
+                                                Source="add.png" 
                                                 HorizontalOptions="End"
                                                 WidthRequest="30"
                                                 HeightRequest="30"

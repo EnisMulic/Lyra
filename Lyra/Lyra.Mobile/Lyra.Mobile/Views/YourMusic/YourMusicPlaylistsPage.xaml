@@ -27,7 +27,7 @@
                        SearchCommand="{Binding PerformSearch}"
                        SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
             <StackLayout Padding="10" Orientation="Horizontal" >
-                <Image Source="{ext:ImageResource Lyra.Mobile.Assets.add.png}"
+                <Image Source="add.png"
                        WidthRequest="100"
                        HeightRequest="100"
                 ></Image>
