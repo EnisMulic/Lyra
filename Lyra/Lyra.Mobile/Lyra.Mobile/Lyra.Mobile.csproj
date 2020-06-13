@@ -63,6 +63,12 @@
     <EmbeddedResource Update="Views\Activity\ActivityTracksPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\Search\SearchPlaylistsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\Search\SearchTracksPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
     <EmbeddedResource Update="Views\Shared\AlbumDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -81,7 +87,7 @@
     <EmbeddedResource Update="Views\Shared\PlaylistDetailsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\SearchPage.xaml">
+    <EmbeddedResource Update="Views\Search\SearchPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\Settings\SettingsPage.xaml">
@@ -108,5 +114,14 @@
     <EmbeddedResource Update="Views\YourMusic\YourMusicTracksPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\Search\SearchAlbumsPage.xaml.cs">
+      <DependentUpon>SearchAlbumsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Search\SearchArtistsPage.xaml.cs">
+      <DependentUpon>SearchArtistsPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

@@ -24,16 +24,8 @@ namespace Lyra.WebAPI.Services
         public override async Task<List<Model.Track>> Get(TrackSearchRequest request)
         {
             var query = _context.Tracks
-                .Select
-                (
-                    i => new Database.Track()
-                    {
-                        ID = i.ID,
-                        Name = i.Name,
-                        Length = i.Length,
-                        TrackArtists = i.TrackArtists
-                    }
-                )
+                .Include(i => i.TrackArtists)
+                .ThenInclude(i => i.Artist)
                 .AsQueryable();
 
             if (!string.IsNullOrWhiteSpace(request?.Name))

@@ -6,7 +6,6 @@ using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-
 using Lyra.Mobile.Models;
 using Lyra.Mobile.Views;
 using Lyra.Mobile.ViewModels;
@@ -50,7 +49,7 @@ namespace Lyra.Mobile.Views
         private async void searchBar_SearchButtonPressed(object sender, EventArgs e)
         {
             SearchBar searchBar = (SearchBar)sender;
-            await Navigation.PushAsync(new SearchPage(searchBar.Text));
+            await Navigation.PushAsync(new SearchPage());
         }
     }
 }

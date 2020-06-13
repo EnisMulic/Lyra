@@ -15,20 +15,18 @@ using Xamarin.Forms.Xaml;
 namespace Lyra.Mobile.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SearchPage : ContentPage
+    public partial class SearchPage : TabbedPage
     {
         private readonly APIService _loggingService = new APIService("User");
-        private SearchViewModel model;
-        public SearchPage(string search = null)
+        public SearchPage()
         {
             InitializeComponent();
-            BindingContext = model = new SearchViewModel(search);
         }
 
         private async void Artist_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var artistVM = (e.SelectedItem as ArtistViewModel);
-            await Navigation.PushAsync(new ArtistDetailsPage(artistVM.Artist));
+            //await Navigation.PushAsync(new ArtistDetailsPage(artistVM.Artist));
 
             var request = new UserActivityArtistInsertRequest()
             {
@@ -41,7 +39,7 @@ namespace Lyra.Mobile.Views
         private async void Album_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var albumVM = (e.SelectedItem as AlbumViewModel);
-            await Navigation.PushAsync(new AlbumDetailsPage(albumVM.Album));
+            //await Navigation.PushAsync(new AlbumDetailsPage(albumVM.Album));
 
             var request = new UserActivityAlbumInsertRequest()
             {
@@ -54,7 +52,7 @@ namespace Lyra.Mobile.Views
         private async void Track_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var trackVM = (e.SelectedItem as TrackViewModel);
-            await Navigation.PushAsync(new MusicPlayerPage(trackVM.Track, null, null));
+            //await Navigation.PushAsync(new MusicPlayerPage(trackVM.Track, null, null));
 
             var request = new UserActivityTrackInsertRequest()
             {
@@ -67,7 +65,7 @@ namespace Lyra.Mobile.Views
         private async void Playlist_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var selectedPlaylist = (e.SelectedItem as Playlist);
-            await Navigation.PushAsync(new PlaylistDetailsPage(selectedPlaylist));
+            //await Navigation.PushAsync(new PlaylistDetailsPage(selectedPlaylist));
 
             var request = new UserActivityPlaylistInsertRequest()
             {

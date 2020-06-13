@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:vm="clr-namespace:Lyra.Mobile.ViewModels.Search" 
+             xmlns:converters="clr-namespace:Lyra.Mobile.Converters"
+             mc:Ignorable="d"
+             x:Class="Lyra.Mobile.Views.Search.SearchAlbumsPage"
+             Title="Albums">
+    <ContentPage.BindingContext>
+        <vm:SearchAlbumsViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="ImgConverter"></converters:ImageConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar x:Name="searchBar"
+                       Placeholder="Search..."
+                       HorizontalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Italic" 
+                       Text="{Binding SearchQuery}"
+                       SearchCommand="{Binding PerformSearch}"
+                       SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
+            <ListView ItemsSource="{Binding AlbumsList}"
+                      ItemSelected="Album_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Horizontal">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="15*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Grid.Row="0" Grid.Column="0">
+                                        <Image Source="{Binding Album.Image, Converter={StaticResource ImgConverter}}"
+                                               WidthRequest="100"
+                                               HeightRequest="100"
+                                        ></Image>
+                                    </StackLayout>
+                                    <StackLayout Orientation="Vertical" Grid.Row="0" Grid.Column="1">
+                                        <Label Text="{Binding Album.Name}" 
+                                               LineBreakMode="NoWrap" 
+                                               Style="{DynamicResource ListItemTextStyle}" 
+                                               Padding="10, 20, 0, 0"
+                                               FontSize="16" />
+                                        <Label Text="{Binding Album.Artist.Name, StringFormat='by {0:F0}'}"
+                                               LineBreakMode="NoWrap"
+                                               Padding="10, 0, 0, 0"
+                                               FontSize="12" />
+                                    </StackLayout>
+                                    <ImageButton Grid.Row="0" Grid.Column="2"
+                                                Source="{Binding IsFavouriteImage}"
+                                                HorizontalOptions="End"
+                                                WidthRequest="25"
+                                                HeightRequest="25"
+                                                Command="{Binding ToggleFavouriteCommand}"
+                                    ></ImageButton>
+                                </Grid>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
