@@ -1,6 +1,7 @@
 ﻿using Lyra.Mobile.Services;
 using Lyra.Mobile.ViewModels;
 using Lyra.Model;
+using Lyra.Model.Requests;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -39,6 +40,24 @@ namespace Lyra.Mobile.Views
         {
             base.OnAppearing();
             await model.Init();
+        }
+
+        private async void RemoveTrackFromPlaylist_Clicked(object sender, EventArgs e)
+        {
+            var button = sender as ImageButton;
+            var trackVM = button.BindingContext as TrackViewModel;
+
+            var request = new PlaylistUpsertRequest()
+            {
+                Name = model.Playlist.Name,
+                Image = model.Playlist.Image,
+                UserID = model.Playlist.UserID,
+                CreatedAt = model.Playlist.CreatedAt,
+                TracksToDelete = new List<int>() { trackVM.Track.ID }
+            };
+
+            await _service.Update<Playlist>(model.Playlist.ID, request);
+            model.TracksList.Remove(trackVM);
         }
     }
 }
