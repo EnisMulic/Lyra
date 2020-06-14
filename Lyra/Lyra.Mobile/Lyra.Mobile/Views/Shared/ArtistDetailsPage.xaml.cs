@@ -24,8 +24,8 @@ namespace Lyra.Mobile.Views
 
         private async void Album_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var album = (e.SelectedItem as Album);
-            await Navigation.PushAsync(new AlbumDetailsPage(album));
+            var albumVM = (e.SelectedItem as AlbumViewModel);
+            await Navigation.PushAsync(new AlbumDetailsPage(albumVM.Album));
         }
 
         protected async override void OnAppearing()
