@@ -13,7 +13,6 @@ namespace Lyra.Mobile
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
             MainPage = new SignInPage();
         }
 

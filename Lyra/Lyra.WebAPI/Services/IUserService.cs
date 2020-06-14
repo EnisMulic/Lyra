@@ -29,5 +29,6 @@ namespace Lyra.WebAPI.Services
         Task<Model.UserActivityArtist> InsertActivityArtist(int id, UserActivityArtistInsertRequest request);
         Task<List<Model.UserActivityPlaylist>> GetActivityPlaylists(int id, PlaylistSearchRequest request);
         Task<Model.UserActivityPlaylist> InsertActivityPlaylist(int id, UserActivityPlaylistInsertRequest request);
+        Task<List<Model.Track>> Recommend(int id, PageRequest request);
     }
 }

@@ -9,6 +9,7 @@ using Lyra.WebAPI.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Lyra.WebAPI.Controllers
 {
@@ -156,6 +157,13 @@ namespace Lyra.WebAPI.Controllers
         public async Task<UserActivityPlaylist> InsertActivityPlaylist(int id, [FromBody]UserActivityPlaylistInsertRequest request)
         {
             return await _service.InsertActivityPlaylist(id, request);
+        }
+
+        [Authorize]
+        [HttpGet("{id}/Recommend")]
+        public async Task<List<Model.Track>> Recommend(int id, [FromQuery] PageRequest request)
+        {
+            return await _service.Recommend(id, request);
         }
     }
 }

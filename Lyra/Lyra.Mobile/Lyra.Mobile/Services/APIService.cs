@@ -653,5 +653,36 @@ namespace Lyra.Mobile.Services
             }
         }
 
+
+        public async Task<List<Model.Track>> Recommend(int ID, PageRequest request)
+        {
+            try
+            {
+                var url = $"{APIUrl}/{_route}/{ID}/Recommend";
+
+                if (request != null)
+                {
+                    url += "?";
+                    url += await request.ToQueryString();
+                }
+
+                return await url.WithBasicAuth(Username, Password).GetJsonAsync<List<Model.Track>>();
+            }
+            catch (FlurlHttpException ex)
+            {
+                var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
+
+                var stringBuilder = new StringBuilder();
+                foreach (var error in errors)
+                {
+                    stringBuilder.AppendLine($"{error.Key}, ${string.Join(",", error.Value)}");
+                }
+
+                await Application.Current.MainPage.DisplayAlert("Error", stringBuilder.ToString(), "OK");
+                return default;
+            }
+
+        }
+
     }
 }

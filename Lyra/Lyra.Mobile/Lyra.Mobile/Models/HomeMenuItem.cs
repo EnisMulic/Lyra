@@ -6,8 +6,8 @@ namespace Lyra.Mobile.Models
 {
     public enum MenuItemType
     {
-        Search,
         Browse,
+        Search,
         Activity,
         YourMusic,
         Settings

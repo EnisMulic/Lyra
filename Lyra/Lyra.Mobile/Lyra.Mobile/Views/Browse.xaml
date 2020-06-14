@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:vm="clr-namespace:Lyra.Mobile.ViewModels" 
+             xmlns:converters="clr-namespace:Lyra.Mobile.Converters"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
+             mc:Ignorable="d"
+             x:Class="Lyra.Mobile.Views.ItemsPage"
+             Title="{Binding Title}"
+             x:Name="BrowseItemsPage">
+
+    <ContentPage.BindingContext>
+        <vm:BrowseViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:MainArtistConverter x:Key="MainArtistConverter"></converters:MainArtistConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView ItemsSource="{Binding TracksList}"
+                      ItemSelected="Track_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Horizontal">
+                                <StackLayout Orientation="Vertical">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="50" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="20*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label 
+                                           Grid.Row="0"
+                                           Grid.Column="0"
+                                           FontSize="16"
+                                           Padding="10, 0, 0, 0"
+                                           LineBreakMode="NoWrap" 
+                                        >
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="{Binding Track.Name}" Style="{DynamicResource ListItemTextStyle}" />
+                                                        <Span Text="{x:Static system:Environment.NewLine}" />
+                                                        <Span Text="by" />
+                                                        <Span Text=" " />
+                                                        <Span Text="{Binding Track.TrackArtists, Converter={StaticResource MainArtistConverter}}" />
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                        <ImageButton Grid.Row="0" Grid.Column="1"
+                                                Source="add.png" 
+                                                HorizontalOptions="End"
+                                                WidthRequest="30"
+                                                HeightRequest="30"
+                                                Command="{Binding ShowPlaylistsCommand}"
+                                        ></ImageButton>
+                                        <ImageButton Grid.Row="0" Grid.Column="2"
+                                                Source="{Binding IsFavouriteImage}"
+                                                HorizontalOptions="End"
+                                                WidthRequest="30"
+                                                HeightRequest="30"
+                                                Command="{Binding ToggleFavouriteCommand}"
+                                        ></ImageButton>
+                                    </Grid>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
