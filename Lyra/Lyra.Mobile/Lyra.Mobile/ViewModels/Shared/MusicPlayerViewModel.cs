@@ -2,6 +2,7 @@
 using Lyra.Mobile.Helpers;
 using Lyra.Mobile.Services;
 using Lyra.Model;
+using Lyra.Model.Requests;
 using MediaManager;
 using MediaManager.Player;
 using System;
@@ -11,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -20,7 +22,9 @@ namespace Lyra.Mobile.ViewModels
     public class MusicPlayerViewModel : BaseViewModel
     {
         #region Properties
+        private readonly APIService _logginService = new APIService("User");
         private readonly APIService _trackService = new APIService("Track");
+        private readonly APIService _trackReviewService = new APIService("Review");
         ObservableCollection<Track> trackList;
         public ObservableCollection<Track> TrackList
         {
@@ -41,6 +45,20 @@ namespace Lyra.Mobile.ViewModels
                 selectedTrack = value;
                 OnPropertyChanged();
             }
+        }
+
+        private UserTrackReview trackReview;
+        public UserTrackReview TrackReview
+        {
+            get { return trackReview; }
+            set { SetProperty(ref trackReview, value); }
+        }
+
+        private int score;
+        public int Score
+        {
+            get { return score; }
+            set { SetProperty(ref score, value); }
         }
 
         private TimeSpan duration;
@@ -137,6 +155,11 @@ namespace Lyra.Mobile.ViewModels
         private async void PlayTrack(int ID)
         {
             SelectedTrack = await _trackService.GetById<Model.Track>(ID);
+
+            await LogTrackActivity(ID);
+            await SetTrackReview(ID);
+            Score = TrackReview != null ? TrackReview.Score : 0;
+
             var mediaInfo = CrossMediaManager.Current;
 
             string filename = FileHelper.SaveFile(selectedTrack.MP3File, selectedTrack.Name + Guid.NewGuid() + "mp3");        
@@ -186,6 +209,28 @@ namespace Lyra.Mobile.ViewModels
                 SelectedTrack = trackList[(int)currentIndex - 1];
                 PlayTrack(selectedTrack.ID);
             }
+        }
+
+        private async Task SetTrackReview(int TrackID)
+        {
+            var request = new UserTrackReviewSearchRequest()
+            {
+                TrackID = TrackID,
+                UserID = SignedInUserHelper.User.ID
+            };
+
+            var list = await _trackReviewService.Get<List<Model.UserTrackReview>>(request);
+            TrackReview = list.FirstOrDefault();
+        }
+
+        private async Task LogTrackActivity(int TrackID)
+        {
+            var request = new UserActivityTrackInsertRequest()
+            {
+                TrackID = TrackID,
+                InteractedAt = DateTime.Now
+            };
+            await _logginService.InsertActivityTrack(SignedInUserHelper.User.ID, request);
         }
     }
 }

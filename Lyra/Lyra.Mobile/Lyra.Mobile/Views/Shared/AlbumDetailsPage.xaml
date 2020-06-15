@@ -58,6 +58,7 @@
                                             <ColumnDefinition Width="25*"/>
                                             <ColumnDefinition Width="*"/>
                                             <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
                                         </Grid.ColumnDefinitions>
                                         <Label 
                                            Grid.Row="0"
@@ -79,6 +80,13 @@
                                             </Label.FormattedText>
                                         </Label>
                                         <ImageButton Grid.Row="0" Grid.Column="1"
+                                                Source="add.png" 
+                                                HorizontalOptions="End"
+                                                WidthRequest="30"
+                                                HeightRequest="30"
+                                                Command="{Binding ShowPlaylistsCommand}"
+                                        ></ImageButton>
+                                        <ImageButton Grid.Row="0" Grid.Column="2"
                                                 Source="{Binding IsFavouriteImage}"
                                                 HorizontalOptions="End"
                                                 WidthRequest="30"

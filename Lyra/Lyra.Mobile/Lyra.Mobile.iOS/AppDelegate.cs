@@ -4,6 +4,7 @@ using System.Linq;
 
 using Foundation;
 using MediaManager;
+using Syncfusion.SfRating.XForms.iOS;
 using UIKit;
 
 namespace Lyra.Mobile.iOS
@@ -26,6 +27,7 @@ namespace Lyra.Mobile.iOS
             global::Xamarin.Forms.Forms.Init();
             CrossMediaManager.Current.Init();
             LoadApplication(new App());
+            new SfRatingRenderer();
 
             return base.FinishedLaunching(app, options);
         }
