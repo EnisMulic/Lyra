@@ -33,9 +33,5 @@
     <ProjectReference Include="..\Lyra.Model\Lyra.Model.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="SeedFiles\MP3s\" />
-  </ItemGroup>
-
 
 </Project>

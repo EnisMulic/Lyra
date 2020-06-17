@@ -130,45 +130,45 @@ namespace Lyra.WebAPI.Database
             modelBuilder.Entity<Role>()
                 .HasData
                 (
-                    new Role { ID = 1, Name = "Administrator"},
-                    new Role { ID = 2, Name = "User"}
+                    new Role { ID = 1, Name = "Administrator" },
+                    new Role { ID = 2, Name = "User" }
                 );
 
             modelBuilder.Entity<UserRole>()
                 .HasData
                 (
-                    new UserRole { UserID = 1, RoleID = 1},
-                    new UserRole { UserID = 2, RoleID = 1},
-                    new UserRole { UserID = 3, RoleID = 2},
-                    new UserRole { UserID = 4, RoleID = 2},
-                    new UserRole { UserID = 5, RoleID = 2},
-                    new UserRole { UserID = 6, RoleID = 2},
-                    new UserRole { UserID = 7, RoleID = 2},
-                    new UserRole { UserID = 8, RoleID = 2},
-                    new UserRole { UserID = 9, RoleID = 2},
-                    new UserRole { UserID = 10, RoleID = 2}
+                    new UserRole { UserID = 1, RoleID = 1 },
+                    new UserRole { UserID = 2, RoleID = 1 },
+                    new UserRole { UserID = 3, RoleID = 2 },
+                    new UserRole { UserID = 4, RoleID = 2 },
+                    new UserRole { UserID = 5, RoleID = 2 },
+                    new UserRole { UserID = 6, RoleID = 2 },
+                    new UserRole { UserID = 7, RoleID = 2 },
+                    new UserRole { UserID = 8, RoleID = 2 },
+                    new UserRole { UserID = 9, RoleID = 2 },
+                    new UserRole { UserID = 10, RoleID = 2 }
                 );
 
             modelBuilder.Entity<Artist>()
                 .HasData
                 (
-                    new Artist 
-                    { 
-                        ID = 1, 
-                        Name = "Gorillaz", 
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Artists/gorillaz.jpg")) 
+                    new Artist
+                    {
+                        ID = 1,
+                        Name = "Gorillaz",
+                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Artists/gorillaz.jpg"))
                     },
-                    new Artist 
-                    { 
-                        ID = 2, 
-                        Name = "Audioslave", 
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Artists/audioslave.jpg")) 
+                    new Artist
+                    {
+                        ID = 2,
+                        Name = "Audioslave",
+                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Artists/audioslave.jpg"))
                     },
-                    new Artist 
-                    { 
-                        ID = 3, 
-                        Name = "Gojira", 
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Artists/gojira.jpg")) 
+                    new Artist
+                    {
+                        ID = 3,
+                        Name = "Gojira",
+                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Artists/gojira.jpg"))
                     }
                 );
 
@@ -180,342 +180,302 @@ namespace Lyra.WebAPI.Database
                         ID = 1,
                         Name = "Gorillaz",
                         ReleaseYear = 2001,
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Albums/gorillaz.jpg"))
+                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Albums/gorillaz.jpg")),
+                        ArtistID = 1,
                     },
                     new Album
                     {
                         ID = 2,
                         Name = "Demon Days",
                         ReleaseYear = 2003,
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Albums/demon_days.jpg"))
+                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Albums/demon_days.jpg")),
+                        ArtistID = 1
                     },
                     new Album
                     {
                         ID = 3,
                         Name = "Audioslave",
                         ReleaseYear = 2002,
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Albums/audioslave.jpg"))
+                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Albums/audioslave.jpg")),
+                        ArtistID = 2
                     },
                     new Album
                     {
                         ID = 4,
                         Name = "From Mars To Sirius",
                         ReleaseYear = 2006,
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Albums/from_mars_to_sirius.jpg"))
+                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Albums/from_mars_to_sirius.jpg")),
+                        ArtistID = 3
                     }
                 );
             modelBuilder.Entity<Track>()
                 .HasData
                 (
-                    new Track 
-                    { 
-                        ID = 1, 
-                        Length = new TimeSpan(0, 3, 32), 
-                        Name = "Re-Hash", 
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Gorillaz/track_01.mp3")) 
+                    new Track
+                    {
+                        ID = 1,
+                        Length = new TimeSpan(0, 3, 32),
+                        Name = "Re-Hash"
                     },
-                    new Track 
-                    { 
-                        ID = 2, 
+                    new Track
+                    {
+                        ID = 2,
                         Length = new TimeSpan(0, 2, 35),
-                        Name = "5/4",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Gorillaz/track_02.mp3"))
+                        Name = "5/4"
                     },
-                    new Track 
-                    { 
-                        ID = 3, 
-                        Length = new TimeSpan(0, 3, 7), 
-                        Name = "Tomorrow Comes Today",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Gorillaz/track_03.mp3"))
+                    new Track
+                    {
+                        ID = 3,
+                        Length = new TimeSpan(0, 3, 7),
+                        Name = "Tomorrow Comes Today"
                     },
-                    new Track 
-                    { 
-                        ID = 4, 
+                    new Track
+                    {
+                        ID = 4,
                         Length = new TimeSpan(0, 3, 51),
-                        Name = "New Genious (Brother)",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Gorillaz/track_04.mp3"))
+                        Name = "New Genious (Brother)"
                     },
-                    new Track 
-                    { 
-                        ID = 5, 
+                    new Track
+                    {
+                        ID = 5,
                         Length = new TimeSpan(0, 5, 32),
-                        Name = "Clint Eastwood",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Gorillaz/track_05.mp3"))
+                        Name = "Clint Eastwood"
                     },
-                    new Track 
-                    { 
-                        ID = 6, 
+                    new Track
+                    {
+                        ID = 6,
                         Length = new TimeSpan(0, 4, 22),
-                        Name = "Man Research (Clapper)",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Gorillaz/track_06.mp3"))
+                        Name = "Man Research (Clapper)"
                     },
-                    new Track 
-                    { 
-                        ID = 7, 
+                    new Track
+                    {
+                        ID = 7,
                         Length = new TimeSpan(0, 1, 33),
-                        Name = "Punk",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Gorillaz/track_07.mp3"))
+                        Name = "Punk"
                     },
-                    new Track 
-                    { 
-                        ID = 8, 
+                    new Track
+                    {
+                        ID = 8,
                         Length = new TimeSpan(0, 4, 32),
-                        Name = "Sound Check (Gravity)",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Gorillaz/track_08.mp3"))
+                        Name = "Sound Check (Gravity)"
                     },
-                    new Track 
-                    { 
-                        ID = 9, 
+                    new Track
+                    {
+                        ID = 9,
                         Length = new TimeSpan(0, 4, 36),
-                        Name = "Double Bass",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Gorillaz/track_09.mp3"))
+                        Name = "Double Bass"
                     },
-                    new Track 
-                    { 
+                    new Track
+                    {
                         ID = 10,
-                        Length = new TimeSpan(0, 4, 1), 
-                        Name = "Rock The House",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Gorillaz/track_10.mp3"))
+                        Length = new TimeSpan(0, 4, 1),
+                        Name = "Rock The House"
                     },
-                    new Track 
-                    { 
+                    new Track
+                    {
                         ID = 11,
                         Length = new TimeSpan(0, 3, 21),
-                        Name = "19-2000",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Gorillaz/track_11.mp3"))
+                        Name = "19-2000"
                     },
-                    new Track 
-                    { 
+                    new Track
+                    {
                         ID = 12,
                         Length = new TimeSpan(0, 3, 30),
-                        Name = "Latin Simone (Que Pasa Contigo)",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Gorillaz/track_12.mp3"))
+                        Name = "Latin Simone (Que Pasa Contigo)"
                     },
-                    new Track 
-                    { 
+                    new Track
+                    {
                         ID = 13,
                         Length = new TimeSpan(0, 3, 25),
-                        Name = "Starshine",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Gorillaz/track_13.mp3"))
+                        Name = "Starshine"
                     },
-                    new Track 
-                    { 
+                    new Track
+                    {
                         ID = 14,
                         Length = new TimeSpan(0, 3, 29),
-                        Name = "Slow Country",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Gorillaz/track_14.mp3"))
+                        Name = "Slow Country"
                     },
-                    new Track 
-                    { 
+                    new Track
+                    {
                         ID = 15,
                         Length = new TimeSpan(0, 10, 21),
-                        Name = "M1 A1",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Gorillaz/track_15.mp3"))
+                        Name = "M1 A1"
                     },
 
-                    new Track 
+                    new Track
                     {
-                        ID = 16, 
-                        Length = new TimeSpan(0, 1, 1), 
-                        Name = "Intro",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Demon Days/track_01.mp3"))
+                        ID = 16,
+                        Length = new TimeSpan(0, 1, 1),
+                        Name = "Intro"
                     },
-                    new Track 
-                    { 
-                        ID = 17, 
-                        Length = new TimeSpan(0, 3, 4), 
-                        Name = "Last Living Soul",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Demon Days/track_02.mp3"))
+                    new Track
+                    {
+                        ID = 17,
+                        Length = new TimeSpan(0, 3, 4),
+                        Name = "Last Living Soul"
                     },
-                    new Track 
-                    { 
-                        ID = 18, 
+                    new Track
+                    {
+                        ID = 18,
                         Length = new TimeSpan(0, 3, 39),
-                        Name = "Kids With Guns",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Demon Days/track_03.mp3"))
+                        Name = "Kids With Guns"
                     },
-                    new Track 
-                    { 
-                        ID = 19, 
-                        Length = new TimeSpan(0, 4, 24),
-                        Name = "O Green World",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Demon Days/track_04.mp3"))
-                    },
-                    new Track 
-                    { 
-                        ID = 20, 
-                        Length = new TimeSpan(0, 3, 37),
-                        Name = "Dirty Harry",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Demon Days/track_05.mp3"))
-                    },
-                    new Track 
-                    { 
-                        ID = 21, 
-                        Length = new TimeSpan(0, 3, 34),
-                        Name = "Feel Good Inc.",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Demon Days/track_06.mp3"))
-                    },
-                    new Track 
-                    { 
-                        ID = 22, 
-                        Length = new TimeSpan(0, 3, 43),
-                        Name = "El Manana",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Demon Days/track_07.mp3"))
-                    },
-                    new Track 
-                    { 
-                        ID = 23, 
-                        Length = new TimeSpan(0, 4, 44),
-                        Name = "Every Planet We Reach Is Dead",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Demon Days/track_08.mp3"))
-                    },
-                    new Track 
-                    { 
-                        ID = 24, 
-                        Length = new TimeSpan(0, 2, 36),
-                        Name = "November Has Come",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Demon Days/track_09.mp3"))
-                    },
-                    new Track 
-                    { 
-                        ID = 25, 
-                        Length = new TimeSpan(0, 3, 23),
-                        Name = "All Alone",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Demon Days/track_10.mp3"))
-                    },
-                    new Track 
-                    { 
-                        ID = 26, 
-                        Length = new TimeSpan(0, 2, 4), 
-                        Name = "White Light",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Demon Days/track_11.mp3"))
-                    },
-                    new Track 
+                    new Track
                     {
-                        ID = 27, 
+                        ID = 19,
+                        Length = new TimeSpan(0, 4, 24),
+                        Name = "O Green World"
+                    },
+                    new Track
+                    {
+                        ID = 20,
+                        Length = new TimeSpan(0, 3, 37),
+                        Name = "Dirty Harry"
+                    },
+                    new Track
+                    {
+                        ID = 21,
+                        Length = new TimeSpan(0, 3, 34),
+                        Name = "Feel Good Inc."
+                    },
+                    new Track
+                    {
+                        ID = 22,
+                        Length = new TimeSpan(0, 3, 43),
+                        Name = "El Manana"
+                    },
+                    new Track
+                    {
+                        ID = 23,
+                        Length = new TimeSpan(0, 4, 44),
+                        Name = "Every Planet We Reach Is Dead"
+                    },
+                    new Track
+                    {
+                        ID = 24,
+                        Length = new TimeSpan(0, 2, 36),
+                        Name = "November Has Come"
+                    },
+                    new Track
+                    {
+                        ID = 25,
+                        Length = new TimeSpan(0, 3, 23),
+                        Name = "All Alone"
+                    },
+                    new Track
+                    {
+                        ID = 26,
+                        Length = new TimeSpan(0, 2, 4),
+                        Name = "White Light"
+                    },
+                    new Track
+                    {
+                        ID = 27,
                         Length = new TimeSpan(0, 3, 57),
-                        Name = "DARE",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Demon Days/track_12.mp3"))
+                        Name = "DARE"
                     },
-                    new Track 
-                    { 
-                        ID = 28, 
+                    new Track
+                    {
+                        ID = 28,
                         Length = new TimeSpan(0, 3, 10),
-                        Name = "Fire Comming Out Of The Monkeys Head",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Demon Days/track_13.mp3"))
+                        Name = "Fire Comming Out Of The Monkeys Head"
                     },
-                    new Track 
-                    { 
-                        ID = 29, 
+                    new Track
+                    {
+                        ID = 29,
                         Length = new TimeSpan(0, 1, 56),
-                        Name = "Don't Get Lost In Heaven",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Demon Days/track_14.mp3"))
+                        Name = "Don't Get Lost In Heaven"
                     },
-                    new Track 
-                    { 
-                        ID = 30, 
+                    new Track
+                    {
+                        ID = 30,
                         Length = new TimeSpan(0, 4, 21),
-                        Name = "Demon Days",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Demon Days/track_15.mp3"))
+                        Name = "Demon Days"
                     },
 
-                    new Track 
-                    { 
-                        ID = 31, 
+                    new Track
+                    {
+                        ID = 31,
                         Length = new TimeSpan(0, 3, 42),
-                        Name = "Cochise",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Audioslave/track_01.mp3"))
+                        Name = "Cochise"
                     },
-                    new Track 
-                    { 
-                        ID = 32, 
+                    new Track
+                    {
+                        ID = 32,
                         Length = new TimeSpan(0, 4, 37),
-                        Name = "Show Me How to Live",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Audioslave/track_02.mp3"))
+                        Name = "Show Me How to Live"
                     },
-                    new Track 
-                    { 
-                        ID = 33, 
+                    new Track
+                    {
+                        ID = 33,
                         Length = new TimeSpan(0, 4, 39),
-                        Name = "Gasoline",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Audioslave/track_03.mp3"))
+                        Name = "Gasoline"
                     },
-                    new Track 
-                    { 
-                        ID = 34, 
-                        Length = new TimeSpan(0, 4, 9), 
-                        Name = "What You Are",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Audioslave/track_04.mp3"))
+                    new Track
+                    {
+                        ID = 34,
+                        Length = new TimeSpan(0, 4, 9),
+                        Name = "What You Are"
                     },
-                    new Track 
-                    { 
-                        ID = 35, 
+                    new Track
+                    {
+                        ID = 35,
                         Length = new TimeSpan(0, 4, 54),
-                        Name = "Like A Stone",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Audioslave/track_05.mp3"))
+                        Name = "Like A Stone"
                     },
-                    new Track 
-                    { 
-                        ID = 36, 
+                    new Track
+                    {
+                        ID = 36,
                         Length = new TimeSpan(0, 4, 23),
-                        Name = "Set It Off",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Audioslave/track_06.mp3"))
+                        Name = "Set It Off"
                     },
-                    new Track 
-                    { 
-                        ID = 37, 
+                    new Track
+                    {
+                        ID = 37,
                         Length = new TimeSpan(0, 5, 43),
-                        Name = "Shadow Of The Sun",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Audioslave/track_07.mp3"))
+                        Name = "Shadow Of The Sun"
                     },
-                    new Track 
-                    { 
-                        ID = 38, 
+                    new Track
+                    {
+                        ID = 38,
                         Length = new TimeSpan(0, 5, 34),
-                        Name = "I Am The Highway",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Audioslave/track_08.mp3"))
+                        Name = "I Am The Highway"
                     },
-                    new Track 
-                    { 
-                        ID = 39, 
+                    new Track
+                    {
+                        ID = 39,
                         Length = new TimeSpan(0, 3, 26),
-                        Name = "Exploder",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Audioslave/track_09.mp3"))
+                        Name = "Exploder"
                     },
-                    new Track 
-                    { 
-                        ID = 40, 
+                    new Track
+                    {
+                        ID = 40,
                         Length = new TimeSpan(0, 3, 26),
-                        Name = "Hyptonize",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Audioslave/track_10.mp3"))
+                        Name = "Hyptonize"
                     },
-                    new Track 
-                    { 
-                        ID = 41, 
-                        Length = new TimeSpan(0, 5, 3), 
-                        Name = "Light My Way",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Audioslave/track_11.mp3"))
+                    new Track
+                    {
+                        ID = 41,
+                        Length = new TimeSpan(0, 5, 3),
+                        Name = "Light My Way"
                     },
-                    new Track 
-                    { 
-                        ID = 42, 
+                    new Track
+                    {
+                        ID = 42,
                         Length = new TimeSpan(0, 4, 59),
-                        Name = "Getaway Car",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Audioslave/track_12.mp3"))
+                        Name = "Getaway Car"
                     },
-                    new Track 
-                    { 
-                        ID = 43, 
+                    new Track
+                    {
+                        ID = 43,
                         Length = new TimeSpan(0, 5, 17),
-                        Name = "The Last Remaining Light",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Audioslave/track_13.mp3"))
+                        Name = "The Last Remaining Light"
                     },
-                    new Track 
-                    { 
-                        ID = 44, 
-                        Length = new TimeSpan(0, 4, 0), 
-                        Name = "Give",
-                        MP3File = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/MP3s/Audioslave/track_14.mp3"))
+                    new Track
+                    {
+                        ID = 44,
+                        Length = new TimeSpan(0, 4, 0),
+                        Name = "Give"
                     },
 
                     new Track { ID = 45, Length = new TimeSpan(0, 5, 32), Name = "Ocean Planet" },
@@ -535,64 +495,64 @@ namespace Lyra.WebAPI.Database
             modelBuilder.Entity<TrackArtist>()
                 .HasData
                 (
-                    new TrackArtist { ArtistID = 1, TrackID = 1, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 2, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 3, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 4, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 5, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 6, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 7, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 8, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 9, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 10, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 11, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 12, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 13, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 14, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 15, TrackArtistRole = TrackArtistRole.Main},
+                    new TrackArtist { ArtistID = 1, TrackID = 1, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 2, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 3, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 4, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 5, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 6, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 7, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 8, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 9, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 10, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 11, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 12, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 13, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 14, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 15, TrackArtistRole = TrackArtistRole.Main },
 
-                    new TrackArtist { ArtistID = 1, TrackID = 16, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 17, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 18, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 19, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 20, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 21, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 22, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 23, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 24, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 25, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 26, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 27, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 28, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 29, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 1, TrackID = 30, TrackArtistRole = TrackArtistRole.Main},
+                    new TrackArtist { ArtistID = 1, TrackID = 16, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 17, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 18, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 19, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 20, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 21, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 22, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 23, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 24, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 25, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 26, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 27, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 28, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 29, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 1, TrackID = 30, TrackArtistRole = TrackArtistRole.Main },
 
-                    new TrackArtist { ArtistID = 2, TrackID = 31, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 2, TrackID = 32, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 2, TrackID = 33, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 2, TrackID = 34, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 2, TrackID = 35, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 2, TrackID = 36, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 2, TrackID = 37, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 2, TrackID = 38, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 2, TrackID = 39, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 2, TrackID = 40, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 2, TrackID = 41, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 2, TrackID = 42, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 2, TrackID = 43, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 2, TrackID = 44, TrackArtistRole = TrackArtistRole.Main},
+                    new TrackArtist { ArtistID = 2, TrackID = 31, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 2, TrackID = 32, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 2, TrackID = 33, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 2, TrackID = 34, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 2, TrackID = 35, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 2, TrackID = 36, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 2, TrackID = 37, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 2, TrackID = 38, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 2, TrackID = 39, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 2, TrackID = 40, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 2, TrackID = 41, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 2, TrackID = 42, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 2, TrackID = 43, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 2, TrackID = 44, TrackArtistRole = TrackArtistRole.Main },
 
-                    new TrackArtist { ArtistID = 3, TrackID = 46, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 3, TrackID = 47, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 3, TrackID = 48, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 3, TrackID = 49, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 3, TrackID = 50, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 3, TrackID = 51, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 3, TrackID = 52, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 3, TrackID = 53, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 3, TrackID = 54, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 3, TrackID = 55, TrackArtistRole = TrackArtistRole.Main},
-                    new TrackArtist { ArtistID = 3, TrackID = 56, TrackArtistRole = TrackArtistRole.Main}
+                    new TrackArtist { ArtistID = 3, TrackID = 46, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 3, TrackID = 47, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 3, TrackID = 48, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 3, TrackID = 49, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 3, TrackID = 50, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 3, TrackID = 51, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 3, TrackID = 52, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 3, TrackID = 53, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 3, TrackID = 54, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 3, TrackID = 55, TrackArtistRole = TrackArtistRole.Main },
+                    new TrackArtist { ArtistID = 3, TrackID = 56, TrackArtistRole = TrackArtistRole.Main }
                 );
 
 
@@ -686,50 +646,50 @@ namespace Lyra.WebAPI.Database
             modelBuilder.Entity<PlaylistTrack>()
                 .HasData
                 (
-                    new PlaylistTrack { PlaylistID = 1, TrackID = 1},
-                    new PlaylistTrack { PlaylistID = 1, TrackID = 3},
-                    new PlaylistTrack { PlaylistID = 1, TrackID = 5},
-                    new PlaylistTrack { PlaylistID = 1, TrackID = 7},
-                    new PlaylistTrack { PlaylistID = 1, TrackID = 16},
-                    new PlaylistTrack { PlaylistID = 1, TrackID = 18},
-                    new PlaylistTrack { PlaylistID = 1, TrackID = 20},
-                    new PlaylistTrack { PlaylistID = 1, TrackID = 22},
-                    new PlaylistTrack { PlaylistID = 1, TrackID = 33},
-                    new PlaylistTrack { PlaylistID = 1, TrackID = 37}
+                    new PlaylistTrack { PlaylistID = 1, TrackID = 1 },
+                    new PlaylistTrack { PlaylistID = 1, TrackID = 3 },
+                    new PlaylistTrack { PlaylistID = 1, TrackID = 5 },
+                    new PlaylistTrack { PlaylistID = 1, TrackID = 7 },
+                    new PlaylistTrack { PlaylistID = 1, TrackID = 16 },
+                    new PlaylistTrack { PlaylistID = 1, TrackID = 18 },
+                    new PlaylistTrack { PlaylistID = 1, TrackID = 20 },
+                    new PlaylistTrack { PlaylistID = 1, TrackID = 22 },
+                    new PlaylistTrack { PlaylistID = 1, TrackID = 33 },
+                    new PlaylistTrack { PlaylistID = 1, TrackID = 37 }
                 );
 
             modelBuilder.Entity<UserTrackReview>()
                 .HasData
                 (
-                    new UserTrackReview { ID = 1,  UserID = 3,  TrackID = 1,  Score = 5},
-                    new UserTrackReview { ID = 2,  UserID = 3,  TrackID = 2,  Score = 4},
-                    new UserTrackReview { ID = 3,  UserID = 3,  TrackID = 3,  Score = 4},
-                    new UserTrackReview { ID = 4,  UserID = 3,  TrackID = 4,  Score = 4},
-                    new UserTrackReview { ID = 5,  UserID = 3,  TrackID = 5,  Score = 5},
+                    new UserTrackReview { ID = 1, UserID = 3, TrackID = 1, Score = 5 },
+                    new UserTrackReview { ID = 2, UserID = 3, TrackID = 2, Score = 4 },
+                    new UserTrackReview { ID = 3, UserID = 3, TrackID = 3, Score = 4 },
+                    new UserTrackReview { ID = 4, UserID = 3, TrackID = 4, Score = 4 },
+                    new UserTrackReview { ID = 5, UserID = 3, TrackID = 5, Score = 5 },
 
-                    new UserTrackReview { ID = 6,  UserID = 4,  TrackID = 2,  Score = 4},
-                    new UserTrackReview { ID = 7,  UserID = 4,  TrackID = 3,  Score = 5},
-                    new UserTrackReview { ID = 8,  UserID = 4,  TrackID = 7,  Score = 3},
-                    new UserTrackReview { ID = 9,  UserID = 4,  TrackID = 26, Score = 2},
+                    new UserTrackReview { ID = 6, UserID = 4, TrackID = 2, Score = 4 },
+                    new UserTrackReview { ID = 7, UserID = 4, TrackID = 3, Score = 5 },
+                    new UserTrackReview { ID = 8, UserID = 4, TrackID = 7, Score = 3 },
+                    new UserTrackReview { ID = 9, UserID = 4, TrackID = 26, Score = 2 },
 
-                    new UserTrackReview { ID = 10, UserID = 5,  TrackID = 2,  Score = 3},
-                    new UserTrackReview { ID = 11, UserID = 5,  TrackID = 16, Score = 2},
+                    new UserTrackReview { ID = 10, UserID = 5, TrackID = 2, Score = 3 },
+                    new UserTrackReview { ID = 11, UserID = 5, TrackID = 16, Score = 2 },
 
-                    new UserTrackReview { ID = 12, UserID = 6,  TrackID = 2,  Score = 4},
-                    new UserTrackReview { ID = 13, UserID = 6,  TrackID = 14, Score = 3},
-                    new UserTrackReview { ID = 14, UserID = 6,  TrackID = 17, Score = 3},
+                    new UserTrackReview { ID = 12, UserID = 6, TrackID = 2, Score = 4 },
+                    new UserTrackReview { ID = 13, UserID = 6, TrackID = 14, Score = 3 },
+                    new UserTrackReview { ID = 14, UserID = 6, TrackID = 17, Score = 3 },
 
-                    new UserTrackReview { ID = 15, UserID = 7,  TrackID = 3,  Score = 4},
-                    new UserTrackReview { ID = 16, UserID = 7,  TrackID = 32, Score = 1},
+                    new UserTrackReview { ID = 15, UserID = 7, TrackID = 3, Score = 4 },
+                    new UserTrackReview { ID = 16, UserID = 7, TrackID = 32, Score = 1 },
 
-                    new UserTrackReview { ID = 17, UserID = 8,  TrackID = 4,  Score = 4},
-                    new UserTrackReview { ID = 18, UserID = 8,  TrackID = 23, Score = 2},
+                    new UserTrackReview { ID = 17, UserID = 8, TrackID = 4, Score = 4 },
+                    new UserTrackReview { ID = 18, UserID = 8, TrackID = 23, Score = 2 },
 
-                    new UserTrackReview { ID = 19, UserID = 9,  TrackID = 4,  Score = 5},
-                    new UserTrackReview { ID = 20, UserID = 9,  TrackID = 21, Score = 5},
+                    new UserTrackReview { ID = 19, UserID = 9, TrackID = 4, Score = 5 },
+                    new UserTrackReview { ID = 20, UserID = 9, TrackID = 21, Score = 5 },
 
-                    new UserTrackReview { ID = 21, UserID = 10, TrackID = 5,  Score = 1},
-                    new UserTrackReview { ID = 22, UserID = 10, TrackID = 6,  Score = 1}
+                    new UserTrackReview { ID = 21, UserID = 10, TrackID = 5, Score = 1 },
+                    new UserTrackReview { ID = 22, UserID = 10, TrackID = 6, Score = 1 }
                 );
         }
     }
