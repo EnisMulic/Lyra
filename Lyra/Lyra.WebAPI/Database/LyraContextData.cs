@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Lyra.Model;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -636,9 +637,25 @@ namespace Lyra.WebAPI.Database
                     new Playlist
                     {
                         ID = 1,
-                        Name = "Test Playlist",
+                        Name = "Test Playlist 1",
                         Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Playlists/playlist.jpg")),
                         UserID = 3,
+                        CreatedAt = DateTime.Now
+                    },
+                    new Playlist
+                    {
+                        ID = 2,
+                        Name = "Test Playlist 2",
+                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Playlists/playlist.jpg")),
+                        UserID = 4,
+                        CreatedAt = DateTime.Now
+                    },
+                    new Playlist
+                    {
+                        ID = 3,
+                        Name = "Test Playlist 1",
+                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Playlists/playlist.jpg")),
+                        UserID = 5,
                         CreatedAt = DateTime.Now
                     }
                 );
@@ -655,7 +672,27 @@ namespace Lyra.WebAPI.Database
                     new PlaylistTrack { PlaylistID = 1, TrackID = 20 },
                     new PlaylistTrack { PlaylistID = 1, TrackID = 22 },
                     new PlaylistTrack { PlaylistID = 1, TrackID = 33 },
-                    new PlaylistTrack { PlaylistID = 1, TrackID = 37 }
+                    new PlaylistTrack { PlaylistID = 1, TrackID = 37 },
+                    new PlaylistTrack { PlaylistID = 2, TrackID = 1 },
+                    new PlaylistTrack { PlaylistID = 2, TrackID = 3 },
+                    new PlaylistTrack { PlaylistID = 2, TrackID = 5 },
+                    new PlaylistTrack { PlaylistID = 2, TrackID = 7 },
+                    new PlaylistTrack { PlaylistID = 2, TrackID = 16 },
+                    new PlaylistTrack { PlaylistID = 2, TrackID = 18 },
+                    new PlaylistTrack { PlaylistID = 2, TrackID = 20 },
+                    new PlaylistTrack { PlaylistID = 2, TrackID = 22 },
+                    new PlaylistTrack { PlaylistID = 2, TrackID = 33 },
+                    new PlaylistTrack { PlaylistID = 2, TrackID = 37 },
+                    new PlaylistTrack { PlaylistID = 3, TrackID = 1 },
+                    new PlaylistTrack { PlaylistID = 3, TrackID = 3 },
+                    new PlaylistTrack { PlaylistID = 3, TrackID = 5 },
+                    new PlaylistTrack { PlaylistID = 3, TrackID = 7 },
+                    new PlaylistTrack { PlaylistID = 3, TrackID = 16 },
+                    new PlaylistTrack { PlaylistID = 3, TrackID = 18 },
+                    new PlaylistTrack { PlaylistID = 3, TrackID = 20 },
+                    new PlaylistTrack { PlaylistID = 3, TrackID = 22 },
+                    new PlaylistTrack { PlaylistID = 3, TrackID = 33 },
+                    new PlaylistTrack { PlaylistID = 3, TrackID = 37 }
                 );
 
             modelBuilder.Entity<UserTrackReview>()
@@ -690,6 +727,180 @@ namespace Lyra.WebAPI.Database
 
                     new UserTrackReview { ID = 21, UserID = 10, TrackID = 5, Score = 1 },
                     new UserTrackReview { ID = 22, UserID = 10, TrackID = 6, Score = 1 }
+                );
+
+            modelBuilder.Entity<UserActivityTrack>()
+                .HasData
+                (
+                    new UserActivityTrack { ID = 1, UserID = 3, TrackID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 2, UserID = 3, TrackID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 3, UserID = 3, TrackID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 4, UserID = 3, TrackID = 4, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 5, UserID = 3, TrackID = 5, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 6, UserID = 3, TrackID = 6, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 7, UserID = 3, TrackID = 7, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 8, UserID = 3, TrackID = 8, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 9, UserID = 3, TrackID = 9, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 10, UserID = 3, TrackID = 10, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 11, UserID = 3, TrackID = 11, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 12, UserID = 3, TrackID = 12, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 13, UserID = 3, TrackID = 13, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 14, UserID = 3, TrackID = 14, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 15, UserID = 3, TrackID = 15, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 16, UserID = 3, TrackID = 16, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 17, UserID = 3, TrackID = 17, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 18, UserID = 4, TrackID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 19, UserID = 4, TrackID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 20, UserID = 4, TrackID = 7, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 21, UserID = 4, TrackID = 26, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 22, UserID = 4, TrackID = 6, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 23, UserID = 4, TrackID = 4, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 24, UserID = 4, TrackID = 8, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 25, UserID = 4, TrackID = 4, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 26, UserID = 4, TrackID = 6, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 27, UserID = 4, TrackID = 9, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 28, UserID = 4, TrackID = 4, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 29, UserID = 5, TrackID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 30, UserID = 5, TrackID = 16, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 31, UserID = 5, TrackID = 6, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 32, UserID = 5, TrackID = 31, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 33, UserID = 5, TrackID = 5, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 34, UserID = 5, TrackID = 34, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 35, UserID = 5, TrackID = 12, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 36, UserID = 5, TrackID = 13, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 37, UserID = 5, TrackID = 14, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 38, UserID = 5, TrackID = 27, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 39, UserID = 6, TrackID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 40, UserID = 6, TrackID = 14, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 41, UserID = 6, TrackID = 17, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 42, UserID = 6, TrackID = 35, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 43, UserID = 7, TrackID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 44, UserID = 7, TrackID = 32, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 45, UserID = 7, TrackID = 33, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 46, UserID = 7, TrackID = 34, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 47, UserID = 8, TrackID = 4, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 48, UserID = 8, TrackID = 23, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 49, UserID = 8, TrackID = 24, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 50, UserID = 8, TrackID = 25, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 51, UserID = 9, TrackID = 4, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 52, UserID = 9, TrackID = 21, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 53, UserID = 9, TrackID = 22, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 54, UserID = 9, TrackID = 23, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 55, UserID = 10, TrackID = 5, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 56, UserID = 10, TrackID = 6, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 57, UserID = 10, TrackID = 7, InteractedAt = DateTime.Now },
+                    new UserActivityTrack { ID = 58, UserID = 10, TrackID = 8, InteractedAt = DateTime.Now }
+                );
+
+            modelBuilder.Entity<UserActivityAlbum>()
+                .HasData
+                (
+                    new UserActivityAlbum { ID = 1, UserID = 3, AlbumID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 2, UserID = 3, AlbumID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 3, UserID = 3, AlbumID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 4, UserID = 3, AlbumID = 4, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 5, UserID = 3, AlbumID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 6, UserID = 4, AlbumID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 7, UserID = 4, AlbumID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 8, UserID = 4, AlbumID = 4, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 9, UserID = 4, AlbumID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 10, UserID = 5, AlbumID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 11, UserID = 5, AlbumID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 12, UserID = 5, AlbumID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 13, UserID = 6, AlbumID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 14, UserID = 6, AlbumID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 15, UserID = 6, AlbumID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 16, UserID = 6, AlbumID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 17, UserID = 7, AlbumID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 18, UserID = 7, AlbumID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 19, UserID = 7, AlbumID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 20, UserID = 7, AlbumID = 4, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 21, UserID = 8, AlbumID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 22, UserID = 8, AlbumID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 23, UserID = 8, AlbumID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 24, UserID = 8, AlbumID = 4, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 25, UserID = 9, AlbumID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 26, UserID = 9, AlbumID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 27, UserID = 9, AlbumID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 28, UserID = 9, AlbumID = 4, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 29, UserID = 10, AlbumID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 30, UserID = 10, AlbumID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 31, UserID = 10, AlbumID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityAlbum { ID = 32, UserID = 10, AlbumID = 4, InteractedAt = DateTime.Now }
+                );
+
+            modelBuilder.Entity<UserActivityPlaylist>()
+                .HasData
+                (
+                    new UserActivityPlaylist { ID = 1, UserID = 3, PlaylistID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 2, UserID = 3, PlaylistID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 3, UserID = 3, PlaylistID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 4, UserID = 3, PlaylistID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 5, UserID = 3, PlaylistID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 6, UserID = 4, PlaylistID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 7, UserID = 4, PlaylistID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 8, UserID = 4, PlaylistID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 9, UserID = 4, PlaylistID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 10, UserID = 5, PlaylistID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 11, UserID = 5, PlaylistID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 12, UserID = 5, PlaylistID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 13, UserID = 6, PlaylistID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 14, UserID = 6, PlaylistID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 15, UserID = 6, PlaylistID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 16, UserID = 6, PlaylistID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 17, UserID = 7, PlaylistID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 18, UserID = 7, PlaylistID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 19, UserID = 7, PlaylistID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 20, UserID = 7, PlaylistID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 21, UserID = 8, PlaylistID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 22, UserID = 8, PlaylistID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 23, UserID = 8, PlaylistID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 24, UserID = 8, PlaylistID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 25, UserID = 9, PlaylistID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 26, UserID = 9, PlaylistID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 27, UserID = 9, PlaylistID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 28, UserID = 9, PlaylistID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 29, UserID = 10, PlaylistID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 30, UserID = 10, PlaylistID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 31, UserID = 10, PlaylistID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityPlaylist { ID = 32, UserID = 10, PlaylistID = 1, InteractedAt = DateTime.Now }
+                );
+
+            modelBuilder.Entity<UserActivityArtist>()
+                .HasData
+                (
+                    new UserActivityArtist { ID = 1, UserID = 3, ArtistID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 2, UserID = 3, ArtistID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 3, UserID = 3, ArtistID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 4, UserID = 3, ArtistID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 5, UserID = 3, ArtistID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 6, UserID = 4, ArtistID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 7, UserID = 4, ArtistID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 8, UserID = 4, ArtistID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 9, UserID = 4, ArtistID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 10, UserID = 5, ArtistID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 11, UserID = 5, ArtistID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 12, UserID = 5, ArtistID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 13, UserID = 6, ArtistID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 14, UserID = 6, ArtistID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 15, UserID = 6, ArtistID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 16, UserID = 6, ArtistID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 17, UserID = 7, ArtistID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 18, UserID = 7, ArtistID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 19, UserID = 7, ArtistID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 20, UserID = 7, ArtistID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 21, UserID = 8, ArtistID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 22, UserID = 8, ArtistID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 23, UserID = 8, ArtistID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 24, UserID = 8, ArtistID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 25, UserID = 9, ArtistID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 26, UserID = 9, ArtistID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 27, UserID = 9, ArtistID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 28, UserID = 9, ArtistID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 29, UserID = 10, ArtistID = 1, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 30, UserID = 10, ArtistID = 2, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 31, UserID = 10, ArtistID = 3, InteractedAt = DateTime.Now },
+                    new UserActivityArtist { ID = 32, UserID = 10, ArtistID = 1, InteractedAt = DateTime.Now }
                 );
         }
     }
