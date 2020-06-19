@@ -29,8 +29,13 @@
         private void InitializeComponent()
         {
             this.pnlNavbar = new System.Windows.Forms.Panel();
+            this.btnAnalytics = new System.Windows.Forms.Button();
+            this.btnGenre = new System.Windows.Forms.Button();
+            this.btnSignOut = new System.Windows.Forms.Button();
             this.pnlUserInfoMenu = new System.Windows.Forms.Panel();
+            this.btnUserInfo = new System.Windows.Forms.Button();
             this.lblUsername = new System.Windows.Forms.Label();
+            this.pbUserImage = new Lyra.WinUI.UserControls.Shared.ucOvalPictureBox();
             this.btnPlaylist = new System.Windows.Forms.Button();
             this.btnTrack = new System.Windows.Forms.Button();
             this.btnAlbum = new System.Windows.Forms.Button();
@@ -38,20 +43,17 @@
             this.btnUser = new System.Windows.Forms.Button();
             this.pnlMain = new System.Windows.Forms.Panel();
             this.pnlHeader = new System.Windows.Forms.Panel();
-            this.btnSignOut = new System.Windows.Forms.Button();
-            this.btnUserInfo = new System.Windows.Forms.Button();
             this.ucAppControl = new Lyra.WinUI.UserControls.Shared.ucAppControl();
-            this.pbUserImage = new Lyra.WinUI.UserControls.Shared.ucOvalPictureBox();
-            this.btnGenre = new System.Windows.Forms.Button();
             this.pnlNavbar.SuspendLayout();
             this.pnlUserInfoMenu.SuspendLayout();
-            this.pnlHeader.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).BeginInit();
+            this.pnlHeader.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlNavbar
             // 
             this.pnlNavbar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(155)))), ((int)(((byte)(90)))), ((int)(((byte)(182)))));
+            this.pnlNavbar.Controls.Add(this.btnAnalytics);
             this.pnlNavbar.Controls.Add(this.btnGenre);
             this.pnlNavbar.Controls.Add(this.btnSignOut);
             this.pnlNavbar.Controls.Add(this.pnlUserInfoMenu);
@@ -69,6 +71,52 @@
             this.pnlNavbar.MouseDown += new System.Windows.Forms.MouseEventHandler(this.frmMain_MouseDown);
             this.pnlNavbar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmMain_MouseMove);
             // 
+            // btnAnalytics
+            // 
+            this.btnAnalytics.FlatAppearance.BorderSize = 0;
+            this.btnAnalytics.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAnalytics.Font = new System.Drawing.Font("Franklin Gothic Demi", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAnalytics.Location = new System.Drawing.Point(12, 116);
+            this.btnAnalytics.Name = "btnAnalytics";
+            this.btnAnalytics.Size = new System.Drawing.Size(267, 47);
+            this.btnAnalytics.TabIndex = 12;
+            this.btnAnalytics.TabStop = false;
+            this.btnAnalytics.Text = "Analytics";
+            this.btnAnalytics.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAnalytics.UseVisualStyleBackColor = true;
+            this.btnAnalytics.Click += new System.EventHandler(this.btnAnalytics_Click);
+            // 
+            // btnGenre
+            // 
+            this.btnGenre.FlatAppearance.BorderSize = 0;
+            this.btnGenre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnGenre.Font = new System.Drawing.Font("Franklin Gothic Demi", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenre.Location = new System.Drawing.Point(12, 434);
+            this.btnGenre.Name = "btnGenre";
+            this.btnGenre.Size = new System.Drawing.Size(267, 47);
+            this.btnGenre.TabIndex = 11;
+            this.btnGenre.TabStop = false;
+            this.btnGenre.Text = "Genre";
+            this.btnGenre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnGenre.UseVisualStyleBackColor = true;
+            this.btnGenre.Click += new System.EventHandler(this.btnGenre_Click);
+            // 
+            // btnSignOut
+            // 
+            this.btnSignOut.BackgroundImage = global::Lyra.WinUI.Properties.Resources.signout;
+            this.btnSignOut.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnSignOut.FlatAppearance.BorderSize = 0;
+            this.btnSignOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSignOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSignOut.Location = new System.Drawing.Point(6, 5);
+            this.btnSignOut.Name = "btnSignOut";
+            this.btnSignOut.Size = new System.Drawing.Size(33, 25);
+            this.btnSignOut.TabIndex = 10;
+            this.btnSignOut.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnSignOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnSignOut.UseVisualStyleBackColor = true;
+            this.btnSignOut.Click += new System.EventHandler(this.btnSignOut_Click);
+            // 
             // pnlUserInfoMenu
             // 
             this.pnlUserInfoMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -80,6 +128,19 @@
             this.pnlUserInfoMenu.Size = new System.Drawing.Size(294, 59);
             this.pnlUserInfoMenu.TabIndex = 8;
             // 
+            // btnUserInfo
+            // 
+            this.btnUserInfo.BackgroundImage = global::Lyra.WinUI.Properties.Resources.configurations;
+            this.btnUserInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnUserInfo.FlatAppearance.BorderSize = 0;
+            this.btnUserInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUserInfo.Location = new System.Drawing.Point(246, 14);
+            this.btnUserInfo.Name = "btnUserInfo";
+            this.btnUserInfo.Size = new System.Drawing.Size(32, 32);
+            this.btnUserInfo.TabIndex = 0;
+            this.btnUserInfo.UseVisualStyleBackColor = true;
+            this.btnUserInfo.Click += new System.EventHandler(this.btnUserInfo_Click);
+            // 
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
@@ -90,12 +151,21 @@
             this.lblUsername.TabIndex = 1;
             this.lblUsername.Text = "[Placeholder]";
             // 
+            // pbUserImage
+            // 
+            this.pbUserImage.BackColor = System.Drawing.Color.DarkGray;
+            this.pbUserImage.Location = new System.Drawing.Point(4, 6);
+            this.pbUserImage.Name = "pbUserImage";
+            this.pbUserImage.Size = new System.Drawing.Size(49, 49);
+            this.pbUserImage.TabIndex = 0;
+            this.pbUserImage.TabStop = false;
+            // 
             // btnPlaylist
             // 
             this.btnPlaylist.FlatAppearance.BorderSize = 0;
             this.btnPlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPlaylist.Font = new System.Drawing.Font("Franklin Gothic Demi", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlaylist.Location = new System.Drawing.Point(12, 333);
+            this.btnPlaylist.Location = new System.Drawing.Point(12, 381);
             this.btnPlaylist.Name = "btnPlaylist";
             this.btnPlaylist.Size = new System.Drawing.Size(267, 47);
             this.btnPlaylist.TabIndex = 7;
@@ -110,7 +180,7 @@
             this.btnTrack.FlatAppearance.BorderSize = 0;
             this.btnTrack.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTrack.Font = new System.Drawing.Font("Franklin Gothic Demi", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTrack.Location = new System.Drawing.Point(12, 280);
+            this.btnTrack.Location = new System.Drawing.Point(12, 328);
             this.btnTrack.Name = "btnTrack";
             this.btnTrack.Size = new System.Drawing.Size(267, 47);
             this.btnTrack.TabIndex = 6;
@@ -125,7 +195,7 @@
             this.btnAlbum.FlatAppearance.BorderSize = 0;
             this.btnAlbum.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAlbum.Font = new System.Drawing.Font("Franklin Gothic Demi", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAlbum.Location = new System.Drawing.Point(12, 227);
+            this.btnAlbum.Location = new System.Drawing.Point(12, 275);
             this.btnAlbum.Name = "btnAlbum";
             this.btnAlbum.Size = new System.Drawing.Size(267, 47);
             this.btnAlbum.TabIndex = 5;
@@ -140,7 +210,7 @@
             this.btnArtist.FlatAppearance.BorderSize = 0;
             this.btnArtist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnArtist.Font = new System.Drawing.Font("Franklin Gothic Demi", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnArtist.Location = new System.Drawing.Point(12, 174);
+            this.btnArtist.Location = new System.Drawing.Point(12, 222);
             this.btnArtist.Name = "btnArtist";
             this.btnArtist.Size = new System.Drawing.Size(267, 47);
             this.btnArtist.TabIndex = 4;
@@ -155,7 +225,7 @@
             this.btnUser.FlatAppearance.BorderSize = 0;
             this.btnUser.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUser.Font = new System.Drawing.Font("Franklin Gothic Demi", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnUser.Location = new System.Drawing.Point(12, 121);
+            this.btnUser.Location = new System.Drawing.Point(12, 169);
             this.btnUser.Name = "btnUser";
             this.btnUser.Size = new System.Drawing.Size(267, 47);
             this.btnUser.TabIndex = 3;
@@ -184,65 +254,12 @@
             this.pnlHeader.Size = new System.Drawing.Size(796, 37);
             this.pnlHeader.TabIndex = 2;
             // 
-            // btnSignOut
-            // 
-            this.btnSignOut.BackgroundImage = global::Lyra.WinUI.Properties.Resources.signout;
-            this.btnSignOut.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnSignOut.FlatAppearance.BorderSize = 0;
-            this.btnSignOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSignOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSignOut.Location = new System.Drawing.Point(6, 5);
-            this.btnSignOut.Name = "btnSignOut";
-            this.btnSignOut.Size = new System.Drawing.Size(33, 25);
-            this.btnSignOut.TabIndex = 10;
-            this.btnSignOut.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btnSignOut.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSignOut.UseVisualStyleBackColor = true;
-            this.btnSignOut.Click += new System.EventHandler(this.btnSignOut_Click);
-            // 
-            // btnUserInfo
-            // 
-            this.btnUserInfo.BackgroundImage = global::Lyra.WinUI.Properties.Resources.configurations;
-            this.btnUserInfo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnUserInfo.FlatAppearance.BorderSize = 0;
-            this.btnUserInfo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUserInfo.Location = new System.Drawing.Point(246, 14);
-            this.btnUserInfo.Name = "btnUserInfo";
-            this.btnUserInfo.Size = new System.Drawing.Size(32, 32);
-            this.btnUserInfo.TabIndex = 0;
-            this.btnUserInfo.UseVisualStyleBackColor = true;
-            this.btnUserInfo.Click += new System.EventHandler(this.btnUserInfo_Click);
-            // 
             // ucAppControl
             // 
             this.ucAppControl.Location = new System.Drawing.Point(726, 0);
             this.ucAppControl.Name = "ucAppControl";
             this.ucAppControl.Size = new System.Drawing.Size(70, 35);
             this.ucAppControl.TabIndex = 0;
-            // 
-            // pbUserImage
-            // 
-            this.pbUserImage.BackColor = System.Drawing.Color.DarkGray;
-            this.pbUserImage.Location = new System.Drawing.Point(4, 6);
-            this.pbUserImage.Name = "pbUserImage";
-            this.pbUserImage.Size = new System.Drawing.Size(49, 49);
-            this.pbUserImage.TabIndex = 0;
-            this.pbUserImage.TabStop = false;
-            // 
-            // btnGenre
-            // 
-            this.btnGenre.FlatAppearance.BorderSize = 0;
-            this.btnGenre.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGenre.Font = new System.Drawing.Font("Franklin Gothic Demi", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGenre.Location = new System.Drawing.Point(12, 386);
-            this.btnGenre.Name = "btnGenre";
-            this.btnGenre.Size = new System.Drawing.Size(267, 47);
-            this.btnGenre.TabIndex = 11;
-            this.btnGenre.TabStop = false;
-            this.btnGenre.Text = "Genre";
-            this.btnGenre.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGenre.UseVisualStyleBackColor = true;
-            this.btnGenre.Click += new System.EventHandler(this.btnGenre_Click);
             // 
             // frmAdminPanel
             // 
@@ -261,8 +278,8 @@
             this.pnlNavbar.ResumeLayout(false);
             this.pnlUserInfoMenu.ResumeLayout(false);
             this.pnlUserInfoMenu.PerformLayout();
-            this.pnlHeader.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbUserImage)).EndInit();
+            this.pnlHeader.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -284,5 +301,6 @@
         private System.Windows.Forms.Button btnUserInfo;
         private System.Windows.Forms.Button btnSignOut;
         private System.Windows.Forms.Button btnGenre;
+        private System.Windows.Forms.Button btnAnalytics;
     }
 }

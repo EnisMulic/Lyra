@@ -16,6 +16,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Lyra.WinUI.UserControls.Administrator.Genre;
+using Lyra.WinUI.UserControls.Administrator.Analytics;
 
 namespace Lyra.WinUI.Administrator
 {
@@ -94,6 +95,12 @@ namespace Lyra.WinUI.Administrator
             PanelHelper.AddPanel(pnlMain, new ucAdminInfoUpdate(_user.ID));
         }
 
+        private void btnAnalytics_Click(object sender, EventArgs e)
+        {
+            PanelHelper.RemovePanels(pnlMain);
+            PanelHelper.AddPanel(pnlMain, new ucAnalytics());
+        }
+
         //Movable Form
         private void frmMain_MouseDown(object sender, MouseEventArgs e)
         {
@@ -108,5 +115,7 @@ namespace Lyra.WinUI.Administrator
                 this.Top += e.Y - lastPoint.Y;
             }
         }
+
+        
     }
 }
