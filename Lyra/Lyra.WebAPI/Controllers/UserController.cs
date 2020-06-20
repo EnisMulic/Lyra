@@ -19,10 +19,12 @@ namespace Lyra.WebAPI.Controllers
     public class UserController : CRUDController<User, UserSearchRequest, UserInsertRequest, UserUpdateRequest>
     {
         private readonly IUserService _service;
+        private readonly IRecommendationService<Model.Track> _recommendationService;
 
-        public UserController(IUserService service) : base(service)
+        public UserController(IUserService service, IRecommendationService<Model.Track> recommendationService) : base(service)
         {
             _service = service;
+            _recommendationService = recommendationService;
         }
 
         [AllowAnonymous]
@@ -163,7 +165,7 @@ namespace Lyra.WebAPI.Controllers
         [HttpGet("{id}/Recommend")]
         public async Task<List<Model.Track>> Recommend(int id, [FromQuery] PageRequest request)
         {
-            return await _service.Recommend(id, request);
+            return await _recommendationService.Recommend(id, request);
         }
     }
 }

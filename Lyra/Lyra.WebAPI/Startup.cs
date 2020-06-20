@@ -78,6 +78,7 @@ namespace Lyra.WebAPI
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ICRUDService<Model.UserTrackReview, UserTrackReviewSearchRequest, UserTrackReviewUpsertRequest, UserTrackReviewUpsertRequest>, ReviewService>();
             services.AddScoped<IAnalyticsService, AnalyticsService>();
+            services.AddScoped<IRecommendationService<Model.Track>, TrackRecommendationService>();
 
             services.AddAuthentication("BasicAuthentication")
                .AddScheme<AuthenticationSchemeOptions, BasicAuthenticationHandler>("BasicAuthentication", null);

@@ -580,13 +580,5 @@ namespace Lyra.WebAPI.Services
 
             return false;
         }
-
-        public async Task<List<Model.Track>> Recommend(int id, PageRequest request)
-        {
-            var Recommender = new TrackRecommendationService(_context, _mapper);
-            var Recommendations = await Recommender.Recommend(id, request);
-
-            return Recommendations;
-        }
     }
 }
