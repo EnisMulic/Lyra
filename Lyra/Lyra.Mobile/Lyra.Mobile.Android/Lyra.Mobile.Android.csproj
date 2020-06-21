@@ -90,7 +90,6 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
-    <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Lyra.Mobile\Lyra.Mobile.csproj">
@@ -99,7 +98,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\drawable\remove.png" />
     <Resource Include="Resources\drawable\next.png" />
+    <Content Include="Resources\drawable\heart-empty.png" />
+    <Content Include="Resources\drawable\heart-filled.png" />
     <Content Include="Resources\drawable\previous.png" />
     <EmbeddedResource Include="Resources\drawable\playBlack.png" />
     <EmbeddedResource Include="Resources\drawable\play.png" />
