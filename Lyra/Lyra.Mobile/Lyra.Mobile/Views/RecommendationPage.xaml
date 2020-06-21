@@ -12,7 +12,7 @@
              x:Name="BrowseItemsPage">
 
     <ContentPage.BindingContext>
-        <vm:BrowseViewModel/>
+        <vm:RecommendationViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.Resources>
         <ResourceDictionary>

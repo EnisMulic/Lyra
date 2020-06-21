@@ -20,7 +20,7 @@ namespace Lyra.Mobile.Views
 
             menuItems = new List<HomeMenuItem>
             {
-                new HomeMenuItem {Id = MenuItemType.Browse, Title="Browse" },
+                new HomeMenuItem {Id = MenuItemType.Recommendations, Title="Recommendations" },
                 new HomeMenuItem {Id = MenuItemType.Search, Title="Search" },
                 new HomeMenuItem {Id = MenuItemType.Activity, Title="Activity" },
                 new HomeMenuItem {Id = MenuItemType.YourMusic, Title="Your Music" },

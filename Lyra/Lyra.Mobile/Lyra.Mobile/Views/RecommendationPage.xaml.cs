@@ -18,14 +18,14 @@ namespace Lyra.Mobile.Views
     // Learn more about making custom code visible in the Xamarin.Forms previewer
     // by visiting https://aka.ms/xamarinforms-previewer
     [DesignTimeVisible(false)]
-    public partial class ItemsPage : ContentPage
+    public partial class RecommendationPage : ContentPage
     {
         private readonly APIService _service = new APIService("User");
-        BrowseViewModel viewModel;
-        public ItemsPage()
+        RecommendationViewModel viewModel;
+        public RecommendationPage()
         {
             InitializeComponent();
-            BindingContext = viewModel = new BrowseViewModel();
+            BindingContext = viewModel = new RecommendationViewModel();
         }
 
         protected async override void OnAppearing()

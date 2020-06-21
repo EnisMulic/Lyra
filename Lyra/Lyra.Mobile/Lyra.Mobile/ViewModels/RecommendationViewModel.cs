@@ -14,12 +14,12 @@ using Lyra.Model.Requests;
 
 namespace Lyra.Mobile.ViewModels
 {
-    public class BrowseViewModel : BaseViewModel
+    public class RecommendationViewModel : BaseViewModel
     {
         private readonly APIService _service = new APIService("User");
         public ObservableCollection<TrackViewModel> TracksList { get; set; } = new ObservableCollection<TrackViewModel>();
 
-        public BrowseViewModel()
+        public RecommendationViewModel()
         {
             Title = "Browse";
         }

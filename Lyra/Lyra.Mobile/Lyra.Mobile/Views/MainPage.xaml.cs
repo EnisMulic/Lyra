@@ -21,7 +21,7 @@ namespace Lyra.Mobile.Views
 
             MasterBehavior = MasterBehavior.Popover;
 
-            MenuPages.Add((int)MenuItemType.Browse, (NavigationPage)Detail);
+            MenuPages.Add((int)MenuItemType.Recommendations, (NavigationPage)Detail);
         }
 
         public async Task NavigateFromMenu(int id)
@@ -33,8 +33,8 @@ namespace Lyra.Mobile.Views
                     case (int)MenuItemType.Search:
                         MenuPages.Add(id, new NavigationPage(new SearchPage()));
                         break;
-                    case (int)MenuItemType.Browse:
-                        MenuPages.Add(id, new NavigationPage(new ItemsPage()));
+                    case (int)MenuItemType.Recommendations:
+                        MenuPages.Add(id, new NavigationPage(new RecommendationPage()));
                         break;
                     case (int)MenuItemType.Activity:
                         MenuPages.Add(id, new NavigationPage(new ActivityPage()));
