@@ -38,9 +38,7 @@ namespace Lyra.Mobile.ViewModels
 
         public ImageSource IsFavouriteImage
         {
-            get => IsFavourite ? ImageSource.FromResource("Lyra.Mobile.Assets.heart-filled.png", typeof(ImageResourceExtension).GetTypeInfo().Assembly)
-                               : ImageSource.FromResource("Lyra.Mobile.Assets.heart-empty.png", typeof(ImageResourceExtension).GetTypeInfo().Assembly);
-
+            get => IsFavourite ? "heart-filled.png" : "heart-empty.png";
         }
         public AlbumViewModel()
         {
@@ -58,18 +56,18 @@ namespace Lyra.Mobile.ViewModels
 
         private async Task ToggleFavourite()
         {
-            //Test post database seed
-            //Remove/add track to Favourites helper?
             try
             {
                 if (IsFavourite)
                 {
                     await _userService.DeleteFavouriteAlbum(SignedInUserHelper.User.ID, Album.ID);
+                    FavouritesHelper.Remove(Album);
                     IsFavourite = false;
                 }
                 else
                 {
                     await _userService.InsertFavouriteAlbum(SignedInUserHelper.User.ID, Album.ID);
+                    FavouritesHelper.FavouriteAlbums.Add(Album);
                     IsFavourite = true;
                 }
 

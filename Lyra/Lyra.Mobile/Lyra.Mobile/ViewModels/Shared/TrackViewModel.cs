@@ -48,7 +48,7 @@ namespace Lyra.Mobile.ViewModels
 
         public ImageSource AddImage
         {
-            get => ImageSource.FromResource("Lyra.Mobile.Assets.add.png", typeof(ImageResourceExtension).GetTypeInfo().Assembly);
+            get => "add.png";
         }
 
         public TrackViewModel()
@@ -112,18 +112,18 @@ namespace Lyra.Mobile.ViewModels
 
         private async Task ToggleFavourite()
         {
-            //Test post database seed
-            //Remove/add track to Favourites helper?
             try
             {
                 if (IsFavourite)
                 {
                     await _userService.DeleteFavouriteTrack(SignedInUserHelper.User.ID, Track.ID);
+                    FavouritesHelper.Remove(Track);
                     IsFavourite = false;
                 }
                 else
                 {
                     await _userService.InsertFavouriteTrack(SignedInUserHelper.User.ID, Track.ID);
+                    FavouritesHelper.FavouriteTracks.Add(Track);
                     IsFavourite = true;
                 }
 

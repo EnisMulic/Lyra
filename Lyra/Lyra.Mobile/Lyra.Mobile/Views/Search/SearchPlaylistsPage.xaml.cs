@@ -30,6 +30,7 @@ namespace Lyra.Mobile.Views.Search
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            model.PerformSearch.Execute(model.SearchQuery);
         }
 
         async void OnTapped(object sender, EventArgs args)

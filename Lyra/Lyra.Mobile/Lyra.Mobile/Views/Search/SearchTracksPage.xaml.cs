@@ -23,6 +23,7 @@ namespace Lyra.Mobile.Views.Search
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            model.PerformSearch.Execute(model.SearchQuery);
         }
 
         private async void Track_ItemSelected(object sender, SelectedItemChangedEventArgs e)

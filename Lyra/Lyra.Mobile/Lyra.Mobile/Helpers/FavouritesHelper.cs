@@ -3,6 +3,7 @@ using Lyra.Model;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -27,9 +28,23 @@ namespace Lyra.Mobile.Helpers
             FavouriteArtists = await _service.GetFavouriteArtists(SignedInUserHelper.User.ID, null);
         }
 
-        public void Remove<Track>(Track track)
-        {
 
+        public static bool Remove(Track item)
+        {
+            var itemToRemove = FavouriteTracks.Where(i => i.ID == item.ID).FirstOrDefault();
+            return FavouriteTracks.Remove(itemToRemove);
+        }
+
+        public static bool Remove(Album item)
+        {
+            var itemToRemove = FavouriteAlbums.Where(i => i.ID == item.ID).FirstOrDefault();
+            return FavouriteAlbums.Remove(itemToRemove);
+        }
+
+        public static bool Remove(Artist item)
+        {
+            var itemToRemove = FavouriteArtists.Where(i => i.ID == item.ID).FirstOrDefault();
+            return FavouriteArtists.Remove(itemToRemove);
         }
 
     }
