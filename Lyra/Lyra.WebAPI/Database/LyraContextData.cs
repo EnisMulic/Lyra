@@ -1,9 +1,11 @@
 ﻿using Lyra.Model;
+using Lyra.WebAPI.Helper;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 
 namespace Lyra.WebAPI.Database
@@ -12,6 +14,12 @@ namespace Lyra.WebAPI.Database
     {
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder)
         {
+            List<string> Salt = new List<string>();
+            for (int i = 0; i < 10; i++)
+            {
+                Salt.Add(HashHelper.GenerateSalt());
+            }
+
             modelBuilder.Entity<User>()
                 .HasData
                 (
@@ -23,8 +31,8 @@ namespace Lyra.WebAPI.Database
                         Username = "desktop",
                         Email = "desktop@lyra.com",
                         Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Users/profile-picture.png")),
-                        PasswordHash = "lBBltcw3F3qXbxEowUrAuyVhZK5clfqUwHpilv9VQ4B9PfDvccS1JMCLMz2qqz1A0GqQ6hed/XDoUorJ2wF57A==",
-                        PasswordSalt = "Ae3WLIGFNTk61fZSCXUrKg==",
+                        PasswordSalt = Salt[0],
+                        PasswordHash = HashHelper.GenerateHash(Salt[0], "test"),
                     },
                     new User
                     {
@@ -33,9 +41,9 @@ namespace Lyra.WebAPI.Database
                         LastName = "Admin",
                         Username = "Admin",
                         Email = "admin@lyra.com",
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Users/profile-picture.png")),
-                        PasswordHash = "gkNXYGb8gZCoWdbufwae++291qCCriJf+TSNl2nGgp0JfSD2KpbXRGwFAwoY3wvM75mdxxZjegCZ9fWYJ2TPZQ==",
-                        PasswordSalt = "EJe2jpdzhy6aTev1GAgVug==",
+                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "./SeedFiles/Images/Users/profile-picture.png")),
+                        PasswordSalt = Salt[1],
+                        PasswordHash = HashHelper.GenerateHash(Salt[1], "test"),
                     },
                     new User
                     {
@@ -44,9 +52,9 @@ namespace Lyra.WebAPI.Database
                         LastName = "User",
                         Username = "mobile",
                         Email = "mobile@lyra.com",
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Users/profile-picture.png")),
-                        PasswordHash = "yBgqiUkyj2lgGeOEQ+V1bg+z70rkUNDwdxgjVL0J6mEGwkI73yK1NGyFYQlm7SWvb3xSB4kMHY4OyWhL2MxBFg==",
-                        PasswordSalt = "FcdULJgi4SMRjcYx/m6PCA==",
+                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "./SeedFiles/Images/Users/profile-picture.png")),
+                        PasswordSalt = Salt[2],
+                        PasswordHash = HashHelper.GenerateHash(Salt[2], "test"),
                     },
                     new User
                     {
@@ -55,9 +63,9 @@ namespace Lyra.WebAPI.Database
                         LastName = "User1",
                         Username = "User1",
                         Email = "user1@lyra.com",
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Users/profile-picture.png")),
-                        PasswordHash = "zin9wFowbqkTeAdsWGnh/3b6YMzNFMZ5gDoh41yIRkrheUza6HCVVMLse4K1s9i9RZ2ETw1x6yyWdu0wrdkZBg==",
-                        PasswordSalt = "Ar+YYZlRwZsogOzIMOJ5GA==",
+                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "./SeedFiles/Images/Users/profile-picture.png")),
+                        PasswordSalt = Salt[3],
+                        PasswordHash = HashHelper.GenerateHash(Salt[3], "test"),
                     },
                     new User
                     {
@@ -66,9 +74,9 @@ namespace Lyra.WebAPI.Database
                         LastName = "User2",
                         Username = "User2",
                         Email = "user2@lyra.com",
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Users/profile-picture.png")),
-                        PasswordHash = "x0N2UmD0Z9Hx6h+Qv38WngvQ1iK/5v889JBjlNOYa3O5vcb752p/7HGd/cQSjNYHxaw/ghIbQShUJSUGu10C5g==",
-                        PasswordSalt = "ZpTZ95Gczbh2OssbrcvySg==",
+                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "./SeedFiles/Images/Users/profile-picture.png")),
+                        PasswordSalt = Salt[4],
+                        PasswordHash = HashHelper.GenerateHash(Salt[4], "test"),
                     },
                     new User
                     {
@@ -77,9 +85,9 @@ namespace Lyra.WebAPI.Database
                         LastName = "User3",
                         Username = "User3",
                         Email = "user3@lyra.com",
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Users/profile-picture.png")),
-                        PasswordHash = "8PX+A5LPvxUODl+s8bACttbfKo4PExoS/ICwmubV1ZCwfsiySyljunVGydA9bYSinDH1DG7yjdIj3Ci8dDnABw==",
-                        PasswordSalt = "EbTAe1562N25eb0KamwKNQ==",
+                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "./SeedFiles/Images/Users/profile-picture.png")),
+                        PasswordSalt = Salt[5],
+                        PasswordHash = HashHelper.GenerateHash(Salt[5], "test"),
                     },
                     new User
                     {
@@ -88,9 +96,9 @@ namespace Lyra.WebAPI.Database
                         LastName = "User4",
                         Username = "User4",
                         Email = "user4@lyra.com",
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Users/profile-picture.png")),
-                        PasswordHash = "EKu3v3kAK1H/DaOCW71NJ0BELVF/MBXzSfoXxRDKY7CiDnIi0MvL7XLTE+em0hvw1mkxYfPQAdWztGjTBOX/GQ==",
-                        PasswordSalt = "l6kr9WS22w4c0djg8F7aVA==",
+                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "./SeedFiles/Images/Users/profile-picture.png")),
+                        PasswordSalt = Salt[6],
+                        PasswordHash = HashHelper.GenerateHash(Salt[6], "test"),
                     },
                     new User
                     {
@@ -99,9 +107,9 @@ namespace Lyra.WebAPI.Database
                         LastName = "User5",
                         Username = "User5",
                         Email = "user5@lyra.com",
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Users/profile-picture.png")),
-                        PasswordHash = "4A5IlcSVp7Ou/cDwunLxEW67NfUOo1tQtxEWAKilS3Ii85lJ/9qek5j+Z4dIhu4kRBjlFehipF0cAhlWawuTUg==",
-                        PasswordSalt = "hMWDSmn2hV3HAYtPhL5sCw==",
+                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "./SeedFiles/Images/Users/profile-picture.png")),
+                        PasswordSalt = Salt[7],
+                        PasswordHash = HashHelper.GenerateHash(Salt[7], "test"),
                     },
                     new User
                     {
@@ -110,9 +118,9 @@ namespace Lyra.WebAPI.Database
                         LastName = "User6",
                         Username = "User6",
                         Email = "user6@lyra.com",
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Users/profile-picture.png")),
-                        PasswordHash = "ClcPhlwl6QFZT/RiNGtL25QUL/vO1hUu+gwJ+kFSuOTVMAq9FLqFKx6UF7QcLWGOLmBz9EsvtVJW8QwFyBhPaw==",
-                        PasswordSalt = "6aYJGOXyozg0kcUuw/0drw==",
+                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "./SeedFiles/Images/Users/profile-picture.png")),
+                        PasswordSalt = Salt[8],
+                        PasswordHash = HashHelper.GenerateHash(Salt[8], "test"),
                     },
                     new User
                     {
@@ -121,9 +129,9 @@ namespace Lyra.WebAPI.Database
                         LastName = "User7",
                         Username = "User7",
                         Email = "user7@lyra.com",
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Users/profile-picture.png")),
-                        PasswordHash = "8LqW0nDq3BNurvNBGH3eq45Kjo92cmkCQUy4grx8d0s30/2PIFsfvEm3sBgFqh3UxNG89G8lxq3NS4NUkerJvg==",
-                        PasswordSalt = "z8iyx1lxdzKeWZQ0MFal5Q==",
+                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "./SeedFiles/Images/Users/profile-picture.png")),
+                        PasswordSalt = Salt[9],
+                        PasswordHash = HashHelper.GenerateHash(Salt[9], "test"),
                     }
                 );
 

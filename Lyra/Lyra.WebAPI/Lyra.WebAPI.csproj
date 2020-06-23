@@ -13,6 +13,14 @@
     <Compile Remove="Migrations\20200426201055_renameAtributes.Designer.cs" />
     <Compile Remove="Migrations\20200615150423_addTrackReviews.cs" />
     <Compile Remove="Migrations\20200615150423_addTrackReviews.Designer.cs" />
+    <Compile Remove="Migrations\20200618123217_seed_database.cs" />
+    <Compile Remove="Migrations\20200618123217_seed_database.Designer.cs" />
+    <Compile Remove="Migrations\20200623181026_seed_database.cs" />
+    <Compile Remove="Migrations\20200623181026_seed_database.Designer.cs" />
+    <Compile Remove="Migrations\20200623182301_seed_database.cs" />
+    <Compile Remove="Migrations\20200623182301_seed_database.Designer.cs" />
+    <Compile Remove="Migrations\20200623184120_post_migration_cleanup.cs" />
+    <Compile Remove="Migrations\20200623184120_post_migration_cleanup.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
