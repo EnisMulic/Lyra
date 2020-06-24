@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>5b98c033-a185-4db4-a036-3c015dd5636a</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -24,6 +25,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="SeedFiles\Images\Users\profile-picture.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="9.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.2" />
@@ -41,6 +46,10 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Lyra.Model\Lyra.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="SeedFiles\Images\Users\profile-picture.png" />
   </ItemGroup>
 
 

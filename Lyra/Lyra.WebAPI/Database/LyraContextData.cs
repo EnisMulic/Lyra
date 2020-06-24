@@ -30,7 +30,7 @@ namespace Lyra.WebAPI.Database
                         LastName = "Admin",
                         Username = "desktop",
                         Email = "desktop@lyra.com",
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Users/profile-picture.png")),
+                        Image = FileHelper.ReadFile("./SeedFiles/Images/Users/profile-picture.png"),
                         PasswordSalt = Salt[0],
                         PasswordHash = HashHelper.GenerateHash(Salt[0], "test"),
                     },
@@ -41,7 +41,7 @@ namespace Lyra.WebAPI.Database
                         LastName = "Admin",
                         Username = "Admin",
                         Email = "admin@lyra.com",
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "./SeedFiles/Images/Users/profile-picture.png")),
+                        Image = FileHelper.ReadFile("./SeedFiles/Images/Users/profile-picture.png"),
                         PasswordSalt = Salt[1],
                         PasswordHash = HashHelper.GenerateHash(Salt[1], "test"),
                     },
@@ -52,7 +52,7 @@ namespace Lyra.WebAPI.Database
                         LastName = "User",
                         Username = "mobile",
                         Email = "mobile@lyra.com",
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "./SeedFiles/Images/Users/profile-picture.png")),
+                        Image = FileHelper.ReadFile("./SeedFiles/Images/Users/profile-picture.png"),
                         PasswordSalt = Salt[2],
                         PasswordHash = HashHelper.GenerateHash(Salt[2], "test"),
                     },
@@ -63,7 +63,7 @@ namespace Lyra.WebAPI.Database
                         LastName = "User1",
                         Username = "User1",
                         Email = "user1@lyra.com",
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "./SeedFiles/Images/Users/profile-picture.png")),
+                        Image = FileHelper.ReadFile("./SeedFiles/Images/Users/profile-picture.png"),
                         PasswordSalt = Salt[3],
                         PasswordHash = HashHelper.GenerateHash(Salt[3], "test"),
                     },
@@ -74,7 +74,7 @@ namespace Lyra.WebAPI.Database
                         LastName = "User2",
                         Username = "User2",
                         Email = "user2@lyra.com",
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "./SeedFiles/Images/Users/profile-picture.png")),
+                        Image = FileHelper.ReadFile("./SeedFiles/Images/Users/profile-picture.png"),
                         PasswordSalt = Salt[4],
                         PasswordHash = HashHelper.GenerateHash(Salt[4], "test"),
                     },
@@ -85,7 +85,7 @@ namespace Lyra.WebAPI.Database
                         LastName = "User3",
                         Username = "User3",
                         Email = "user3@lyra.com",
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "./SeedFiles/Images/Users/profile-picture.png")),
+                        Image = FileHelper.ReadFile("./SeedFiles/Images/Users/profile-picture.png"),
                         PasswordSalt = Salt[5],
                         PasswordHash = HashHelper.GenerateHash(Salt[5], "test"),
                     },
@@ -96,7 +96,7 @@ namespace Lyra.WebAPI.Database
                         LastName = "User4",
                         Username = "User4",
                         Email = "user4@lyra.com",
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "./SeedFiles/Images/Users/profile-picture.png")),
+                        Image = FileHelper.ReadFile("./SeedFiles/Images/Users/profile-picture.png"),
                         PasswordSalt = Salt[6],
                         PasswordHash = HashHelper.GenerateHash(Salt[6], "test"),
                     },
@@ -107,7 +107,7 @@ namespace Lyra.WebAPI.Database
                         LastName = "User5",
                         Username = "User5",
                         Email = "user5@lyra.com",
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "./SeedFiles/Images/Users/profile-picture.png")),
+                        Image = FileHelper.ReadFile("./SeedFiles/Images/Users/profile-picture.png"),
                         PasswordSalt = Salt[7],
                         PasswordHash = HashHelper.GenerateHash(Salt[7], "test"),
                     },
@@ -118,7 +118,7 @@ namespace Lyra.WebAPI.Database
                         LastName = "User6",
                         Username = "User6",
                         Email = "user6@lyra.com",
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "./SeedFiles/Images/Users/profile-picture.png")),
+                        Image = FileHelper.ReadFile("./SeedFiles/Images/Users/profile-picture.png"),
                         PasswordSalt = Salt[8],
                         PasswordHash = HashHelper.GenerateHash(Salt[8], "test"),
                     },
@@ -129,7 +129,7 @@ namespace Lyra.WebAPI.Database
                         LastName = "User7",
                         Username = "User7",
                         Email = "user7@lyra.com",
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "./SeedFiles/Images/Users/profile-picture.png")),
+                        Image = FileHelper.ReadFile("./SeedFiles/Images/Users/profile-picture.png"),
                         PasswordSalt = Salt[9],
                         PasswordHash = HashHelper.GenerateHash(Salt[9], "test"),
                     }
@@ -165,19 +165,19 @@ namespace Lyra.WebAPI.Database
                     {
                         ID = 1,
                         Name = "Gorillaz",
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Artists/gorillaz.jpg"))
+                        Image = FileHelper.ReadFile("SeedFiles/Images/Artists/gorillaz.jpg")
                     },
                     new Artist
                     {
                         ID = 2,
                         Name = "Audioslave",
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Artists/audioslave.jpg"))
+                        Image = FileHelper.ReadFile("SeedFiles/Images/Artists/audioslave.jpg")
                     },
                     new Artist
                     {
                         ID = 3,
                         Name = "Gojira",
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Artists/gojira.jpg"))
+                        Image = FileHelper.ReadFile("SeedFiles/Images/Artists/gojira.jpg")
                     }
                 );
 
@@ -189,7 +189,7 @@ namespace Lyra.WebAPI.Database
                         ID = 1,
                         Name = "Gorillaz",
                         ReleaseYear = 2001,
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Albums/gorillaz.jpg")),
+                        Image = FileHelper.ReadFile("SeedFiles/Images/Albums/gorillaz.jpg"),
                         ArtistID = 1,
                     },
                     new Album
@@ -197,7 +197,7 @@ namespace Lyra.WebAPI.Database
                         ID = 2,
                         Name = "Demon Days",
                         ReleaseYear = 2003,
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Albums/demon_days.jpg")),
+                        Image = FileHelper.ReadFile("SeedFiles/Images/Albums/demon_days.jpg"),
                         ArtistID = 1
                     },
                     new Album
@@ -205,7 +205,7 @@ namespace Lyra.WebAPI.Database
                         ID = 3,
                         Name = "Audioslave",
                         ReleaseYear = 2002,
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Albums/audioslave.jpg")),
+                        Image = FileHelper.ReadFile("SeedFiles/Images/Albums/audioslave.jpg"),
                         ArtistID = 2
                     },
                     new Album
@@ -213,7 +213,7 @@ namespace Lyra.WebAPI.Database
                         ID = 4,
                         Name = "From Mars To Sirius",
                         ReleaseYear = 2006,
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Albums/from_mars_to_sirius.jpg")),
+                        Image = FileHelper.ReadFile("SeedFiles/Images/Albums/from_mars_to_sirius.jpg"),
                         ArtistID = 3
                     }
                 );
@@ -646,7 +646,7 @@ namespace Lyra.WebAPI.Database
                     {
                         ID = 1,
                         Name = "Test Playlist 1",
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Playlists/playlist.jpg")),
+                        Image = FileHelper.ReadFile("SeedFiles/Images/Playlists/playlist.jpg"),
                         UserID = 3,
                         CreatedAt = DateTime.Now
                     },
@@ -654,7 +654,7 @@ namespace Lyra.WebAPI.Database
                     {
                         ID = 2,
                         Name = "Test Playlist 2",
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Playlists/playlist.jpg")),
+                        Image = FileHelper.ReadFile("SeedFiles/Images/Playlists/playlist.jpg"),
                         UserID = 4,
                         CreatedAt = DateTime.Now
                     },
@@ -662,7 +662,7 @@ namespace Lyra.WebAPI.Database
                     {
                         ID = 3,
                         Name = "Test Playlist 1",
-                        Image = File.ReadAllBytes(Path.Combine(Directory.GetCurrentDirectory(), "SeedFiles/Images/Playlists/playlist.jpg")),
+                        Image = FileHelper.ReadFile("SeedFiles/Images/Playlists/playlist.jpg"),
                         UserID = 5,
                         CreatedAt = DateTime.Now
                     }

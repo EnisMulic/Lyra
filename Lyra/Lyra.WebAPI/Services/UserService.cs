@@ -2,6 +2,7 @@
 using Lyra.Model.Requests;
 using Lyra.WebAPI.Database;
 using Lyra.WebAPI.Exceptions;
+using Lyra.WebAPI.Helper;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 using System;
@@ -85,7 +86,7 @@ namespace Lyra.WebAPI.Services
             
             if (user != null)
             {
-                var hash = GenerateHash(user.PasswordSalt, request.Password);
+                var hash = HashHelper.GenerateHash(user.PasswordSalt, request.Password);
                 if(hash == user.PasswordHash)
                 {
                     return _mapper.Map<Model.User>(user);
@@ -93,30 +94,6 @@ namespace Lyra.WebAPI.Services
             }
 
             return null;
-        }
-
-        public static string GenerateSalt()
-        {
-            var buffer = new byte[16];
-            var rng = new RNGCryptoServiceProvider();
-            rng.GetBytes(buffer);
-
-            return Convert.ToBase64String(buffer);
-        }
-
-        public static string GenerateHash(string salt, string password)
-        {
-            byte[] src = Convert.FromBase64String(salt);
-            byte[] bytes = Encoding.Unicode.GetBytes(password);
-            byte[] dst = new byte[src.Length + bytes.Length];
-
-            Buffer.BlockCopy(src, 0, dst, 0, src.Length);
-            Buffer.BlockCopy(bytes, 0, dst, src.Length, bytes.Length);
-
-            HashAlgorithm algorithm = HashAlgorithm.Create("SHA512");
-            byte[] inArray = algorithm.ComputeHash(dst);
-
-            return Convert.ToBase64String(inArray);
         }
 
         public override async Task<Model.User> Insert(UserInsertRequest request)
@@ -137,8 +114,8 @@ namespace Lyra.WebAPI.Services
             }
             
             var entity = _mapper.Map<Database.User>(request);
-            entity.PasswordSalt = GenerateSalt();
-            entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
+            entity.PasswordSalt = HashHelper.GenerateSalt();
+            entity.PasswordHash = HashHelper.GenerateHash(entity.PasswordSalt, request.Password);
 
             await _context.Users.AddAsync(entity);
             await _context.SaveChangesAsync();
@@ -185,8 +162,8 @@ namespace Lyra.WebAPI.Services
                     throw new Exception("Passwords do not match!");
                 }
 
-                entity.PasswordSalt = GenerateSalt();
-                entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
+                entity.PasswordSalt = HashHelper.GenerateSalt();
+                entity.PasswordHash = HashHelper.GenerateHash(entity.PasswordSalt, request.Password);
             }
 
             foreach(var RoleID in request.Roles)
@@ -233,8 +210,8 @@ namespace Lyra.WebAPI.Services
             }
 
             var entity = _mapper.Map<Database.User>(request);
-            entity.PasswordSalt = GenerateSalt();
-            entity.PasswordHash = GenerateHash(entity.PasswordSalt, request.Password);
+            entity.PasswordSalt = HashHelper.GenerateSalt();
+            entity.PasswordHash = HashHelper.GenerateHash(entity.PasswordSalt, request.Password);
 
             await _context.Users.AddAsync(entity);
             await _context.SaveChangesAsync();

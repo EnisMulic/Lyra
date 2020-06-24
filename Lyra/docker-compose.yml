@@ -11,24 +11,25 @@ services:
       - 1433:1433
     networks:
       - lyraappnet
+
     
   lyra-api:
     restart: unless-stopped
     build:
       context: .
     environment:
-      - ConnectionStrings:local=Server=lyra-ms-sql-server,1433;Database=170097Docker;User=Sa;Password=rs2Password;ConnectRetryCount=0
+      - ConnectionStrings:local=Server=lyra-ms-sql-server,1433;Database=170097Docker;User=sa;Password=rs2Password;ConnectRetryCount=0
     ports:
       - 65094:5050
     networks:
-      - eventiappnet     
+      - lyraappnet     
     links:
       - lyra-ms-sql-server
     depends_on:
       - lyra-ms-sql-server
       
 networks:
-  eventiappnet:
+  lyraappnet:
     driver: bridge
 
         

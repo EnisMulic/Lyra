@@ -7,7 +7,7 @@
              xmlns:converters="clr-namespace:Lyra.Mobile.Converters"
              xmlns:system="clr-namespace:System;assembly=netstandard"
              mc:Ignorable="d"
-             x:Class="Lyra.Mobile.Views.ItemsPage"
+             x:Class="Lyra.Mobile.Views.RecommendationPage"
              Title="{Binding Title}"
              x:Name="BrowseItemsPage">
 

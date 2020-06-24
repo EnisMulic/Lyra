@@ -7,27 +7,30 @@ using System.Threading.Tasks;
 
 namespace Lyra.WebAPI.Helper
 {
-    public class HashHelper
+    public static class HashHelper
     {
         public static string GenerateSalt()
         {
-            byte[] array = new byte[16];
-            (new RNGCryptoServiceProvider()).GetBytes(array);
-            return Convert.ToBase64String(array);
+            var buffer = new byte[16];
+            var rng = new RNGCryptoServiceProvider();
+            rng.GetBytes(buffer);
+
+            return Convert.ToBase64String(buffer);
         }
 
         public static string GenerateHash(string salt, string password)
         {
-            byte[] saltBytes = Convert.FromBase64String(salt);
-            byte[] passBytes = Encoding.Unicode.GetBytes(password);
-            byte[] dst = new byte[passBytes.Length + saltBytes.Length];
+            byte[] src = Convert.FromBase64String(salt);
+            byte[] bytes = Encoding.Unicode.GetBytes(password);
+            byte[] dst = new byte[src.Length + bytes.Length];
 
-            Buffer.BlockCopy(passBytes, 0, dst, 0, passBytes.Length);
-            Buffer.BlockCopy(saltBytes, 0, dst, passBytes.Length, saltBytes.Length);
+            Buffer.BlockCopy(src, 0, dst, 0, src.Length);
+            Buffer.BlockCopy(bytes, 0, dst, src.Length, bytes.Length);
 
-            HashAlgorithm algorithm = HashAlgorithm.Create("SHA256");
-            byte[] hashArray = algorithm.ComputeHash(dst);
-            return Convert.ToBase64String(hashArray);
+            HashAlgorithm algorithm = HashAlgorithm.Create("SHA512");
+            byte[] inArray = algorithm.ComputeHash(dst);
+
+            return Convert.ToBase64String(inArray);
         }
 
     }
