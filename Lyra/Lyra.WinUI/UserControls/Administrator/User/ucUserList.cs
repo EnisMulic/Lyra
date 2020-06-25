@@ -40,7 +40,7 @@ namespace Lyra.WinUI.UserControls.Administrator.User
         {
             var list = await _apiService.Get<List<Model.User>>(request);
             
-            if(list.Count > 1)
+            if(list.Count > 0)
             {
                 dgvUsers.ColumnCount = 0;
                 DataGridViewHelper.PopulateWithList(dgvUsers, list, _props);

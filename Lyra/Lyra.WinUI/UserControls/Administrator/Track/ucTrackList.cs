@@ -40,7 +40,7 @@ namespace Lyra.WinUI.UserControls.Administrator.Track
         {
             var list = await _apiService.Get<List<Model.Track>>(request);
 
-            if(list.Count > 1)
+            if(list.Count > 0)
             {
                 dgvTracks.ColumnCount = 0;
                 DataGridViewHelper.PopulateWithList(dgvTracks, list, _props);
