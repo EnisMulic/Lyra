@@ -124,7 +124,7 @@ namespace Lyra.Mobile.ViewModels
             PlayTrack(track.ID);
         }
 
-        
+        public string filename { get; set; }
 
         public ICommand PlayCommand => new Command(Play);
         public ICommand ChangeCommand => new Command(ChangeMusic);
@@ -162,7 +162,7 @@ namespace Lyra.Mobile.ViewModels
 
             var mediaInfo = CrossMediaManager.Current;
 
-            string filename = FileHelper.SaveFile(selectedTrack.MP3File, selectedTrack.Name + Guid.NewGuid() + "mp3");        
+            filename = FileHelper.SaveFile(selectedTrack.MP3File, selectedTrack.Name + Guid.NewGuid() + "mp3");        
 
             if (!string.IsNullOrEmpty(filename))
             {

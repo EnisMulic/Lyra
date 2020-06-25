@@ -3,10 +3,12 @@ using Lyra.Mobile.Services;
 using Lyra.Mobile.ViewModels;
 using Lyra.Model;
 using Lyra.Model.Requests;
+using MediaManager;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -54,6 +56,12 @@ namespace Lyra.Mobile.Views
             {
                 await _service.Update<UserTrackReview>(model.TrackReview.ID, request);
             }
+        }
+
+        protected override async void OnDisappearing()
+        {
+            FileHelper.DeleteFile(model.filename);
+            await CrossMediaManager.Current.Pause();
         }
     }
 }
