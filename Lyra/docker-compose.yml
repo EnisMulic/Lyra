@@ -20,7 +20,7 @@ services:
     environment:
       - ConnectionStrings:LyraDev=Server=lyra-sql,1433;Database=LyraDocker;User=sa;Password=QWElkj132!;ConnectRetryCount=0
     ports:
-      - 5000:80
+      - 64236:80
     networks:
       - lyraappnet     
     links:
