@@ -27,9 +27,10 @@ namespace Lyra.Mobile.Helpers
 
         public static bool DeleteFile(string filename, string path = null)
         {
-            filename = Path.Combine(string.IsNullOrEmpty(path) ? _path : path, filename);
             try
             {
+                path = string.IsNullOrEmpty(path) ? _path : path;
+                filename = Path.Combine(path, filename);
                 File.Delete(filename);
                 return true;
             }

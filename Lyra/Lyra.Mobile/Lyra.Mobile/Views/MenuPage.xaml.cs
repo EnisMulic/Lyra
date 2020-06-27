@@ -24,7 +24,8 @@ namespace Lyra.Mobile.Views
                 new HomeMenuItem {Id = MenuItemType.Search, Title="Search" },
                 new HomeMenuItem {Id = MenuItemType.Activity, Title="Activity" },
                 new HomeMenuItem {Id = MenuItemType.YourMusic, Title="Your Music" },
-                new HomeMenuItem {Id = MenuItemType.Settings, Title="Settings" }
+                new HomeMenuItem {Id = MenuItemType.Settings, Title="Settings" },
+                new HomeMenuItem {Id = MenuItemType.SignOut, Title="Sign Out" }
             };
 
             ListViewMenu.ItemsSource = menuItems;

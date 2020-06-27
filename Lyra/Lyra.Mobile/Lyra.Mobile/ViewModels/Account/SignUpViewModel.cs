@@ -87,10 +87,12 @@ namespace Lyra.Mobile.ViewModels
                 };
 
                 await _service.SignUp(request);
+                await Application.Current.MainPage.DisplayAlert("Success", "You have successfully signed up", "OK");
+                Application.Current.MainPage = new SignInPage();
             }
-            catch(Exception error)
+            catch
             {
-                await Application.Current.MainPage.DisplayAlert("Error", error.Message, "OK");
+                await Application.Current.MainPage.DisplayAlert("Error", "An error has accured", "OK");
             }
         }
 

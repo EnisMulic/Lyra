@@ -10,7 +10,8 @@ namespace Lyra.Mobile.Models
         Search,
         Activity,
         YourMusic,
-        Settings
+        Settings,
+        SignOut
     }
     public class HomeMenuItem
     {
