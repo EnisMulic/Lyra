@@ -9,10 +9,12 @@ namespace Lyra.Model.Requests
     {
         [Required]
         public string Name { get; set; }
+        [Required]
         public string CreatedAt { get; set; }
         public byte[] Image { get; set; }
         public List<int> Tracks { get; set; } = new List<int>();
         public List<int> TracksToDelete { get; set; } = new List<int>();
+        [Required]
         public int UserID { get; set; }
     }
 }

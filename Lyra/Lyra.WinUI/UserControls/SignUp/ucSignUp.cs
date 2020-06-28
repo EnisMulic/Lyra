@@ -40,10 +40,6 @@ namespace Lyra.WinUI.SignUp
             {
                 try
                 {
-                    APIService.Username = "Enis";
-                    APIService.Password = "12341234";
-
-
                     var request = new UserInsertRequest
                     {
                         FirstName = Convert.ToString(txtFirstName.Text),
