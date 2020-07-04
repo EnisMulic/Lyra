@@ -154,6 +154,11 @@ namespace Lyra.Mobile.ViewModels
 
         private async void PlayTrack(int ID)
         {
+            if(!string.IsNullOrEmpty(filename))
+            {
+                FileHelper.DeleteFile(filename);
+            }
+
             SelectedTrack = await _trackService.GetById<Model.Track>(ID);
 
             await LogTrackActivity(ID);
@@ -162,7 +167,7 @@ namespace Lyra.Mobile.ViewModels
 
             var mediaInfo = CrossMediaManager.Current;
 
-            filename = FileHelper.SaveFile(selectedTrack.MP3File, selectedTrack.Name + Guid.NewGuid() + "mp3");        
+            filename = FileHelper.SaveFile(selectedTrack.MP3File, Guid.NewGuid() + ".mp3");   
 
             if (!string.IsNullOrEmpty(filename))
             {
