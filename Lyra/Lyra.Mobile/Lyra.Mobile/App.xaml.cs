@@ -11,7 +11,7 @@ namespace Lyra.Mobile
 
         public App()
         {
-            string licenseKey = "MjcxOTc4QDMxMzgyZTMxMmUzMFNwZE5NQUh4ajV0bmU4dXVSNVRtbGRuVFZIL1FVczA4b3pTRmhldzkwTmc9";
+            string licenseKey = "MzE0NjExQDMxMzgyZTMyMmUzMGJWRHQxbFR5RHpaZUVUT0lwUWFocmVGNVIyeWNwWDNlVlpyb2d2aE1GTUE9";
             Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense(licenseKey);
 
             InitializeComponent();
