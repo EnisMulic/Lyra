@@ -11,7 +11,8 @@ namespace Lyra.Mobile.Models
         Activity,
         YourMusic,
         Settings,
-        SignOut
+        SignOut,
+        RSIICovidExam
     }
     public class HomeMenuItem
     {

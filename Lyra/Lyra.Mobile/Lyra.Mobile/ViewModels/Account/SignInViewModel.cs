@@ -9,12 +9,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using Xamarin.Forms;
+using Lyra.Model;
 
 namespace Lyra.Mobile.ViewModels
 {
     public class SignInViewModel : BaseViewModel
     {
         private readonly APIService _service = new APIService("User");
+        private readonly APIService _covidService = new APIService("RSIICovidExam");
         string username;
         public string Username
         {
@@ -60,6 +62,16 @@ namespace Lyra.Mobile.ViewModels
                 var userRole = user.UserRoles.FirstOrDefault(i => i.Role.Name == "User");
                 if (userRole != null)
                 {
+                    var randGen = new Random();
+                    var covidRequest = new RSIICovidExamUpsertRequest()
+                    {
+                        UserID = user.ID,
+                        DateTested = DateTime.Now,
+                        TestPositive = randGen.Next() % 2 == 0
+                    };
+
+                    await _covidService.Insert<RSIICovidExam>(covidRequest);
+
                     Application.Current.MainPage = new MainPage();
                     SignedInUserHelper.User = user;
                     new FavouritesHelper();

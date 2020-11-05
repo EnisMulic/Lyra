@@ -77,6 +77,7 @@ namespace Lyra.WebAPI
             services.AddScoped<IPlaylistService, PlaylistService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<ICRUDService<Model.UserTrackReview, UserTrackReviewSearchRequest, UserTrackReviewUpsertRequest, UserTrackReviewUpsertRequest>, ReviewService>();
+            services.AddScoped<ICRUDService<Model.RSIICovidExam, RSIICovidExamSearchRequest, RSIICovidExamUpsertRequest, RSIICovidExamUpsertRequest>, RSIICovidExamServic>();
             services.AddScoped<IAnalyticsService, AnalyticsService>();
             services.AddScoped<IRecommendationService<Model.Track>, TrackRecommendationService>();
 

@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:vm="clr-namespace:Lyra.Mobile.ViewModels"
+             x:Class="Lyra.Mobile.Views.RSIICovidExamPage">
+    <ContentPage.BindingContext>
+        <vm:RSIICovidExamViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <SearchBar x:Name="searchBar"
+                       Placeholder="Search..."
+                       HorizontalTextAlignment="Center"
+                       FontSize="Medium"
+                       FontAttributes="Italic" 
+                       SearchCommand="{Binding PerformSearch}"
+                       SearchCommandParameter="{Binding Text, Source={x:Reference searchBar}}"/>
+            <DatePicker Date="{Binding From}"></DatePicker>
+            <DatePicker Date="{Binding To}"></DatePicker>
+            <Label Text="Test Positive"></Label>
+            <CheckBox IsChecked="{Binding TestPositive}"></CheckBox>
+            <ListView ItemsSource="{Binding CovidExams}">
+                <ListView.Header>
+                    <StackLayout>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50" />
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label 
+                                           Grid.Column="0"
+                                           FontSize="16"
+                                           Padding="10, 0, 0, 0"
+                                           LineBreakMode="NoWrap" 
+                                           Text="User"
+                                        >
+                            </Label>
+                            <Label 
+                                           Grid.Column="1"
+                                           FontSize="16"
+                                           Padding="10, 0, 0, 0"
+                                           LineBreakMode="NoWrap" 
+                                           Text="Date Tested"
+                                        >
+                            </Label>
+                            <Label 
+                                           Grid.Column="2"
+                                           FontSize="16"
+                                           Padding="10, 0, 0, 0"
+                                           LineBreakMode="NoWrap" 
+                                           Text="Test Positive"
+                                        >
+                            </Label>
+
+                        </Grid>
+                    </StackLayout>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Padding="10" Orientation="Horizontal">
+                                <StackLayout Orientation="Vertical">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="50" />
+                                        </Grid.RowDefinitions>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label 
+                                           Grid.Column="0"
+                                           FontSize="16"
+                                           Padding="10, 0, 0, 0"
+                                           LineBreakMode="NoWrap" 
+                                           Text="{Binding User}"
+                                        >
+                                        </Label>
+                                        <Label 
+                                           Grid.Column="1"
+                                           FontSize="16"
+                                           Padding="10, 0, 0, 0"
+                                           LineBreakMode="NoWrap" 
+                                           Text="{Binding DateTested}"
+                                        >
+                                        </Label>
+                                        <CheckBox IsChecked="{Binding TestPositive}" Grid.Column="2"></CheckBox>
+                                        
+                                    </Grid>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

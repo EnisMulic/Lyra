@@ -34,6 +34,7 @@ namespace Lyra.WebAPI.Database
         public DbSet<UserActivityTrack> UserActivityTracks  { get; set; }
         public DbSet<UserActivityPlaylist> UserActivityPlaylists  { get; set; }
         public DbSet<UserTrackReview> UserTrackReviews  { get; set; }
+        public DbSet<RSIICovidExam> RSIICovidExams { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

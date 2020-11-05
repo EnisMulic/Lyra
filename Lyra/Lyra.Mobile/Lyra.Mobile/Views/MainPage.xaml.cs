@@ -48,6 +48,9 @@ namespace Lyra.Mobile.Views
                     case (int)MenuItemType.SignOut:
                         MenuPages.Add(id, new NavigationPage(new SignOutPage()));
                         break;
+                    case (int)MenuItemType.RSIICovidExam:
+                        MenuPages.Add(id, new NavigationPage(new RSIICovidExamPage()));
+                        break;
                 }
             }
 

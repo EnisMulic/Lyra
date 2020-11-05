@@ -53,6 +53,9 @@ namespace Lyra.WebAPI.Mapper
 
             CreateMap<Database.UserTrackReview, Model.UserTrackReview>().ReverseMap();
             CreateMap<Database.UserTrackReview, Model.Requests.UserTrackReviewUpsertRequest>().ReverseMap();
+
+            CreateMap<Database.RSIICovidExam, Model.Requests.RSIICovidExamUpsertRequest>().ReverseMap();
+            CreateMap<Database.RSIICovidExam, Model.RSIICovidExam>().ReverseMap();
         }
 
         
