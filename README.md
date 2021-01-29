@@ -57,24 +57,29 @@ Kako bi se zaobišlo predugo čekanja prilikom migracije .mp3 fileova, u folderu
     </tr>
      <tr>
         <td>
-        <img src=".assets/Mobile_SideNav.png"/>
+            <img src=".assets/Mobile_MusicPlayer.png"/>
         </td>
         <td>
-            <img src=".assets/Mobile_Favourites_Playlists.png"/>
+             <img src=".assets/Mobile_SideNav.png"/>
         </td>
     </tr>
     <tr>
         <td>
-        <img src=".assets/Mobile_UserActivity_Track.png"/>
+           <img src=".assets/Mobile_Favourites_Playlists.png"/>
         </td>
         <td>
-            <img src=".assets/Mobile_AddSongToPlaylist.png"/>
+            <img src=".assets/Mobile_UserActivity_Track.png"/>
         </td>
     </tr>
      <tr>
         <td>
-        <img src=".assets/Mobile_UserInfo.png"/>
+            <img src=".assets/Mobile_AddSongToPlaylist.png"/>
         </td>
+        <td>
+           <img src=".assets/Mobile_UserInfo.png"/>
+        </td>
+    </tr>
+    <tr>
         <td>
             <img src=".assets/Mobile_Playlist.png"/>
         </td>
